@@ -6,7 +6,8 @@ const packsControllers = {
 		let error = null
 		try {
 			packs = await Pack.find().populate("experiencias")
-		} catch (err) {error = err}
+		} catch (err) {error = err
+		console.error(error)}
 		res.json({
 			response: error ? 'ERROR' : {packs},
 			success: error ? false : true,

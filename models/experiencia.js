@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const packSchema = new mongoose.Schema({
+const experienciaSchema = new mongoose.Schema({
 	nombre: {type: String, required: true},
 	descripcion: {type: String, required: true},
 	incluye: {type: String, required: true},
@@ -11,5 +11,5 @@ const packSchema = new mongoose.Schema({
 
 })
 
-const Pack = mongoose.model('experiencias', packSchema)
-module.exports = Pack
+const Experiencia = mongoose.model('experiencias', experienciaSchema)
+module.exports = Experiencia
