@@ -4,7 +4,7 @@ const experienciasActions = {
     getExperiencias: () => {
       return async (dispatch, getState) => {
          const res = await axios.get("https://boxbonny-back.herokuapp.com/api/experiencias");
-         dispatch({ type: "GETEXPERIENCIAS", payload: res.data.response.cities });
+         dispatch({ type: "GETEXPERIENCIAS", payload: res.data.response.experiencia });
       };
    },
 
@@ -12,7 +12,7 @@ const experienciasActions = {
       return async (dispatch, getState) => {
          const res = await axios.get(`https://boxbonny-back.herokuapp.com/api/experiencias/${id}`);
          //   console.log(res)
-         dispatch({ type: "GETONEEXPERIENCIA", payload: res.data.response.city });
+         dispatch({ type: "GETONEEXPERIENCIA", payload: res.data.response.experiencia });
       };
    },
 

@@ -8,13 +8,13 @@ const initialState = {
 
 const experienciasReducer = (state = initialState, action) => {
 
-    switch (action.type) {  // establece la condicion para cada case
+    switch (action.type) {  
         case "GETEXPERIENCIAS":
             return {
                 ...state,
                 experiencias: action.payload,
                 auxiliar: action.payload,
-                filter: action.payload // cargo todas las ciudades en filter    
+                filter: action.payload 
 
             }
 
@@ -25,10 +25,10 @@ const experienciasReducer = (state = initialState, action) => {
             }
 
         case "FILTEREXPERIENCIAS":
-            let cityFilter = state.cities.filter(city => city.name.toLowerCase().startsWith(action.payload.trim().toLowerCase()))
+            let filterExperiencia = state.experiencias.filter(city => city.ciudad === action.payload.value)
             return {
                 ...state,
-                filter: experienciaFilter
+                filter: filterExperiencia
             }
 
         default:

@@ -1,8 +1,13 @@
 import React from "react";
 import FilterProduct from '../components/FilterProduct'
 import '../styles/cards.css'
+import {useSelector} from "react-redux"
 
 const PacksComponent = () => {
+
+    const packs = useSelector(store => store.packsReducer.packs)
+    console.log(packs)
+
 
     return (
 

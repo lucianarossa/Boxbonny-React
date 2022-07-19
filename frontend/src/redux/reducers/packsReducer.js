@@ -3,7 +3,7 @@ const initialState = {
     getOnePack: {},
 }
 
-const itinerariesReducer = (state = initialState, action) => {
+const packsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case "GETPACKS":
@@ -21,4 +21,4 @@ const itinerariesReducer = (state = initialState, action) => {
     }
 }
 
-export default itinerariesReducer
+export default packsReducer
