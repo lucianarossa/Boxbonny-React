@@ -1,7 +1,7 @@
-const User = require('../models/users');
+const Usuario = require('../models/usuario');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const sendVerification = require('./sendVerification');
+const enviarVerificacion = require('./enviarVerificacion'); //falta hacer credeniciales google
 const crypto = require('crypto');
 
 
