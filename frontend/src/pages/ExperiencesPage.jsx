@@ -3,9 +3,9 @@ import React from 'react'
 
 const Packs = () => {
   return (
-   
-    <PacksComponent />
-   
+    <>
+      <PacksComponent />
+    </>
   )
 
 }

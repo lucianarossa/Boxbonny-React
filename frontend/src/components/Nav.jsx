@@ -1,5 +1,6 @@
 
-import { MdShoppingBasket, MdAdd, MdLogout } from "react-icons/md";
+import { MdShoppingBasket } from "react-icons/md";
+import { Link as LinkRouter } from "react-router-dom"
 
 export default function Nav() {
   return (
@@ -7,7 +8,7 @@ export default function Nav() {
       <div class="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <div class="flex-1 md:flex md:items-center md:gap-12">
-            <a class="block text-teal-600" href="/">
+            <a class="block text-orange-600" href="/">
               <span class="sr-only">Home</span>
               <svg
                 class="h-8"
@@ -27,30 +28,30 @@ export default function Nav() {
             <nav class="hidden md:block" aria-labelledby="header-navigation">
               <h2 class="sr-only" id="header-navigation">Header navigation</h2>
 
-              <ul class="flex items-center gap-6 text-sm fontPoppins ">
+              <ul class="flex items-center gap-6 text-md fontPoppins ">
                 <li>
-                  <a
-                    class="text-gray-500 transition hover:text-gray-500/75"
-                    href="/"
+                  <LinkRouter
+                    class="text-gray-500 transition hover:text-[#FF8E72]"
+                    to="/"
                   >
                     Inicio
-                  </a>
+                  </LinkRouter>
                 </li>
 
                 <li>
-                  <a
-                    class="text-gray-500 transition hover:text-gray-500/75"
-                    href="/"
+                  <LinkRouter
+                    class="text-gray-500 transition hover:text-[#FF8E72]"
+                    to="/experiences"
                   >
                     Packs
-                  </a>
+                  </LinkRouter>
                 </li>
                 <li>
                   <div
                     className="relative flex items-center justify-center"
                     onClick={null}
                   >
-                    <MdShoppingBasket className="text-textColor text-2xl  cursor-pointer" />
+                    <MdShoppingBasket className="text-textColor text-2xl hover:text-[#FF8E72] cursor-pointer" />
 
                     <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
                       <p className="text-xs text-white font-semibold">
@@ -67,7 +68,7 @@ export default function Nav() {
             <div class="flex items-center gap-4 fontPoppins ">
               <div class="sm:gap-4 sm:flex">
                 <a
-                  class="px-5 py-2.5 text-sm font-medium text-white bg-teal-600 rounded-md shadow"
+                  class="px-5 py-2.5 text-sm font-medium text-white bg-orange-600 rounded-md hover:text-[#FF8E72] shadow"
                   href="/"
                 >
                   Login
@@ -75,7 +76,7 @@ export default function Nav() {
 
                 <div class="hidden sm:flex">
                   <a
-                    class="px-5 py-2.5 text-sm font-medium text-teal-600 bg-gray-100 rounded-md"
+                    class="px-5 py-2.5 text-sm font-medium text-orange-600 bg-gray-100 hover:text-[#FF8E72] rounded-md"
                     href="/"
                   >
                     Register
