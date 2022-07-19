@@ -8,7 +8,7 @@ export default function Nav() {
       <div class="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <div class="flex-1 md:flex md:items-center md:gap-12">
-            <a class="block text-teal-600" href="/">
+            <a class="block text-orange-600" href="/">
               <span class="sr-only">Home</span>
               <svg
                 class="h-8"
@@ -68,7 +68,7 @@ export default function Nav() {
             <div class="flex items-center gap-4 fontPoppins ">
               <div class="sm:gap-4 sm:flex">
                 <a
-                  class="px-5 py-2.5 text-sm font-medium text-white bg-teal-600 rounded-md hover:text-[#FF8E72] shadow"
+                  class="px-5 py-2.5 text-sm font-medium text-white bg-orange-600 rounded-md hover:text-[#FF8E72] shadow"
                   href="/"
                 >
                   Login
@@ -76,7 +76,7 @@ export default function Nav() {
 
                 <div class="hidden sm:flex">
                   <a
-                    class="px-5 py-2.5 text-sm font-medium text-teal-600 bg-gray-100 hover:text-[#FF8E72] rounded-md"
+                    class="px-5 py-2.5 text-sm font-medium text-orange-600 bg-gray-100 hover:text-[#FF8E72] rounded-md"
                     href="/"
                   >
                     Register

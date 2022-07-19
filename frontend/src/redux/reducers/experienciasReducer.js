@@ -8,13 +8,13 @@ const initialState = {
 
 const experienciasReducer = (state = initialState, action) => {
 
-    switch (action.type) {  
+    switch (action.type) {
         case "GETEXPERIENCIAS":
             return {
                 ...state,
                 experiencias: action.payload,
                 auxiliar: action.payload,
-                filter: action.payload 
+                filter: action.payload
 
             }
 
@@ -28,7 +28,7 @@ const experienciasReducer = (state = initialState, action) => {
             let filterExperiencia = state.experiencias.filter(city => city.ciudad === action.payload.value)
             return {
                 ...state,
-                filter: filterExperiencia
+                filter: filterExperiencia,
             }
 
         default:
