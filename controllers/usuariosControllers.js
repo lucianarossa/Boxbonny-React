@@ -5,7 +5,7 @@ const sendVerification = require('./sendVerification');
 const crypto = require('crypto');
 
 
-const usersControllers = {
+const usuariosControllers = {
     registrarse: async (req,res) => { //para crear usuario
         const { nombre, apellido,email, contraseña, imagen, from } = req.body.data; //utilizo "data" en la action de logueo
         try {
@@ -160,9 +160,32 @@ const usersControllers = {
             });
         }
     },
-
+    verificarToken : (req,res) => {
+        if(req,usuario) {
+            res.json({
+                success: true,
+                response: {
+                    usuarioData:{
+                        id: req.usuario.id,
+                        nombre:req.usuario.nombre,
+                        apellido:req.usuario.apellido,
+                        email:req.usuario.email,
+                        imagen:req.usuario.imagen,
+                        from: "token"
+                    }
+                   
+                },
+                message: "Hola! Bienvenido de vuelta " + req.usuario.nombre
+            })
+        } else{
+            res.json({
+                success: false,
+                message: "Inicia sesión, por favor"
+            })
+        }
+    },
     }
 
 
 
-module.exports = usersControllers
+module.exports = usuariosControllers
