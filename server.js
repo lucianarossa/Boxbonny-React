@@ -4,7 +4,7 @@ const Router = require('./routes/routes');
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const fileUpload = require('express-file-upload');
+const fileUpload = require('express-fileupload');
 const passport = require('passport');
 
 const PORT = process.env.PORT || 4000
