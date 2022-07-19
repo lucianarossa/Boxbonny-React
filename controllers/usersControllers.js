@@ -6,7 +6,7 @@ const crypto = require('crypto');
 
 
 const usersControllers = {
-    registrarse: async (req,res) => {
+    registrarse: async (req,res) => { //para crear usuario
         const { nombre, apellido,email, contraseña, imagen, from } = req.body.data; //utilizo "data" en la action de logueo
         try {
             const usuarioExiste = await Usuario.findOne({email});  //si el usuario existe
@@ -43,7 +43,7 @@ const usersControllers = {
                     uniqueString: uniqueString,
                     verification
                 });
-                if (from !== "formulario-registro"){
+                if (from !== "formulario-registro"){ //formulario de registro
                     nuevoUsuario.verification = true;
                     await nuevoUsuario.save();
                     res.json({
@@ -71,7 +71,7 @@ const usersControllers = {
             console.log(error)
         }
     },
-    inicioSesion : async (req,res) => {
+    inicioSesion : async (req,res) => { //para iniciar sesion
         const { email, contraseña, from} = req.body.logueado;
         try{
             const usuarioExiste = await Usuario.findOne({ email });
@@ -84,7 +84,7 @@ const usersControllers = {
             } else if (usuarioExiste.verification){
                 let passwordMatch = usuarioExiste.contraseña.filter((pass) => bcryptjs.compareSync(contraseña, pass));
 
-                if (from === "formulario-inicio") {
+                if (from === "formulario-inicio") { //formulario de inicio de sesion
                     if(passwordMatch.length > 0){
                         const usuarioData = {
                           id: usuarioExiste._id,
@@ -125,7 +125,7 @@ const usersControllers = {
                           from: usuarioExiste.from,
                         };
                         await usuarioExiste.save();
-                        const token = jwt.sign({ ...usuarioData},
+                        const token = jwt.sign({ ...usuarioData}, //agregue la parte de token
                             process.env.SECRET_KEY, {
                                 expiresIn: 1000 * 60 * 60 * 24,
                             }
