@@ -1,11 +1,15 @@
-import './styles/App.css';
-import PacksComponent from './components/PacksComponent'
 
+import './styles/App.css';
+import Nav from './components/Nav';
+import Footer from './components/Footer';
+import Packs from './pages/Packs';
 
 function App() {
   return (
-    <div className="App">
-       <PacksComponent/>
+    <div className="app flex-column" >
+      <Nav/>
+       <Packs />
+      <Footer />
     </div>
   );
 }

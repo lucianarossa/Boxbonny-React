@@ -5,7 +5,8 @@ import '../styles/cards.css'
 const PacksComponent = () => {
 
     return (
-        <>
+    
+        <div className="h-screen">
             <div className="productsList fontRaleway">
                 <div className="containerFilter">
                     <FilterProduct />
@@ -38,7 +39,7 @@ const PacksComponent = () => {
 
             </div>
 
-        </>
+            </div>
     );
 
 }
