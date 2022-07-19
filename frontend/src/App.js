@@ -6,7 +6,7 @@ import Packs from './pages/Packs';
 
 function App() {
   return (
-    <div className="app flex-column" >
+    <div className="app flex-column">
       <Nav/>
        <Packs />
       <Footer />
