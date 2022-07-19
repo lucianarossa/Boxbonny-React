@@ -1,15 +1,10 @@
 
-
-
-
-
-
+import Steps from "../components/Steps"
 
 export default function HomePage() {
   return (
-    <div>
-      En cosntruccion
-    </div>
+    <Steps />
+
   )
 }
 
