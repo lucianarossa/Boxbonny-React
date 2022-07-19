@@ -14,7 +14,7 @@ const packsReducer = (state = initialState, action) => {
         case "GETONEPACK":
             return {
                 ...state,
-                getOneItinerary: action.payload
+                getOnePack: action.payload
             }
         default:
             return state
