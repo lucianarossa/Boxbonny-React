@@ -9,7 +9,7 @@ const passport = require('passport');
 const PORT = process.env.PORT || 4000
 
 app.set('port', PORT)
-//middlewares
+
 app.use(cors());
 app.use(express.json());
 app.use(passport.initialize());

@@ -125,7 +125,7 @@ const usuariosControllers = {
                             from: usuarioExiste.from,
                         };
                         await usuarioExiste.save();
-                        const token = jwt.sign({ ...usuarioData }, //agregue la parte de token
+                        const token = jwt.sign({ ...usuarioData },
                             process.env.SECRET_KEY, {
                             expiresIn: 1000 * 60 * 60 * 24,
                         }
@@ -160,8 +160,17 @@ const usuariosControllers = {
             });
         }
     },
+    desloguearse: async (req, res) => {
+        const { email } = req.body
+        const usuario = await Usuario.findOne({ email })
+        await usuario.save()
+        res.json({
+            success: true,
+            message: email + "deslogueado!"
+        })
+    },
     verificarToken: (req, res) => {
-        if (req, usuario) {
+        if (req.usuario) {
             res.json({
                 success: true,
                 response: {
