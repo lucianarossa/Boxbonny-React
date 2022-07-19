@@ -1,7 +1,7 @@
 require('dotenv').config()
 require('./config/database')
 var cors = require('cors')
-//const passport = require('passport')
+const passport = require('passport')
 const express = require('express')
 const Router = require('./routes/routes')
 const app = express()
@@ -11,7 +11,7 @@ app.set('port',PORT)
 //middlewares
 app.use(cors())
 app.use(express.json())
-//app.use(passport.initialize())
+app.use(passport.initialize())
 app.use('/api', Router)
 
 app.get('/', (req, res) => {
