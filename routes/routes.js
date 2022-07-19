@@ -32,6 +32,7 @@ Router.route('/experiencias/:id')
 
 Router.route('/registrarse')
     .post(validator, registrarse)
+
 Router.route('/inicioSesion')
     .post(inicioSesion)
 
