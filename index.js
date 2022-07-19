@@ -3,6 +3,7 @@ require('./config/database')
 var cors = require('cors')
 const passport = require('passport')
 const express = require('express')
+const fileUpload = require('express-file-upload')
 const Router = require('./routes/routes')
 const app = express()
 const PORT = process.env.PORT || 4000
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 4000
 app.set('port',PORT)
 //middlewares
 app.use(cors())
+app.use(fileUpload())
 app.use(express.json())
 app.use(passport.initialize())
 app.use('/api', Router)
