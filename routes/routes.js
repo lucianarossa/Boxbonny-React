@@ -1,5 +1,6 @@
 const Router = require('express').Router();
 const passport = require('../config/passport');
+const validator = require('../config/validator');
 
 const packsControllers = require('../controllers/packsControllers');
 const { getPacks, getOnePack, addPack, modifyPack, removePack } = packsControllers
@@ -9,7 +10,6 @@ const { getExperiencias, getOneExperiencia, addExperiencia, modifyExperiencia, r
 
 const usuariosControllers = require('../controllers/usuariosControllers');
 const { registrarse, inicioSesion, verificarToken, verificarMail } = usuariosControllers
-
 
 
 Router.route('/packs')
@@ -31,8 +31,8 @@ Router.route('/experiencias/:id')
     .put(modifyExperiencia)
 
 Router.route('/registrarse')
-    .post(registrarse)
-Router.route('/inicioSesion') //agregar validator
+    .post(validator, registrarse)
+Router.route('/inicioSesion')
     .post(inicioSesion)
 
 Router.route('/verificarToken')
