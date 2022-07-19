@@ -8,6 +8,7 @@ import {useDispatch} from "react-redux"
 import packsActions from "./redux/actions/packsActions"
 import ExperiencesPage from './pages/ExperiencesPage';
 import Index from './pages/Index';
+import Upload from "./components/Upload"
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/experiences" element={<ExperiencesPage />} />
+        <Route path="/administrador" element= {<Upload/>}/>
       </Routes>
 >>>>>>> cf18f59e14e4ae2ce239c002b2af8f719655d9d3
       <Footer />
