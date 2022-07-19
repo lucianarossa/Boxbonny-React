@@ -22,19 +22,14 @@ function App() {
   
 
   return (
-<<<<<<< HEAD
-    <div className="app flex-column">
-      <Nav/>
-       <Packs />
-=======
     <div className="app ">
       <Nav />
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route path="/experiences" element={<ExperiencesPage />} />
+        <Route path="/packs" element={<ExperiencesPage />} />
         <Route path="/administrador" element= {<Upload/>}/>
+        <Route path="/packs/packdetails/:id"/>
       </Routes>
->>>>>>> cf18f59e14e4ae2ce239c002b2af8f719655d9d3
       <Footer />
     </div>
   );
