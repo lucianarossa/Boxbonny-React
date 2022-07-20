@@ -1,6 +1,6 @@
 const initialState = {
     packs: [],
-    getOnePack: {},
+    getOnePack: [],
 }
 
 const packsReducer = (state = initialState, action) => {

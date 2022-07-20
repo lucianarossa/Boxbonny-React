@@ -55,21 +55,12 @@ export default function Nav() {
 
             <div class="flex items-center gap-4 fontPoppins ">
               <div class="sm:gap-4 sm:flex">
-<<<<<<< HEAD
-                <LinkRouter
-                  class="px-5 py-2.5 text-sm font-medium text-white bg-orange-600 rounded-md hover:text-[#FF8E72] shadow"
-                  to="/signin"
-                >
-                  Ingresa
-                </LinkRouter>
-=======
                 <a
                   class="px-5 py-2.5 text-sm font-medium text-white bg-[#FF8E72] rounded-md hover:text-[#393E41] shadow"
                   href="/"
                 >
                   Ingresa
                 </a>
->>>>>>> 05419bd9b0e720cba5b5508c655e4bef70001332
 
                 <div class="hidden sm:flex">
                   <LinkRouter
@@ -77,11 +68,7 @@ export default function Nav() {
                     to="/signup"
                   >
                     Registrate
-<<<<<<< HEAD
                   </LinkRouter>
-=======
-                  </a>
->>>>>>> 05419bd9b0e720cba5b5508c655e4bef70001332
                 </div>
               </div>
 

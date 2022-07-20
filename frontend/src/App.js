@@ -11,6 +11,7 @@ import Index from './pages/Index';
 import Upload from "./components/Upload"
 import SignIn from './components/SingnIn'
 import SignUp from './components/SignUp'
+import PackDetails from './components/PackDetails';
 
 function App() {
 
@@ -29,7 +30,7 @@ function App() {
         <Route path="/" element={<Index />} />
         <Route path="/packs" element={<PacksPage />} />
         <Route path="/administrador" element= {<Upload/>}/>
-        <Route path="/packs/packdetails/:id"/>
+        <Route path="/packs/packdetails/:id" element={<PackDetails />}/>
         <Route path="/signin" element={<SignIn/>}/>
         <Route path="/signup" element={<SignUp/>}/>
       </Routes>
