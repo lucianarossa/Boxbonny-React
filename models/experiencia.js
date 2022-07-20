@@ -7,6 +7,11 @@ const experienciaSchema = new mongoose.Schema({
 	direccion: {type: String, required: true},
 	ciudad: {type: String, required: true},		
 	imagen: {type: String, required: true},
+	comentarios: [{
+		fecha: {type:Date},
+		comentario: {type: String},
+		idUsuario: {type:mongoose.Types.ObjectId, ref:'usuarios'}
+		}],
 	pack: {type: mongoose.Types.ObjectId, ref:"packs"}
 
 })
