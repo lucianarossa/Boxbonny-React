@@ -9,7 +9,7 @@ import packsActions from "./redux/actions/packsActions"
 import ExperiencesPage from './pages/ExperiencesPage';
 import Index from './pages/Index';
 import Upload from "./components/Upload"
-
+import PackDetails from "./components/PackDetails"
 
 function App() {
 
@@ -28,7 +28,7 @@ function App() {
         <Route path="/" element={<Index />} />
         <Route path="/packs" element={<ExperiencesPage />} />
         <Route path="/administrador" element= {<Upload/>}/>
-        <Route path="/packs/packdetails/:id"/>
+        <Route path="/packs/packdetails/:id" element={<PackDetails />}/>
       </Routes>
       <Footer />
     </div>
