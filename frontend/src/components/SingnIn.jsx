@@ -1,13 +1,16 @@
 import React from 'react'
 import '../styles/login.css'
-import { Link as LinkRouter } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react';
-
+import usuariosActions from '../redux/actions/usuariosActions';
+import { useDispatch } from 'react-redux'
+import toast, { Toaster } from 'react-hot-toast';
+import GoogleSignIn from './GoogleSignIn'
 
 const SignIn = () => {
 
-    const container = document.querySelector(".container");
-
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     useEffect(() => {
         const sign_in_btn = document.querySelector("#sign_in_btn")
         const sign_up_btn = document.querySelector("#sign_up_btn")
@@ -17,22 +20,40 @@ const SignIn = () => {
         sign_in_btn.addEventListener("click", () => {
             container.classList.remove("sign_up_mode");
         });
+        const container = document.querySelector(".containerRegistro");
         //eslint-disable-next-line
     }, [])
 
+    const loginSubmit = async (event) => {
+        event.preventDefault()
+        const logueado = {
+            email: event.target[0].value,
+            contraseña: event.target[1].value,
+            from: "formulario-registro"
+        }
+        console.log(logueado)
 
+        let res = dispatch(usuariosActions.inicioSesion(logueado))
+        if (res.data.success) {
+            toast.success(res.data.message)
+            navigate('/signin')
+        } else {
+            toast.error(res.data.message)
+        }
+
+    }
 
 
     return (
-        <div className="container h-screen">
+        <div className="containerRegistro h-screen max-w-full ">
             <div className="form_container">
                 <div className="signin_signup">
-                    <form action="#" className="sign_in_form">
+                    <form onSubmit={loginSubmit} action="#" className="sign_in_form">
                         <h2 className="title">Ingresá</h2>
 
                         <div className="inputBox">
                             <i className='bx bxs-user'></i>
-                            <input type="text" placeholder="Usuario" />
+                            <input type="text" placeholder="Email" />
                         </div>
 
                         <div className="inputBox">
@@ -44,12 +65,14 @@ const SignIn = () => {
                         <p className="social_text">O iniciá sesión con:</p>
 
                         <div className="social_media">
-                            <img src="https://img.icons8.com/fluency/48/000000/google-logo.png" alt='Google' />
+                            <GoogleSignIn />
 
                         </div>
+                        <Toaster />
+
                     </form>
                     <form action="#" className="sign_up_form">
-                        <LinkRouter to="/signup" className="title"> Registrate </LinkRouter>
+                        <h2 className="title"> Registrate </h2>
 
                         <div className="inputBox">
                             <i className='bx bxs-user'></i>
@@ -69,10 +92,8 @@ const SignIn = () => {
                         <input type="submit" value="Sign up" className="btn" />
                         <p className="social_text">O registrate con:</p>
 
+
                         <div className="social_media">
-
-                            <img src="https://img.icons8.com/fluency/48/000000/google-logo.png" alt='Google' />
-
                         </div>
                     </form>
                 </div>

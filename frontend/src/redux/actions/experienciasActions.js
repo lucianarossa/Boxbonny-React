@@ -11,8 +11,8 @@ const experienciasActions = {
    getOneExperiencia: (id) => {
       return async (dispatch, getState) => {
          const res = await axios.get(`https://boxbonny-back.herokuapp.com/api/experiencias/${id}`);
-         //   console.log(res)
-         dispatch({ type: "GETONEEXPERIENCIA", payload: res.data.response.experiencia });
+           console.log("resssssssssss", res)
+         dispatch({ type: "GETONEEXPERIENCIA", payload: res.data.response });
       };
    },
 

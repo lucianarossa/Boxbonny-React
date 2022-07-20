@@ -12,7 +12,11 @@ import Upload from "./components/Upload"
 import OneExperiencePage from './pages/OneExperiencePage';
 import SignIn from './components/SingnIn'
 import SignUp from './components/SignUp'
+<<<<<<< HEAD
 import ShoppingCart from './components/ShoppingCart';
+=======
+import PackDetails from './components/PackDetails';
+>>>>>>> 85d9f2e68a6a0e6b2576c1ad49fea9f91446f747
 
 function App() {
 
@@ -31,8 +35,8 @@ function App() {
         <Route path="/" element={<Index />} />
         <Route path="/packs" element={<PacksPage />} />
         <Route path="/administrador" element={<Upload />} />
-        <Route path="/packs/packdetails/:id" />
-        <Route path="/packs/oneexperience" element={<OneExperiencePage />} />
+        <Route path="/packs/packdetails/:id" element={<PackDetails />} />
+        <Route path="/packs/oneexperience/:id" element={<OneExperiencePage />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/cart" element={<ShoppingCart />} />

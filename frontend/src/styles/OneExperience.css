@@ -1,61 +1,87 @@
-.experienceCover{
-    height: 70vh;
-    width: 100%;
-    object-fit: contain;
-    box-shadow: inset 0 0 0 1000px rgb(0 0 0 / 35%);
+.general-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
-@media(max-width:800px){
-    .experienceCover{
-        height: 50vh;
-    }
+.l-exp-container{
+    display: flex;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
 }
 
-.expimage{
-    object-fit: cover;
+.l-card-container{
+    padding-top: 2rem;
     width: 100%;
-    height: 300vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    margin-top: 1rem; 
+}
+
+
+.l-exp-card{
+    border: none;
+    margin: 1rem;
+    width: 600px;
+    height: 400px;
+    background: #000;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .25s ease;
+    backface-visibility: hidden;
+    box-shadow: 0px 12px 15px grey;
+}
+
+.overlay{
+    background-color: rgba(0, 0, 0, 0.331);
+    width: 600px;
+    height: 400px;
+    z-index: 20;
+}
+
+.l-card-img{
+    object-fit: cover;
+    height: 100%;
+    z-index: 10;
+    transition: all .25s ease;
     position: absolute;
-    z-index: -2;
-    background-attachment: fixed;
 }
 
-.exptitle{
-    font-size: 4rem;
-    text-align: center;
-    color: #F6F7EB;
-    text-shadow: 0px 15px 20px grey;
+.l-card-text{
+    height: 100%;
+    z-index: 30;
+    position: absolute;
+    bottom: 0px;
+    padding: 10px;
+}
+
+.l-card-name{
     font-family: "Poppins";
+    font-size: 3.5rem;
+    color: #F6F7EB;
+    margin-top: 8rem;
+    text-shadow: 0px 10px 30px white;
+    text-align: center;
+    z-index: 40;
 }
 
-@media(max-width:500px){
-    .exptitle{
-        font-size: 2.5rem;
-    }
-    
-}
-
-@media(max-width:300px){
-    .exptitle{
-        font-size: 1.8rem;
-    }
-    
-}
 
 .experienceBody{
-    height: 110vh;
+    padding-top: 2.5rem;
+    margin-right: 2rem;
     width: 600px;
-    object-fit: contain;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    z-index: 4;
-    background-color: #00000090
 }
 
 @media(max-width:800px){
@@ -77,45 +103,17 @@
     }
 }
 
-.Overlay{
-    background-color: #f6f7eb72; 
-    height: 110vh;
-    width: 100%;
-    position: absolute;
-}
-
-
-@media(max-width:800px){
-    .Overlay{
-        height: 70vh;
-        width: 100%;  
-    }
-}
-
-@media(max-width:500px){
-    .Overlay{
-        height: 100vh;
-        width: 100%;  
-    }
-}
-
-@media(max-width:280px){
-    .Overlay{
-        height: 110vh;
-    }
-}
-
 .titleExp{
     width: 500px;
     font-family: "Raleway";
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bolder;
-    text-shadow: 0px 10px 20px #F6F7EB;
-    margin-top: 2rem;
+    text-shadow: 0px 10px 30px grey;
+    margin-top: 1.5rem;
     margin-left: 2rem;
     z-index: 2;
     letter-spacing: 2px;
-    border-bottom: 2px inset #F6F7EB;
+    border-bottom: 2px inset #FF8E72;
 }
 @media(max-width:800px){
     .titleExp{
@@ -141,12 +139,12 @@
 .subtitleExp{
     font-family: "Poppins";
     text-align: left;
-    margin-top: 2rem;
+    margin-top: 1rem;
     z-index: 2;
     margin-left: 2rem;
-    color: #F6F7EB;
-    text-shadow: 0px 10px 20px black;
+    color: #393E41;
     font-weight: lighter;
+    font-size: .9rem;
 }
 
 @media(max-width:800px){
@@ -165,4 +163,8 @@
         width: 200px;
         font-size: .8rem;
     }
+}
+
+.l-card-button{
+    margin-bottom: 2rem;
 }

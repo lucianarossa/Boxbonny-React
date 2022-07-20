@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 const usuariosActions = {
-    registrarse: (userData) => {
+    registrarse: (data) => {
         // console.log(userData)
         return async (dispatch, getState) => {
             try {
-                const res = await axios.post("https://boxbonny-back.herokuapp.com/api/registrarse", { userData })
-                // console.log(res)
+                const res = await axios.post("https://boxbonny-back.herokuapp.com/api/registrarse", { data })
+                console.log(res.data.message)
                 dispatch({
                     type: 'MESSAGE',
                     payload: {
@@ -17,22 +17,21 @@ const usuariosActions = {
                 })
                 return res
             } catch (error) {
-                // console.log(error)
+                console.log(error)
             }
 
         }
     },
 
-    inicioSesion: (userData) => {
+    inicioSesion: (logueado) => {
         return async (dispatch, getState) => {
-            const res = await axios.post("https://boxbonny-back.herokuapp.com/api/inicioSesion", { userData })
+            const res = await axios.post("https://boxbonny-back.herokuapp.com/api/inicioSesion", { logueado })
+            console.log(res.data.message)
             //primero verifico que el success sea true
             if (res.data.success) {
-
                 localStorage.setItem("token", res.data.response.token) //tomo el token que le envie desde el back y lo envio al local storage
-                dispatch({ type: "USER", payload: res.data.response.userData });
+                dispatch({ type: "USER", payload: res.data.response });
             }
-
             dispatch({
                 type: 'MESSAGE',
                 payload: {

@@ -3,6 +3,7 @@ import { MdShoppingBasket } from "react-icons/md";
 import { Link as LinkRouter } from "react-router-dom"
 import "../styles/nav.css"
 
+
 export default function Nav() {
   return (
     <header className="sticky top-0  z-50 w-screen bg-[#F6F7EB]">

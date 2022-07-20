@@ -4,11 +4,13 @@ import { useDispatch } from 'react-redux';
 import usuariosActions from "../redux/actions/usuariosActions"
 
 
-export default function googleSignIn() {
-    const dispatch = useDispatch();
+export default function GoogleSignIn() {
+
+    const dispatch = useDispatch()
 
     async function handleCallBackResponse(response) {
         let userObject = jwt_decode(response.credential);
+        // eslint-disable-next-line
         const res = await dispatch(usuariosActions.inicioSesion({
             email: userObject.email,
             password: userObject.sub,

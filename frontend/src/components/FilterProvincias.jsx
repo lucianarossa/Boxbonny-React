@@ -8,7 +8,7 @@ const provincias = ["Buenos Aires", "Cordoba", "Mendoza"]
 
   return (
     <>
-<div className=' p-32'>
+<div >
   <form>
  <label>Seleccioná una provincia:</label>
   <select>
