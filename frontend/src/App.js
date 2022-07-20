@@ -6,10 +6,11 @@ import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import {useDispatch} from "react-redux"
 import packsActions from "./redux/actions/packsActions"
-import ExperiencesPage from './pages/ExperiencesPage';
+import PacksPage from './pages/PacksPage';
 import Index from './pages/Index';
 import Upload from "./components/Upload"
-
+import SignIn from './components/SingnIn'
+import SignUp from './components/SignUp'
 
 function App() {
 
@@ -26,9 +27,11 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route path="/packs" element={<ExperiencesPage />} />
+        <Route path="/packs" element={<PacksPage />} />
         <Route path="/administrador" element= {<Upload/>}/>
         <Route path="/packs/packdetails/:id"/>
+        <Route path="/signin" element={<SignIn/>}/>
+        <Route path="/signup" element={<SignUp/>}/>
       </Routes>
       <Footer />
     </div>
