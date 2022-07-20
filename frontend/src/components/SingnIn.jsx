@@ -6,21 +6,21 @@ import { useEffect } from 'react';
 
 const SignIn = () => {
 
-const container = document.querySelector(".container");
+    const container = document.querySelector(".container");
 
     useEffect(() => {
         const sign_in_btn = document.querySelector("#sign_in_btn")
         const sign_up_btn = document.querySelector("#sign_up_btn")
         sign_up_btn.addEventListener("click", () => {
             container.classList.add("sign_up_mode");
-          });
-          sign_in_btn.addEventListener("click", () => {
+        });
+        sign_in_btn.addEventListener("click", () => {
             container.classList.remove("sign_up_mode");
-          });
-          //eslint-disable-next-line
-    },[])
+        });
+        //eslint-disable-next-line
+    }, [])
 
-   
+
 
 
     return (
