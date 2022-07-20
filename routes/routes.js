@@ -11,6 +11,9 @@ const { getExperiencias, getOneExperiencia, addExperiencia, modifyExperiencia, r
 const usuariosControllers = require('../controllers/usuariosControllers');
 const { registrarse, inicioSesion, verificarToken, verificarMail } = usuariosControllers
 
+const comentariosControllers = require('../controllers/comentariosControllers');
+const { AddComment, UpdateComment, DeleteComment } = comentariosControllers
+
 
 Router.route('/packs')
     .get(getPacks)
@@ -41,5 +44,17 @@ Router.route('/verificarToken')
 
 Router.route('/verificar/:string')
     .get(verificarMail)
+
+Router.route('/experiencias/comment/:id')
+    .post(passport.authenticate("jwt", { session: false }),
+        DeleteComment) //controlar el nombre
+    .put(passport.authenticate('jwt', { session: false }),
+        UpdateComment)
+
+Router.route('/experiencias/comment')
+    .post(passport.authenticate("jwt", { session: false }),
+        AddComment)
+
+
 
 module.exports = Router
