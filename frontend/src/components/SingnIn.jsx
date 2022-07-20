@@ -34,13 +34,13 @@ const SignIn = () => {
         console.log(logueado)
 
         let res = dispatch(usuariosActions.inicioSesion(logueado))
-            if (res.data.success) {
-                toast.success(res.data.message)
-                navigate('/signin')
-            } else {
-                toast.error(res.data.message)
-            }
-        
+        if (res.data.success) {
+            toast.success(res.data.message)
+            navigate('/signin')
+        } else {
+            toast.error(res.data.message)
+        }
+
     }
 
 

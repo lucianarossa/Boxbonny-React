@@ -6,7 +6,7 @@ import "../styles/nav.css"
 
 export default function Nav() {
   return (
-    <header className="fixed z-50 w-screen bg-[#F6F7EB]">
+    <header className="sticky top-0  z-50 w-screen bg-[#F6F7EB]">
       <div className="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-1 md:flex md:items-center md:gap-12">
@@ -36,9 +36,9 @@ export default function Nav() {
                   </LinkRouter>
                 </li>
                 <li>
-                  <div
+                  <LinkRouter
                     className="relative flex items-center justify-center"
-                    onClick={null}
+                    to="/cart"
                   >
                     <MdShoppingBasket className="text-textColor text-2xl hover:text-[#FF8E72] cursor-pointer" />
 
@@ -48,7 +48,7 @@ export default function Nav() {
                       </p>
                     </div>
 
-                  </div>
+                  </LinkRouter>
                 </li>
               </ul>
             </nav>
