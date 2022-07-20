@@ -1,29 +1,51 @@
 import React from "react";
-import { useSelector } from 'react-redux'
 import "../styles/OneExperience.css"
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import experienciasActions from "../redux/actions/experienciasActions"
+import { useEffect } from "react";
+import {useNavigate} from "react-router-dom"
 
 
 const OneExperience = () => {
+    const navigate = useNavigate()
+  
+    const { id } = useParams()
+    const dispatch = useDispatch()
 
-    const packs = useSelector(store => store.packsReducer.packs)
-    console.log("PACKS", packs)
+    useEffect(() => {
+        dispatch(experienciasActions.getOneExperiencia(id))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+    const exp = useSelector(store => store.experienciasReducer.getOneExperiencia)
+    console.log("EXPPPPPPP", exp)
+
     return (
         <>
-        <div className="experienceCover">
-            <img className="expimage" src="https://i.imgur.com/FLvtgfl.jpg?1" alt="experience" />
-            <h1 className="exptitle">PARRILLA 1900</h1>
-        </div>
-        <div className="experienceBody">
-            <div className="Overlay"></div>
-            <h2 className="titleExp">DESCRIPCION</h2>
-            <p className="subtitleExp">Caracteriza por una atención diferente como así también por las exquisiteces de su gastronomía, Parrilla 1900 te espera para disfrutar junto a tu familia o pareja de una de las mejores parrilladas de Santiago Del Estero.</p>
-            <h2 className="titleExp">¿QUE INCLUYE?</h2>
-            <p className="subtitleExp">2 infusiones calientes + 1 jugó natural de litro + 2 tostados en pan casero + Torta de manzana + 1 alfajor de maíz.</p>
-            <h2 className="titleExp">UBICACION</h2>
-            <p className="subtitleExp">CAMINO AL AERODROMO - VILLA GIARDINO - CORDOBA</p>
-            <h2 className="titleExp">RESERVA ESTA EXPERIENCIA</h2>
-            <p className="subtitleExp">contacto@boxbonny.com</p>
-        </div>
+        <div className="general-container">
+            <div className="l-exp-container">
+                <div className="l-card-container">
+                    <div className="l-exp-card">
+                        <div className="overlay"></div>
+                        <img width="100%" className="l-card-img" src={exp.imagen} alt="experience" />
+                        <div className="l-card-text">
+                            <h2 className="l-card-name">{exp.nombre}</h2>
+                        </div>
+                    </div>
+                </div>
+                <div className="experienceBody">
+                    <h2 className="titleExp">DESCRIPCION</h2>
+                    <p className="subtitleExp">{exp.descripcion}</p>
+                    <h2 className="titleExp">¿QUE INCLUYE?</h2>
+                    <p className="subtitleExp">{exp.incluye}</p>
+                    <h2 className="titleExp">UBICACION</h2>
+                    <p className="subtitleExp">{exp.direccion}</p>
+                    <h2 className="titleExp">RESERVA ESTA EXPERIENCIA</h2>
+                    <p className="subtitleExp">contacto@boxbonny.com</p>
+                </div>
+            </div>
+                <button onClick={() => navigate(-1)} className="card-button l-card-button fontRaleway">VOLVER AL PACK</button>
+            </div>
         </>
     );
 
