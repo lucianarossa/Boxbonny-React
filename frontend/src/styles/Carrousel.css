@@ -359,10 +359,11 @@ input[type=radio] {
   opacity: 0;
 }
 .slider--el-heading {
-  font-size: 9rem;
-  font-family: Tesla;
+  font-size: 8rem;
+  font-family: 'Poppins';
   text-transform: uppercase;
   color: #fff;
+  text-align: center;
 }
 
 /* CONTROL */

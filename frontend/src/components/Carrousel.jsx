@@ -1,5 +1,4 @@
 import "../styles/Carrousel.css"
-import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 
 
 export default function Carrousel() {
@@ -35,7 +34,7 @@ export default function Carrousel() {
           <div class="part right-bot"></div>
         </div>
         <div class="slider--el-content">
-          <h2 class="slider--el-heading">Friends and Play</h2>
+          <h2 class="slider--el-heading">Friends & Play</h2>
         </div>
       </div>
       <div class="slider--el slider--el-3 anim-5parts">
@@ -57,7 +56,7 @@ export default function Carrousel() {
           <div class="part right"></div>
         </div>
         <div class="slider--el-content">
-          <h2 class="slider--el-heading">Gourmet and Drink</h2>
+          <h2 class="slider--el-heading">Gourmet & Drink</h2>
         </div>
       </div>
       <div class="slider--control left">
