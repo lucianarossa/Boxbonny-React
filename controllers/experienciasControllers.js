@@ -37,7 +37,6 @@ const experienciasControllers = {
 	
 	addExperiencia: async(req,res)=>{
 		const {nombre,descripcion,incluye,direccion,ciudad,pack} = req.body.data
-		pack = "62d6a358e8c5c9566b75bcf9"
 		const {file} = req.files
 		let experiencia
 		let error = null
