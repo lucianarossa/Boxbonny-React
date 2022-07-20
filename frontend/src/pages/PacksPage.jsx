@@ -1,7 +1,7 @@
 import PacksComponent from '../components/PacksComponent'
 import React from 'react'
 
-const Packs = () => {
+const PacksPage = () => {
   return (
     <>
       <PacksComponent />
@@ -10,4 +10,4 @@ const Packs = () => {
 
 }
 
-export default Packs
+export default PacksPage
