@@ -56,7 +56,7 @@ export default function Carrousel() {
           <div class="part right"></div>
         </div>
         <div class="slider--el-content">
-          <h2 class="slider--el-heading">Gourmet & Drink</h2>
+          <h2 class="slider--el-heading">Gourmet & Drinks</h2>
         </div>
       </div>
       <div class="slider--control left">

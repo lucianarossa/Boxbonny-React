@@ -3,7 +3,7 @@
 
 export default function Footer() {
   return (
-    <footer class=" bg-[#F6F7EB]  ">
+    <footer class=" bg-[#F6F7EB] pl-10 pr-10">
       <div class="max-w-screen-xl px-4 pt-16 pb-6 mx-auto sm:px-6 lg:px-8 lg:pt-24">
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
@@ -60,7 +60,7 @@ export default function Footer() {
             <p
               class="max-w-md mx-auto mt-6 leading-relaxed text-center text-gray-500 sm:max-w-xs sm:mx-0 sm:text-left"
             >
-           Nuestros regalos no se envuelven, envuelven en una nueva experiencia a quien los recibe. Se guardan en la memoria y se convierten en uno de esos recuerdos que, como un buen vino, mejoran con el tiempo.
+           Seguinos en nuestras Redes Sociales!
             </p>
 
             <ul class="flex justify-center gap-6 mt-8 md:gap-8 sm:justify-start">

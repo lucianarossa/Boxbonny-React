@@ -1,31 +1,53 @@
 
-.titlePacks{
-  padding-top: 5rem;
+.superContainer{
   display: flex;
   justify-content: center;
-  font-family: 'Poppins';
-  font-size: 3rem;
-  text-shadow: 0px 5px 8px rgba(0, 0, 0, 0.431);
-  color: #ff8e72;
-  background-color: #f6f7eb;
-  text-transform: uppercase;
+  align-items: flex-start;
+  width: 100%;
+  background-color: #F6F7EB;
 }
+.titlePacks{
+  width: 45%;
+  padding-top: 10rem;
+  padding-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins';
+  font-size: 1.2rem;
+  text-shadow: 0px 10px 30px grey;
+  color: #393E41;
+  text-align: center;
+}
+.titleCards{
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  font-family: 'Poppins';
+  font-weight: bolder;
+  font-size: 5rem;
+  text-shadow: 0px 8px 45px grey;
+  color: #F6F7EB;
+  text-align: center;
+  letter-spacing: .5rem;
+}
+
 .containerPacks{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: 4rem;
   padding-top: 3rem;
   padding-bottom: 3rem;
   flex-grow: 1;
-  background-color: #f6f7eb;
 }
 /* From uiverse.io by @alexruix */
 .card {
-  width: 18rem;
+  width: 14rem;
   margin: 1rem;
-  height: 25rem;
-  border-radius: 1em;
+  height: 20rem;
+  border-radius: 2em;
   padding: 1.9rem;
   position: relative;
   display: flex;
@@ -43,9 +65,10 @@
   display: block;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.456);
+  background: rgba(0, 0, 0, 0.482);
   z-index: 2;
   transition: 0.5s;
+  border-radius: 2em;
  }
  
  .card-info {
@@ -55,7 +78,8 @@
   opacity: 0;
   transform: translateY(20%);
   transition: 0.5s;
-  text-shadow: 0px 5px 8px black;
+  text-shadow: 0px 15px 20px grey;
+  border-radius: 2em;
 
  }
  
@@ -67,8 +91,9 @@
  
  .text-body {
   letter-spacing: 1px;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   margin: 5px 0 15px 0;
+  font-weight: 100;
  }
  
  /*Button*/
@@ -79,7 +104,7 @@
   border-radius: 4px;
   background: #393e41;
   color: white;
-  font-weight: bold;
+  font-weight: lighter;
   transition: 0.4s ease;
  }
  
@@ -91,7 +116,7 @@
   object-fit: cover;
   top: 0;
   left: 0;
-  background: linear-gradient(to bottom, #2d2525, #403335);
+  border-radius: 2em;
  }
  
  /*Hover*/

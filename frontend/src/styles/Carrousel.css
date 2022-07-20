@@ -29,7 +29,7 @@ input[type=radio] {
 
 .slider {
   position: relative;
-  height: 45rem;
+  height: 35rem;
 }
 .slider--control {
   z-index: 50;
@@ -357,13 +357,17 @@ input[type=radio] {
   padding: 20rem;
   transition: opacity 0.3s;
   opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .slider--el-heading {
-  font-size: 8rem;
+  font-size: 6rem;
   font-family: 'Poppins';
   text-transform: uppercase;
-  color: #fff;
+  color: #F6F7EB;
   text-align: center;
+  text-shadow: 0px 15px 20px grey;
 }
 
 /* CONTROL */
