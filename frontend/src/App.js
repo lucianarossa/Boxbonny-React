@@ -9,6 +9,7 @@ import packsActions from "./redux/actions/packsActions"
 import PacksPage from './pages/PacksPage';
 import Index from './pages/Index';
 import Upload from "./components/Upload"
+import OneExperiencePage from './pages/OneExperiencePage';
 import SignIn from './components/SingnIn'
 import SignUp from './components/SignUp'
 import PackDetails from './components/PackDetails';
@@ -31,6 +32,7 @@ function App() {
         <Route path="/packs" element={<PacksPage />} />
         <Route path="/administrador" element= {<Upload/>}/>
         <Route path="/packs/packdetails/:id" element={<PackDetails />}/>
+        <Route path="/packs/oneexperience" element={<OneExperiencePage/>}/>
         <Route path="/signin" element={<SignIn/>}/>
         <Route path="/signup" element={<SignUp/>}/>
       </Routes>
