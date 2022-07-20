@@ -9,7 +9,7 @@ const usuarioSchema = new mongoose.Schema({
 		from: [{type: String, required: true}],
     uniqueString: { type: String, required: true },
     verification: { type: Boolean, required: true },
-		rol:  { type: String, enum : ['miembro','visitante'], default: 'miembro'
+		rol:  { type: String, enum : ['miembro','admin'], default: 'miembro'
 	},
 })
 
