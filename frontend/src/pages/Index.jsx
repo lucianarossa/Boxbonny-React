@@ -1,9 +1,14 @@
 
+import Carrousel from "../components/Carrousel"
 import Steps from "../components/Steps"
 
 export default function HomePage() {
   return (
-    <Steps />
+
+    <div className="">
+      <Carrousel />
+      <Steps />
+    </div>
 
   )
 }

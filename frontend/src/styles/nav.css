@@ -1,0 +1,14 @@
+.logo{
+    width: 10rem;
+}
+
+.footerContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.logofooter{
+    width: 10rem;
+    height: 100%;
+    text-align: top;
+}
