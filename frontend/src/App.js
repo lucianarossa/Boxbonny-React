@@ -10,7 +10,8 @@ import PacksPage from './pages/PacksPage';
 import Index from './pages/Index';
 import Upload from "./components/Upload"
 import OneExperiencePage from './pages/OneExperiencePage';
-
+import SignIn from './components/SingnIn'
+import SignUp from './components/SignUp'
 
 function App() {
 
@@ -31,6 +32,8 @@ function App() {
         <Route path="/administrador" element= {<Upload/>}/>
         <Route path="/packs/packdetails/:id"/>
         <Route path="/packs/oneexperience" element={<OneExperiencePage/>}/>
+        <Route path="/signin" element={<SignIn/>}/>
+        <Route path="/signup" element={<SignUp/>}/>
       </Routes>
       <Footer />
     </div>
