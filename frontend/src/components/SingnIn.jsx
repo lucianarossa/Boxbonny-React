@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import usuariosActions from '../redux/actions/usuariosActions';
 import { useDispatch } from 'react-redux'
 import toast, { Toaster } from 'react-hot-toast';
-import GoogleSignIn from './GoogleSignIn'
+import googleSignIn from './googleSignIn'
 
 const SignIn = () => {
 
@@ -65,7 +65,7 @@ const SignIn = () => {
                         <p className="social_text">O iniciá sesión con:</p>
 
                         <div className="social_media">
-                            <GoogleSignIn />
+                            <googleSignIn />
 
                         </div>
                         <Toaster />

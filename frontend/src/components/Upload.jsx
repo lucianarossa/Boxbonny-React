@@ -87,15 +87,12 @@ function Upload() {
                                 <input type="text" name="Description" id="Description" placeholder="Este pack ofrece..." className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div className="mt-6">
-<<<<<<< HEAD
                                 <label  className="block mb-2 text-sm">Provincia</label>
-=======
                                 <label  className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Incluye</label>
                                 <input type="text" name="Description" id="Description" placeholder="Sesión de 2 horas de..." className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div className="mt-6">
                                 <label  className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Provincia</label>
->>>>>>> f7b140fb5534381d44e9c9b2ee3379c70bac8313
                                 <select required className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40">
                                     <option> Provincia </option>
                                     {sortedStates.map((state, index) => (

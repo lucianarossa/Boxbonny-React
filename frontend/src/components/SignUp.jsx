@@ -3,7 +3,7 @@ import '../styles/login.css'
 import { useEffect } from 'react';
 import usuariosActions from '../redux/actions/usuariosActions'
 import { useDispatch } from 'react-redux'
-import GoogleSignUp from './GoogleSignUp';
+import googleSignUp from './googleSignUp';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom'
 
@@ -119,7 +119,7 @@ export default function SignUp() {
                             <button type="submit" value="Registro" className="btn" />
                             <p className="social_text">O registrate con:</p>
                             <div className="social_media">
-                                <GoogleSignUp />
+                                <googleSignUp />
                             </div>
                             <Toaster />
                         </form>
