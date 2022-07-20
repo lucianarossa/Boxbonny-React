@@ -6,11 +6,11 @@ export default function Carrousel() {
   return (
 
     <div className="slider">
-      <input name="control" id="page1" type="radio" checked />
-      <input name="control" id="page2" type="radio" checked />
-      <input name="control" id="page3" type="radio" checked />
-      <input name="control" id="page4" type="radio" checked />
-      <input name="control" id="page5" type="radio" checked />
+      <input name="control" id="page1" type="radio" defaultChecked />
+      <input name="control" id="page2" type="radio" defaultChecked />
+      <input name="control" id="page3" type="radio" defaultChecked />
+      <input name="control" id="page4" type="radio" defaultChecked />
+      <input name="control" id="page5" type="radio" defaultChecked />
       <div className="slider--el slider--el-1 anim-4parts">
         <div className="slider--el-bg">
           <div className="part top left"></div>
@@ -72,18 +72,18 @@ export default function Carrousel() {
       </div>
 
       <div className="slider--control left">
-        <label className="page1-left" for="page1"></label>
-        <label className="page2-left" for="page2"></label>
-        <label className="page3-left" for="page3"></label>
-        <label className="page4-left" for="page4"></label>
-        <label className="page5-left" for="page5"></label>
+        <label className="page1-left" htmlFor="page1"></label>
+        <label className="page2-left" htmlFor="page2"></label>
+        <label className="page3-left" htmlFor="page3"></label>
+        <label className="page4-left" htmlFor="page4"></label>
+        <label className="page5-left" htmlFor="page5"></label>
       </div>
       <div className="slider--control right">
-        <label className="page1-right" for="page1"> </label>
-        <label className="page2-right" for="page2"> </label>
-        <label className="page3-right" for="page3"> </label>
-        <label className="page4-right" for="page4"> </label>
-        <label className="page5-right" for="page5"> </label>
+        <label className="page1-right" htmlFor="page1"> </label>
+        <label className="page2-right" htmlFor="page2"> </label>
+        <label className="page3-right" htmlFor="page3"> </label>
+        <label className="page4-right" htmlFor="page4"> </label>
+        <label className="page5-right" htmlFor="page5"> </label>
       </div>
     </div>
 

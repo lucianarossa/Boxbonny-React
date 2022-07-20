@@ -5,21 +5,21 @@ import "../styles/nav.css"
 
 export default function Nav() {
   return (
-    <header class="fixed z-50 w-screen bg-[#F6F7EB]">
-      <div class="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-          <div class="flex-1 md:flex md:items-center md:gap-12">
-          <img className="logo" src="https://i.imgur.com/Xi3X0wB.png" alt="logo" />
+    <header className="fixed z-50 w-screen bg-[#F6F7EB]">
+      <div className="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex-1 md:flex md:items-center md:gap-12">
+            <img className="logo" src="https://i.imgur.com/Xi3X0wB.png" alt="logo" />
           </div>
 
-          <div class="md:flex md:items-center md:gap-12">
-            <nav class="hidden md:block" aria-labelledby="header-navigation">
-              <h2 class="sr-only" id="header-navigation">Header navigation</h2>
+          <div className="md:flex md:items-center md:gap-12">
+            <nav className="hidden md:block" aria-labelledby="header-navigation">
+              <h2 className="sr-only" id="header-navigation">Header navigation</h2>
 
-              <ul class="flex items-center gap-6 text-md fontPoppins ">
+              <ul className="flex items-center gap-6 text-md fontPoppins ">
                 <li>
                   <LinkRouter
-                    class="text-gray-500 transition hover:text-[#FF8E72]"
+                    className="text-gray-500 transition hover:text-[#FF8E72]"
                     to="/"
                   >
                     Inicio
@@ -28,7 +28,7 @@ export default function Nav() {
 
                 <li>
                   <LinkRouter
-                    class="text-gray-500 transition hover:text-[#FF8E72]"
+                    className="text-gray-500 transition hover:text-[#FF8E72]"
                     to="/packs"
                   >
                     Packs
@@ -53,53 +53,40 @@ export default function Nav() {
             </nav>
 
 
-            <div class="flex items-center gap-4 fontPoppins ">
-              <div class="sm:gap-4 sm:flex">
-<<<<<<< HEAD
+            <div className="flex items-center gap-4 fontPoppins ">
+              <div className="sm:gap-4 sm:flex">
                 <LinkRouter
-                  class="px-5 py-2.5 text-sm font-medium text-white bg-orange-600 rounded-md hover:text-[#FF8E72] shadow"
-                  to="/signin"
+                  className="px-5 py-2.5 text-sm font-medium text-white bg-[#FF8E72] rounded-md hover:text-[#393E41] shadow"
+                  to="signin"
                 >
                   Ingresa
                 </LinkRouter>
-=======
-                <a
-                  class="px-5 py-2.5 text-sm font-medium text-white bg-[#FF8E72] rounded-md hover:text-[#393E41] shadow"
-                  href="/"
-                >
-                  Ingresa
-                </a>
->>>>>>> 05419bd9b0e720cba5b5508c655e4bef70001332
 
-                <div class="hidden sm:flex">
+                <div className="hidden sm:flex">
                   <LinkRouter
-                    class="px-5 py-2.5 text-sm font-medium text-orange-600 bg-gray-100 hover:text-[#FF8E72] rounded-md"
+                    className="px-5 py-2.5 text-sm font-medium text-orange-600 bg-gray-100 hover:text-[#FF8E72] rounded-md"
                     to="/signup"
                   >
                     Registrate
-<<<<<<< HEAD
                   </LinkRouter>
-=======
-                  </a>
->>>>>>> 05419bd9b0e720cba5b5508c655e4bef70001332
                 </div>
               </div>
 
-              <div class="block md:hidden">
+              <div className="block md:hidden">
                 <button
-                  class="p-2 text-gray-600 transition bg-gray-100 rounded hover:text-gray-600/75"
+                  className="p-2 text-gray-600 transition bg-gray-100 rounded hover:text-gray-600/75"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="w-5 h-5"
+                    className="w-5 h-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    stroke-width="2"
+                    strokeWidth="2"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M4 6h16M4 12h16M4 18h16"
                     />
                   </svg>
