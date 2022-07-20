@@ -41,7 +41,7 @@ export default function Nav() {
                 <li>
                   <LinkRouter
                     class="text-gray-500 transition hover:text-[#FF8E72]"
-                    to="/experiences"
+                    to="/packs"
                   >
                     Packs
                   </LinkRouter>
