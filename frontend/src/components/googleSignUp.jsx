@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux"
 import usuariosActions from "../redux/actions/usuariosActions"
 
 
-function googleSignUp() {
+function GoogleSignUp() {
     const dispatch = useDispatch();
 
     async function handleCallBackResponse(response) {
@@ -12,7 +12,7 @@ function googleSignUp() {
         let userObject = jwt_decode(response.credential);
         // console.log(userObject);
         // console.log(props)
-
+// eslint-disable-next-line
         const res = await dispatch(usuariosActions.registrarse({
             nombre: userObject.given_name,
             apellido: userObject.family_name,
@@ -51,4 +51,4 @@ function googleSignUp() {
 
 }
 
-export default googleSignUp
+export default GoogleSignUp
