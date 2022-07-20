@@ -12,8 +12,8 @@ import Upload from "./components/Upload"
 import OneExperiencePage from './pages/OneExperiencePage';
 import SignIn from './components/SingnIn'
 import SignUp from './components/SignUp'
+import ShoppingCart from './components/ShoppingCart';
 import PackDetails from './components/PackDetails';
-import ShoppingCart from "./components/ShoppingCart"
 
 function App() {
 
