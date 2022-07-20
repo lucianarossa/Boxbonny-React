@@ -31,7 +31,7 @@ Router.route('/experiencias/:id')
     .put(modifyExperiencia)
 
 Router.route('/registrarse')
-    .post(validator, registrarse)
+    .post(registrarse)
 
 Router.route('/inicioSesion')
     .post(inicioSesion)
