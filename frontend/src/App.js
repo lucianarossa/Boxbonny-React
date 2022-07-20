@@ -12,11 +12,8 @@ import Upload from "./components/Upload"
 import OneExperiencePage from './pages/OneExperiencePage';
 import SignIn from './components/SingnIn'
 import SignUp from './components/SignUp'
-<<<<<<< HEAD
 import ShoppingCart from './components/ShoppingCart';
-=======
 import PackDetails from './components/PackDetails';
->>>>>>> 85d9f2e68a6a0e6b2576c1ad49fea9f91446f747
 
 function App() {
 
