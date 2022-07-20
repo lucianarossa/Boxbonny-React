@@ -1,0 +1,168 @@
+.experienceCover{
+    height: 70vh;
+    width: 100%;
+    object-fit: contain;
+    box-shadow: inset 0 0 0 1000px rgb(0 0 0 / 35%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(max-width:800px){
+    .experienceCover{
+        height: 50vh;
+    }
+}
+
+.expimage{
+    object-fit: cover;
+    width: 100%;
+    height: 300vh;
+    position: absolute;
+    z-index: -2;
+    background-attachment: fixed;
+}
+
+.exptitle{
+    font-size: 4rem;
+    text-align: center;
+    color: #F6F7EB;
+    text-shadow: 0px 15px 20px grey;
+    font-family: "Poppins";
+}
+
+@media(max-width:500px){
+    .exptitle{
+        font-size: 2.5rem;
+    }
+    
+}
+
+@media(max-width:300px){
+    .exptitle{
+        font-size: 1.8rem;
+    }
+    
+}
+
+.experienceBody{
+    height: 110vh;
+    width: 600px;
+    object-fit: contain;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    z-index: 4;
+    background-color: #00000090
+}
+
+@media(max-width:800px){
+    .experienceBody{
+        height: 70vh;
+        width: 400px;
+    }
+}
+
+@media(max-width:500px){
+    .experienceBody{
+        height: 100vh;
+        width: 100%;
+    }
+}
+@media(max-width:280px){
+    .experienceBody{
+        height: 110vh;
+    }
+}
+
+.Overlay{
+    background-color: #f6f7eb72; 
+    height: 110vh;
+    width: 100%;
+    position: absolute;
+}
+
+
+@media(max-width:800px){
+    .Overlay{
+        height: 70vh;
+        width: 100%;  
+    }
+}
+
+@media(max-width:500px){
+    .Overlay{
+        height: 100vh;
+        width: 100%;  
+    }
+}
+
+@media(max-width:280px){
+    .Overlay{
+        height: 110vh;
+    }
+}
+
+.titleExp{
+    width: 500px;
+    font-family: "Raleway";
+    font-size: 1.5rem;
+    font-weight: bolder;
+    text-shadow: 0px 10px 20px #F6F7EB;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    z-index: 2;
+    letter-spacing: 2px;
+    border-bottom: 2px inset #F6F7EB;
+}
+@media(max-width:800px){
+    .titleExp{
+        width: 350px;
+        font-size: 1.2rem;
+    }
+}
+
+@media(max-width:400px){
+    .titleExp{
+        width: 300px;
+        font-size: 1.2rem;
+    }
+}
+
+@media(max-width:280px){
+    .titleExp{
+        width: 200px;
+        font-size: 1.2rem;
+    }
+}
+
+.subtitleExp{
+    font-family: "Poppins";
+    text-align: left;
+    margin-top: 2rem;
+    z-index: 2;
+    margin-left: 2rem;
+    color: #F6F7EB;
+    text-shadow: 0px 10px 20px black;
+    font-weight: lighter;
+}
+
+@media(max-width:800px){
+    .subtitleExp{
+        width: 350px;
+    }
+}
+@media(max-width:400px){
+    .subtitleExp{
+        width: 300px;
+    }
+}
+
+@media(max-width:280px){
+    .subtitleExp{
+        width: 200px;
+        font-size: .8rem;
+    }
+}

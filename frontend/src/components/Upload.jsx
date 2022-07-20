@@ -1,53 +1,47 @@
 import React from 'react'
+// import axios from 'axios'
+import { useState } from 'react'
 
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import {useDispatch} from 'react-redux'
+// import {useNavigate} from 'react-router-dom'
 
-
+import experienciasActions from '../redux/actions/experienciasActions'
 
 function Upload() {
-    const [state, setState] = useState([])
-    useEffect(() => {
-        axios.get(`https://apis.datos.gob.ar/georef/api/provincias`)
-        .then((api) => setState(api.data.provincias))
-    },[])
-    const sortedStates = state.map(res => res.nombre).sort()
-
-    const packs = ['Gastronomia', 'Bienestar', 'Aventura', 'Escapadas' ]
+    // const [state, setState] = useState([])
+    const dispatch = useDispatch()
+    // const navigate = useNavigate()
 
 
+    const sortedStates = ['Buenos Aires', 'Cordoba',  'Mendoza']
+
+    const packs = ['Adventure', 'Gourmet & Drinks', 'Spa & Relax', 'Friends & Play', 'Random' ]
+
+    const [files, setFiles] = useState()
 
     async function  handleSubmit(event){
         event.preventDefault()
-
+        
+        // const file = await event.target[6].value
+        const file = await files[0]
+        console.log(files);
         const pack = await event.target[0].value
-        console.log('pack: ', pack);
-
         const nameExperience = await event.target[1].value
-        console.log('nameExperience: ', nameExperience);
-
         const description = await event.target[2].value
-        console.log('description: ', description);
-
-        const state = await event.target[3].value
-        console.log('state: ', state);
-
-        const address = await event.target[4].value
-        console.log('address: ', address);
-
-        const photo = await event.target[5].value
-        console.log('photo: ', photo);
-
-
+        const include = await event.target[3].value
+        const state = await event.target[4].value
+        const address = await event.target[5].value
+        
         const formData = new FormData()
             formData.append('pack', pack )
-            formData.append('nameExperience', nameExperience )
-            formData.append('description', description )
-            formData.append('state', state )
-            formData.append('address', address )
-            formData.append('photo', photo )
-
-        //const res = await dispatch (actions.uploadPack(formdata))
+            formData.append('nombre', nameExperience )
+            formData.append('descripcion', description )
+            formData.append('incluye', include )
+            formData.append('ciudad', state )
+            formData.append('direccion', address )
+            formData.append('imagen', file )   
+            // console.log(formData);
+        await dispatch(experienciasActions.addExperiencia(formData))
     }
 
 
@@ -58,12 +52,10 @@ function Upload() {
                 <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
                     <div>
                         <h2 className="text-4xl font-bold text-white fontPoppins">Box Bonny</h2>
-                        
                         <p className="max-w-xl mt-3  text-gray-300 fontRaleway">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In autem ipsa, nulla laboriosam dolores, repellendus perferendis libero suscipit nam temporibus molestiae</p>
                     </div>
                 </div>
             </div>
-            
             <div className="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
                 <div className="flex-1">
                     <div className="text-center">
@@ -86,8 +78,6 @@ function Upload() {
                                     ))}
                                 </select>
                             </div>
-
-
                             <div className="mt-6">
                                 <label  className="block mb-2 text-sm">Nombre de Experiencia</label>
                                 <input type="text" name="experience" id="experience" placeholder="Experiencia Gastronomica" className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
@@ -97,7 +87,15 @@ function Upload() {
                                 <input type="text" name="Description" id="Description" placeholder="Este pack ofrece..." className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div className="mt-6">
+<<<<<<< HEAD
                                 <label  className="block mb-2 text-sm">Provincia</label>
+=======
+                                <label  className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Incluye</label>
+                                <input type="text" name="Description" id="Description" placeholder="Sesión de 2 horas de..." className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                            </div>
+                            <div className="mt-6">
+                                <label  className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Provincia</label>
+>>>>>>> f7b140fb5534381d44e9c9b2ee3379c70bac8313
                                 <select required className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40">
                                     <option> Provincia </option>
                                     {sortedStates.map((state, index) => (
@@ -113,8 +111,13 @@ function Upload() {
                             </div>
 
                             <div className="mt-6">
+<<<<<<< HEAD
                                 <label  className="block mb-2 text-sm">Foto</label>
                                 <input type="file" name="photo" id="address"  className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+=======
+                                <label  className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Foto</label>
+                                <input type="file" onChange={(event)=> setFiles(event.target.files)} name="photo" id="address"  className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+>>>>>>> f7b140fb5534381d44e9c9b2ee3379c70bac8313
                             </div>
                             <div className="mt-6">
                                 <button
