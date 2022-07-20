@@ -126,6 +126,59 @@ input[type=radio] {
 .slider--el.anim-5parts .part {
   transform: translateY(100%);
 }
+
+/* ! 5TO SLIDER */
+
+.slider--el.anim-6parts .part {
+  position: absolute;
+  top: 0;
+  width: 33.5%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 1.5s 0.3s;
+  will-change: transform;
+}
+
+.slider--el.anim-6parts .part:before {
+  content: "";
+  display: block;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  width: 300%;
+  height: 100%;
+  background-image: url("../assets/images/spa.png");
+  box-shadow: inset 0 0 0 1000px rgb(0 0 0 / 20%);
+}
+.slider--el.anim-6parts .part.left {
+  left: 0;
+}
+.slider--el.anim-6parts .part.left:before {
+  left: 0;
+}
+.slider--el.anim-6parts .part.mid {
+  left: 33.33333%;
+}
+.slider--el.anim-6parts .part.mid:before {
+  left: -100%;
+}
+.slider--el.anim-6parts .part.right {
+  left: 66.66667%;
+}
+.slider--el.anim-6parts .part.right:before {
+  left: -200%;
+}
+.slider--el.anim-6parts .left {
+  transform: translate3D(-100%, -33.333%, 0);
+}
+.slider--el.anim-6parts .mid {
+  transform: translate3D(0, 100%, 0);
+}
+.slider--el.anim-6parts .right {
+  transform: translate3D(100%, -33.333%, 0);
+}
+/*! FIN 5TO SLIDER */
+
 .slider--el.anim-9parts .slider--el-bg {
   perspective: 2000;
 }
@@ -374,7 +427,7 @@ input[type=radio] {
   text-shadow: 0px 15px 20px grey;
 }
 
-/* CONTROL */
+/*? CONTROL */
 #page1:checked ~ .slider--el-1 {
   z-index: 10;
 }
@@ -435,7 +488,28 @@ input[type=radio] {
   opacity: 1;
 }
 
-#page1:checked ~ .slider--control.left .page4-left {
+/* CONTROL 5*/
+#page5:checked ~ .slider--el-5 {
+  z-index: 10;
+}
+#page5:checked ~ .slider--el-5 .slider--el-bg {
+  transform: scale(0.834);
+}
+#page5:checked ~ .slider--el-5 .slider--el-content {
+  opacity: 1;
+  transition: opacity 0.3s 1.8s;
+}
+#page5:checked ~ .slider--el-5 .part {
+  transform: translateZ(0);
+  opacity: 1;
+}
+
+
+
+
+
+
+#page1:checked ~ .slider--control.left .page5-left {
   z-index: 5000;
   transform: scale(1);
   transition: transform 0s 2.1s;
@@ -473,8 +547,20 @@ input[type=radio] {
   transform: scale(1);
   transition: transform 0s 2.1s;
 }
-#page4:checked ~ .slider--control.right .page1-right {
+#page4:checked ~ .slider--control.right .page5-right {
   z-index: 5000;
   transform: scale(1);
   transition: transform 0s 2.1s;
 }
+
+#page5:checked ~ .slider--control.left .page4-left {
+  z-index: 5000;
+  transform: scale(1);
+  transition: transform 0s 2.1s;
+}
+#page5:checked ~ .slider--control.right .page1-right {
+  z-index: 5000;
+  transform: scale(1);
+  transition: transform 0s 2.1s;
+}
+
