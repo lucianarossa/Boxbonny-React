@@ -55,7 +55,7 @@ const usuariosControllers = {
 
                 } else {
                     await nuevoUsuario.save();
-                    await sendVerification(email, uniqueString);
+                    await enviarVerificacion(email, uniqueString);
                     res.json({
                         success: true,
                         from: from,
