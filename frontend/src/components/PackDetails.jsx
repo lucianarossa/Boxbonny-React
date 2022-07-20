@@ -41,7 +41,7 @@ export default function PackDetails(){
                             <div class="e-card-text">
                                 <p class="e-text-title">{xp?.nombre}</p>
                                 <p class="e-text-subtitle">{xp?.ciudad}</p>
-                                <LinkRouter to={`packdetails/${pack._id}`}>
+                                <LinkRouter to={`oneexperience/${xp._id}`}>
                                     <button className="card-button e-card-button fontRaleway">CONOCE MAS</button>
                                 </LinkRouter>
                             </div>

@@ -32,7 +32,7 @@ function App() {
         <Route path="/packs" element={<PacksPage />} />
         <Route path="/administrador" element= {<Upload/>}/>
         <Route path="/packs/packdetails/:id" element={<PackDetails />}/>
-        <Route path="/packs/oneexperience" element={<OneExperiencePage/>}/>
+        <Route path="/packs/oneexperience/:id" element={<OneExperiencePage/>}/>
         <Route path="/signin" element={<SignIn/>}/>
         <Route path="/signup" element={<SignUp/>}/>
       </Routes>
