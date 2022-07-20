@@ -6,7 +6,8 @@ const crypto = require('crypto');
 
 
 const usuariosControllers = {
-    registrarse: async (req, res) => { //para crear usuario
+    registrarse: async (req, res) => {
+				console.log(req.body);
         const { nombre, apellido, email, contraseña, imagen, from } = req.body.data; //utilizo "data" en la action de logueo
         try {
             const usuarioExiste = await Usuario.findOne({ email });  //si el usuario existe
