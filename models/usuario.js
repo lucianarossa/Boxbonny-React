@@ -8,7 +8,9 @@ const usuarioSchema = new mongoose.Schema({
     imagen: { type: String, required: true },
 		from: [{type: String, required: true}],
     uniqueString: { type: String, required: true },
-    verification: { type: Boolean, required: true }
+    verification: { type: Boolean, required: true },
+		rol:  { type: String, enum : ['miembro','visitante'], default: 'miembro'
+	},
 })
 
 const Usuario = mongoose.model('usuarios', usuarioSchema)
