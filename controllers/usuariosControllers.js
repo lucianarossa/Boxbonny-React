@@ -73,7 +73,7 @@ const usuariosControllers = {
         }
     },
     inicioSesion: async (req, res) => { //para iniciar sesion
-        const { email, contraseña, from } = req.body.logueado;
+        const { email, password, from } = req.body.logueado;
 				console.log(req.body.logueado)
         try {
             const usuarioExiste = await Usuario.findOne({ email });
@@ -84,7 +84,7 @@ const usuariosControllers = {
                     message: "El usuario no existe, por favor registrese"
                 });
             } else if (usuarioExiste.verification) {
-                let passwordMatch = usuarioExiste.contraseña.filter((pass) => bcryptjs.compareSync(contraseña, pass));
+                let passwordMatch = usuarioExiste.contraseña.filter((pass) => bcryptjs.compareSync(password, pass));
 
                 if (from === "formulario-inicio") { //formulario de inicio de sesion
                     if (passwordMatch.length > 0) {
