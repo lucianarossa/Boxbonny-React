@@ -6,7 +6,6 @@ const usuariosActions = {
         return async (dispatch, getState) => {
             try {
                 const res = await axios.post("https://boxbonny-back.herokuapp.com/api/registrarse", { data })
-                console.log(res.data.message)
                 dispatch({
                     type: 'MESSAGE',
                     payload: {
