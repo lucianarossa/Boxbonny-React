@@ -96,6 +96,7 @@ const usuariosControllers = {
                             contraseña: usuarioExiste.contraseña,
                             imagen: usuarioExiste.imagen,
                             from: usuarioExiste.from,
+														rol: usuarioExiste.rol,
                         };
                         await usuarioExiste.save();
                         const token = jwt.sign({ ...usuarioData },
@@ -125,6 +126,7 @@ const usuariosControllers = {
                             contraseña: usuarioExiste.contraseña,
                             imagen: usuarioExiste.imagen,
                             from: usuarioExiste.from,
+														rol: usuarioExiste.rol,
                         };
                         await usuarioExiste.save();
                         const token = jwt.sign({ ...usuarioData },
@@ -136,13 +138,13 @@ const usuariosControllers = {
                             response: { token, usuarioData },
                             success: true,
                             from: from,
-                            message: "Bienvenido de vuelta" + usuarioData.nombre,
+                            message: "Bienvenido de vuelta " + usuarioData.nombre,
                         });
                     } else {
                         res.json({
                             success: false,
                             from: from,
-                            message: "Aún no estás logueado con esta cuenta"
+                            message: "Aún no estás registrado con esta cuenta"
                         });
                     }
                 }
@@ -168,7 +170,7 @@ const usuariosControllers = {
         await usuario.save()
         res.json({
             success: true,
-            message: email + "deslogueado!"
+            message:"Hasta pronto "+usuario.nombre
         })
     },
     verificarToken: (req, res) => {
