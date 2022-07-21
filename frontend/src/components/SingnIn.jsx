@@ -13,7 +13,7 @@ const SignIn = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const container = document.querySelector(".containerRegistro");
+    // const container = document.querySelector(".containerRegistro");
 
        useEffect(() => {
         const sign_in_btn = document.querySelector("#sign_in_btn")
@@ -67,16 +67,9 @@ const SignIn = () => {
                 toast.error(e.message)
             })
         }  
-<<<<<<< HEAD
-        if (res.data.success) {
-            console.log("Te entrooo")
-         container.classList.remove("sign_up_mode") 
-         
-=======
         if (res?.data.success) {
             const container1 = document.querySelector(".containerRegistro");
             container1.classList.remove("sign_up_mode") 
->>>>>>> 9001ee0382c511e255f29cb0faf18d1a2ee46aa5
         toast.success(res.data.message)
         } else {
             toast.error(res.data.message)
