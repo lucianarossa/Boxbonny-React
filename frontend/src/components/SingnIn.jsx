@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/login.css'
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import usuariosActions from '../redux/actions/usuariosActions';
 import { useDispatch } from 'react-redux'
 import toast from 'react-hot-toast';
