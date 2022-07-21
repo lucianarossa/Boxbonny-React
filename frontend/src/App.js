@@ -14,6 +14,9 @@ import SignUp from './components/SignUp'
 import ShoppingCart from './components/ShoppingCart';
 import PackDetails from './components/PackDetails';
 
+import ScrollToTop from "react-scroll-to-top";
+import {BsFillArrowUpCircleFill} from 'react-icons/bs'
+
 
 function App() {
 
@@ -40,6 +43,11 @@ function App() {
         <Route path="/cart" element={<ShoppingCart />} />
       </Routes>
       <Footer />
+      <ScrollToTop
+        style={{ backgroundColor: "#ff8e72" }}
+        smooth
+        component={<BsFillArrowUpCircleFill className='svg-scroll' fontSize="large" />}
+      />
     </div>
   );
 }
