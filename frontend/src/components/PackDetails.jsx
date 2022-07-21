@@ -49,7 +49,7 @@ export default function PackDetails() {
                             <form>
                             <label className='filter-title'>ELEGI DONDE DISFRUTAR TU EXPERIENCIA</label>
                             <select className='select-filter' onChange={(event)=> setSelect(event.target.value)}>
-                                <option>Selecciona tu provincia!</option>
+                                <option selected="selected">Todas las provincias</option>
                                 {provincias.map(p =>
                                 <option>{p}</option>
                                 )}
@@ -58,7 +58,41 @@ export default function PackDetails() {
                         </div>
                     </div>
                     <div className="contenedor-experiencias">
-                        {experiencias &&
+                        {select===""?
+                        experiencias &&
+                        experiencias.map(xp =>
+                            <div class="e-card">
+                                <div className="e-card-container">
+                                    <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
+                                </div>
+                                <div class="e-card-info">
+                                    <div class="e-card-text">
+                                        <p class="e-text-title">{xp?.nombre}</p>
+                                        <p class="e-text-subtitle">{xp?.ciudad}</p>
+                                        <LinkRouter to={`/packs/oneexperience/${xp._id}`}>
+                                            <button className="card-button e-card-button fontRaleway">CONOCE MAS</button>
+                                        </LinkRouter>
+                                    </div>
+                                </div>
+                            </div>):
+                            experiencias&& 
+                            select==="Todas las provincias"?
+                            experiencias.map(xp =>
+                                <div class="e-card">
+                                    <div className="e-card-container">
+                                        <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
+                                    </div>
+                                    <div class="e-card-info">
+                                        <div class="e-card-text">
+                                            <p class="e-text-title">{xp?.nombre}</p>
+                                            <p class="e-text-subtitle">{xp?.ciudad}</p>
+                                            <LinkRouter to={`/packs/oneexperience/${xp._id}`}>
+                                                <button className="card-button e-card-button fontRaleway">CONOCE MAS</button>
+                                            </LinkRouter>
+                                        </div>
+                                    </div>
+                                </div>):
+                            experiencias &&
                         experiencias.filter(city => city.ciudad === select).map(xp =>
                                 <div class="e-card">
                                     <div className="e-card-container">
