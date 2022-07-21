@@ -1,4 +1,6 @@
 import { Link as LinkRouter } from "react-router-dom";
+import { FaCreditCard } from 'react-icons/fa'
+
 
 
 export default function ShoppingCart() {
@@ -124,7 +126,7 @@ export default function ShoppingCart() {
                 <span>Costo Total</span>
                 <span>$600</span>
               </div>
-              <LinkRouter data-icon="credit-card" className="bg-orange-500 font-semibold hover:bg-orange-600 py-3 text-sm text-white  w-full rounded flex justify-center items-center ">Finalizar compra</LinkRouter>
+              <button data-icon="credit-card" className="bg-orange-500 font-semibold hover:bg-orange-600 py-3 text-sm text-white uppercase w-full rounded flex justify-center items-center "><FaCreditCard className="mr-2" />  PROCEDER A LA COMPRA</button>
             </div>
           </div>
 
