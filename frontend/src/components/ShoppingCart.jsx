@@ -1,4 +1,6 @@
 import { Link as LinkRouter } from "react-router-dom";
+import { FaCreditCard } from 'react-icons/fa'
+
 
 
 export default function ShoppingCart() {
@@ -34,7 +36,7 @@ export default function ShoppingCart() {
                 <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
                 </svg>
 
-                <input className="mx-2 border text-center w-8" type="text" />
+                <input className="mx-2 border text-center w-8" type="text" value="1" />
 
                 <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
                   <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
@@ -60,7 +62,7 @@ export default function ShoppingCart() {
                 <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
                 </svg>
 
-                <input className="mx-2 border text-center w-8" type="text"  />
+                <input className="mx-2 border text-center w-8" type="text" value="1" />
 
                 <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
                   <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
@@ -85,7 +87,7 @@ export default function ShoppingCart() {
               <div className="flex justify-center w-1/5">
                 <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
                 </svg>
-                <input className="mx-2 border text-center w-8" type="text"  />
+                <input className="mx-2 border text-center w-8" type="text" value="1" />
 
                 <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
                   <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
@@ -115,7 +117,7 @@ export default function ShoppingCart() {
               </select>
             </div>
             <div className="py-10">
-              <label htmlFor="promo" className="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
+              <label for="promo" className="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
               <input type="text" id="promo" placeholder="Enter your code" className="p-2 text-sm w-full" />
             </div>
             <button className="bg-slate-900 hover:bg-slate-700 px-5 py-2 text-sm text-white uppercase rounded">Applicar</button>
@@ -124,7 +126,7 @@ export default function ShoppingCart() {
                 <span>Costo Total</span>
                 <span>$600</span>
               </div>
-              <LinkRouter data-icon="credit-card" className="bg-orange-500 font-semibold hover:bg-orange-600 py-3 text-sm text-white  w-full rounded flex justify-center items-center ">Finalizar compra</LinkRouter>
+              <button data-icon="credit-card" className="bg-orange-500 font-semibold hover:bg-orange-600 py-3 text-sm text-white uppercase w-full rounded flex justify-center items-center "><FaCreditCard className="mr-2" />  PROCEDER A LA COMPRA</button>
             </div>
           </div>
 
