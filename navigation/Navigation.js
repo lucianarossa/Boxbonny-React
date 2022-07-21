@@ -10,8 +10,8 @@ import Cart from '../screens/Cart';
 import { useNavigation } from '@react-navigation/native';
 
 
-//import {useDispatch} from 'react-redux'
-//import cityActions from '../redux/actions/cityActions'
+import {useDispatch} from 'react-redux'
+import packsActions from '../redux/actions/packsActions'
 
 import { MaterialCommunityIcons, Fontisto } from '@expo/vector-icons'; 
 import { TouchableHighlight, TouchableOpacity, View, Text } from 'react-native';
@@ -111,15 +111,10 @@ const MyTabs = ()=>{
 }
 
 export default function Navigation(){
-	//const dispatch = useDispatch()
-	//useEffect(() => {
-	//	dispatch(cityActions.getCities())
-	//	//dispatch(countryActions.getCountries())
-	//	//if(localStorage.getItem('token')!==null){
-	//	//	const token = localStorage.getItem('token')
-	//	//	dispatch(userActions.verifyToken(token))
-	//	//}	
-	//},[])
+	const dispatch = useDispatch()
+	useEffect(() => {
+		dispatch(packsActions.getPacks())
+	},[])
 
 	return(
 		<NavigationContainer>
