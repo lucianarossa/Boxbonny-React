@@ -68,8 +68,8 @@ const SignIn = () => {
             })
         }  
         if (res?.data.success) {
-            console.log("Te entrooo")
-         container.classList.remove("sign_up_mode") 
+            const container1 = document.querySelector(".containerRegistro");
+            container1.classList.remove("sign_up_mode") 
         toast.success(res.data.message)
         } else {
             toast.error(res.data.message)
@@ -100,7 +100,6 @@ const SignIn = () => {
 
                         <div className="social_media">
                             <GoogleSignIn />
-
                         </div>
 
                     </form>
