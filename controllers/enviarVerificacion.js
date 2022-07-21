@@ -19,7 +19,7 @@ const enviarVerificacion = async (email, string) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.USER_MAIL,
+      user: "SomosBoxBonny@gmail.com",
       type: "OAuth2",
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_SECRET_ID,
