@@ -13,7 +13,7 @@ import SignIn from './components/SingnIn'
 import SignUp from './components/SignUp'
 import ShoppingCart from './components/ShoppingCart';
 import PackDetails from './components/PackDetails';
-import RenderTop from './helpers/RenderTop'
+
 
 function App() {
 
@@ -27,7 +27,7 @@ function App() {
 
   return (
     <div className="app ">
-      <RenderTop/>
+      
       <Nav />
       <Routes>
         <Route path="/" element={<Index />} />
