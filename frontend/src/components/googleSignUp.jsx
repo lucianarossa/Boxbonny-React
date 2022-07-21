@@ -2,11 +2,12 @@ import React, { useEffect } from "react"
 import jwt_decode from "jwt-decode"
 import { useDispatch } from "react-redux"
 import usuariosActions from "../redux/actions/usuariosActions"
-
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom'
 
 function GoogleSignUp() {
     const dispatch = useDispatch();
-
+    const navigate = useNavigate()
     async function handleCallBackResponse(response) {
         // console.log(response.credential);
         let userObject = jwt_decode(response.credential);
@@ -22,14 +23,21 @@ function GoogleSignUp() {
             from: "GOOGLE"
 
         }))
-
+        if (res.data.success) {
+            toast.success(res.data.message)
+            navigate('/signin')
+        } else {
+            toast.error(res.data.message)
+        }
+    
+       
 
     }
 
     useEffect(() => {
         /*global google*/
         google.accounts.id.initialize({
-            client_id: '778020858325-1v2c8t0vk1ao55drjkf2bpttl7i0ko0v.apps.googleusercontent.com',
+            client_id: '470285644051-uhachn5p7j7be2rkqtqthkeuc5mkeq76.apps.googleusercontent.com',
             callback: handleCallBackResponse
         });
 

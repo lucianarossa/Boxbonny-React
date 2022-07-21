@@ -60,17 +60,9 @@ export default function Nav() {
                   className="px-5 py-2.5 text-sm font-medium text-white bg-[#FF8E72] rounded-md hover:text-[#393E41] shadow"
                   to="signin"
                 >
-                  Ingresa
+                  Ingresá
                 </LinkRouter>
 
-                <div className="hidden sm:flex">
-                  <LinkRouter
-                    className="px-5 py-2.5 text-sm font-medium text-orange-600 bg-gray-100 hover:text-[#FF8E72] rounded-md"
-                    to="/signup"
-                  >
-                    Registrate
-                  </LinkRouter>
-                </div>
               </div>
 
               <div className="block md:hidden">

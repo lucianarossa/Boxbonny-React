@@ -11,9 +11,9 @@ import Index from './pages/Index';
 import Upload from "./components/Upload"
 import OneExperiencePage from './pages/OneExperiencePage';
 import SignIn from './components/SingnIn'
-import SignUp from './components/SignUp'
 import ShoppingCart from './components/ShoppingCart';
 import PackDetails from './components/PackDetails';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
 
@@ -28,6 +28,7 @@ function App() {
   return (
     <div className="app ">
       <Nav />
+      <Toaster position="bottom-center"/>
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/packs" element={<PacksPage />} />
@@ -35,7 +36,6 @@ function App() {
         <Route path="/packs/packdetails/:id" element={<PackDetails />} />
         <Route path="/packs/oneexperience/:id" element={<OneExperiencePage />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
         <Route path="/cart" element={<ShoppingCart />} />
       </Routes>
       <Footer />

@@ -1,17 +1,21 @@
 import React from 'react'
 import '../styles/login.css'
 import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import usuariosActions from '../redux/actions/usuariosActions';
 import { useDispatch } from 'react-redux'
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import GoogleSignIn from './GoogleSignIn'
+import GoogleSignUp from './GoogleSignUp';
 
 const SignIn = () => {
 
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    useEffect(() => {
+    const container = document.querySelector(".containerRegistro");
+
+       useEffect(() => {
         const sign_in_btn = document.querySelector("#sign_in_btn")
         const sign_up_btn = document.querySelector("#sign_up_btn")
         sign_up_btn.addEventListener("click", () => {
@@ -23,24 +27,54 @@ const SignIn = () => {
         const container = document.querySelector(".containerRegistro");
         //eslint-disable-next-line
     }, [])
-
+    
     const loginSubmit = async (event) => {
         event.preventDefault()
         const logueado = {
             email: event.target[0].value,
-            contraseña: event.target[1].value,
-            from: "formulario-registro"
+            password: event.target[1].value,
+            from: "formulario-inicio"
         }
         console.log(logueado)
-
-        let res = dispatch(usuariosActions.inicioSesion(logueado))
+        let res = await dispatch(usuariosActions.inicioSesion(logueado))
+        console.log(res)
         if (res.data.success) {
             toast.success(res.data.message)
-            navigate('/signin')
+            navigate("/")
         } else {
             toast.error(res.data.message)
         }
+        
+    }
 
+    const signUpSubmit = async (event) => {
+        event.preventDefault()
+        console.log(event.target[4].value)
+        const data = {
+            nombre: event.target[0].value,
+            apellido: event.target[1].value,
+            email: event.target[3].value,
+            contraseña: event.target[4].value,
+            imagen: event.target[2].value,
+            from: "formulario-registro"
+
+        }
+
+        let res = await dispatch(usuariosActions.registrarse(data))
+        let errorSignUp = res.data.message
+        if (res.data.from === "validator") {
+            errorSignUp.forEach(e => {
+                toast.error(e.message)
+            })
+        }  
+        if (res?.data.success) {
+            console.log("Te entrooo")
+         container.classList.remove("sign_up_mode") 
+        toast.success(res.data.message)
+        } else {
+            toast.error(res.data.message)
+        }
+    
     }
 
 
@@ -61,41 +95,52 @@ const SignIn = () => {
                             <input type="password" placeholder="Contraseña" />
                         </div>
 
-                        <input type="submit" value="Inicia Sesión" className="btn" />
+                        <input type="submit" value="Inicia Sesión" className="btn" id="sign_btn" />
                         <p className="social_text">O iniciá sesión con:</p>
 
                         <div className="social_media">
                             <GoogleSignIn />
 
                         </div>
-                        <Toaster />
 
                     </form>
-                    <form action="#" className="sign_up_form">
-                        <h2 className="title"> Registrate </h2>
+                    <form onSubmit={signUpSubmit} action="#" className="sign_up_form">
+                            <h2 className="title"> Registrate </h2>
 
-                        <div className="inputBox">
-                            <i className='bx bxs-user'></i>
-                            <input type="text" placeholder="Usuario" />
-                        </div>
+                            <div className="inputBox">
+                                <i className='bx bxs-user'></i>
+                                <input type="text" placeholder="Nombre" />
+                            </div>
+                            <div className="inputBox">
+                                <i className='bx bxs-user'></i>
+                                <input type="text" placeholder="Apellido" />
+                            </div>
+                            <div className="inputBox">
+                                <i className='bx bxs-user'></i>
+                                <input type="text" placeholder="Imagen" />
+                            </div>
 
-                        <div className="inputBox">
-                            <i className='bx bxs-user'></i>
-                            <input type="email" placeholder="Email" />
-                        </div>
+                            <div className="inputBox">
+                                <i className='bx bxs-user'></i>
+                                <input type="email" placeholder="Email" />
+                            </div>
+                            <div className="inputBox">
+                                <i className='bx bxs-user'></i>
+                                {/* <input type="password" placeholder="Contraseña" /> */}
+                                <input
+                                    type="password"
+                                    className="inputForm w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
+                                    placeholder="Enter password"
+                                />
+                            </div>
+                           
+                            <input type="submit" className="btn" value="Registro"/>
+                            <p className="social_text">O registrate con:</p>
+                            <div className="social_media">
+                                <GoogleSignUp />
+                            </div>
 
-                        <div className="inputBox">
-                            <i className='bx bxs-user'></i>
-                            <input type="password" placeholder="Contraseña" />
-                        </div>
-
-                        <input type="submit" value="Sign up" className="btn" />
-                        <p className="social_text">O registrate con:</p>
-
-
-                        <div className="social_media">
-                        </div>
-                    </form>
+                        </form>
                 </div>
             </div>
             <div className="panel_container">
@@ -115,7 +160,7 @@ const SignIn = () => {
                     <div className="content">
                         <h3>Querés iniciar sesión?</h3>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel consequatur earum quod
+                         Iniciá sesión para seguir regalando momentos inolvidables
                         </p>
                         <button className="btn transparent" id="sign_in_btn">
                             Iniciar Sesión
