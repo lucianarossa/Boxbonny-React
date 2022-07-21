@@ -74,6 +74,7 @@ const usuariosControllers = {
     },
     inicioSesion: async (req, res) => { //para iniciar sesion
         const { email, contraseña, from } = req.body.logueado;
+				console.log(req.body.logueado)
         try {
             const usuarioExiste = await Usuario.findOne({ email });
             if (!usuarioExiste) {
