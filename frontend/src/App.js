@@ -1,4 +1,3 @@
-
 import './styles/App.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -14,6 +13,10 @@ import SignIn from './components/SingnIn'
 import ShoppingCart from './components/ShoppingCart';
 import PackDetails from './components/PackDetails';
 
+import ScrollToTop from "react-scroll-to-top";
+import {BsFillArrowUpCircleFill} from 'react-icons/bs'
+
+
 function App() {
 
   const dispatch = useDispatch()
@@ -28,6 +31,7 @@ function App() {
 
   return (
     <div className="app ">
+      
       <Nav />
       <Routes>
         <Route path="/" element={<Index />} />
@@ -40,6 +44,11 @@ function App() {
         <Route path="/cart" element={<ShoppingCart />} />
       </Routes>
       <Footer />
+      <ScrollToTop
+        style={{ backgroundColor: "#ff8e72" }}
+        smooth
+        component={<BsFillArrowUpCircleFill className='svg-scroll' fontSize="large" />}
+      />
     </div>
   );
 }

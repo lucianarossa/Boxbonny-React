@@ -7,6 +7,11 @@ import packsActions from "../redux/actions/packsActions"
 import { useEffect } from "react";
 import FilterProvincias from "./FilterProvincias";
 import { useNavigate } from "react-router-dom"
+import { useState } from "react";
+import experienciasActions from "../redux/actions/experienciasActions";
+
+
+
 
 export default function PackDetails() {
     const navigate = useNavigate()
@@ -19,6 +24,14 @@ export default function PackDetails() {
     const pack = useSelector(store => store.packsReducer.getOnePack)
 
 
+    const provincias = ["Buenos Aires", "Cordoba", "Mendoza"]
+    const [select, setSelect] = useState("")
+    console.log(select);
+    useEffect(()=>{
+        // experienciasActions.filterExperiencia(select)
+        packsActions.filterExperiencia(select)
+    },[])
+    let experiencias = pack.experiencias
 
     return (
         <div className="E-container-gral bg-[#F6F7EB]">
@@ -31,11 +44,22 @@ export default function PackDetails() {
                 </div>
                 <div className="filter-cards-container">
                     <div className="filtro-provincias">
-                        <FilterProvincias />
+                        {/* <FilterProvincias /> */}
+                        <div>
+                            <form>
+                            <label className='filter-title'>ELEGI DONDE DISFRUTAR TU EXPERIENCIA</label>
+                            <select className='select-filter' onChange={(event)=> setSelect(event.target.value)}>
+                                <option>Selecciona tu provincia!</option>
+                                {provincias.map(p =>
+                                <option>{p}</option>
+                                )}
+                            </select>
+                            </form>
+                        </div>
                     </div>
                     <div className="contenedor-experiencias">
-                        {pack.experiencias &&
-                            pack?.experiencias.map(xp =>
+                        {experiencias &&
+                        experiencias.filter(city => city.ciudad === select).map(xp =>
                                 <div class="e-card">
                                     <div className="e-card-container">
                                         <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
