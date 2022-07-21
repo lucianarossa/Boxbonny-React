@@ -36,7 +36,7 @@ const validator = (req, res, next) => {
         from: joi.string()
 
     })
-    const validation = schema.validate(req.body.usuarioData, { abortEarly: false })
+    const validation = schema.validate(req.body.data, { abortEarly: false })
     if (validation.error) {
         return res.json({ success: false, from: 'validator', message: validation.error.details, test: validation })
     }
