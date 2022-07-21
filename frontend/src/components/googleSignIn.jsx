@@ -34,7 +34,7 @@ export default function GoogleSignIn() {
         });
 
         google.accounts.id.renderButton(
-            document.getElementById('buttonDiv'),
+            document.getElementById('buttonID'),
             { theme: "filled_black", size: "small", locale: 'en', text: 'signin_with', shape: "pill" }
         )
         // eslint-disable-next-line
@@ -42,7 +42,7 @@ export default function GoogleSignIn() {
 
     return (
         <div>
-            <div id="buttonDiv"></div>
+            <div id="buttonID"></div>
         </div>
     )
 

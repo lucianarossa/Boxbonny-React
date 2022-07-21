@@ -5,7 +5,7 @@ import usuariosActions from "../redux/actions/usuariosActions"
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom'
 
-function GoogleSignUp() {
+export default function GoogleSignUp() {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     async function handleCallBackResponse(response) {
@@ -58,5 +58,3 @@ function GoogleSignUp() {
 
 
 }
-
-export default GoogleSignUp
