@@ -73,7 +73,8 @@ const usuariosControllers = {
         }
     },
     inicioSesion: async (req, res) => { //para iniciar sesion
-        const { email, contraseña, from } = req.body.logueado;
+        const { email, password, from } = req.body.logueado;
+				console.log(req.body.logueado)
         try {
             const usuarioExiste = await Usuario.findOne({ email });
             if (!usuarioExiste) {
@@ -83,7 +84,7 @@ const usuariosControllers = {
                     message: "El usuario no existe, por favor registrese"
                 });
             } else if (usuarioExiste.verification) {
-                let passwordMatch = usuarioExiste.contraseña.filter((pass) => bcryptjs.compareSync(contraseña, pass));
+                let passwordMatch = usuarioExiste.contraseña.filter((pass) => bcryptjs.compareSync(password, pass));
 
                 if (from === "formulario-inicio") { //formulario de inicio de sesion
                     if (passwordMatch.length > 0) {
@@ -95,6 +96,7 @@ const usuariosControllers = {
                             contraseña: usuarioExiste.contraseña,
                             imagen: usuarioExiste.imagen,
                             from: usuarioExiste.from,
+														rol: usuarioExiste.rol,
                         };
                         await usuarioExiste.save();
                         const token = jwt.sign({ ...usuarioData },
@@ -124,6 +126,7 @@ const usuariosControllers = {
                             contraseña: usuarioExiste.contraseña,
                             imagen: usuarioExiste.imagen,
                             from: usuarioExiste.from,
+														rol: usuarioExiste.rol,
                         };
                         await usuarioExiste.save();
                         const token = jwt.sign({ ...usuarioData },
@@ -135,13 +138,13 @@ const usuariosControllers = {
                             response: { token, usuarioData },
                             success: true,
                             from: from,
-                            message: "Bienvenido de vuelta" + usuarioData.nombre,
+                            message: "Bienvenido de vuelta " + usuarioData.nombre,
                         });
                     } else {
                         res.json({
                             success: false,
                             from: from,
-                            message: "Aún no estás logueado con esta cuenta"
+                            message: "Aún no estás registrado con esta cuenta"
                         });
                     }
                 }
@@ -167,7 +170,7 @@ const usuariosControllers = {
         await usuario.save()
         res.json({
             success: true,
-            message: email + "deslogueado!"
+            message:"Hasta pronto "+usuario.nombre
         })
     },
     verificarToken: (req, res) => {

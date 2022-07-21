@@ -12,6 +12,16 @@ const validator = (req, res, next) => {
                 'string.min': 'nombre: min 3 characters',
                 'string.max': 'nombre: max 30 characters',
             }),
+				apellido: joi.string()
+            .min(3)
+            .max(30)
+            .trim()
+            .pattern(new RegExp('[a-zA-Z]'))
+            .required()
+            .messages({
+                'string.min': 'apellido: min 3 characters',
+                'string.max': 'apellido: max 30 characters',
+            }),
         email: joi.string()
             .email({ minDomainSegments: 2 })
             .required()
@@ -31,8 +41,6 @@ const validator = (req, res, next) => {
             .min(4)
             .trim()
             .required(),
-
-
         from: joi.string()
 
     })
