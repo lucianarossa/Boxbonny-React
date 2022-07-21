@@ -61,7 +61,6 @@ function Upload() {
                         <div className="text-center">
                             <h2 className="text-4xl font-bold text-center text-gray-700 dark:text-white fontPoppins">Box Bonny</h2>
 
-<<<<<<< HEAD
                             <p className="mt-3 text-gray-500 dark:text-gray-300 font-bold fontRalewayItalic">Carga tu experiencia</p>
                         </div>
 
@@ -122,65 +121,6 @@ function Upload() {
                                 </div>
                             </form>
                         </div>
-=======
-                    <div className="mt-8">
-                        <form onSubmit={handleSubmit} className="fontRaleway" >
-                            <div>
-                                <label  className="block mb-2 text-sm">Seleccionar Pack</label>
-                                <select className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40">
-                                    <option>Pack</option>
-                                    {packs.map((pack,index)=>(
-                                        <option 
-                                        key={index}
-                                        value={pack}
-                                        >{pack}</option>
-                                    ))}
-                                </select>
-                            </div>
-                            <div className="mt-6">
-                                <label  className="block mb-2 text-sm">Nombre de Experiencia</label>
-                                <input type="text" name="experience" id="experience" placeholder="Experiencia Gastronomica" className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                            </div>
-                            <div className="mt-6">
-                                <label  className="block mb-2 text-sm">Descripcion</label>
-                                <input type="text" name="Description" id="Description" placeholder="Este pack ofrece..." className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                            </div>
-                            <div className="mt-6">
-                                <label  className="block mb-2 text-sm">Provincia</label>
-                                <label  className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Incluye</label>
-                                <input type="text" name="Description" id="Description" placeholder="Sesión de 2 horas de..." className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                            </div>
-                            <div className="mt-6">
-                                <label  className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Provincia</label>
-                                <select required className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40">
-                                    <option> Provincia </option>
-                                    {sortedStates.map((state, index) => (
-                                        <option  key={index} 
-                                        value={state}>{state}</option>
-                                    )
-                                    )}
-                                </select>
-                            </div>
-                            <div className="mt-6">
-                                <label  className="block mb-2 text-sm">Direccion</label>
-                                <input type="text" name="address" id="address" placeholder="Av. Rivadavia 3324" className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                            </div>
-
-                            <div className="mt-6">
-                                <label  className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Foto</label>
-                                <input type="file" onChange={(event)=> setFiles(event.target.files)} name="photo" id="address"  className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                            </div>
-                            <div className="mt-6">
-                                <button
-                                    style={{backgroundColor:'#ff8e72'}}
-                                    type="Submit"
-                                    
-                                    className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                                    Subir Experiencia
-                                </button>
-                            </div>
-                        </form>
->>>>>>> 0ec6454a7e4d13a3588d0337f071c3d5ff99c159
                     </div>
                 </div>
             </div>
