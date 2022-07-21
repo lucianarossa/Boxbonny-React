@@ -67,9 +67,10 @@ const SignIn = () => {
                 toast.error(e.message)
             })
         }  
-        if (res?.data.success) {
+        if (res.data.success) {
             console.log("Te entrooo")
          container.classList.remove("sign_up_mode") 
+         
         toast.success(res.data.message)
         } else {
             toast.error(res.data.message)
