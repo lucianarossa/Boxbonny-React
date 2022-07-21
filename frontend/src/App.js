@@ -1,4 +1,3 @@
-
 import './styles/App.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -12,11 +11,9 @@ import Upload from "./components/Upload"
 import OneExperiencePage from './pages/OneExperiencePage';
 import SignIn from './components/SingnIn'
 import SignUp from './components/SignUp'
-<<<<<<< HEAD
 import ShoppingCart from './components/ShoppingCart';
-=======
 import PackDetails from './components/PackDetails';
->>>>>>> 85d9f2e68a6a0e6b2576c1ad49fea9f91446f747
+import RenderTop from './helpers/RenderTop'
 
 function App() {
 
@@ -30,6 +27,7 @@ function App() {
 
   return (
     <div className="app ">
+      <RenderTop/>
       <Nav />
       <Routes>
         <Route path="/" element={<Index />} />
