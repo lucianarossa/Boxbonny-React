@@ -1,18 +1,22 @@
-import { View, Text, StyleSheet, Pressable,ImageBackground} from 'react-native'
+import {Text, StyleSheet, Pressable, ImageBackground, TouchableOpacity} from 'react-native'
 import React,{useState} from 'react'
+import { useNavigation } from '@react-navigation/native';
 
 export default function PackCard ({pack})  {
+	const navigation = useNavigation()
 	const [change, setChange] = useState(false);
+
 	return (
 		<Pressable onPress={()=> setChange(!change)} style={styles.card}>
-			{change ? <ImageBackground source={{ uri: pack.imagen }} resizeMode="cover" style={styles.back}>
+			{change ? 
+			<ImageBackground source={{ uri: pack.imagen }} resizeMode="cover" style={styles.back}>
 				<Text style={styles.text}>{pack.nombre}</Text>
 				<Text style={styles.description}>{pack.descripcion}</Text>
-				<Text style={styles.button}>Ver pack</Text>
-
-
-
+				<TouchableOpacity onPress={() => navigation.navigate('detalle del pack',{ packId: pack._id})}>
+					<Text style={styles.button}>Ver pack</Text>
+				</TouchableOpacity>
 				</ImageBackground> :
+
 			 <ImageBackground source={{ uri: pack.imagen }} resizeMode="cover" style={styles.front}>
 					<Text style={styles.text}>{pack.nombre}</Text>
 				</ImageBackground>}
@@ -64,6 +68,7 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 	},
 	button:{
+		zIndex: 2,
 		backgroundColor: "#393e41",
 		color: "white",
 		alignSelf: "center",
