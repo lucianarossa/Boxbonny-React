@@ -41,6 +41,11 @@ export default function PackDetails() {
                     <p className="hover:animate-pulse descripcion-pdetails">{pack?.descripcion}</p>
                     <p className="hover:animate-pulse descripcion-pdetails precio-pack">PRECIO DEL PACK: ${pack?.precio}</p>
                     <p className="hover:animate-pulse descripcion-pdetails mensaje-pack">MOMENTOS UNICOS PARA DISFRUTAR</p>
+                    <div class="product-quantity">
+                                                        <input class="minus" type="button" value="-"/>
+                                                        <input type="text" id="quantity" name="quantity" min="1" max="9999" step="1" value="1" class="qty"/>
+                                                        <input class="plus" type="button" value="+"/>
+                                                    </div>
                 </div>
                 <div className="filter-cards-container">
                     <div className="filtro-provincias">
