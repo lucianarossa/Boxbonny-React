@@ -1,5 +1,4 @@
 import { Link as LinkRouter } from "react-router-dom";
-import { FaCreditCard } from 'react-icons/fa'
 
 
 
@@ -97,9 +96,9 @@ export default function ShoppingCart() {
               <span className="text-center w-1/5 font-semibold text-sm">$150.00</span>
             </div>
 
-            <LinkRouter to="/packs" className="flex font-semibold text-orange-600 text-sm mt-10">
+            <LinkRouter to="/packs" className="flex font-semibold hover:underline text-orange-600 text-sm mt-10">
 
-              <svg className="fill-current mr-2 text-orange-600 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" /></svg>
+              <svg className="fill-current mr-2 text-orange-600 w-4  " viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" /></svg>
               Continuar Comprando
             </LinkRouter>
           </div>
@@ -126,7 +125,7 @@ export default function ShoppingCart() {
                 <span>Costo Total</span>
                 <span>$600</span>
               </div>
-              <button data-icon="credit-card" className="bg-orange-500 font-semibold hover:bg-orange-600 py-3 text-sm text-white uppercase w-full rounded flex justify-center items-center "><FaCreditCard className="mr-2" />  PROCEDER A LA COMPRA</button>
+              <LinkRouter to="/checkout" className="bg-orange-500 font-semibold hover:bg-orange-600 py-3 text-sm text-white uppercase w-full rounded flex justify-center items-center ">Proceder a la compra</LinkRouter>
             </div>
           </div>
 
