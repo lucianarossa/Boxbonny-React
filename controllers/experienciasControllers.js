@@ -37,51 +37,56 @@ const experienciasControllers = {
 
 	},
 
-	addExperiencia: async (req, res) => {
-		const { nombre, descripcion, incluye, direccion, ciudad, pack } = req.body.data
-		const { file } = req.files
+	addExperiencia: async(req,res)=>{
+		const {nombre,descripcion,incluye,direccion,ciudad,imagen,pack} = req.body.data
 		let experiencia
 		let error = null
-		try {
-			const experienciaExiste = await Experiencia.findOne({ nombre })
-			if (experienciaExiste) {
-				res.json({
-					success: false,
-					Message: "la experiencia que intentas agregar, ya ha sido cargada previamente"
-				})
-			} else {
-				const filename = crypto.randomBytes(10).toString('hex') + "." + file.name.split(".")[file.name.split(".").length - 1]
-				const ruta = `${__dirname}../storage/experiencias/${filename}`
-				file.mv(ruta, err => {
-					if (err) {
-						console.log(err)
-					} else {
-						console.log("archivo cargado")
-					}
-				})
-				experiencia = await new Experiencia({
-					nombre: nombre,
-					descripcion: descripcion,
-					incluye: incluye,
-					direccion: direccion,
-					ciudad: ciudad,
-					imagen: "https://boxbonny-back.herokuapp.com/storage/experiencias/" + filename,
-					pack: pack
-				}).save()
-				nuevaExperiencia = await Pack.findOneAndUpdate({ _id: pack }, { $push: { experiencias: experiencia._id } }, { new: true })
-				res.json({
-					success: true,
-					Message: "la experiencia se añadio exitosamente"
-				})
-			}
-		} catch (err) {
-			error = err
-			res.json({
-				success: false,
-				Message: error
-			})
-		}
+		try{
+			experiencia = await new Experiencia({
+				nombre:nombre,
+				descripcion:descripcion,
+				incluye:incluye,
+				direccion:direccion,
+				ciudad:ciudad,
+				imagen:imagen,
+				pack:pack
+			}).save()
+			nuevaExperiencia = await Pack.findOneAndUpdate({_id:pack}, {$push: {experiencias: experiencia._id}}, {new: true})
+
+		}catch(err){error = err
+		console.error(error)}
+		res.json({
+			response: error ? 'ERROR' : experiencia,
+			success: error ? false : true,
+			error: error
+		})
+
 	},
+	multiplesExperiencias: async (req, res) => {
+		let experiencia = []
+		const data = req.body.data
+		let error = null
+		try {
+				data.map(async (item) => {
+					const experiencia = await new Experiencia({
+							nombre:item.nombre,
+							descripcion:item.descripcion,
+							incluye:item.incluye,
+							direccion:item.direccion,
+							ciudad:item.ciudad,
+							imagen:item.imagen,
+							pack:item.pack
+						}).save()
+						nuevaExperiencia = await Pack.findOneAndUpdate({_id:item.pack}, {$push: {experiencias: experiencia._id}}, {new: true})
+				})
+		} catch (err) { error = err }
+		experiencia = await Experiencia.find()
+		res.json({
+				response: error ? "ERROR" : experiencia,
+				success: error ? false : true,
+				error: error
+		})
+},
 	modifyExperiencia: async (req, res) => {
 		const id = req.params.id
 		const experiencia = req.body.data
@@ -112,6 +117,7 @@ const experienciasControllers = {
 		})
 
 	},
+	
 
 	likeDislike: async (req, res) => {
 		const id = req.params.id

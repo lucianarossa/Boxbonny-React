@@ -6,7 +6,7 @@ const packsControllers = require('../controllers/packsControllers');
 const { getPacks, getOnePack, addPack, modifyPack, removePack } = packsControllers
 
 const experienciasControllers = require('../controllers/experienciasControllers');
-const { getExperiencias, getOneExperiencia, addExperiencia, modifyExperiencia, removeExperiencia } = experienciasControllers
+const { getExperiencias, getOneExperiencia, addExperiencia, modifyExperiencia, removeExperiencia,multiplesExperiencias } = experienciasControllers
 
 const usuariosControllers = require('../controllers/usuariosControllers');
 const { registrarse, inicioSesion, verificarToken, verificarMail } = usuariosControllers
@@ -55,6 +55,8 @@ Router.route('/experiencias/comment')
     .post(passport.authenticate("jwt", { session: false }),
         AddComment)
 
+Router.route("/multiplesExperiencias")
+    .post(multiplesExperiencias)
 
 
 module.exports = Router
