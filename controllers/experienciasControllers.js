@@ -30,7 +30,7 @@ const experienciasControllers = {
 			console.error(error)
 		}
 		res.json({
-			response: error ? 'ERROR' : experiencia,
+			response: error ? 'ERROR' : {experiencia},
 			success: error ? false : true,
 			error: error
 		})
