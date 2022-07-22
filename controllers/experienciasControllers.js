@@ -37,31 +37,58 @@ const experienciasControllers = {
 
 	},
 
-	addExperiencia: async(req,res)=>{
-		const {nombre,descripcion,incluye,direccion,ciudad,imagen,pack} = req.body.data
-		let experiencia
-		let error = null
-		try{
-			experiencia = await new Experiencia({
-				nombre:nombre,
-				descripcion:descripcion,
-				incluye:incluye,
-				direccion:direccion,
-				ciudad:ciudad,
-				imagen:imagen,
-				pack:pack
-			}).save()
-			nuevaExperiencia = await Pack.findOneAndUpdate({_id:pack}, {$push: {experiencias: experiencia._id}}, {new: true})
+	addExperiencia: async (req, res) => {
+		console.log(req.body);
+        const { nombre, descripcion, incluye, direccion, ciudad, pack } = req.body
+		console.log("BUSCAR FILE",req.files);
+        const  {files}  = req
+		console.log("Files", files);
+        let experiencia
+        let error = null
+        try {
+            const experienciaExiste = await Experiencia.findOne({ nombre })
+            if (experienciaExiste) {
+                res.json({
+                    success: false,
+                    Message: "la experiencia que intentas agregar, ya ha sido cargada previamente"
+                })
+            } else {
+				console.log("ACA LLEGO");
+                const filename = crypto.randomBytes(10).toString('hex') + "." + files.imagen.name.split(".")[files.imagen.name.split(".").length - 1]
+                const ruta = `${__dirname}/../storage/experiencias/${filename}`
+				
+                files.imagen.mv(ruta, err => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        console.log("archivo cargado")
+                    }
+                })
+                experiencia = await new Experiencia({
+                    nombre: nombre,
+                    descripcion: descripcion,
+                    incluye: incluye,
+                    direccion: direccion,
+                    ciudad: ciudad,
+                    imagen: "https://boxbonny-back.herokuapp.com/storage/experiencias/" + filename,
+                    pack: pack
+                }).save()
+                nuevaExperiencia = await Pack.findOneAndUpdate({ _id: pack }, { $push: { experiencias: experiencia._id } }, { new: true })
+                res.json({
+                    success: true,
+                    Message: "la experiencia se añadio exitosamente"
+                })
+            }
+        } catch (err) {
+            error = err
+			console.log(err);
+            res.json({
+                success: false,
+                Message: error
 
-		}catch(err){error = err
-		console.error(error)}
-		res.json({
-			response: error ? 'ERROR' : experiencia,
-			success: error ? false : true,
-			error: error
-		})
-
-	},
+            })
+        }
+    },
 	multiplesExperiencias: async (req, res) => {
 		let experiencia = []
 		const data = req.body.data
