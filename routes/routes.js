@@ -48,12 +48,13 @@ Router.route('/verificar/:string')
 Router.route('/experiencias/comment/:id')
     .post(passport.authenticate("jwt", { session: false }),
         DeleteComment) //controlar el nombre
-    .put(passport.authenticate('jwt', { session: false }),
-        UpdateComment)
-
+    
 Router.route('/experiencias/comment')
     .post(passport.authenticate("jwt", { session: false }),
         AddComment)
+    .put(passport.authenticate('jwt', { session: false }),
+        UpdateComment)
+
 
 Router.route("/multiplesExperiencias")
     .post(multiplesExperiencias)

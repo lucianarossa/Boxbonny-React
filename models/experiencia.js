@@ -10,6 +10,7 @@ const experienciaSchema = new mongoose.Schema({
 	comentarios: [{
 		fecha: {type:Date},
 		comentario: {type: String},
+		raiting: {type: String},
 		idUsuario: {type:mongoose.Types.ObjectId, ref:'usuarios'}
 		}],
 	pack: {type: mongoose.Types.ObjectId, ref:"packs"}
