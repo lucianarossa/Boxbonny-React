@@ -22,9 +22,10 @@ export default function PackDetails() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const pack = useSelector(store => store.packsReducer.getOnePack)
+    console.log(pack)
 
 
-    const provincias = ["Buenos Aires", "Cordoba", "Mendoza"]
+    const provincias = ["Buenos Aires", "Córdoba", "Mendoza"]
     const [select, setSelect] = useState("")
     console.log(select);
     useEffect(()=>{
@@ -39,7 +40,7 @@ export default function PackDetails() {
                 <div className="pack-titulo">
                     <h1 className="hover:animate-pulse titulo-pdetails">{pack?.nombre}</h1>
                     <p className="hover:animate-pulse descripcion-pdetails">{pack?.descripcion}</p>
-                    <p className="hover:animate-pulse descripcion-pdetails precio-pack">PRECIO DEL PACK: ${pack?.precio}</p>
+                    <p className="hover:animate-pulse descripcion-pdetails precio-pack">PRECIO DEL PACK: ${pack?.Precio}</p>
                     <p className="hover:animate-pulse descripcion-pdetails mensaje-pack">MOMENTOS UNICOS PARA DISFRUTAR</p>
                 </div>
                 <div className="filter-cards-container">
