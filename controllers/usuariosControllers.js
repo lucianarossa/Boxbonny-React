@@ -24,7 +24,7 @@ const usuariosControllers = {
                     const passwordhashed = bcryptjs.hashSync(contraseña, 10);
                     usuarioExiste.contraseña.push(passwordhashed);
                     usuarioExiste.from.push(from);
-                    usuarioExiste.verificarion = true;
+                    usuarioExiste.verification = true; //estaba verificarion xd
                     await usuarioExiste.save();
                     res.json({
                         success: true,
