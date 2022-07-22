@@ -96,7 +96,7 @@ const usuariosControllers = {
                             contraseña: usuarioExiste.contraseña,
                             imagen: usuarioExiste.imagen,
                             from: usuarioExiste.from,
-														rol: usuarioExiste.rol,
+							rol: usuarioExiste.rol,
                         };
                         await usuarioExiste.save();
                         const token = jwt.sign({ ...usuarioData },
@@ -126,7 +126,7 @@ const usuariosControllers = {
                             contraseña: usuarioExiste.contraseña,
                             imagen: usuarioExiste.imagen,
                             from: usuarioExiste.from,
-														rol: usuarioExiste.rol,
+							rol: usuarioExiste.rol,
                         };
                         await usuarioExiste.save();
                         const token = jwt.sign({ ...usuarioData },
@@ -174,20 +174,20 @@ const usuariosControllers = {
         })
     },
     verificarToken: (req, res) => {
-        if (req.usuario) {
+        console.log("REQ.USUARIO", req.user);
+        if (req.user) {
             res.json({
                 success: true,
                 response: {
-									usuarioData: {
-                        id: req.usuario.id,
-                        nombre: req.usuario.nombre,
-                        apellido: req.usuario.apellido,
-                        email: req.usuario.email,
-                        imagen: req.usuario.imagen,
-                        from: "token"
-									}
+                        id: req.user.id,
+                        nombre: req.user.nombre,
+                        apellido: req.user.apellido,
+                        email: req.user.email,
+                        imagen: req.user.imagen,
+                        rol:   req.user.rol,
+                        from: "token",			
                 },
-                message: "Hola! Bienvenido de vuelta " + req.usuario.nombre
+                message: "Hola! Bienvenido de vuelta " + req.user.nombre
             })
         } else {
             res.json({
