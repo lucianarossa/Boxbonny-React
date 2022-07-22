@@ -11,9 +11,9 @@ import Upload from "./components/Upload"
 import OneExperiencePage from './pages/OneExperiencePage';
 import SignIn from './components/SingnIn'
 import ShoppingCart from './components/ShoppingCart';
+import Checkout from './components/Checkout';
 import PackDetails from './components/PackDetails';
 import { Toaster } from 'react-hot-toast';
-
 import ScrollToTop from "react-scroll-to-top";
 import {BsFillArrowUpCircleFill} from 'react-icons/bs'
 
@@ -44,6 +44,7 @@ function App() {
         <Route path="/packs/oneexperience/:id" element={<OneExperiencePage />} />
         {!user && <Route path="/signin" element={<SignIn />} />}
         <Route path="/cart" element={<ShoppingCart />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <Footer />
       <ScrollToTop
