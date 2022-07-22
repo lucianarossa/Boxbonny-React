@@ -1,4 +1,5 @@
 import boxlogo from '../assets/logofooter.png'
+import {Link as LinkRouter} from 'react-router-dom'
 
 
 export default function Steps() {
@@ -28,7 +29,7 @@ export default function Steps() {
             <div className="mt-4 text-[#FF8E72] text-center">
               <h1 className="text-xl font-bold">Paso 1</h1>
               <p className="mt-4 text-[#393E41]">Seleccioná el pack que quieras y su presentación con packaging físico o digital.</p>
-              {/* <button className="mt-8 mb-4 py-2 px-14 rounded-full bg-orange-600 text-white tracking-widest hover:bg-orange-500  transition duration-200">MORE</button> */}
+              
             </div>
           </div>
         </div>
@@ -40,7 +41,7 @@ export default function Steps() {
             <div className="mt-4 text-[#FF8E72] text-center">
               <h1 className="text-xl font-bold">Paso 2</h1>
               <p className="mt-4 text-[#393E41]">Elegí una experiencia dentro de una amplia variedad de opciones.</p>
-              {/* <button className="mt-8 mb-4 py-2 px-14 rounded-full bg-orange-600 text-white tracking-widest hover:bg-orange-500  transition duration-200">MORE</button> */}
+             
             </div>
           </div>
         </div>
@@ -53,13 +54,13 @@ export default function Steps() {
             <div className="mt-4 text-[#FF8E72] text-center">
               <h1 className="text-xl font-bold">Paso 3</h1>
               <p className="mt-4 text-[#393E41]">Disfrutá la experiencia presentando la tarjeta física o código E-Pack.</p>
-              {/* <button className="mt-8 mb-4 py-2 px-14 rounded-full bg-orange-600 text-white tracking-widest hover:bg-orange-500 transition duration-200">MORE</button> */}
+              
             </div>
           </div>
         </div>
       </div>
       <div className="flex justify-center" >
-        <button className="mt-8 mb-4 py-2 px-14 rounded-full bg-orange-600 text-white tracking-widest hover:bg-orange-500 transition duration-200	 ">ELEGÍ TU EXPERIENCIA</button>
+        <LinkRouter to="/packs" className="mt-8 mb-4 py-2 px-14 rounded-full bg-orange-600 text-white tracking-widest hover:bg-orange-500 transition duration-200	 ">ELEGÍ TU EXPERIENCIA</LinkRouter>
       </div>
     </div>
 
