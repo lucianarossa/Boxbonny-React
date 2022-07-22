@@ -11,8 +11,8 @@ const experienciasActions = {
    getOneExperiencia: (id) => {
       return async (dispatch, getState) => {
          const res = await axios.get(`https://boxbonny-back.herokuapp.com/api/experiencias/${id}`);
-           console.log("resssssssssss", res)
-         dispatch({ type: "GETONEEXPERIENCIA", payload: res.data.response });
+         //   console.log("resssssssssss", res)
+         dispatch({ type: "GETONEEXPERIENCIA", payload: res.data.response.experiencia });
       };
    },
 
@@ -32,7 +32,17 @@ const experienciasActions = {
       })
       return res
       }
-   }
+   },
+
+   getExperienciasByPack: (id) => {
+      return async (dispatch, getState) => {
+          const res = await axios.get(`https://boxbonny-back.herokuapp.com/api/experienciabypack/${id}`)
+          // console.log(res)
+          dispatch({ type: 'GETEXPERIENCIASBYPACK', payload: res.data.response })
+          return res
+      }
+  },
+
 };
 
 export default experienciasActions;

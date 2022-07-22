@@ -7,7 +7,7 @@ import {Link as LinkRouter} from 'react-router-dom'
 const PacksComponent = () => {
 
     const packs = useSelector(store => store.packsReducer.packs)
-    console.log(packs)
+    // console.log(packs)
     return (
         <div className="superContainer">
         <div className="titlePacks">
