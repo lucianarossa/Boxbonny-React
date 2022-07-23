@@ -56,7 +56,7 @@ const experienciasControllers = {
 				console.log("ACA LLEGO");
                 const filename = crypto.randomBytes(10).toString('hex') + "." + files.imagen.name.split(".")[files.imagen.name.split(".").length - 1]
                 const ruta = `${__dirname}/../storage/experiencias/${filename}`
-				
+				console.log(ruta);
                 files.imagen.mv(ruta, err => {
                     if (err) {
                         console.log(err)
