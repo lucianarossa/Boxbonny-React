@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/material": "^5.9.1",
+=======
+    "@material/checkbox": "^14.0.0",
+>>>>>>> 05bc768db4fe0364a6a986830c5b439921150fc5
     "@reduxjs/toolkit": "^1.8.3",
     "@tailwindcss/forms": "^0.5.2",
     "@testing-library/jest-dom": "^5.16.4",

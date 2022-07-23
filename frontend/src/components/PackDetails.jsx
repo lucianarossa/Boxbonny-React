@@ -21,17 +21,20 @@ export default function PackDetails() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const pack = useSelector(store => store.packsReducer.getOnePack)
-    // console.log(pack)
 
 
     const provincias = ["Buenos Aires", "Córdoba", "Mendoza"]
     const [select, setSelect] = useState("")
-    // console.log(select);
+    
+    
+    const [inputSearch, setInputSearch] = useState("")
+    console.log(inputSearch);
     useEffect(()=>{
         // experienciasActions.filterExperiencia(select)
         packsActions.filterExperiencia(select)
     },[])
     let experiencias = pack.experiencias
+    console.log(experiencias)
 
     return (
         <div className="E-container-gral bg-[#F6F7EB]">
@@ -53,13 +56,15 @@ export default function PackDetails() {
                                 <option key={p._id}>{p}</option>
                                 )}
                             </select>
+                            <h2>O BUSCA UNA EXPERIENCIA POR SU NOMBRE</h2>
+                            <input type="text" onChange={(event)=>setInputSearch(event.target.value)}/>
                             </form>
                         </div>
                     </div>
                     <div className="contenedor-experiencias">
                         {select===""?
                         experiencias &&
-                        experiencias.map(xp =>
+                        experiencias.filter(city=>city.nombre.toLowerCase().startsWith(inputSearch.toLowerCase())).map(xp =>
                             <div className="e-card" key={xp._id}>
                                 <div className="e-card-container">
                                     <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
@@ -76,8 +81,8 @@ export default function PackDetails() {
                             </div>):
                             experiencias&& 
                             select==="Todas las provincias"?
-                            experiencias.map((xp, index) =>
-                                <div className="e-card" key={index}>
+                            experiencias.filter(city=>city.nombre.toLowerCase().startsWith(inputSearch.toLowerCase())).map(xp =>
+                                <div className="e-card" key={xp._id}>
                                     <div className="e-card-container">
                                         <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
                                     </div>
@@ -92,8 +97,8 @@ export default function PackDetails() {
                                     </div>
                                 </div>):
                             experiencias &&
-                        experiencias.filter(city => city.ciudad === select).map((xp, i) =>
-                                <div className="e-card" key={i}>
+                        experiencias.filter(city => city.ciudad === select && city.nombre.toLowerCase().startsWith(inputSearch.toLowerCase())).map(xp =>
+                                <div className="e-card" key={xp._id}>
                                     <div className="e-card-container">
                                         <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
                                     </div>
