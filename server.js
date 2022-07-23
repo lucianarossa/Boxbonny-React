@@ -17,6 +17,14 @@ app.use(express.json());
 app.use(passport.initialize());
 app.use('/api', Router);
 
+if(process.env.NODE_ENV === 'production'){
+
+    app.use(express.static('storage/experiencias'))
+    app.get('*', (req,res)=>{
+        res.sendFile(path.join(__dirname+"/storage/experiencias/"))
+    })
+}
+
 
 app.get('/', (req, res) => {
     res.send('EL SERVIDOR ESTÁ FUNCIONANDO!')
