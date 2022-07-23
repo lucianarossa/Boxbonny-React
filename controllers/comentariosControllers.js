@@ -2,17 +2,19 @@ const Experiencia = require('../models/experiencia')
 
 const commentsControllers = {
 	AddComment: async(req,res)=>{
-		const {idExperiencia, comentario, raiting} = req.body.data
-		const usuario = req.usuario.id
+		// console.log(req.user)
+		const {experiencia, comentario } = req.body.comentario
+		const usuario = req.user.id
+		
 		try{
-			const nuevoComentario = await Experiencia.findOneAndUpdate({_id:idExperiencia}, {$push: {comentarios: {comentario: comentario, idUsuario: usuario, raiting: raiting, fecha: Date.now()}}}, {new: true}).populate("comentarios.idUsuario", {nombre:1, apellido:1, imagen:1})
+			const nuevoComentario = await Experiencia.findOneAndUpdate({_id:experiencia}, {$push: {comentarios: {comentario: comentario, idUsuario: usuario, fecha: Date.now()}}}, {new: true}).populate("comentarios.idUsuario", {nombre:1, apellido:1, imagen:1})
 			res.json({ success: true, response:{nuevoComentario}, message:"Gracias por tu comentario" })
 		}catch (err) {
 			res.json({ success: false, response:err, message:"Algo salió mal, inténtalo de nuevo en unos minutos" })}
 	
 	},
 	UpdateComment: async(req,res)=>{
-		const {idComentario,comentario, raiting} = req.body.data
+		const {idComentario,comentario } = req.body.comentario
 		try {
 				const nuevoComentario = await Experiencia.findOneAndUpdate({"comentarios._id":idComentario}, {$set: {"comentarios.$.comentario": comentario,"comentarios.$.fecha": Date.now() }}, {new: true}).populate("comentarios.idUsuario", {nombre:1, apellido:1, imagen:1})
 				res.json({ success: true, response:{nuevoComentario}, message:"El comentario se actualizo exitosamente" })
