@@ -8,6 +8,7 @@ const fileUpload = require('express-fileupload');
 const passport = require('passport');
 
 const PORT = process.env.PORT || 4000
+const path = require('path')
 
 app.set('port', PORT)
 
