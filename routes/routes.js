@@ -6,7 +6,7 @@ const packsControllers = require('../controllers/packsControllers');
 const { getPacks, getOnePack, addPack, modifyPack, removePack } = packsControllers
 
 const experienciasControllers = require('../controllers/experienciasControllers');
-const { getExperiencias, getOneExperiencia, addExperiencia, modifyExperiencia, removeExperiencia, multiplesExperiencias, getExperienciasByPack } = experienciasControllers
+const { getExperiencias, getOneExperiencia, addExperiencia, modifyExperiencia, removeExperiencia, multiplesExperiencias } = experienciasControllers
 
 const usuariosControllers = require('../controllers/usuariosControllers');
 const { registrarse, inicioSesion, verificarToken, verificarMail } = usuariosControllers
@@ -61,8 +61,6 @@ Router.route('/experiencias/comment/:id')
 Router.route("/multiplesExperiencias")
     .post(multiplesExperiencias)
 
-Router.route("/experienciabypack/:id")
-    .get(getExperienciasByPack)
 
 
 module.exports = Router
