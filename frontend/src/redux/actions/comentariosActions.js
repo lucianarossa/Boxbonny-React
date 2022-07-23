@@ -3,7 +3,7 @@ import axios from "axios";
 const comentariosActions = {
 
     AddComment: (comentario) => {
-        // console.log("COMMENT",comment)
+        
         return async (dispatch, getState) => {
             try{
             const token = localStorage.getItem("token")
@@ -13,7 +13,7 @@ const comentariosActions = {
                 }
                 
             })
-            // console.log("RESP ACTIONS",res)
+            console.log("RESP ACTIONS",res)
 
             return res.data
 

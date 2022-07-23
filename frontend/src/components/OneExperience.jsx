@@ -20,7 +20,7 @@ const OneExperience = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const exp = useSelector(store => store.experienciasReducer.getOneExperiencia)
-    // console.log("EXPPPP", exp)
+    console.log("EXPPPP", exp)
    
 
     return (

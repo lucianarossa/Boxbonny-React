@@ -1,7 +1,6 @@
 
 import { MdShoppingBasket } from "react-icons/md";
 import { Link as LinkRouter } from "react-router-dom"
-import "../styles/nav.css"
 
 
 export default function Nav() {
@@ -10,7 +9,7 @@ export default function Nav() {
       <div className="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-1 md:flex md:items-center md:gap-12">
-            <img className="logo" src="https://i.imgur.com/Xi3X0wB.png" alt="logo" />
+            <img className="logo w-[12rem] h-[12rem]" src="https://i.imgur.com/Xi3X0wB.png" alt="logo" />
           </div>
 
           <div className="md:flex md:items-center md:gap-12">
