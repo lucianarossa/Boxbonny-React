@@ -72,7 +72,7 @@ function Comments() {
                     <div className="l-comments-container">
                         {/* si el usuario no es el que hizo el comentario */}
 
-                        {comentario?.idUsuario._id !== usuario.id ?
+                        {comentario?.idUsuario !== usuario?.id ?
 
                             <>
                                 <div className='l-usuario-container'>
@@ -100,8 +100,8 @@ function Comments() {
                         <div className="l-comments-container">
                             <div className='l-usuario-container'>
                                 <div className='l-avatar'>
-                                    <Avatar alt="Remy Sharp" src={usuario.imagen} />
-                                    <p className='l-nombreusuario'>{usuario.nombre} {usuario.apellido}</p>
+                                    <Avatar alt="Remy Sharp" src={usuario?.imagen} />
+                                    <p className='l-nombreusuario'>{usuario?.nombre} {usuario?.apellido}</p>
                                 </div>
 
                                 <Rating name="half-rating" defaultValue={2.5} precision={0.5} />

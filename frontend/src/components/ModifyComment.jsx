@@ -51,8 +51,8 @@ function ModifyComment({ comentario  }) {
             <div className="l-comments-container">
                 <div className='l-usuario-container'>
                     <div className='l-avatar'>
-                        <Avatar alt="Remy Sharp" src={comentario?.IdUsuario.imagen} />
-                        <p className='l-nombreusuario'>{comentario?.idUsuario.nombre}</p>
+                        <Avatar alt="Remy Sharp" src={comentario.IdUsuario?.imagen} />
+                        <p className='l-nombreusuario'>{comentario.idUsuario?.nombre}</p>
                     </div>
 
                     <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
