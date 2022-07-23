@@ -11,7 +11,7 @@ export default function ExperienciaCard ({experiencia})  {
 	<ImageBackground source={{ uri: experiencia.imagen }} resizeMode="cover" style={styles.back}>
 				<Text style={styles.text}>{experiencia.nombre}</Text>
 				<Text style={styles.description}>{experiencia.ciudad}</Text>
-				<TouchableOpacity onPress={() => navigation.navigate('detalle del pack',{ experienciaId: experiencia._id})}>
+				<TouchableOpacity onPress={() => navigation.navigate('detalle de la experiencia',{ experienciaId: experiencia._id})}>
 					<Text style={styles.button}>Ver mas</Text>
 				</TouchableOpacity>
 			</ImageBackground> 

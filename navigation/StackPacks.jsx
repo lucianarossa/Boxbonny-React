@@ -2,25 +2,31 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Packs from '../screens/Packs'
 import PackDetail from '../screens/PackDetail'
+import ExperienciaDetail from '../screens/ExperienciaDetail'
+
 
 const stack = createNativeStackNavigator()
 
 export default function StackPacks(){
 	return(
 		<stack.Navigator
-			initialRouteName='Packs'
+			initialRouteName='Lista de packs'
 			screenOptions={{
 				headerStyle: { backgroundColor: '#F6F7EB' },
 				headerTintColor: '#393E41',
 			}}
 		>
 			<stack.Screen
-				name="Packs"
+				name="Lista de packs"
 				component={Packs}
 			/>
 			<stack.Screen
 				name="detalle del pack"
 				component={PackDetail}
+			/>
+				<stack.Screen
+				name="detalle de la experiencia"
+				component={ExperienciaDetail}
 			/>
 		</stack.Navigator>
 	)
