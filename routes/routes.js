@@ -26,7 +26,9 @@ Router.route('/packs/:id')
 
 Router.route('/experiencias')
     .get(getExperiencias)
-    .post(addExperiencia)
+    
+Router.route('/adminUpload')
+    .post(passport.authenticate('jwt',{session: false}), addExperiencia)
 
 Router.route('/experiencias/:id')
     .get(getOneExperiencia)
