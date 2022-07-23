@@ -50,7 +50,7 @@ Router.route('/verificar/:string')
 Router.route('/experiencias/comment')
     .post(passport.authenticate("jwt", { session: false }), AddComment)
 
-Router.route('/experiencias/modifcomment')
+Router.route('/modifcomment')
     .put(passport.authenticate('jwt', { session: false }),
         UpdateComment)
 

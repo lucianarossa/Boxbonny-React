@@ -14,7 +14,8 @@ const commentsControllers = {
 	
 	},
 	UpdateComment: async(req,res)=>{
-		const {idComentario,comentario } = req.body.comentario
+		// console.log("reqqq", req.body)
+		const {idComentario,comentario } = req.body
 		try {
 				const nuevoComentario = await Experiencia.findOneAndUpdate({"comentarios._id":idComentario}, {$set: {"comentarios.$.comentario": comentario,"comentarios.$.fecha": Date.now() }}, {new: true}).populate("comentarios.idUsuario", {nombre:1, apellido:1, imagen:1})
 				res.json({ success: true, response:{nuevoComentario}, message:"El comentario se actualizo exitosamente" })
