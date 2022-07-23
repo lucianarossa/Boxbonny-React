@@ -7,7 +7,7 @@
   background-color: #F6F7EB;
 }
 .titlePacks{
-  width: 45%;
+  width: 100%;
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
   text-align: center;
   border-bottom: 2px solid #FF8E72;
   padding-bottom: 3rem;
-  margin-left: 2rem;
+  
 }
 
 .selecciona-experiencias{
@@ -153,3 +153,25 @@
   background: #ff8e72;
   color: #f5f5f5;
  }
+/* Filtro de precios */
+.inputPrecios{
+  z-index: 50000;
+}
+.container-izq{
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  margin-left: 2rem;
+}
+.filtro-precios{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container-filtro-precios{
+  justify-content: center;
+  
+}
+.texto-filtro-precios{
+  text-align: center;
+}

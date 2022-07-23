@@ -22,17 +22,20 @@ export default function PackDetails() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const pack = useSelector(store => store.packsReducer.getOnePack)
-    console.log(pack)
 
 
     const provincias = ["Buenos Aires", "Córdoba", "Mendoza"]
     const [select, setSelect] = useState("")
-    console.log(select);
+    
+    
+    const [inputSearch, setInputSearch] = useState("")
+    console.log(inputSearch);
     useEffect(()=>{
         // experienciasActions.filterExperiencia(select)
         packsActions.filterExperiencia(select)
     },[])
     let experiencias = pack.experiencias
+    console.log(experiencias)
 
     return (
         <div className="E-container-gral bg-[#F6F7EB]">
@@ -55,21 +58,23 @@ export default function PackDetails() {
                                 <option>{p}</option>
                                 )}
                             </select>
+                            <h2>O BUSCA UNA EXPERIENCIA POR SU NOMBRE</h2>
+                            <input type="text" onChange={(event)=>setInputSearch(event.target.value)}/>
                             </form>
                         </div>
                     </div>
                     <div className="contenedor-experiencias">
                         {select===""?
                         experiencias &&
-                        experiencias.map(xp =>
-                            <div class="e-card">
+                        experiencias.filter(city=>city.nombre.toLowerCase().startsWith(inputSearch.toLowerCase())).map(xp =>
+                            <div className="e-card">
                                 <div className="e-card-container">
                                     <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
                                 </div>
-                                <div class="e-card-info">
-                                    <div class="e-card-text">
-                                        <p class="e-text-title">{xp?.nombre}</p>
-                                        <p class="e-text-subtitle">{xp?.ciudad}</p>
+                                <div className="e-card-info">
+                                    <div className="e-card-text">
+                                        <p className="e-text-title">{xp?.nombre}</p>
+                                        <p className="e-text-subtitle">{xp?.ciudad}</p>
                                         <LinkRouter to={`/packs/oneexperience/${xp._id}`}>
                                             <button className="card-button e-card-button fontRaleway">CONOCE MAS</button>
                                         </LinkRouter>
@@ -78,15 +83,15 @@ export default function PackDetails() {
                             </div>):
                             experiencias&& 
                             select==="Todas las provincias"?
-                            experiencias.map(xp =>
-                                <div class="e-card">
+                            experiencias.filter(city=>city.nombre.toLowerCase().startsWith(inputSearch.toLowerCase())).map(xp =>
+                                <div className="e-card">
                                     <div className="e-card-container">
                                         <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
                                     </div>
-                                    <div class="e-card-info">
-                                        <div class="e-card-text">
-                                            <p class="e-text-title">{xp?.nombre}</p>
-                                            <p class="e-text-subtitle">{xp?.ciudad}</p>
+                                    <div className="e-card-info">
+                                        <div className="e-card-text">
+                                            <p className="e-text-title">{xp?.nombre}</p>
+                                            <p className="e-text-subtitle">{xp?.ciudad}</p>
                                             <LinkRouter to={`/packs/oneexperience/${xp._id}`}>
                                                 <button className="card-button e-card-button fontRaleway">CONOCE MAS</button>
                                             </LinkRouter>
@@ -94,15 +99,15 @@ export default function PackDetails() {
                                     </div>
                                 </div>):
                             experiencias &&
-                        experiencias.filter(city => city.ciudad === select).map(xp =>
-                                <div class="e-card">
+                        experiencias.filter(city => city.ciudad === select && city.nombre.toLowerCase().startsWith(inputSearch.toLowerCase())).map(xp =>
+                                <div className="e-card">
                                     <div className="e-card-container">
                                         <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
                                     </div>
-                                    <div class="e-card-info">
-                                        <div class="e-card-text">
-                                            <p class="e-text-title">{xp?.nombre}</p>
-                                            <p class="e-text-subtitle">{xp?.ciudad}</p>
+                                    <div className="e-card-info">
+                                        <div className="e-card-text">
+                                            <p className="e-text-title">{xp?.nombre}</p>
+                                            <p className="e-text-subtitle">{xp?.ciudad}</p>
                                             <LinkRouter to={`/packs/oneexperience/${xp._id}`}>
                                                 <button className="card-button e-card-button fontRaleway">CONOCE MAS</button>
                                             </LinkRouter>
