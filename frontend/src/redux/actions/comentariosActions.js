@@ -13,7 +13,7 @@ const comentariosActions = {
                 }
                 
             })
-            console.log("RESP ACTIONS",res)
+            // console.log("RESP ACTIONS",res)
 
             return res.data
 
@@ -24,15 +24,16 @@ const comentariosActions = {
     },
 
     UpdateComment: (comentario) => {
+        console.log("COMENTARIO",comentario)
         const token = localStorage.getItem('token')
         return async (dispatch, getState) => {
             try{
-                const res = await axios.put("https://boxbonny-back.herokuapp.com/api/experiencias/modifcomment", { ...comentario }, {
+                const res = await axios.put("https://boxbonny-back.herokuapp.com/api/modifcomment", {...comentario }, {
                     headers: {
                         'Authorization': 'Bearer '+token
                     }
                 })
-                console.log(res)
+                console.log("RESACTIONS",res)
 
                 dispatch({
                     type: 'message',

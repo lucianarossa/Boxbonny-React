@@ -3,7 +3,7 @@ import "../styles/OneExperience.css"
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import experienciasActions from "../redux/actions/experienciasActions"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom"
 import Comments from "../components/Comments"
 
@@ -14,13 +14,18 @@ const OneExperience = () => {
   
     const { id } = useParams()
     const dispatch = useDispatch()
+    const [reload, setReload] = useState(false)
 
     useEffect(() => {
         dispatch(experienciasActions.getOneExperiencia(id))
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [reload])
+
+    function reloadChanger(){
+        setReload(!reload)
+      }
+
     const exp = useSelector(store => store.experienciasReducer.getOneExperiencia)
-    console.log("EXPPPP", exp)
    
 
     return (
@@ -35,7 +40,7 @@ const OneExperience = () => {
                             <h2 className="l-card-name">{exp?.nombre}</h2>
                         </div>
                     </div>
-                 <Comments/>
+                 <Comments reloadChanger={reloadChanger}/>
                 </div>
                 <div className="experienceBody">
                     <h2 className="titleExp">DESCRIPCION</h2>

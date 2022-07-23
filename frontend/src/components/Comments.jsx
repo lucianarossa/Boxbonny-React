@@ -9,13 +9,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react";
 import comentariosActions from "../redux/actions/comentariosActions"
 import ModifyComment from "../components/ModifyComment"
-// import toast from "react-hot-toast"
+import toast from "react-hot-toast"
 // import { Link as LinkRouter } from "react-router-dom"
 
 
 
 
-function Comments() {
+function Comments({reloadChanger}) {
 
     const [open, setOpen] = React.useState(false);
     const handleClose = () => {
@@ -43,13 +43,20 @@ function Comments() {
     //AGREGAR COMENTARIO
 
     async function agregarCommentarioUsuario(event) {
+        event.preventDefault()
         const comentario = {
             experiencia: experiencia._id,
             comentario: inputText,
         }
         const res = await dispatch(comentariosActions.AddComment(comentario))
         inputTextElement.current.innerText = ""
-        // reloadChanger()
+        reloadChanger()
+        
+        if (res.success) {
+            toast(res.message)
+        } else {
+            toast.error(res.message)
+        }
     }
 
     return (
@@ -72,14 +79,14 @@ function Comments() {
                     <div className="l-comments-container">
                         {/* si el usuario no es el que hizo el comentario */}
 
-                        {comentario?.idUsuario !== usuario?.id ?
+                        {comentario?.idUsuario._id !== usuario?.id ?
 
                             <>
                                 <div className='l-usuario-container'>
-                                    {/* <div className='l-avatar'>
-                                        <Avatar alt="Remy Sharp" src={comentario.idUsuario.imagen} />
-                                        <p className='l-nombreusuario'>{comentario.idUsuario.nombre}</p>
-                                    </div> */}
+                                    <div className='l-avatar'>
+                                        <Avatar alt="Remy Sharp" src={comentario.idUsuario?.imagen} />
+                                        <p className='l-nombreusuario'>{comentario.idUsuario?.nombre} {comentario.idUsuario?.apellido}</p>
+                                    </div>
 
                                     <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
                                     {/* <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly /> */}
@@ -87,7 +94,7 @@ function Comments() {
                                 <div className="comment-box-commented">{comentario.comentario}</div>
                             </>
                             :
-                            <ModifyComment comentario={comentario} />
+                            <ModifyComment comentario={comentario} reloadChanger={reloadChanger}/>
                         }
                     </div>
                 )}
