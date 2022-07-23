@@ -25,6 +25,7 @@ const experienciasControllers = {
 		let error = null
 		try {
 			experiencia = await Experiencia.findOne({ _id: id })
+			.populate("comentarios.idUsuario", {nombre:1, apellido:1, imagen:1})
 		} catch (err) {
 			error = err
 			console.error(error)
