@@ -21,9 +21,6 @@ app.use('/api', Router);
 if(process.env.NODE_ENV === 'production'){
 
     app.use(express.static('storage/experiencias'))
-    app.get('*', (req,res)=>{
-        res.sendFile(path.join(__dirname+"/storage/experiencias/index.html"))
-    })
 }
 
 
