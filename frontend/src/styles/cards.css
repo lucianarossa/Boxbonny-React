@@ -196,11 +196,13 @@
   width: 60%;
   margin: 1rem;
   font-size: 1.2rem;
+  height: 1.5rem;
 }
 
 .label-checkbox {
   font-family: "Poppins";
-  padding-right: 3rem;
+  padding-left: 3rem;
+ 
 }
 
 input[type="checkbox"]:checked + label {
