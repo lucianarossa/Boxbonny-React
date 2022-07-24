@@ -47,23 +47,24 @@ const PacksComponent = () => {
                     filtroPrecio === undefined ?
                     packs?.map((pack, index) =>
                         <div className="card" key={index}>
-                            <h2 className="text-title">{pack.nombre}</h2>
+                            <h2 className="text-title">{pack?.nombre}</h2>
                             <video className="card-img" autoPlay loop muted>
-                                <source src={pack.imagen} type='video/mp4' />
+                                <source src={pack?.imagen} type='video/mp4' />
                             </video>
-                            {/* <img className="card-img" src={pack.imagen} alt="Card" /> */}
                             <div className="card-info font-bold fontRaleway">
-                                <p className="text-body">{pack.descripcion}</p>
+                                <p className="text-body">{pack?.descripcion}</p>
                                 <LinkRouter to={`packdetails/${pack._id}`}><button className="card-button fontRaleway">VER PACK</button></LinkRouter>
                             </div>
                         </div>) :
                     packs &&
-                    packs.filter(Pack => Pack.Precio <= filtroPrecio).map((pack, index) =>
+                    packs?.filter(Pack => Pack.Precio <= filtroPrecio).map((pack, index) =>
                         <div className="card" key={index}>
-                            <h2 className="text-title">{pack.nombre}</h2>
-                            <img className="card-img" src={pack.imagen} alt="Card" />
+                            <h2 className="text-title">{pack?.nombre}</h2>
+                            <video className="card-img" autoPlay loop muted>
+                                <source src={pack?.imagen} type='video/mp4' />
+                            </video>
                             <div className="card-info font-bold fontRaleway">
-                                <p className="text-body">{pack.descripcion}</p>
+                                <p className="text-body">{pack?.descripcion}</p>
                                 <LinkRouter to={`packdetails/${pack._id}`}>
                                     <button className="card-button fontRaleway">VER PACK</button>
                                 </LinkRouter>
