@@ -6,7 +6,7 @@ const packsControllers = require('../controllers/packsControllers');
 const { getPacks, getOnePack, addPack, modifyPack, removePack } = packsControllers
 
 const experienciasControllers = require('../controllers/experienciasControllers');
-const { getExperiencias, getOneExperiencia, addExperiencia, modifyExperiencia, removeExperiencia,multiplesExperiencias } = experienciasControllers
+const { getExperiencias, getOneExperiencia, addExperiencia, modifyExperiencia, removeExperiencia, multiplesExperiencias } = experienciasControllers
 
 const usuariosControllers = require('../controllers/usuariosControllers');
 const { registrarse, inicioSesion, verificarToken, verificarMail } = usuariosControllers
@@ -28,7 +28,9 @@ Router.route('/packs/:id')
 
 Router.route('/experiencias')
     .get(getExperiencias)
-    .post(addExperiencia)
+    
+Router.route('/adminUpload')
+    .post(passport.authenticate('jwt',{session: false}), addExperiencia)
 
 Router.route('/experiencias/:id')
     .get(getOneExperiencia)
@@ -47,15 +49,15 @@ Router.route('/verificarToken')
 Router.route('/verificar/:string')
     .get(verificarMail)
 
-Router.route('/experiencias/comment/:id')
-    .post(passport.authenticate("jwt", { session: false }),
-        DeleteComment) //controlar el nombre
-    
 Router.route('/experiencias/comment')
-    .post(passport.authenticate("jwt", { session: false }),
-        AddComment)
+    .post(passport.authenticate("jwt", { session: false }), AddComment)
+
+Router.route('/modifcomment')
     .put(passport.authenticate('jwt', { session: false }),
         UpdateComment)
+
+Router.route('/experiencias/comment/:id')
+    .post(passport.authenticate("jwt", { session: false }), DeleteComment) //controlar el nombre
 
 
 Router.route("/multiplesExperiencias")
