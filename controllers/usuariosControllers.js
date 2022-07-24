@@ -7,7 +7,7 @@ const crypto = require('crypto');
 
 const usuariosControllers = {
     registrarse: async (req, res) => {
-				console.log(req.body);
+        console.log(req.body);
         const { nombre, apellido, email, contraseña, imagen, from } = req.body.data; //utilizo "data" en la action de logueo
         try {
             const usuarioExiste = await Usuario.findOne({ email });  //si el usuario existe
@@ -24,7 +24,7 @@ const usuariosControllers = {
                     const passwordhashed = bcryptjs.hashSync(contraseña, 10);
                     usuarioExiste.contraseña.push(passwordhashed);
                     usuarioExiste.from.push(from);
-                    usuarioExiste.verificarion = true;
+                    usuarioExiste.verification = true;
                     await usuarioExiste.save();
                     res.json({
                         success: true,
@@ -74,7 +74,7 @@ const usuariosControllers = {
     },
     inicioSesion: async (req, res) => { //para iniciar sesion
         const { email, password, from } = req.body.logueado;
-				console.log(req.body.logueado)
+        console.log(req.body.logueado)
         try {
             const usuarioExiste = await Usuario.findOne({ email });
             if (!usuarioExiste) {
@@ -96,7 +96,7 @@ const usuariosControllers = {
                             contraseña: usuarioExiste.contraseña,
                             imagen: usuarioExiste.imagen,
                             from: usuarioExiste.from,
-														rol: usuarioExiste.rol,
+                            rol: usuarioExiste.rol,
                         };
                         await usuarioExiste.save();
                         const token = jwt.sign({ ...usuarioData },
@@ -126,7 +126,7 @@ const usuariosControllers = {
                             contraseña: usuarioExiste.contraseña,
                             imagen: usuarioExiste.imagen,
                             from: usuarioExiste.from,
-														rol: usuarioExiste.rol,
+                            rol: usuarioExiste.rol,
                         };
                         await usuarioExiste.save();
                         const token = jwt.sign({ ...usuarioData },
@@ -170,7 +170,7 @@ const usuariosControllers = {
         await usuario.save()
         res.json({
             success: true,
-            message:"Hasta pronto "+usuario.nombre
+            message: "Hasta pronto " + usuario.nombre
         })
     },
     verificarToken: (req, res) => {
@@ -178,14 +178,14 @@ const usuariosControllers = {
             res.json({
                 success: true,
                 response: {
-									usuarioData: {
+                    usuarioData: {
                         id: req.usuario.id,
                         nombre: req.usuario.nombre,
                         apellido: req.usuario.apellido,
                         email: req.usuario.email,
                         imagen: req.usuario.imagen,
                         from: "token"
-									}
+                    }
                 },
                 message: "Hola! Bienvenido de vuelta " + req.usuario.nombre
             })
