@@ -60,7 +60,7 @@ function ModifyComment({ comentario, reloadChanger }) {
 
     return (
         <>
-            <div className="l-comments-container">
+            <div className="l-commentsmodif-container">
                 <div className='l-usuario-container'>
                     <div className='l-avatar'>
                         <Avatar alt="Remy Sharp" src={comentario.IdUsuario?.imagen} />

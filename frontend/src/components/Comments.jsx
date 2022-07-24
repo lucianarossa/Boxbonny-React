@@ -10,7 +10,7 @@ import { useState } from "react";
 import comentariosActions from "../redux/actions/comentariosActions"
 import ModifyComment from "../components/ModifyComment"
 import toast from "react-hot-toast"
-// import { Link as LinkRouter } from "react-router-dom"
+import { Link as LinkRouter } from "react-router-dom"
 
 
 
@@ -133,7 +133,10 @@ function Comments({reloadChanger}) {
                     </>
                     :
                     <div className="login-button-box">
-                        <p className="invitation"> INGRESA Y DEJANOS TU COMENTARIO</p>
+                        <p className="invitation"> SI DISFRUTASTE DE ESTA EXPERIENCIA, QUEREMOS CONOCER TU OPINION!</p>
+                        <LinkRouter to={"/signin"}>
+                        <button className="card-button l-card-button-comments fontRaleway">INGRESA</button>
+                        </LinkRouter>
                     </div>
                 }
             </Backdrop >

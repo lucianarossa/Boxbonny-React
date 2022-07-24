@@ -8,10 +8,10 @@
 
 .MuiBackdrop-root {
     width: 800px !important;
-    height: 800px !important;
     background-color: #f6f7ebc6 !important;
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
 }
 
 .l-comments-container {
@@ -19,19 +19,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80%;
-    margin-top: 2rem;
-    border: 1px solid black;
-    background-color: white;
-    padding: 2rem;
+    width: 100%;
+    margin: .5rem !important;
+    background-color: rgba(255, 255, 255, 0.774);
+    padding: .5rem;
+    border-radius: 20px;
+}
+.l-commentsmodif-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 20px;
 }
 
 .l-usuario-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding: 1rem;
+    width: 90%;
+    padding: .5rem;
 }
 
 .l-avatar {
@@ -47,17 +55,19 @@
 }
 
 .comment-box {
-    width: 460px;
-    border: 1px solid #393E41 !important;
-    border-radius: 20px;
+    width: 40rem;
+    border: .5px solid #393E41 !important;
+    border-radius: 15px;
     background-color: white !important;
-    padding: 1rem;
+    padding: .5rem;
+    padding-left: 1rem;
+    font-size: .9rem !important;
 }
 
 .comment-box-commented {
-    width: 460px;
-    background-color: white !important;
+    width: 80%;
     padding: 1rem;
+    font-size: .9rem !important;
 }
 
 .l-textraiting {
@@ -79,8 +89,40 @@
     width: 100%;
     justify-content: flex-end;
     gap: 1rem;
-    margin: 1rem;
+    margin: .5rem;
 } 
+ .l-btnclose{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    
+ }
+
+ .login-button-box{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    font-family: "Raleway";
+    font-weight: bolder;
+ }
+
+ .invitation{
+    font-size: 1.5rem;
+    padding-bottom: 2rem;
+    text-align: center;
+    padding: 2rem;
+ }
+
+ .l-card-button-comments{
+    padding: 1.5rem;
+    font-size: 1.2rem;
+ }
 
 
 

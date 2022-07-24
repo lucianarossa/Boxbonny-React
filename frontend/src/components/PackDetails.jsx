@@ -32,6 +32,7 @@ export default function PackDetails() {
     useEffect(()=>{
         // experienciasActions.filterExperiencia(select)
         packsActions.filterExperiencia(select)
+        // eslint-disable-next-line
     },[])
     let experiencias = pack.experiencias
     console.log(experiencias)
@@ -48,16 +49,18 @@ export default function PackDetails() {
                 <div className="filter-cards-container">
                     <div className="filtro-provincias">
                         <div>
-                            <form>
+                            <form className="formulario-filter">
                             <label className='filter-title'>ELEGI DONDE DISFRUTAR TU EXPERIENCIA</label>
+                          
                             <select className='select-filter' onChange={(event)=> setSelect(event.target.value)}>
                                 <option value={"Todas las provincias"}>Todas las provincias</option>
                                 {provincias.map(p =>
                                 <option key={p._id}>{p}</option>
                                 )}
                             </select>
-                            <h2>O BUSCA UNA EXPERIENCIA POR SU NOMBRE</h2>
-                            <input type="text" onChange={(event)=>setInputSearch(event.target.value)}/>
+                          
+                            <h2 className='filter-title-filter'>BUSCA UNA EXPERIENCIA POR SU NOMBRE</h2>
+                            <input className='select-filter' type="text" placeholder="Experiencia..." onChange={(event)=>setInputSearch(event.target.value)}/>
                             </form>
                         </div>
                     </div>
