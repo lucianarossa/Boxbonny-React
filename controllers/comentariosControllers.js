@@ -17,7 +17,7 @@ const commentsControllers = {
 		// console.log("reqqq", req.body)
 		const {idComentario,comentario, rating } = req.body
 		try {
-				const nuevoComentario = await Experiencia.findOneAndUpdate({"comentarios._id":idComentario}, {$set: {"comentarios.$.comentario": comentario, "comentarios.$.raiting": rating,"comentarios.$.fecha": Date.now() }}, {new: true}).populate("comentarios.idUsuario", {nombre:1, apellido:1, imagen:1})
+				const nuevoComentario = await Experiencia.findOneAndUpdate({"comentarios._id":idComentario}, {$set: {"comentarios.$.comentario": comentario, "comentarios.$.rating": rating,"comentarios.$.fecha": Date.now() }}, {new: true}).populate("comentarios.idUsuario", {nombre:1, apellido:1, imagen:1})
 				res.json({ success: true, response:{nuevoComentario}, message:"El comentario se actualizo exitosamente" })
 	
 		}
@@ -40,27 +40,28 @@ const commentsControllers = {
 
 
 	CheckRating: async (req, res) => {
-        const id = req.params.id //LLEGA X PARAM DESDE AXIOS (ID)
+        const idComentario = req.params.id //LLEGA X PARAM DESDE AXIOS (ID)
         const user = req.user._id //LLEGA X RESP DE PASSPORT
       
 
-        await Experiencia.findOne({_id:id}) // buscamos LA EXP que su obj id sea igual al q pasamos x parametro
+        await Experiencia.findOne({_id:idComentario}) // buscamos LA EXP que su obj id sea igual al q pasamos x parametro
 
-        .then((experiencia) => {
-            console.log("EXPERIENCIA",experiencia)
+        .then((comentario) => {
+            // console.log("EXPERIENCIA",experiencia)
 
-            if (experiencia.comentarios.includes(user)){ 
-                Experiencia.findOneAndUpdate({_id:id}, {$pull: {rating:user}}, {new: true}) //si incluye el user, buscamos la exp y el comentario p/ actualizarlo x id y utilizamos el metodo pull de mongo (extraer), para extraer el rating del user y devolver el nuevo user//
-                .then((response) => res.json({success:true,  response: response.rating, message: "Cambiamos tu valoracion!"}))//devolvemos resp/ PARA ALERTA
+            if (comentario.includes(user)){ 
+
+                Experiencia.findOneAndUpdate({_id:idComentario}, {$pull: {rating:user}}, {new: true}) 
+                .then((response) => res.json({success:true,  response: response.rating, message: "Cambiamos tu valoracion!"}))
                 .catch((error) => console.log(error))
 
-            } else { //si la prop like de iti no incluye el user
-                Experiencia.findOneAndUpdate({_id:id}, {$push: {likes:user}}, {new: true}) //busca el iti y le hace push (agregar) el like del user /LIKEAR ($push llama al metodo)
-                .then((response) => res.json({success:true, response: response.likes, message: "Gracias por tu valoracion!"}))
+            } else { 
+                Experiencia.findOneAndUpdate({_id:idComentario}, {$push: {rating:user}}, {new: true}) 
+                .then((response) => res.json({success:true, response: response.rating, message: "Gracias por tu valoracion!"}))
                 .catch((error) => console.log(error))
             }
         })
-        .catch((error) => res.json({success: false, response: error, message: "Algo no fu bien, intenta en unos minutos!"}))
+        .catch((error) => res.json({success: false, response: error, message: "Algo no fue bien, intenta en unos minutos!"}))
        
     },
 }
