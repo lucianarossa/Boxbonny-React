@@ -6,13 +6,6 @@
     margin-top: 2rem !important;
 }
 
-.MuiBackdrop-root {
-    width: 800px !important;
-    background-color: #f6f7ebc6 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-}
 
 .MuiPaper-root{
 max-width: 90% !important;
