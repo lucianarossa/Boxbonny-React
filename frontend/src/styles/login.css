@@ -235,7 +235,10 @@
   .right_panel .content {
     transform: translateX(800px);
   }
-
+.m-nombreAvatar{
+  font-size:0.5em;
+  
+}
   /* ANIMATION */
 
 .containerRegistro.sign_up_mode:before {
