@@ -2,8 +2,9 @@ import React from 'react'
 // import axios from 'axios'
 import { useState } from 'react'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 // import {useNavigate} from 'react-router-dom'
+
 
 import experienciasActions from '../redux/actions/experienciasActions'
 
@@ -11,12 +12,14 @@ function Upload() {
     // const [state, setState] = useState([])
     const dispatch = useDispatch()
     // const navigate = useNavigate()
-
+    
 
     const sortedStates = ['Buenos Aires', 'Cordoba', 'Mendoza']
 
-    const packs = ['Adventure', 'Gourmet & Drinks', 'Spa & Relax', 'Friends & Play', 'Random']
+    // const packss = ['Adventure', 'Gourmet & Drinks', 'Spa & Relax', 'Friends & Play', 'Random']
 
+    const packs = useSelector(store => store.packsReducer.packs)
+    console.log("packs",packs);
     const [files, setFiles] = useState()
 
     async function handleSubmit(event) {
@@ -26,6 +29,7 @@ function Upload() {
         const file = await files[0]
         console.log(files);
         const pack = await event.target[0].value
+        console.log("ID PACK", pack);
         const nameExperience = await event.target[1].value
         const description = await event.target[2].value
         const include = await event.target[3].value
@@ -73,8 +77,8 @@ function Upload() {
                                         {packs.map((pack, index) => (
                                             <option
                                                 key={index}
-                                                value={pack}
-                                            >{pack}</option>
+                                                value={pack._id}
+                                            >{pack.nombre}</option>
                                         ))}
                                     </select>
                                 </div>
