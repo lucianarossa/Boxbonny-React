@@ -25,9 +25,17 @@ const experienciasActions = {
    addExperiencia: (formData) => {
       const token = localStorage.getItem('token')
       return async(dispatch, getState) => {
-         const res = await axios.post("https://boxbonny-back.herokuapp.com/api/experiencias", formData,
+         const res = await axios.post("https://boxbonny-back.herokuapp.com/api/adminUpload", formData,
          {headers:{
-            Authotization: "Bearer "+token
+            "Authorization": "Bearer "+token
+         }
+      })
+      dispatch({
+         type:'message',
+         payload:{
+            view: true,
+            message: res.data.message,
+            success: res.data.success
          }
       })
       return res
