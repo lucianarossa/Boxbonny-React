@@ -3,12 +3,13 @@ import { useDispatch } from "react-redux"
 import { useState } from "react";
 import comentariosActions from "../redux/actions/comentariosActions";
 import Avatar from '@mui/material/Avatar';
-import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import "../styles/Comments.css"
 import toast from 'react-hot-toast';
+import Rating from '@mui/material/Rating';
 
 function ModifyComment({ comentario, reloadChanger }) {
+    // console.log("COMENTARIO", comentario)
 
 
     const [modify, setModify] = useState()
@@ -59,7 +60,7 @@ function ModifyComment({ comentario, reloadChanger }) {
                         <Avatar alt="Remy Sharp" src={comentario.IdUsuario?.imagen} />
                         <p className='l-nombreusuario'>{comentario.idUsuario?.nombre} {comentario.idUsuario?.apellido}</p>
                     </div>
-                    <Rating name="half-rating" defaultValue={1} precision={1} />
+                    <Rating name="half-rating-read" defaultValue={comentario.raiting} precision={1} readOnly />
                 </div>
                 <Box
                     component="form"

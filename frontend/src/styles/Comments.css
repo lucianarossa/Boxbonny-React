@@ -124,6 +124,18 @@
     font-size: 1.2rem;
  }
 
+ .valoracion-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .rating-text{
+    color: #393E41;
+    padding-bottom: 1rem;
+    font-family: "Poppins";
+ }
 
 
 

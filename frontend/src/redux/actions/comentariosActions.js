@@ -75,7 +75,7 @@ const comentariosActions = {
 
     },
 
-    CheckRaiting: (id) => { //RECIBE EL ID DE LA EXP COMO PARAM
+    CheckRating: (id) => { //RECIBE EL ID DE LA EXP COMO PARAM
         const token = localStorage.getItem("token") //LEVANTO EL TOKEN
         return async (dispatch) => {
             try {

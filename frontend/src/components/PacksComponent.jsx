@@ -53,6 +53,7 @@ const PacksComponent = () => {
                             </video>
                             <div className="card-info font-bold fontRaleway">
                                 <p className="text-body">{pack?.descripcion}</p>
+                                <p className="text-body">PRECIO: ${pack?.Precio}</p>
                                 <LinkRouter to={`packdetails/${pack._id}`}><button className="card-button fontRaleway">VER PACK</button></LinkRouter>
                             </div>
                         </div>) :
@@ -65,6 +66,7 @@ const PacksComponent = () => {
                             </video>
                             <div className="card-info font-bold fontRaleway">
                                 <p className="text-body">{pack?.descripcion}</p>
+                                <p className="text-body">PRECIO: ${pack?.Precio}</p>
                                 <LinkRouter to={`packdetails/${pack._id}`}>
                                     <button className="card-button fontRaleway">VER PACK</button>
                                 </LinkRouter>
