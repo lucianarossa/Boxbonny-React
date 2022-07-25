@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { MdShoppingBasket } from "react-icons/md";
 import { Link as LinkRouter, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux';
 import usuariosActions from '../redux/actions/usuariosActions';
@@ -10,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import { MenuItem } from '@mui/material';
 import "../styles/login.css";
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import Badge from '@mui/material/Badge';
 
 
 
@@ -21,12 +22,11 @@ export default function Nav() {
   // console.log("usuario", usuario);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const products=useSelector(store => store.shoppingReducer.productos)
   async function desloguearse() {
     await dispatch(usuariosActions.desloguearse())
       .then(navigate("/desloguearse", { replace: true }))
       //me lleva de nuevo al home al hacer sign out
-
   }
 
   const handleOpenUserMenu = (event) => {
@@ -71,13 +71,10 @@ export default function Nav() {
                     className="relative flex items-center justify-center"
                     to="/cart"
                   >
-                    <MdShoppingBasket className="text-textColor text-2xl hover:text-[#FF8E72] cursor-pointer" />
-
-                    <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
-                      <p className="text-xs text-white font-semibold">
-                        {/* {cartItems.length} */}
-                      </p>
-                    </div>
+                       <Badge color="error" badgeContent={products.shopping?.length}>
+                       <ShoppingCartOutlinedIcon/>      
+                       </Badge>
+              
 
                   </LinkRouter>
                 </li>
