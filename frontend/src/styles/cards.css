@@ -6,6 +6,17 @@
   background-color: #F6F7EB;
 }
 
+@media(max-width: 600px){
+  .superContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #F6F7EB;
+  }
+}
+
 .titlePacks {
   width: 100%;
   margin-top: 1.5rem;
@@ -23,11 +34,51 @@
 
 }
 
+@media(max-width: 720px){
+  .titlePacks {
+    width: 90%;
+    padding: 2rem;
+  
+  }
+}
+
+@media(max-width:770px){
+  .subtitle-cards {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
+@media(max-width: 400px){
+  .subtitle-cards {
+    width: 100%;
+    font-size: .8rem;
+  } 
+}
+
 .selecciona-experiencias {
   width: 100%;
   margin-top: 4rem;
   font-size: 1.5rem;
   color: #FF8E72;
+}
+
+@media(max-width:770px){
+  .selecciona-experiencias {
+    width: 100%;
+    margin-top: 4rem;
+    font-size: 1rem;
+    color: #FF8E72;
+  }
+}
+
+@media(max-width:400px){
+  .selecciona-experiencias {
+    width: 100%;
+    margin-top: 4rem;
+    font-size: .7rem;
+    color: #FF8E72;
+  }
 }
 
 .titleCards {
@@ -42,6 +93,20 @@
   letter-spacing: .5rem;
 }
 
+@media(max-width:770px){
+  .titleCards {
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+    font-family: 'Poppins';
+    font-weight: bolder;
+    font-size: 4rem;
+    text-shadow: 0px 8px 45px grey;
+    color: #F6F7EB;
+    text-align: center;
+    letter-spacing: .5rem;
+  }
+}
+
 .containerPacks {
   display: flex;
   justify-content: center;
@@ -50,7 +115,7 @@
   margin-top: 2rem;
   padding-bottom: 3rem;
   flex-grow: 1;
-  width: 70%;
+  width: 90%;
 }
 
 /* From uiverse.io by @alexruix */
@@ -67,6 +132,40 @@
   transition: 0.4s ease-out;
   box-shadow: 0px 12px 15px grey;
 
+}
+
+@media(max-width:1024px){
+  .card {
+    width: 13rem;
+    margin: 1rem;
+    height: 15rem;
+    border-radius: 2em;
+    padding: 1.9rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    transition: 0.4s ease-out;
+    box-shadow: 0px 12px 15px grey;
+  
+  }
+}
+
+@media(max-width:450px){
+  .card {
+    width: 13rem;
+    margin: 1rem;
+    height: 15rem;
+    border-radius: 2em;
+    padding: 1.9rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    transition: 0.4s ease-out;
+    box-shadow: 0px 12px 15px grey;
+  
+  }
 }
 
 .card:before {
@@ -171,16 +270,56 @@
   margin-left: 2rem;
 }
 
+@media(max-width:600px){
+  .container-izq {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-left: 2rem;
+  }
+}
+
 .filtro-precios {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1rem;
+  width: 304px;
+  padding: 0 !important;
+  margin: 0!important;
 }
 
-.container-filtro-precios {
-  justify-content: center;
+@media(max-width: 600px){
+  .filtro-precios {
+    width: 300px;
+    padding: 0 !important;
+    margin: 0!important;
+  }
+}
 
+@media(max-width: 330px){
+  .filtro-precios {
+    width: 280px;
+    padding: 0 !important;
+    margin: 0!important;
+  }
+}
+
+
+.container-filtro-precios {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+}
+
+@media(max-width: 350px){
+  .container-filtro-precios {
+    justify-content: center;
+    width:100%;
+  
+  }
 }
 
 .texto-filtro-precios {
@@ -189,6 +328,16 @@
   font-size: 1rem;
   font-family: "Raleway";
   text-shadow: 0px 8px 45px grey;
+}
+
+@media(max-width:600px){
+  .texto-filtro-precios {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1rem;
+    font-family: "Raleway";
+    text-shadow: 0px 8px 45px grey;
+  }
 }
 
 .box-checkbox {
@@ -203,9 +352,7 @@
 
 .label-checkbox {
   font-family: "Poppins";
-  padding-left: 3rem;
-
-
+  width: 100%;
 }
 
 input[type="checkbox"]:checked+label {
@@ -236,9 +383,10 @@ input[type="checkbox"]+label {
   color: #393E41;
 }
 
+
+
 input[type="checkbox"]:checked+label {
   color: #FF8E72;
-  margin-right: 2rem;
 }
 
 input[type="checkbox"]:checked+label:after {
@@ -247,7 +395,7 @@ input[type="checkbox"]:checked+label:after {
   height: 10px;
   border: 4px solid #FF8E72;
   float: left;
-  margin-left: -2.80em;
+  margin-left: -3.1em;
   border-right: 0;
   border-top: 0;
   margin-top: 1em;

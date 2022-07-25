@@ -50,6 +50,17 @@ max-width: 90% !important;
     padding: .5rem;
 }
 
+@media(max-width:380px){
+    .l-usuario-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        gap: .5rem;
+    }
+}
+
 .l-avatar {
     width: 40%;
     display: flex;
@@ -62,6 +73,18 @@ max-width: 90% !important;
     font-size: .9rem;
 }
 
+@media(max-width:820px){
+    .l-nombreusuario {
+        font-size: .8rem;
+    }
+}
+
+@media(max-width:470px){
+    .l-nombreusuario {
+        font-size: .6rem;
+    }
+}
+
 .comment-box {
     width: 40rem;
     border: .5px solid #393E41 !important;
@@ -70,6 +93,27 @@ max-width: 90% !important;
     padding: .5rem;
     padding-left: 1rem;
     font-size: .9rem !important;
+}
+
+@media(max-width:820px){
+    .comment-box {
+        width: 20rem;
+        font-size: .7rem !important;
+    }
+}
+
+@media(max-width:470px){
+    .comment-box {
+        width: 15rem;
+        font-size: .6rem !important;
+    }
+}
+
+@media(max-width:360px){
+    .comment-box {
+        width: 12rem;
+        font-size: .6rem !important;
+    }
 }
 
 .comment-box-commented {
@@ -151,6 +195,18 @@ max-width: 90% !important;
  background-color: #393e4133 !important;
     
  }
+
+ @media(max-width: 470px){
+    .css-ryrseu-MuiRating-root{
+        font-size: 1rem !important;
+    }
+    .css-iljtu2-MuiRating-root{
+        font-size: 1rem !important;
+    }
+ }
+
+
+ 
 
 
 
