@@ -38,31 +38,5 @@ const commentsControllers = {
 		
 	},
 
-
-	CheckRating: async (req, res) => {
-        const idComentario = req.params.id //LLEGA X PARAM DESDE AXIOS (ID)
-        const user = req.user._id //LLEGA X RESP DE PASSPORT
-      
-
-        await Experiencia.findOne({_id:idComentario}) // buscamos LA EXP que su obj id sea igual al q pasamos x parametro
-
-        .then((comentario) => {
-            // console.log("EXPERIENCIA",experiencia)
-
-            if (comentario.includes(user)){ 
-
-                Experiencia.findOneAndUpdate({_id:idComentario}, {$pull: {rating:user}}, {new: true}) 
-                .then((response) => res.json({success:true,  response: response.rating, message: "Cambiamos tu valoracion!"}))
-                .catch((error) => console.log(error))
-
-            } else { 
-                Experiencia.findOneAndUpdate({_id:idComentario}, {$push: {rating:user}}, {new: true}) 
-                .then((response) => res.json({success:true, response: response.rating, message: "Gracias por tu valoracion!"}))
-                .catch((error) => console.log(error))
-            }
-        })
-        .catch((error) => res.json({success: false, response: error, message: "Algo no fue bien, intenta en unos minutos!"}))
-       
-    },
 }
 module.exports = commentsControllers
