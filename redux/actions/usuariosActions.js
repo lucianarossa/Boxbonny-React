@@ -1,4 +1,5 @@
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const usuariosActions = {
     registrarse: (data) => {
@@ -25,11 +26,11 @@ const usuariosActions = {
     inicioSesion: (logueado) => {
         return async (dispatch, getState) => {
             const res = await axios.post("https://boxbonny-back.herokuapp.com/api/inicioSesion", { logueado })
-            console.log(res.data.message)
+            console.log(res)
             //primero verifico que el success sea true
             if (res.data.success) {
-                localStorage.setItem("token", res.data.response.token) //tomo el token que le envie desde el back y lo envio al local storage
-                dispatch({ type: "USER", payload: res.data.response });
+								await AsyncStorage.setItem('@token', res.data.response.token)
+                dispatch({ type: "USER", payload: res.data.response.usuarioData });
             }
             dispatch({
                 type: 'MESSAGE',
@@ -46,7 +47,7 @@ const usuariosActions = {
 
     desloguearse: () => {
         return async (dispatch, getState) => {
-            localStorage.removeItem('token')
+					AsyncStorage.removeItem('@token')
             dispatch({
                 type: 'USER',
                 payload: null
@@ -55,10 +56,11 @@ const usuariosActions = {
     },
 
     verificarToken: (token) => {
+        console.log(token)
 
         return async (dispatch, getState) => {
 
-            await axios.get("https://boxbonny-back.herokuapp.com/verificarToken", {
+            await axios.get("https://boxbonny-back.herokuapp.com/api/verificarToken", {
                 headers: {
                     "Authorization": "Bearer " + token //el header espera una autoriz. metodo para autenticar y autozar el usuario
                 }
@@ -74,7 +76,7 @@ const usuariosActions = {
                                 success: res.data.success
                             }
                         });
-                    } else { localStorage.removeItem("token") }
+                    } else { AsyncStorage.removeItem('@token') }
                 }
 
 
@@ -89,7 +91,7 @@ const usuariosActions = {
                                 success: false
                             }
                         })
-                    localStorage.removeItem("token")
+												AsyncStorage.removeItem('@token')
                 })
         }
     }

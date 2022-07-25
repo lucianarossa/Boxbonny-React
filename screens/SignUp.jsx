@@ -20,7 +20,7 @@ export default function SignUp() {
 				>
 					<Text style={styles.titleCircle}>Querés iniciar sesión?</Text>
 					<Text style={styles.subtitleCircle}>Iniciá sesión para seguir regalando momentos inolvidables</Text>
-					<TouchableOpacity>
+					<TouchableOpacity onPress={() => navigation.navigate('inicio de sesión')}>
 						<Text style={styles.buttonCircle}>Inicia Sesión</Text>
 					</TouchableOpacity>
 
@@ -62,7 +62,7 @@ export default function SignUp() {
       />
 
 			<TouchableOpacity>
-				<Text style={styles.button}>Log In</Text>
+				<Text style={styles.button}>Registrate</Text>
 			</TouchableOpacity>
 			
 		</ScrollView>

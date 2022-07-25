@@ -1,44 +1,70 @@
-import {Text, StyleSheet, Pressable, ImageBackground, TouchableOpacity} from 'react-native'
+import {Text, StyleSheet, Pressable, TouchableOpacity, View} from 'react-native'
 import React,{useState} from 'react'
 import { useNavigation } from '@react-navigation/native';
-
+import {Video} from 'expo-av'
 export default function PackCard ({pack})  {
 	const navigation = useNavigation()
 	const [change, setChange] = useState(false);
 
 	return (
-		<Pressable onPress={()=> setChange(!change)} style={styles.card}>
+		<View>
+			<Video
+					style={styles.card}
+					source={{uri: pack.imagen}}
+					rate={1}
+					shouldPlay={true}
+					isLooping={true}
+					muted={true}
+					resizeMode="cover"
+				/>
+			<Pressable onPress={()=> setChange(!change)} style={styles.top}>
 			{change ? 
-			<ImageBackground source={{ uri: pack.imagen }} resizeMode="cover" style={styles.back}>
-				<Text style={styles.text}>{pack.nombre}</Text>
+			<>
 				<Text style={styles.description}>{pack.descripcion}</Text>
 				<TouchableOpacity onPress={() => navigation.navigate('detalle del pack',{ packId: pack._id})}>
 					<Text style={styles.button}>Ver pack</Text>
 				</TouchableOpacity>
-				</ImageBackground> :
-
-			 <ImageBackground source={{ uri: pack.imagen }} resizeMode="cover" style={styles.front}>
-					<Text style={styles.text}>{pack.nombre}</Text>
-				</ImageBackground>}
-		</Pressable>
+			</>:
+			<Text style={styles.text}>{pack.nombre}</Text>}
+				
+			</Pressable>
+		</View>
+	
+		
 	)
 }
 const styles = StyleSheet.create({
-  front: {
-		alignSelf: 'center',
-		width: '100%',
-		height: 400,
-	},
-	back:{
-		alignSelf: 'center',
-		justifyContent: 'space-around',
-		width: '100%',
-		height: 400,
-		opacity: .8
+  //front: {
+	//	alignSelf: 'center',
+	//	width: '100%',
+	//	height: 400,
+	//},
+	//back:{
+	//	alignSelf: 'center',
+	//	justifyContent: 'space-around',
+	//	width: '100%',
+	//	height: 400,
+	//	opacity: .8
 		
+	//},
+	top:{
+		position: 'absolute',
+		alignSelf: 'center',
+		backgroundColor: 'rgba(0, 0, 0, .3)',
+		padding: 10,
+		width: '80%',
+		height: 350,
+		marginHorizontal: 25,
+		borderRadius: 20,
+		marginBottom: 20,
+		overflow: 'hidden',
+		shadowColor: "#000"
 	},
 	card:{
+		alignSelf: 'center',
 		backgroundColor: 'black',
+		width: '80%',
+		height: 350,
 		marginHorizontal: 25,
 		borderRadius: 20,
 		marginBottom: 20,
@@ -53,8 +79,9 @@ const styles = StyleSheet.create({
 		elevation: 3,
 	},
 	text:{
-		marginTop: 10,
-		alignSelf: "center",
+		textAlign: 'center',
+		width: '100%',
+		position: 'absolute',
 		fontSize: 40,
 		fontWeight: "bold",
 		color: "white",
@@ -66,6 +93,7 @@ const styles = StyleSheet.create({
 		color: "white",
 		fontSize: 18,
 		textAlign: "center",
+		marginBottom: 20,	
 	},
 	button:{
 		zIndex: 2,

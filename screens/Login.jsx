@@ -1,29 +1,57 @@
 import React, {useState} from 'react'
-import { StyleSheet, Text, Button, View, TextInput, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text,KeyboardAvoidingView, TextInput, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
+import Toast from 'react-native-toast-message';
+import usuariosActions from '../redux/actions/usuariosActions';
+import { useDispatch } from 'react-redux'
+
 
 export default function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const navigation = useNavigation()
+	const dispatch = useDispatch()
+
+	const loginSubmit = async () =>{
+		const logueado = {
+			email: email,
+			password: password,
+			from: "formulario-inicio"
+		}
+		let res = await dispatch(usuariosActions.inicioSesion(logueado))
+		if (res.data.success) {
+			Toast.show({
+				type: 'success',
+				text1: 'Bienvenido 👋',
+				text2: res.data.message
+			});
+		}else{
+			Toast.show({
+				type: 'error',
+				text1: 'no se pudo completar el inicio de sesion',
+				text2: res.data.message
+			});
+			setEmail("")
+			setPassword("")
+		}
+	}
 
 	return (
-		<View style={styles.container}>
-			 <LinearGradient
-			 style={styles.top}
+		<KeyboardAvoidingView
+		style={styles.container}
+		behavior={Platform.OS === "ios" ? "padding" : "height"}>
+
+			<LinearGradient
+			style={styles.top}
         // Button Linear Gradient
         colors={['#e7a696', '#e79985', '#ee947d']}
 				>
 					<Text style={styles.titleCircle}>No tenés cuenta todavía?</Text>
 					<Text style={styles.subtitleCircle}>Registrate para empezar a regalar emociones</Text>
-					<TouchableOpacity>
+					<TouchableOpacity onPress={() => navigation.navigate('registro')}>
 						<Text style={styles.buttonCircle}>Registrate</Text>
 					</TouchableOpacity>
-
-
-
-
 				</LinearGradient>
 			
 			<TextInput
@@ -39,11 +67,11 @@ export default function Login() {
         placeholder="Password"
 				secureTextEntry={true}
       />
-			<TouchableOpacity>
+			<TouchableOpacity onPress={loginSubmit}>
 				<Text style={styles.button}>Log In</Text>
 			</TouchableOpacity>
 			
-		</View>
+		</KeyboardAvoidingView>
 	)
 }
 

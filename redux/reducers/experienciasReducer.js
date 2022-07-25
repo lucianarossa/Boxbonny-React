@@ -30,6 +30,11 @@ const experienciasReducer = (state = initialState, action) => {
                 ...state,
                 filter: filterExperiencia,
             }
+        case "GETEXPERIENCIASBYPACK":
+            return {
+                ...state,
+                getExperienciasByPack: action.payload
+            }
 
         default:
             return state

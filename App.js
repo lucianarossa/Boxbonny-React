@@ -4,6 +4,7 @@ import {configureStore}	 from '@reduxjs/toolkit'
 import mainReducer from './redux/reducers/mainReducer';
 import Navigation from './navigation/Navigation';
 import * as NavigationBar from 'expo-navigation-bar';
+import Toast from 'react-native-toast-message';
 
 export default function App() {
 	const reduxReducer = configureStore({reducer: mainReducer})
@@ -11,7 +12,9 @@ export default function App() {
 
   return (
 		<Provider store={reduxReducer}>
+			
 			<Navigation />
+			<Toast />
 		</Provider>
   );
 }

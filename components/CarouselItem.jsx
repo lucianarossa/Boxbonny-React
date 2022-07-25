@@ -1,14 +1,24 @@
 import { View, Text, Dimensions, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native'
 import React from 'react'
+import {Video} from 'expo-av'
+
 
 
 export default function CarouselItem({item}){
 
 	return (
 		<View>
-				<ImageBackground source={{ uri: item.imagen }} resizeMode="cover" style={styles.image}>
-					<Text style={styles.text}>{item.nombre}</Text>
-				</ImageBackground>
+				<Video
+					style={styles.video}
+					source={{uri: item.imagen}}
+					rate={1}
+					shouldPlay={true}
+					isLooping={true}
+					muted={true}
+					resizeMode="cover"
+				/>
+				<Text style={styles.text}>{item.nombre}</Text>
+				
 		</View>
 	)
 }
@@ -18,13 +28,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f8f0c9',
   },
-	image:{
+	video:{
 		flex: 1,
     justifyContent: "center",
 		width: Dimensions.get('window').width,
 		height: Dimensions.get('window').height/4
 	},
 	text:{
+		position: 'absolute',
+		marginTop: 20,
 		alignSelf: "center",
 		fontSize: 40,
 		fontWeight: "bold",
