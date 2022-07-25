@@ -12,7 +12,7 @@ const shoppingControllers = {
             res.json({
                 success: true,
                 response: { newCarrito },
-                message: "Producto añadido con éxito"
+                message: "Añadiste el producto correctamente 🛒"
             })
             console.log(newCarrito)
         }
@@ -20,7 +20,7 @@ const shoppingControllers = {
             console.log(error)
             res.json({
                 success: false,
-                message: "Perdón, no pudimos añadir el producto, intenta de vuelta"
+                message: "Perdón, no pudimos añadir el producto, intenta de vuelta 😞"
             })
         }
     },
@@ -74,14 +74,14 @@ const shoppingControllers = {
             await Shopping.findOneAndDelete({ _id: idProduct })
             res.json({
                 success: true,
-                message: "El producto ha sido eliminado"
+                message: "Eliminamos el producto 👍"
             })
         }
         catch (error) {
             console.log(error)
             res.json({
                 success: true,
-                message: "Perdón, no se pudo borrar el producto, intenta de vuelta"
+                message: "Perdón, no se pudo eliminar el producto, intenta de vuelta 😞"
             })
         }
     },
