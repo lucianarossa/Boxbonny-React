@@ -97,7 +97,7 @@ function Comments({ reloadChanger }) {
 
         <div className='l-dropdown'>
             {// eslint-disable-next-line
-            comentariosArray?.length ==! 0 ?
+            comentariosArray?.length !== 0 ?
                 <Button onClick={handleClickOpen('paper')} className="rating-text">VALORACION ENTRE {comentariosArray?.length} OPINIONES!
                     <Rating name="half-rating-read" value={RatingPromedio} precision={1} readOnly />
                 </Button> :
