@@ -2,6 +2,9 @@ import React, {useState} from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, ScrollView} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
+import usuariosActions from '../redux/actions/usuariosActions';
+import { useDispatch } from 'react-redux'
+import Toast from 'react-native-toast-message';
 
 export default function SignUp() {
 	const [nombre, setNombre] = useState("");
@@ -10,11 +13,49 @@ export default function SignUp() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const navigation = useNavigation()
+	const dispatch = useDispatch()
 
+	const signUpSubmit = async () => {
+		const data = {
+			nombre: nombre,
+			apellido: apellido,
+			email: email,
+			contraseña: password,
+			imagen: imagen,
+			from: "formulario-registro"
+		}
+		let res = await dispatch(usuariosActions.registrarse(data))
+        let errorSignUp = res.data.message
+        if (res.data.from === "validator") {
+            errorSignUp.forEach(e => {
+							Toast.show({
+								type: 'error',
+								text1: 'Ingreso incorrecto de datos',
+								text2: e.message
+							});
+            })
+        }else{
+					if (res?.data.success) {
+						Toast.show({
+							type: 'success',
+							text1: 'Registro exitoso',
+							text2: res.data.message
+						});
+						navigation.navigate('inicio de sesión')
+
+					} else {
+						Toast.show({
+							type: 'error',
+							text1: 'Registro incorrecto',
+							text2: res.data.message
+						});
+					}
+				} 
+	}
 	return (
 		<ScrollView style={styles.container}>
-			 <LinearGradient
-			 style={styles.top}
+			<LinearGradient
+			style={styles.top}
         // Button Linear Gradient
         colors={['#e7a696', '#e79985', '#ee947d']}
 				>
@@ -23,12 +64,7 @@ export default function SignUp() {
 					<TouchableOpacity onPress={() => navigation.navigate('inicio de sesión')}>
 						<Text style={styles.buttonCircle}>Inicia Sesión</Text>
 					</TouchableOpacity>
-
-
-
-
 				</LinearGradient>
-			
 				<TextInput
         style={styles.form}
         onChangeText={setNombre}
@@ -61,7 +97,7 @@ export default function SignUp() {
 				secureTextEntry={true}
       />
 
-			<TouchableOpacity>
+			<TouchableOpacity onPress={signUpSubmit}>
 				<Text style={styles.button}>Registrate</Text>
 			</TouchableOpacity>
 			

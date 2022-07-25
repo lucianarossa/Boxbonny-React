@@ -65,18 +65,19 @@ export default function MyTabs(){
 				
 				<Tab.Screen name="cuenta" component={Cuenta} options={{
 																													tabBarIcon: ({color, size}) =>
-																													(<Image  style={{width: 35,
-																														height: 35,
-																														marginTop: 10,
+																													(<Image  style={{width: 30,
+																														height: 30,
+																														marginTop: 5,
+																														marginBottom: 5,
 																														borderRadius: 150 / 2,
 																														overflow: "hidden",
-																														borderWidth: 2,
+																														borderWidth: 1,
     																												borderColor: "#FF8E72"
 																														}} source={user ==null 
 																															? require('../assets/user.jpg') : 
 																															{uri: user.imagen}}
 																														/>),
-																														tabBarLabel: ''
+																														tabBarLabel: user?.nombre
 				}}/>
 			</Tab.Navigator>																											
 	)

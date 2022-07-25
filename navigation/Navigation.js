@@ -9,12 +9,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Navigation(){
 	const dispatch = useDispatch()
+	const getToken = async () => {
+		const token = await AsyncStorage.getItem('@token')
+		if(token !== null) {
+			dispatch(usuariosActions.verificarToken(token))
+		}
+	}
 	useEffect(() => {
 		dispatch(packsActions.getPacks())
-		const token = AsyncStorage.getItem('@token')
-    if(token !== null) {
-			dispatch(usuariosActions.verificarToken(token))
-    }
+		getToken()
 	},[])
 
 	return(
