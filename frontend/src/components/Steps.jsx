@@ -11,7 +11,7 @@ export default function Steps() {
         <div className="max-w-70% fontRaleway text-base" >
         <p className="m-3" >En un mundo en el que todos corremos detrás del tiempo, vivir experiencias en lugar de obsequiar bienes materiales parece más que nunca la mejor elección.</p>
           <p className="m-3" >Todos nuestros packs están repletos de emoción y quien los disfrute podrá elegir la experiencia que desee.</p>
-          <p className="ml-3" >¿Y por qué experiencias? <br /></p>
+          <p className="ml-3" ><strong>¿Y por qué experiencias? <br /></strong></p>
           <p className="m-3" > Porque los momentos de felicidad son los que recordaremos por siempre.</p>
           <p className="m-3 box-bonny"><strong>Boxbonny. Experiencias que crean recuerdos!.</strong></p>
         </div>

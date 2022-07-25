@@ -11,13 +11,16 @@ import comentariosActions from "../redux/actions/comentariosActions"
 import ModifyComment from "../components/ModifyComment"
 import toast from "react-hot-toast"
 import { Link as LinkRouter } from "react-router-dom"
+import StarRating from "../components/StarRating"
+
 
 
 
 
 function Comments({reloadChanger}) {
 
-    const [open, setOpen] = React.useState(false);
+
+    const [open, setOpen] = useState(false);
     const handleClose = () => {
         setOpen(false);
     };
@@ -63,8 +66,9 @@ function Comments({reloadChanger}) {
 
         <div className='l-dropdown'>
             <Button onClick={handleToggle}>
-                <p className='l-textraiting'>Raiting Promedio entre: 10 opiniones</p>
-                <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly />
+                {/* <p className='l-textraiting'>Raiting Promedio entre: 10 opiniones</p> */}
+                <StarRating/>
+                {/* <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly /> */}
             </Button>
             <Backdrop
                 sx={{ color: 'black', backgroundColor: "white", zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -87,9 +91,7 @@ function Comments({reloadChanger}) {
                                         <Avatar alt="Remy Sharp" src={comentario.idUsuario?.imagen} />
                                         <p className='l-nombreusuario'>{comentario.idUsuario?.nombre} {comentario.idUsuario?.apellido}</p>
                                     </div>
-
-                                    <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
-                                    {/* <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly /> */}
+                                    <Rating name="half-rating-read" defaultValue={1} precision={1} readOnly />
                                 </div>
                                 <div className="comment-box-commented">{comentario.comentario}</div>
                             </>
@@ -111,8 +113,7 @@ function Comments({reloadChanger}) {
                                     <p className='l-nombreusuario'>{usuario?.nombre} {usuario?.apellido}</p>
                                 </div>
 
-                                <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
-                                {/* <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly /> */}
+                                <Rating name="half-rating" defaultValue={1} precision={1} />
                             </div>
                             <Box
                                 component="form"

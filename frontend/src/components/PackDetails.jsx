@@ -59,7 +59,7 @@ export default function PackDetails() {
                                 )}
                             </select>
                           
-                            <h2 className='filter-title-filter'>BUSCA UNA EXPERIENCIA POR SU NOMBRE</h2>
+                            <h2 className='filter-title-filter'>BUSCA UNA EXPERIENCIA</h2>
                             <input className='select-filter' type="text" placeholder="Experiencia..." onChange={(event)=>setInputSearch(event.target.value)}/>
                             </form>
                         </div>

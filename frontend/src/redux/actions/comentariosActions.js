@@ -73,7 +73,35 @@ const comentariosActions = {
             return res
         }
 
-    }
+    },
+
+    CheckRaiting: (id) => { //RECIBE EL ID DE LA EXP COMO PARAM
+        const token = localStorage.getItem("token") //LEVANTO EL TOKEN
+        return async (dispatch) => {
+            try {
+                let response = await axios.put(`https://boxbonny-back.herokuapp.com/api/rating/${id}`, {}, //ESPERA EL PUT DE AXIOS, PRIMER PARAMETRO OBJETO VACIO(PARA OCUPAR EL LUGAR DE BODY Y NO TOME EL HEADER COMO BODY) Y LUEGO EL HEADER
+                {headers: {
+                    Authorization: "Bearer "+ token
+                }
+            })
+            dispatch({
+                type: 'message',
+                payload: {
+                    view: true,
+                    message: response.data.message,
+                    success: response.data.success
+                }
+            })
+     
+            return response.data
+       
+     
+            }catch (error) {
+                console.log(error)
+            }
+            
+        }
+     }
 }
 
 export default comentariosActions

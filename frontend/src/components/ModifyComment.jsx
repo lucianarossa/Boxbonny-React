@@ -49,13 +49,6 @@ function ModifyComment({ comentario, reloadChanger }) {
             toast.error(res.data.message)
         }
 
-
-
-        // if (res.data.success) {
-        //     toast(res.data.message)
-        // } else {
-        //     toast.error(res.data.message)
-        // }
     }
 
     return (
@@ -66,9 +59,7 @@ function ModifyComment({ comentario, reloadChanger }) {
                         <Avatar alt="Remy Sharp" src={comentario.IdUsuario?.imagen} />
                         <p className='l-nombreusuario'>{comentario.idUsuario?.nombre} {comentario.idUsuario?.apellido}</p>
                     </div>
-
-                    <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
-                    {/* <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly /> */}
+                    <Rating name="half-rating" defaultValue={1} precision={1} />
                 </div>
                 <Box
                     component="form"
