@@ -25,11 +25,11 @@ const usuariosActions = {
     inicioSesion: (logueado) => {
         return async (dispatch, getState) => {
             const res = await axios.post("https://boxbonny-back.herokuapp.com/api/inicioSesion", { logueado })
-            console.log(res.data.message)
+            console.log(res)
             //primero verifico que el success sea true
             if (res.data.success) {
                 localStorage.setItem("token", res.data.response.token) //tomo el token que le envie desde el back y lo envio al local storage
-                dispatch({ type: "USER", payload: res.data.response });
+                dispatch({ type: "USER", payload: res.data.response.usuarioData });
             }
             dispatch({
                 type: 'MESSAGE',
@@ -55,10 +55,11 @@ const usuariosActions = {
     },
 
     verificarToken: (token) => {
+        console.log(token)
 
         return async (dispatch, getState) => {
 
-            await axios.get("https://boxbonny-back.herokuapp.com/verificarToken", {
+            await axios.get("https://boxbonny-back.herokuapp.com/api/verificarToken", {
                 headers: {
                     "Authorization": "Bearer " + token //el header espera una autoriz. metodo para autenticar y autozar el usuario
                 }

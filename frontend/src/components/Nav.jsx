@@ -1,16 +1,20 @@
 
-import { MdShoppingBasket } from "react-icons/md";
 import { Link as LinkRouter } from "react-router-dom"
-import "../styles/nav.css"
+import { useSelector } from 'react-redux'
+
+
 
 
 export default function Nav() {
+
+  const products = useSelector(store => store.shoppingReducer.productos)
+
   return (
     <header className="sticky top-0  z-50  bg-[#F6F7EB]">
       <div className="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-1 md:flex md:items-center md:gap-12">
-            <img className="logo" src="https://i.imgur.com/Xi3X0wB.png" alt="logo" />
+            <img className="logo w-[12rem] h-[12rem]" src="https://i.imgur.com/Xi3X0wB.png" alt="logo" />
           </div>
 
           <div className="md:flex md:items-center md:gap-12">
@@ -40,13 +44,7 @@ export default function Nav() {
                     className="relative flex items-center justify-center"
                     to="/cart"
                   >
-                    <MdShoppingBasket className="text-textColor text-2xl hover:text-[#FF8E72] cursor-pointer" />
-
-                    <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
-                      <p className="text-xs text-white font-semibold">
-                        {/* {cartItems.length} */}
-                      </p>
-                    </div>
+                    <span className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-pink-200 dark:text-pink-900">{products.shopping?.length}</span>
 
                   </LinkRouter>
                 </li>

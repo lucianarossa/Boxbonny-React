@@ -1,4 +1,4 @@
-import "../styles/nav.css"
+
 
 
 export default function Footer() {

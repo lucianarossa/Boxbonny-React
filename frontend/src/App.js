@@ -16,7 +16,8 @@ import PackDetails from './components/PackDetails';
 import { Toaster } from 'react-hot-toast';
 import ScrollToTop from "react-scroll-to-top";
 import {BsFillArrowUpCircleFill} from 'react-icons/bs'
-
+import usuariosActions from './redux/actions/usuariosActions';
+import shoppingActions from './redux/actions/shoppingActions';
 
 function App() {
 
@@ -24,6 +25,12 @@ function App() {
 
   useEffect(() => {
     dispatch(packsActions.getPacks())
+    dispatch(shoppingActions.getUserProducts())
+    dispatch(shoppingActions.deleteProduct())
+    if(localStorage.getItem('token') !== null){
+      const token = localStorage.getItem("token")
+      dispatch(usuariosActions.verificarToken(token))
+    }
     // eslint-disable-next-line
   }, [])
 

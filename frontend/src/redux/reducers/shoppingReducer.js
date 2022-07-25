@@ -1,14 +1,14 @@
 const initialState = {
-    products: [],
+    productos: [],
     one: []
 }
 
 const productReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case 'GET_PRO':
             return {
                 ...state,
-                products: action.payload
+                productos: action.payload
             }
         case 'GET_ONE':
             return {
