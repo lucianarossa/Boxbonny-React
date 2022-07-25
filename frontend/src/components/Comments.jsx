@@ -15,6 +15,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useEffect } from 'react';
 
 
 
@@ -23,6 +24,7 @@ function Comments({ reloadChanger }) {
 
     const [open, setOpen] = useState(false);
     const [scroll, setScroll] = useState('paper');
+    const [value, setValue] = useState(null);
 
     const handleClickOpen = (scrollType) => () => {
         setOpen(true);
@@ -48,6 +50,11 @@ function Comments({ reloadChanger }) {
     // console.log("EXPERIENCIA", experiencia)
     const usuario = useSelector(store => store.usuariosReducer.user)
     // console.log("USUARIO", usuario)
+    let comentariosArray = experiencia.comentarios
+    // console.log("COMENTARIOS", comentariosArray)
+    const RatingsSuma = comentariosArray?.map(item => item.rating).reduce((prev, curr) => prev + curr, 0);
+    const RatingPromedio = Math.ceil(RatingsSuma / comentariosArray?.length)
+    // console.log("PROMEDIO", RatingPromedio)
 
 
 
@@ -59,17 +66,25 @@ function Comments({ reloadChanger }) {
         setInputText(event.currentTarget.textContent)
     }
 
+
     //AGREGAR COMENTARIO
+
+    useEffect(() => {
+
+
+    })
 
     async function agregarCommentarioUsuario(event) {
         event.preventDefault()
         const comentario = {
             experiencia: experiencia._id,
             comentario: inputText,
+            rating: value
         }
         const res = await dispatch(comentariosActions.AddComment(comentario))
         inputTextElement.current.innerText = ""
         reloadChanger()
+        setValue(null)
 
         if (res.success) {
             toast(res.message)
@@ -81,9 +96,15 @@ function Comments({ reloadChanger }) {
     return (
 
         <div className='l-dropdown'>
-            <Button onClick={handleClickOpen('paper')} className="rating-text">VALORACION PROMEDIO
-                <Rating name="half-rating-read" defaultValue={null} precision={1} readOnly />
-            </Button>
+            {// eslint-disable-next-line
+            comentariosArray?.length !== 0 ?
+                <Button onClick={handleClickOpen('paper')} className="rating-text">VALORACION ENTRE {comentariosArray?.length} OPINIONES!
+                    <Rating name="half-rating-read" value={RatingPromedio} precision={1} readOnly />
+                </Button> :
+                <Button onClick={handleClickOpen('paper')} className="rating-text">NADIE VALORO ESTA EXPERIENCIA AUN!
+                    <Rating name="half-rating-read" value={RatingPromedio} precision={1} readOnly />
+                </Button>
+            }
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -111,7 +132,7 @@ function Comments({ reloadChanger }) {
                                                 <Avatar alt="Remy Sharp" src={comentario.idUsuario?.imagen} />
                                                 <p className='l-nombreusuario'>{comentario.idUsuario?.nombre} {comentario.idUsuario?.apellido}</p>
                                             </div>
-                                            <Rating name="half-rating-read" defaultValue={comentario.rating} precision={1} readOnly />
+                                            <Rating name="half-rating-read" value={comentario.rating} precision={1} readOnly />
                                         </div>
                                         <div className="comment-box-commented">{comentario.comentario}</div>
                                     </>
@@ -132,7 +153,11 @@ function Comments({ reloadChanger }) {
                                             <Avatar alt="Remy Sharp" src={usuario?.imagen} />
                                             <div className='l-nombreusuario'>{usuario?.nombre} {usuario?.apellido}</div>
                                         </div>
-                                        <Rating name="half-rating-read" defaultValue={null} precision={1} />
+                                        <Rating name="simple-controlled"
+                                            value={value}
+                                            onChange={(event, newValue) => {
+                                                setValue(newValue);
+                                            }} />
                                     </div>
                                     <Box
                                         component="form"
@@ -163,7 +188,7 @@ function Comments({ reloadChanger }) {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button className= "button-cerrar" onClick={handleClose}>CERRAR ❌</Button>
+                    <Button className="button-cerrar" onClick={handleClose}>CERRAR ❌</Button>
                 </DialogActions>
             </Dialog>
 
