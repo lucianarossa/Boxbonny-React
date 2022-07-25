@@ -7,7 +7,7 @@ const crypto = require('crypto');
 
 const usuariosControllers = {
     registrarse: async (req, res) => {
-				console.log(req.body);
+        console.log(req.body);
         const { nombre, apellido, email, contraseña, imagen, from } = req.body.data; //utilizo "data" en la action de logueo
         try {
             const usuarioExiste = await Usuario.findOne({ email });  //si el usuario existe
@@ -74,7 +74,7 @@ const usuariosControllers = {
     },
     inicioSesion: async (req, res) => { //para iniciar sesion
         const { email, password, from } = req.body.logueado;
-				console.log(req.body.logueado)
+        console.log(req.body.logueado)
         try {
             const usuarioExiste = await Usuario.findOne({ email });
             if (!usuarioExiste) {
@@ -170,7 +170,7 @@ const usuariosControllers = {
         await usuario.save()
         res.json({
             success: true,
-            message:"Hasta pronto "+usuario.nombre
+            message: "Hasta pronto " + usuario.nombre
         })
     },
     verificarToken: (req, res) => {

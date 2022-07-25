@@ -14,6 +14,8 @@ const { registrarse, inicioSesion, verificarToken, verificarMail } = usuariosCon
 const comentariosControllers = require('../controllers/comentariosControllers');
 const { AddComment, UpdateComment, DeleteComment, CheckRating } = comentariosControllers
 
+const shoppingControllers = require('../controllers/shoppingControllers');
+const { addProduct, getUserProducts, getOneProduct, deleteProduct } = shoppingControllers
 
 Router.route('/packs')
     .get(getPacks)
@@ -67,6 +69,13 @@ Router.route("/multiplesExperiencias")
     .post(multiplesExperiencias)
 
 
+Router.route("/shopping")
+.post(passport.authenticate('jwt', {session: false}), addProduct)
+.get(passport.authenticate('jwt', {session: false}),getUserProducts)
+
+Router.route("/shopping/:id")
+.get(passport.authenticate('jwt', {session: false}), getOneProduct)
+.delete(passport.authenticate('jwt', {session: false}), deleteProduct)
 
 
 module.exports = Router
