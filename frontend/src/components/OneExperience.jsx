@@ -3,8 +3,10 @@ import "../styles/OneExperience.css"
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import experienciasActions from "../redux/actions/experienciasActions"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom"
+import Comments from "../components/Comments"
+
 
 
 const OneExperience = () => {
@@ -12,13 +14,19 @@ const OneExperience = () => {
   
     const { id } = useParams()
     const dispatch = useDispatch()
+    const [reload, setReload] = useState(false)
 
     useEffect(() => {
         dispatch(experienciasActions.getOneExperiencia(id))
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [reload])
+
+    function reloadChanger(){
+        setReload(!reload)
+      }
+
     const exp = useSelector(store => store.experienciasReducer.getOneExperiencia)
-    console.log("EXPPPPPPP", exp)
+   
 
     return (
         <>
@@ -27,19 +35,20 @@ const OneExperience = () => {
                 <div className="l-card-container">
                     <div className="l-exp-card">
                         <div className="overlay"></div>
-                        <img width="100%" className="l-card-img" src={exp.imagen} alt="experience" />
+                        <img width="100%" className="l-card-img" src={exp?.imagen} alt="experience" />
                         <div className="l-card-text">
-                            <h2 className="l-card-name">{exp.nombre}</h2>
+                            <h2 className="l-card-name">{exp?.nombre}</h2>
                         </div>
                     </div>
+                 <Comments reloadChanger={reloadChanger}/>
                 </div>
                 <div className="experienceBody">
                     <h2 className="titleExp">DESCRIPCION</h2>
-                    <p className="subtitleExp">{exp.descripcion}</p>
+                    <p className="subtitleExp">{exp?.descripcion}</p>
                     <h2 className="titleExp">¿QUE INCLUYE?</h2>
-                    <p className="subtitleExp">{exp.incluye}</p>
+                    <p className="subtitleExp">{exp?.incluye}</p>
                     <h2 className="titleExp">UBICACION</h2>
-                    <p className="subtitleExp">{exp.direccion}</p>
+                    <p className="subtitleExp">{exp?.direccion}</p>
                     <h2 className="titleExp">RESERVA ESTA EXPERIENCIA</h2>
                     <p className="subtitleExp">contacto@boxbonny.com</p>
                 </div>

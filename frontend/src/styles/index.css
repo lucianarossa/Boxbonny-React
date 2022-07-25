@@ -26,4 +26,18 @@ body {
   display: initial;
 }
 
+.text-base{
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2rem;
+}
+.box-bonny{
+  padding: .5rem;
+  font-size: 1.5rem;
+  padding-top: 1.5rem;
+}
+.mt-10{
+  margin-top: 4rem;
+}
+
 
