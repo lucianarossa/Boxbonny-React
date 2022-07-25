@@ -23,7 +23,7 @@ function StarRating({comentario}) {
     return (
 
         <div className="rating-container">
-             <p className="rating-text">VALORACION {rating}</p>
+             <div className="rating-text">VALORACION {rating}</div>
             <div className="stars-container">
 
                 {/* ESTE MAPEO CREA LAS 5 ESTRELLAS */}

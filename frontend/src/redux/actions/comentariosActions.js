@@ -24,7 +24,7 @@ const comentariosActions = {
     },
 
     UpdateComment: (comentario) => {
-        console.log("COMENTARIO",comentario)
+        // console.log("COMENTARIO",comentario)
         const token = localStorage.getItem('token')
         return async (dispatch, getState) => {
             try{
