@@ -15,8 +15,8 @@
 }
 
 .pack-titulo {
-    width: 40%;
-    margin-right: 2rem;
+    width: 30%;
+    margin-right: 5rem;
     margin-top: 3rem;
 }
 
@@ -65,8 +65,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: space-between;
-    width: 60%;
     margin-right: 2rem;
+    width: 70%;
+    height: 100%;
 }
 
 .filtro-provincias {
@@ -74,6 +75,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
+    height: 20%;
 }
 
 
@@ -83,6 +85,7 @@
     margin: 2vh;
     flex-wrap: wrap;
     padding-top: 5vh;
+    height: 80%;
 }
 
 
