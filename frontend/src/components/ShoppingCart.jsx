@@ -8,9 +8,20 @@ export default function ShoppingCart() {
   const dispatch = useDispatch()
   const products = useSelector(store => store.shoppingReducer.productos)
 
+  async function toModify(event) {
+    event.preventDefault()
+    const product = {
+        productId: event.target.id,
+        cantidad: event.target.value
+    }
+    dispatch(shoppingActions.modifyProduct(product)) 
+       setReload(!reload)
+}
 
-  async function toDelete(prod) {
-     dispatch(shoppingActions.deleteProduct(prod))
+  async function toDelete(event) {
+    const idProducto = event.target.id
+     dispatch(shoppingActions.deleteProduct(idProducto))
+     dispatch(shoppingActions.getUserProducts())
     setReload(!reload)
   }
 
@@ -39,21 +50,16 @@ export default function ShoppingCart() {
                   </div>
                   <div className="flex flex-col justify-between ml-4 flex-grow">
                     <span className="font-bold text-sm">{prod.idPack?.nombre}</span>
-                    <button href="#" onClick={()=>toDelete(prod._id)} className="text-start font-semibold hover:text-red-500 text-gray-500 text-xs">🗑️Eliminar</button>
-
+                    <button onClick={toDelete} id={prod?._id} className="text-start font-semibold hover:text-red-500 text-gray-500 text-xs">🗑️Eliminar</button>
                   </div>
                 </div>
                 <div className="flex justify-center w-1/5">
                   <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
                   </svg>
-
-                  <input className="mx-2 border text-center w-8" type="text" />
                   <div className="div4-products">
-                    {/* <input id={prod.idPack?._id} className="custom-input-products" type="number" onChange={toModify}  defaultValue="1" min="1" max="100"/> */}
+                    <input id={prod?._id} className="custom-input-products" type="number" onChange="" defaultValue={prod.cantidad} min="1" max="100"/>
                   </div>
-                  <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
-                    <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-                  </svg>
+
                 </div>
                 <span className="text-center w-1/5 font-semibold text-sm">${prod.idPack?.Precio}</span>
                 <span className="text-center w-1/5 font-semibold text-sm">$400.00</span>

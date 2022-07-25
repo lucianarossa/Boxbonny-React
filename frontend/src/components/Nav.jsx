@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import { MenuItem } from '@mui/material';
 import "../styles/login.css";
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import Badge from '@mui/material/Badge';
 
 
 
@@ -25,7 +27,6 @@ export default function Nav() {
     await dispatch(usuariosActions.desloguearse())
       .then(navigate("/desloguearse", { replace: true }))
       //me lleva de nuevo al home al hacer sign out
-
   }
 
   const handleOpenUserMenu = (event) => {
@@ -70,7 +71,10 @@ export default function Nav() {
                     className="relative flex items-center justify-center"
                     to="/cart"
                   >
-                    <span className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-pink-200 dark:text-pink-900">{products.shopping?.length}</span>
+                       <Badge color="error" badgeContent={products.shopping?.length}>
+                       <ShoppingCartOutlinedIcon/>      
+                       </Badge>
+              
 
                   </LinkRouter>
                 </li>
