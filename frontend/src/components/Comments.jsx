@@ -15,6 +15,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useEffect } from 'react';
 
 
 
@@ -23,6 +24,7 @@ function Comments({ reloadChanger }) {
 
     const [open, setOpen] = useState(false);
     const [scroll, setScroll] = useState('paper');
+    const [value, setValue] = useState(null);
 
     const handleClickOpen = (scrollType) => () => {
         setOpen(true);
@@ -59,13 +61,20 @@ function Comments({ reloadChanger }) {
         setInputText(event.currentTarget.textContent)
     }
 
+
     //AGREGAR COMENTARIO
+
+    useEffect(() =>{
+
+        
+    })
 
     async function agregarCommentarioUsuario(event) {
         event.preventDefault()
         const comentario = {
             experiencia: experiencia._id,
             comentario: inputText,
+            rating: value
         }
         const res = await dispatch(comentariosActions.AddComment(comentario))
         inputTextElement.current.innerText = ""
@@ -111,7 +120,7 @@ function Comments({ reloadChanger }) {
                                                 <Avatar alt="Remy Sharp" src={comentario.idUsuario?.imagen} />
                                                 <p className='l-nombreusuario'>{comentario.idUsuario?.nombre} {comentario.idUsuario?.apellido}</p>
                                             </div>
-                                            <Rating name="half-rating-read" defaultValue={comentario.rating} precision={1} readOnly />
+                                            <Rating name="half-rating-read" value={comentario.rating} precision={1} readOnly />
                                         </div>
                                         <div className="comment-box-commented">{comentario.comentario}</div>
                                     </>
@@ -132,7 +141,11 @@ function Comments({ reloadChanger }) {
                                             <Avatar alt="Remy Sharp" src={usuario?.imagen} />
                                             <div className='l-nombreusuario'>{usuario?.nombre} {usuario?.apellido}</div>
                                         </div>
-                                        <Rating name="half-rating-read" defaultValue={null} precision={1} />
+                                        <Rating name="simple-controlled"
+                                            value={value}
+                                            onChange={(event, newValue) => {
+                                                setValue(newValue);
+                                            }} />
                                     </div>
                                     <Box
                                         component="form"
@@ -163,7 +176,7 @@ function Comments({ reloadChanger }) {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button className= "button-cerrar" onClick={handleClose}>CERRAR ❌</Button>
+                    <Button className="button-cerrar" onClick={handleClose}>CERRAR ❌</Button>
                 </DialogActions>
             </Dialog>
 

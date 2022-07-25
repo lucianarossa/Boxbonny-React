@@ -44,7 +44,7 @@ const PacksComponent = () => {
             <div className="container-izq">
                 <div className="titlePacks">
                     <h2 className="hover:animate-pulse titleCards">PACKS</h2>
-                    <h2 className="hover:animate-pulse">"No se envuelven, envuelven en una nueva experiencia a quien los recibe. Se guardan en la memoria y se convierten en uno de esos recuerdos que, como un buen vino, mejoran con el tiempo"</h2>
+                    <h2 className="hover:animate-pulse subtitle-cards">"No se envuelven, envuelven en una nueva experiencia a quien los recibe. Se guardan en la memoria y se convierten en uno de esos recuerdos que, como un buen vino, mejoran con el tiempo"</h2>
                     <h2 className="hover:animate-pulse selecciona-experiencias">SELECCIONA Y DESCUBRI LAS EXPERIENCIAS</h2>
                 </div>
                 <div className="container-filtro-precios">

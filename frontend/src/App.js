@@ -2,7 +2,7 @@ import './styles/App.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import { Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import packsActions from "./redux/actions/packsActions"
 import PacksPage from './pages/PacksPage';
@@ -15,18 +15,19 @@ import Checkout from './components/Checkout';
 import PackDetails from './components/PackDetails';
 import { Toaster } from 'react-hot-toast';
 import ScrollToTop from "react-scroll-to-top";
-import {BsFillArrowUpCircleFill} from 'react-icons/bs'
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+// import {BsFillArrowUpCircleFill} from 'react-icons/bs'
 import usuariosActions from './redux/actions/usuariosActions';
 import shoppingActions from './redux/actions/shoppingActions';
 
 function App() {
 
   const dispatch = useDispatch()
-
+const [reload , setReload] = useState(false)
   useEffect(() => {
     dispatch(packsActions.getPacks())
     dispatch(shoppingActions.getUserProducts())
-    dispatch(shoppingActions.deleteProduct())
+    setReload(!reload)
     if(localStorage.getItem('token') !== null){
       const token = localStorage.getItem("token")
       dispatch(usuariosActions.verificarToken(token))
@@ -69,7 +70,7 @@ function App() {
       <ScrollToTop
         style={{ backgroundColor: "#ff8e72" }}
         smooth
-        component={<BsFillArrowUpCircleFill className='svg-scroll' fontSize="large" />}
+        component={<ExpandLessIcon />}
       />
     </div>
   );
