@@ -68,7 +68,6 @@ Router.route('/experiencias/comment/:id')
 Router.route("/multiplesExperiencias")
     .post(multiplesExperiencias)
 
-
 Router.route("/shopping")
 .post(passport.authenticate('jwt', {session: false}), addProduct)
 .get(passport.authenticate('jwt', {session: false}),getUserProducts)
