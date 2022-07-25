@@ -12,7 +12,7 @@ const usuariosControllers = require('../controllers/usuariosControllers');
 const { registrarse, inicioSesion, verificarToken, verificarMail } = usuariosControllers
 
 const comentariosControllers = require('../controllers/comentariosControllers');
-const { AddComment, UpdateComment, DeleteComment } = comentariosControllers
+const { AddComment, UpdateComment, DeleteComment, CheckRating } = comentariosControllers
 
 
 Router.route('/packs')
@@ -26,14 +26,19 @@ Router.route('/packs/:id')
 
 Router.route('/experiencias')
     .get(getExperiencias)
-    
+
 Router.route('/adminUpload')
-    .post(passport.authenticate('jwt',{session: false}), addExperiencia)
+    .post(passport.authenticate('jwt', { session: false }), addExperiencia)
 
 Router.route('/experiencias/:id')
     .get(getOneExperiencia)
     .delete(removeExperiencia)
     .put(modifyExperiencia)
+
+    //ruta rating
+
+Router.route("/rating/:id")
+    .put(passport.authenticate("jwt", { session: false }), CheckRating)//primero pasa x passport, me devuelve el ID, y luego al controll RATING
 
 Router.route('/registrarse')
     .post(validator, registrarse)
@@ -60,6 +65,8 @@ Router.route('/experiencias/comment/:id')
 
 Router.route("/multiplesExperiencias")
     .post(multiplesExperiencias)
+
+
 
 
 module.exports = Router

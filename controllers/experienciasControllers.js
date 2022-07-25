@@ -148,40 +148,6 @@ const experienciasControllers = {
 	},
 	
 
-	likeDislike: async (req, res) => {
-		const id = req.params.id
-		const usuario = req.usuario.id //por respuesta de passport
-
-		await Experiencia.findOne({ _id: id })
-			.then((experiencia) => {
-				if (experiencia.likes.includes(usuario)) {
-					Experiencia.findOneAndUpdate({ _id: id }, { $pull: { likes: usuario } }, { new: true })
-						.then((response) =>
-							res.json({
-								success: true,
-								response: response.likes,
-								message: "Dislike"
-							}))
-						.catch((error) => console.log(error))
-				} else {
-					Experiencia.findOneAndUpdate({ _id: id }, { $push: { likes: usuario } }, { new: true })
-						.then((response) =>
-							res.json({
-								success: true,
-								response: response.likes,
-								message: "Gracias por tu like!"
-							}))
-						.catch((error) => console.log(error))
-				}
-			})
-			.catch((error) =>
-				res.json({
-					success: false,
-					response: error,
-					message: "Algo salió mal, por favor intenta de nuevo más tarde"
-				}))
-
-	},
 
 }
 
