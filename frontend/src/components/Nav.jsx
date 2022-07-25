@@ -1,39 +1,35 @@
 import React, { useState } from 'react';
-import { MdShoppingBasket } from "react-icons/md";
 import { Link as LinkRouter, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux';
 import usuariosActions from '../redux/actions/usuariosActions';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
-import avatarNoUsuario from '../assets/images/avatarNoUsuario.png';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import { MenuItem } from '@mui/material';
 import "../styles/login.css";
 
+
+
 export default function Nav() {
-  const [anchorElNav, setAnchorElNav] = useState(null);
+
+
   const [anchorElUser, setAnchorElUser] = useState(null);
   const usuario = useSelector(store => store.usuariosReducer.user);
-  console.log("usuario", usuario);
+  // console.log("usuario", usuario);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const products=useSelector(store => store.shoppingReducer.productos)
   async function desloguearse() {
     await dispatch(usuariosActions.desloguearse())
-      .then(navigate("/desloguearse", { replace: true, message: "👋" }))//me lleva de nuevo al home al hacer sign out
+      .then(navigate("/desloguearse", { replace: true }))
+      //me lleva de nuevo al home al hacer sign out
+
   }
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = () => {
@@ -74,40 +70,33 @@ export default function Nav() {
                     className="relative flex items-center justify-center"
                     to="/cart"
                   >
-                    <MdShoppingBasket className="text-textColor text-2xl hover:text-[#FF8E72] cursor-pointer" />
-
-                    <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
-                      <p className="text-xs text-white font-semibold">
-                        {/* {cartItems.length} */}
-                      </p>
-                    </div>
+                    <span className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-pink-200 dark:text-pink-900">{products.shopping?.length}</span>
 
                   </LinkRouter>
                 </li>
               </ul>
             </nav>
             <div className="flex items-center gap-4 fontPoppins ">
-              <div className="sm:gap-4 sm:flex">
-                <LinkRouter
-                  className="px-5 py-2.5 text-sm font-medium text-white bg-[#FF8E72] rounded-md hover:text-[#393E41] shadow"
-                  to="signin"
-                >
-                  Ingresá
-                </LinkRouter>
-
-
-              </div>
               {/* avatar usuario */}
               <Box sx={{ flexGrow: 0 }}>
                 <div>
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     {usuario ? <Box sx={{ display: 'flex', flexDirection: 'column', WebkitJustifyContent: 'center', color: '#FF8E72', alignItems: 'center', }} >
-                      <Avatar alt="imagen del usuario" src={usuario?.imagen} sx={{ width: 40, height: 40 }} sm={{ width: 30, height: 30 }} />
+                      <Avatar alt="imagen del usuario" src={usuario?.imagen} sx={{ width: 30, height: 30 }} sm={{ width: 30, height: 30 }} />
                       <p className="m-nombreAvatar">{usuario?.nombre}</p>
                     </Box>
                       :
-                      <Box sx={{ display: 'flex', flexDirection: 'column', WebkitJustifyContent: 'center', alignItems: 'center', color: 'white' }} > <Avatar alt="avatar no logueado" src={avatarNoUsuario} /></Box>
-
+                      <>
+                        <div className="sm:gap-4 sm:flex">
+                          <LinkRouter
+                            className="px-5 py-2.5 text-sm font-medium text-white bg-[#FF8E72] rounded-md hover:text-[#393E41] shadow"
+                            to="signin"
+                          >
+                            Ingresá
+                          </LinkRouter>
+                        </div>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', WebkitJustifyContent: 'center', alignItems: 'center', color: 'white', paddingLeft: "2rem" }} > <Avatar alt="avatar no logueado" src={"https://i.imgur.com/F6TK2Lu.png"} sx={{ width: 35, height: 35 }}/></Box>
+                      </>
                     }
                   </IconButton>
                 </div>
@@ -141,26 +130,6 @@ export default function Nav() {
                   }
                 </Menu>
               </Box>
-              <div className="block md:hidden">
-                <button
-                  className="p-2 text-gray-600 transition bg-gray-100 rounded hover:text-gray-600/75"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                </button>
-              </div>
             </div>
           </div>
         </div>

@@ -16,6 +16,7 @@ const packsActions = {
          dispatch({ type: "GETONEPACK", payload: res.data.response });
       };
    },
+   
    filterExperiencia: (input) => {
       return (dispatch, getState) => {
          dispatch({ type: "FILTEREXPERIENCIAS", payload: input });

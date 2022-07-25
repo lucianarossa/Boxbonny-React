@@ -7,21 +7,31 @@ import packsActions from "../redux/actions/packsActions"
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import { useState } from "react";
-
-
-
+import shoppingActions from "../redux/actions/shoppingActions";
 
 
 export default function PackDetails() {
     const navigate = useNavigate()
     const { id } = useParams()
     const dispatch = useDispatch()
+    const [reload, setReload] = useState(false)
+
     useEffect(() => {
         dispatch(packsActions.getOnePack(id))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    const pack = useSelector(store => store.packsReducer.getOnePack)
 
+    const pack = useSelector(store => store.packsReducer.getOnePack)
+    const loginUser = useSelector(store => store.usuariosReducer.user)
+    console.log(loginUser)
+
+
+    async function añadirProducto(event) {
+        const idPack = event.target.id
+        dispatch(shoppingActions.addProduct(idPack))
+        dispatch(shoppingActions.getUserProducts())
+        setReload(!reload)
+    }
 
     const provincias = ["Buenos Aires", "Córdoba", "Mendoza"]
     const [select, setSelect] = useState("")
@@ -32,10 +42,12 @@ export default function PackDetails() {
     useEffect(() => {
         // experienciasActions.filterExperiencia(select)
         packsActions.filterExperiencia(select)
+
         // eslint-disable-next-line
     }, [])
     let experiencias = pack.experiencias
-    console.log(experiencias)
+
+
 
     return (
         <div className="E-container-gral bg-[#F6F7EB]">
@@ -45,6 +57,9 @@ export default function PackDetails() {
                     <p className="hover:animate-pulse descripcion-pdetails">{pack?.descripcion}</p>
                     <p className="hover:animate-pulse descripcion-pdetails precio-pack">PRECIO DEL PACK: ${pack?.Precio}</p>
                     <p className="hover:animate-pulse descripcion-pdetails mensaje-pack">MOMENTOS UNICOS PARA DISFRUTAR</p>
+                    <button id={pack._id} onClick={añadirProducto} className="card-button fontRaleway flex justify-center align-center">Añadir Producto</button>
+                    <p></p>
+
                 </div>
                 <div className="filter-cards-container">
                     <div className="filtro-provincias">
