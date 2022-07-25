@@ -5,11 +5,9 @@ import { Link as LinkRouter } from "react-router-dom"
 import { useParams } from "react-router-dom";
 import packsActions from "../redux/actions/packsActions"
 import { useEffect } from "react";
-import FilterProvincias from "./FilterProvincias";
 import { useNavigate } from "react-router-dom"
 import { useState } from "react";
-import experienciasActions from "../redux/actions/experienciasActions";
-
+import shoppingActions from '../redux/actions/shoppingActions.js'
 
 
 
@@ -17,6 +15,10 @@ export default function PackDetails() {
     const navigate = useNavigate()
     const { id } = useParams()
     const dispatch = useDispatch()
+    const [reload, setReload] = useState(false)
+
+
+
     useEffect(() => {
         dispatch(packsActions.getOnePack(id))
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -24,6 +26,11 @@ export default function PackDetails() {
     const pack = useSelector(store => store.packsReducer.getOnePack)
     console.log(pack)
 
+ async function añadirProducto(event){
+    const idPack = event.target.value
+
+    setReload(!reload)
+ }
 
     const provincias = ["Buenos Aires", "Córdoba", "Mendoza"]
     const [select, setSelect] = useState("")
@@ -31,8 +38,14 @@ export default function PackDetails() {
     useEffect(()=>{
         // experienciasActions.filterExperiencia(select)
         packsActions.filterExperiencia(select)
+      let carrito= shoppingActions.addProduct()
+      console.log(carrito)
+        //eslint-disable-next-line
     },[])
     let experiencias = pack.experiencias
+
+
+
 
     return (
         <div className="E-container-gral bg-[#F6F7EB]">
