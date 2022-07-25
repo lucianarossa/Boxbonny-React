@@ -32,7 +32,7 @@ const shoppingControllers = {
         try {
             shopping = await Shopping.find({ idUsuario: idUsuario })
                 .populate("idUsuario", {nombre:1, apellido:1, email:1})
-                .populate("idPack")
+                .populate("idPack",{nombre:1, Precio:1, imagen:1})
                 console.log(shopping)
         } catch (err) {
             error = err

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 
 const shoppingSchema = new mongoose.Schema ({
-    idPack: [{type:mongoose.Types.ObjectId, ref:'packs'}],
-    idUsuario: [{type:mongoose.Types.ObjectId, ref:'usuarios'}],
+    idPack: {type:mongoose.Types.ObjectId, ref:'packs'},
+    idUsuario: {type:mongoose.Types.ObjectId, ref:'usuarios'},
     fecha: {
         reservado: {type:Date},
         vendido: {type:Date},
@@ -11,5 +11,5 @@ const shoppingSchema = new mongoose.Schema ({
     estadoDeCompra: {type:String}
 })
 
-const Shopping = mongoose.model('shoppings',shoppingSchema)
+const Shopping = mongoose.model('shopping',shoppingSchema)
 module.exports = Shopping
