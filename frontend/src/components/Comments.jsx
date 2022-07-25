@@ -50,6 +50,11 @@ function Comments({ reloadChanger }) {
     // console.log("EXPERIENCIA", experiencia)
     const usuario = useSelector(store => store.usuariosReducer.user)
     // console.log("USUARIO", usuario)
+    let comentariosArray = experiencia.comentarios
+    // console.log("COMENTARIOS", comentariosArray)
+    const RatingsSuma = comentariosArray?.map(item => item.rating).reduce((prev, curr) => prev + curr, 0);
+    const RatingPromedio = Math.ceil(RatingsSuma / comentariosArray?.length)
+    // console.log("PROMEDIO", RatingPromedio)
 
 
 
@@ -64,9 +69,9 @@ function Comments({ reloadChanger }) {
 
     //AGREGAR COMENTARIO
 
-    useEffect(() =>{
+    useEffect(() => {
 
-        
+
     })
 
     async function agregarCommentarioUsuario(event) {
@@ -79,6 +84,7 @@ function Comments({ reloadChanger }) {
         const res = await dispatch(comentariosActions.AddComment(comentario))
         inputTextElement.current.innerText = ""
         reloadChanger()
+        setValue(null)
 
         if (res.success) {
             toast(res.message)
@@ -90,9 +96,15 @@ function Comments({ reloadChanger }) {
     return (
 
         <div className='l-dropdown'>
-            <Button onClick={handleClickOpen('paper')} className="rating-text">VALORACION PROMEDIO
-                <Rating name="half-rating-read" defaultValue={null} precision={1} readOnly />
-            </Button>
+            {// eslint-disable-next-line
+            comentariosArray?.length ==! 0 ?
+                <Button onClick={handleClickOpen('paper')} className="rating-text">VALORACION ENTRE {comentariosArray?.length} OPINIONES!
+                    <Rating name="half-rating-read" value={RatingPromedio} precision={1} readOnly />
+                </Button> :
+                <Button onClick={handleClickOpen('paper')} className="rating-text">NADIE VALORO ESTA EXPERIENCIA AUN!
+                    <Rating name="half-rating-read" value={RatingPromedio} precision={1} readOnly />
+                </Button>
+            }
             <Dialog
                 open={open}
                 onClose={handleClose}
