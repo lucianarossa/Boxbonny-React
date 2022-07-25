@@ -41,7 +41,19 @@ function App() {
     <div className="app ">
       
       <Nav />
-      <Toaster position="bottom-center"/>
+      <Toaster 
+      position="bottom-center"
+      toastOptions={{
+        className: '',
+        style: {
+          boxShadow: "0px 3px 10px rgba(8, 8, 8, 0.413)",
+          padding: '1rem',
+          color: 'black',
+          textAlign: "center",
+          fontSize: "16px",
+          border: "5px solid #FF8E72",
+        },
+      }}/>
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="*" element={<Index />} />

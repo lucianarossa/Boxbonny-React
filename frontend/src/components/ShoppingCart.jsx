@@ -2,7 +2,6 @@ import { Link as LinkRouter } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 import shoppingActions from "../redux/actions/shoppingActions";
 import { useState } from 'react'
-import { useEffect } from "react";
 
 export default function ShoppingCart() {
   const [reload, setReload] = useState(false)

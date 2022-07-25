@@ -63,21 +63,21 @@ export default function PackDetails() {
                 </div>
                 <div className="filter-cards-container">
                     <div className="filtro-provincias">
-                        <div>
-                            <form className="formulario-filter">
-                                <label className='filter-title'>ELEGI DONDE DISFRUTAR TU EXPERIENCIA</label>
 
-                                <select className='select-filter' onChange={(event) => setSelect(event.target.value)}>
-                                    <option value={"Todas las provincias"}>Todas las provincias</option>
-                                    {provincias.map(p =>
-                                        <option key={p._id}>{p}</option>
-                                    )}
-                                </select>
+                        <form className="formulario-filter">
+                            <label className='filter-title'>ELEGI DONDE DISFRUTAR TU EXPERIENCIA</label>
 
-                                <h2 className='filter-title-filter'>BUSCA UNA EXPERIENCIA</h2>
-                                <input className='select-filter' type="text" placeholder="Experiencia..." onChange={(event) => setInputSearch(event.target.value)} />
-                            </form>
-                        </div>
+                            <select className='select-filter' onChange={(event) => setSelect(event.target.value)}>
+                                <option value={"Todas las provincias"}>Todas las provincias</option>
+                                {provincias.map(p =>
+                                    <option key={p._id}>{p}</option>
+                                )}
+                            </select>
+
+                            <h2 className='filter-title-filter'>BUSCA UNA EXPERIENCIA</h2>
+                            <input className='select-filter' type="text" placeholder="Experiencia..." onChange={(event) => setInputSearch(event.target.value)} />
+                        </form>
+
                     </div>
                     <div className="contenedor-experiencias">
                         {select === "" ?

@@ -1,16 +1,29 @@
 import React, { useState } from "react"
 import { FaStar } from "react-icons/fa"
 import "../styles/StarRaiting.css"
+// import comentariosActions from "../redux/actions/comentariosActions"
+// import { useDispatch } from "react-redux"
 
-function StarRating() {
+function StarRating({comentario}) {
+    
     const [rating, setRating] = useState(null)
     const [hover, setHover] = useState(null)
+    // const dispatch = useDispatch
+
+    // async function checkRaiting(event) {
+    //     const comentario = {
+    //         comentario: comentario._id,
+    //         rating: rating,
+    //     }
+    //     dispatch(comentariosActions.CheckRating(comentario))
+        
+    // }
 
 
     return (
 
         <div className="rating-container">
-             <p className="rating-text"> RATING {rating}</p>
+             <div className="rating-text">VALORACION {rating}</div>
             <div className="stars-container">
 
                 {/* ESTE MAPEO CREA LAS 5 ESTRELLAS */}
@@ -25,6 +38,7 @@ function StarRating() {
                                 name="rating"
                                 value={ratingValue}
                                 onClick={() => setRating(ratingValue)}
+                                // id={comentario._id}
                             />
                             <FaStar
                                 className="star"

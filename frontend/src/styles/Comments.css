@@ -6,12 +6,8 @@
     margin-top: 2rem !important;
 }
 
-.MuiBackdrop-root {
-    width: 800px !important;
-    background-color: #f6f7ebc6 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
+.MuiPaper-root{
+max-width: 90% !important;
 }
 
 .l-comments-container {
@@ -24,7 +20,19 @@
     background-color: rgba(255, 255, 255, 0.774);
     padding: .5rem;
     border-radius: 20px;
+    box-shadow: 0 0 20px 0 #393E41;
 }
+
+#scroll-dialog-title{
+    font-family: "Poppins";
+    color: #393E41;
+}
+
+.button-cerrar{
+    font-family: "Poppins" !important;
+    color: #393E41 !important; 
+}
+
 .l-commentsmodif-container{
     display: flex;
     flex-direction: column;
@@ -75,14 +83,6 @@
     color: #393E41;
 }
 
-.MuiButton-root {
-    width: 70%;
-    display: flex;
-    justify-content: space-around !important;
-    border: 1px solid #FF8E72 !important;
-    border-radius: 15px !important;
-    padding: 2rem !important;
-}
 
 .l-buttons-cont{
     display: flex;
@@ -113,17 +113,44 @@
  }
 
  .invitation{
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding-bottom: 2rem;
     text-align: center;
     padding: 2rem;
  }
 
  .l-card-button-comments{
-    padding: 1.5rem;
-    font-size: 1.2rem;
+    padding: 1rem;
+    font-size: .9rem;
  }
 
+ .valoracion-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .rating-text{
+    color: #393E41;
+    padding-bottom: 1rem;
+    font-family: "Poppins";
+ }
+
+ .MuiButton-text{
+    display: flex;
+    flex-direction: column;
+    color: #393E41 !important;
+    font-family: "Poppins" !important;
+    border-radius: 20px !important;
+    padding: 1rem !important;
+    
+ }
+
+ .MuiButton-text:hover{
+ background-color: #393e4133 !important;
+    
+ }
 
 
 
