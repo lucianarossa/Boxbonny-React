@@ -100,7 +100,7 @@ export default function Nav() {
                     {usuario ? <Box sx={{ display: 'flex', flexDirection: 'column', WebkitJustifyContent: 'center', color: '#FF8E72', alignItems: 'center', }} >
                       <IconButton onClick={handleOpenUserMenu} >
                       <Avatar alt="imagen del usuario" src={usuario?.imagen} sx={{ width: 30, height: 30 }} sm={{ width: 30, height: 30 }} />
-                      <p className="m-nombreAvatar">{usuario?.nombre}</p>
+                      <p className="m-nombreAvatar pl-2">{usuario?.nombre}</p>
                       </IconButton>
                     </Box>
                       :
