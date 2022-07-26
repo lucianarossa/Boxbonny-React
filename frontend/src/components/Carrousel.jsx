@@ -19,7 +19,7 @@ export default function Carrousel() {
           <div className="part bot right"></div>
         </div>
         <div className="slider--el-content">
-          <h2 className="slider--el-heading">Random</h2>
+          <h2 className="slider--el-heading">SPA & Relax</h2>
         </div>
       </div>
       <div className="slider--el slider--el-2 anim-9parts">
@@ -67,7 +67,7 @@ export default function Carrousel() {
           <div className="part right"></div>
         </div>
         <div className="slider--el-content">
-          <h2 className="slider--el-heading">SPA & Relax</h2>
+          <h2 className="slider--el-heading">Random</h2>
         </div>
       </div>
 
@@ -85,7 +85,7 @@ export default function Carrousel() {
         <label className="page4-right" htmlFor="page4"> </label>
         <label className="page5-right" htmlFor="page5"> </label>
       </div>
-    </div>
+    </div> 
 
 
 

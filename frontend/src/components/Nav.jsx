@@ -22,11 +22,11 @@ export default function Nav() {
   // console.log("usuario", usuario);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const products=useSelector(store => store.shoppingReducer.productos)
+  const products = useSelector(store => store.shoppingReducer.productos)
   async function desloguearse() {
     await dispatch(usuariosActions.desloguearse())
       .then(navigate("/desloguearse", { replace: true }))
-      //me lleva de nuevo al home al hacer sign out
+    //me lleva de nuevo al home al hacer sign out
   }
 
   const handleOpenUserMenu = (event) => {
@@ -41,10 +41,10 @@ export default function Nav() {
       <div className="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-1 md:flex md:items-center md:gap-12">
-            <img className="logo w-[12rem] h-[12rem]" src="https://i.imgur.com/Xi3X0wB.png" alt="logo" />
+            <img className="logo w-[12rem] h-[12rem]  " src="https://i.imgur.com/Xi3X0wB.png" alt="logo" />
           </div>
 
-          <div className="md:flex md:items-center md:gap-12">
+          <div className=" md:flex md:items-center md:gap-12">
             <nav className="hidden md:block" aria-labelledby="header-navigation">
               <h2 className="sr-only" id="header-navigation">Header navigation</h2>
 
@@ -71,10 +71,10 @@ export default function Nav() {
                     className="relative flex items-center justify-center"
                     to="/cart"
                   >
-                       <Badge color="error" badgeContent={products.shopping?.length}>
-                       <ShoppingCartOutlinedIcon/>      
-                       </Badge>
-              
+                    <Badge color="error" badgeContent={products.shopping?.length}>
+                      <ShoppingCartOutlinedIcon />
+                    </Badge>
+
 
                   </LinkRouter>
                 </li>
@@ -99,7 +99,7 @@ export default function Nav() {
                             Ingresá
                           </LinkRouter>
                         </div>
-                        <Box sx={{ display: 'flex', flexDirection: 'column', WebkitJustifyContent: 'center', alignItems: 'center', color: 'white', paddingLeft: "2rem" }} > <Avatar alt="avatar no logueado" src={"https://i.imgur.com/F6TK2Lu.png"} sx={{ width: 35, height: 35 }}/></Box>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', WebkitJustifyContent: 'center', alignItems: 'center', color: 'white', paddingLeft: "2rem" }} > <Avatar alt="avatar no logueado" src={"https://i.imgur.com/F6TK2Lu.png"} sx={{ width: 35, height: 35 }} /></Box>
                       </>
                     }
                   </IconButton>
@@ -122,7 +122,7 @@ export default function Nav() {
                   {usuario ? (
                     <Box>
                       <MenuItem
-                        sx={{ '&:hover': { bgcolor: 'rgb(224,224,224)' } }} onClick={handleCloseUserMenu}>
+                        onClick={handleCloseUserMenu}>
                         <Typography sx={{ padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)' }} onClick={desloguearse}>Salir</Typography>
 
                       </MenuItem>
@@ -130,13 +130,32 @@ export default function Nav() {
                   )
                     :
                     <MenuItem
-                      sx={{ '&:hover': { bgcolor: 'rgb(224,224,224)' } }} onClick={handleCloseUserMenu}><Typography sx={{ padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)' }}>No estás logueado</Typography></MenuItem>
+                       onClick={handleCloseUserMenu}><Typography sx={{ padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)' }}>No estás logueado</Typography></MenuItem>
                   }
                 </Menu>
               </Box>
             </div>
           </div>
         </div>
+        <div className="border-t border-gray-100 md:hidden lg:hidden">
+            <nav
+              className="flex items-center justify-center p-4 overflow-x-auto text-sm font-medium gap-6"
+            >
+              <LinkRouter
+                    className="text-gray-500 transition hover:text-[#FF8E72]"
+                    to="/"
+                  >
+                    Inicio
+                  </LinkRouter>
+                  <LinkRouter
+                    className="text-gray-500 transition hover:text-[#FF8E72]"
+                    to="/packs"
+                  >
+                    Packs
+                  </LinkRouter>
+
+            </nav>
+          </div>
       </div>
     </header>
   )
