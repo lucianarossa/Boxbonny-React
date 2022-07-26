@@ -36,6 +36,11 @@ export default function Nav() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const productosSum= products?.shopping
+  let contador = 0
+  productosSum?.map(c=>contador=contador + c.cantidad)
+
   return (
     <header className="sticky top-0  z-50  bg-[#F6F7EB]">
       <div className="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
@@ -71,7 +76,7 @@ export default function Nav() {
                     className="relative flex items-center justify-center"
                     to="/cart"
                   >
-                       <Badge color="error" badgeContent={products.shopping?.length}>
+                       <Badge color="error" badgeContent={contador}>
                        <ShoppingCartOutlinedIcon/>      
                        </Badge>
               
