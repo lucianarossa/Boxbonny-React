@@ -18,7 +18,7 @@ export default function ShoppingCart() {
   }
 
   const productosSum= products?.shopping
-  console.log(productosSum)
+  
 
   let contador = 0
   productosSum?.map(c=>contador=contador + c.cantidad)
@@ -39,13 +39,15 @@ export default function ShoppingCart() {
     setReload(!reload)
   }
 
+  const usuario = useSelector(store => store.usuariosReducer.user)
+
   return (
 
     <div className="bg-gray-100">
       <div className="container mx-auto mt-10 ">
         <div className="flex shadow-md my-10">
 
-          {products.shopping?.length === 0 ? 
+          {!usuario || products.shopping?.length === 0 ? 
           <div className="w-3/4  h-[30rem]  bg-white px-10 py-10 flex flex-col justify-center">
             <p className="text-2xl text-center font-semibold" >Tu carrito esta vacio </p>
             <img className="h-[15rem] object-contain	" src="https://donweb.com/img/mis-compras/carro-vacio-canasta.png" alt="carrito-vacio"  />
@@ -95,8 +97,9 @@ export default function ShoppingCart() {
 
 
           
-
-          <div id="summary" className="w-1/4 px-8 py-10">
+        {usuario?  
+        
+        <div id="summary" className="w-1/4 px-8 py-10">
             <h1 className="font-semibold text-2xl border-b pb-8">Resumen del pedido</h1>
             <div className="flex justify-between mt-10 mb-5">
               <span className="font-semibold text-sm uppercase">Packs {contador}</span>
@@ -111,6 +114,15 @@ export default function ShoppingCart() {
             </div>
           </div>
 
+        :  
+        <div  className="w-1/4 px-8 py-10 flex items-center justify-center">
+           
+           <LinkRouter to="/packs" className="bg-orange-500 font-semibold hover:bg-orange-600 py-3 text-sm text-white uppercase w-full rounded flex justify-center items-center ">Ver Packs</LinkRouter>
+        </div>
+
+        
+        }
+          
         </div>
       </div>
     </div>
