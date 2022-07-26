@@ -1,4 +1,4 @@
-import { Link as LinkRouter, useParams } from "react-router-dom";
+import { Link as LinkRouter } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 import shoppingActions from "../redux/actions/shoppingActions";
 import { useState } from 'react'
@@ -17,11 +17,11 @@ export default function ShoppingCart() {
     setReload(!reload)
   }
 
-  const productosSum= products.shopping
+  const productosSum= products?.shopping
   console.log(productosSum)
 
   let contador = 0
-  productosSum.map(c=>contador=contador + c.cantidad)
+  productosSum?.map(c=>contador=contador + c.cantidad)
 
   let total = 0
   productosSum?.forEach(prod => {
@@ -67,16 +67,14 @@ export default function ShoppingCart() {
                   </div>
                 </div>
                 <div className="flex justify-center w-1/5">
-                  <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-                  </svg>
                   <div className="div4-products">
-                    <input id={prod?._id} onChange={toModify} className="custom-input-products" type="number" defaultValue={prod.cantidad} min="1" max="100" />
+                    <input id={prod?._id} onChange={toModify} className="custom-input-products" type="number" defaultValue={prod?.cantidad} min="1" max="100"/>
                   </div>
 
                 </div>
                 <span className="text-center w-1/5 font-semibold text-sm">${prod.idPack?.Precio}</span>
                 <div className="div3-details">
-                  <p>${prod.idPack?.Precio * prod.cantidad}</p>
+                  <p>${prod.idPack?.Precio * prod?.cantidad}</p>
                 </div>
               </div>)}
 
