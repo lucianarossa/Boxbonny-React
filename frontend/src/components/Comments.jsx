@@ -50,6 +50,8 @@ function Comments({ reloadChanger }) {
     // console.log("EXPERIENCIA", experiencia)
     const usuario = useSelector(store => store.usuariosReducer.user)
     // console.log("USUARIO", usuario)
+
+    
     let comentariosArray = experiencia.comentarios
     // console.log("COMENTARIOS", comentariosArray)
     const RatingsSuma = comentariosArray?.map(item => item.rating).reduce((prev, curr) => prev + curr, 0);

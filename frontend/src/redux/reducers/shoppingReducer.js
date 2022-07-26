@@ -1,6 +1,6 @@
 const initialState = {
     productos: [],
-    one: []
+    uno: []
 }
 
 const productReducer = (state = initialState, action) => {
@@ -13,7 +13,7 @@ const productReducer = (state = initialState, action) => {
         case 'GET_ONE':
             return {
                 ...state,
-                one: action.payload
+                uno: action.payload
             }
         default:
             return state

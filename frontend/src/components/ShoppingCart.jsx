@@ -1,30 +1,49 @@
-import { Link as LinkRouter } from "react-router-dom";
+import { Link as LinkRouter, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 import shoppingActions from "../redux/actions/shoppingActions";
 import { useState } from 'react'
 
+
 export default function ShoppingCart() {
   const [reload, setReload] = useState(false)
+  const id= useParams()
   const dispatch = useDispatch()
   const products = useSelector(store => store.shoppingReducer.productos)
+  console.log(products)
 
+  async function unProducto(id){
+
+    dispatch(shoppingActions.getOneProduct(id))
+  }
+  unProducto(id)
+
+  const OneProducto = useSelector(store => store.shoppingReducer.uno)
+  console.log(OneProducto)
+  
+  
   async function toModify(event) {
     event.preventDefault()
-    const product = {
-        productId: event.target.id,
-        cantidad: event.target.value
+    const modifyCarrito = {
+      productId: event.target.id,
+      cantidad: event.target.value
     }
-    dispatch(shoppingActions.modifyProduct(product)) 
-       setReload(!reload)
-}
+    dispatch(shoppingActions.modifyProduct(modifyCarrito))
+  }
 
   async function toDelete(event) {
     const idProducto = event.target.id
-     dispatch(shoppingActions.deleteProduct(idProducto))
-     dispatch(shoppingActions.getUserProducts())
+    dispatch(shoppingActions.deleteProduct(idProducto))
+    dispatch(shoppingActions.getUserProducts())
     setReload(!reload)
   }
 
+  const productosSum= products.shopping
+  console.log(productosSum)
+
+  let total = 0
+  productosSum?.forEach(prod => {
+    total = total + prod.idPack?.Precio * prod?.cantidad
+  })
 
   return (
 
@@ -34,7 +53,7 @@ export default function ShoppingCart() {
           <div className="w-3/4 bg-white px-10 py-10">
             <div className="flex justify-between border-b pb-8">
               <h1 className="font-semibold text-2xl">Carrito de compras</h1>
-              <h2 className="font-semibold text-2xl">{products.shopping?.length} Packs</h2>
+              <h2 className="font-semibold text-2xl">{products.shopping?.map(c => c.cantidad.length)} Packs</h2>
             </div>
             <div className="flex mt-10 mb-5">
               <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">Detalles de Producto</h3>
@@ -57,12 +76,14 @@ export default function ShoppingCart() {
                   <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
                   </svg>
                   <div className="div4-products">
-                    <input id={prod?._id} className="custom-input-products" type="number" onChange="" defaultValue={prod.cantidad} min="1" max="100"/>
+                    <input id={prod?._id} onChange={toModify} className="custom-input-products" type="number" defaultValue={prod.cantidad} min="1" max="100" />
                   </div>
 
                 </div>
                 <span className="text-center w-1/5 font-semibold text-sm">${prod.idPack?.Precio}</span>
-                <span className="text-center w-1/5 font-semibold text-sm">$400.00</span>
+                <div className="div3-details">
+                  <p onChange={toModify}>$ {prod.idPack?.Precio * prod.cantidad}</p>
+                </div>
               </div>)}
 
             <LinkRouter to="/packs" className="flex font-semibold hover:underline text-orange-600 text-sm mt-10">
@@ -75,24 +96,23 @@ export default function ShoppingCart() {
           <div id="summary" className="w-1/4 px-8 py-10">
             <h1 className="font-semibold text-2xl border-b pb-8">Resumen del pedido</h1>
             <div className="flex justify-between mt-10 mb-5">
-              <span className="font-semibold text-sm uppercase">Packs 3</span>
-              <span className="font-semibold text-sm">590$</span>
+              <span className="font-semibold text-sm uppercase">Packs {productosSum?.length}</span>
             </div>
-            <div>
+            {/* <div>
               <label className="font-medium inline-block mb-3 text-sm uppercase">Envio</label>
               <select className="block p-2 text-gray-600 w-full text-sm">
                 <option>Envio Normal - $10.00</option>
               </select>
-            </div>
-            <div className="py-10">
+            </div> */}
+            {/* <div className="py-10">
               <label className="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
               <input type="text" id="promo" placeholder="Enter your code" className="p-2 text-sm w-full" />
             </div>
-            <button className="bg-slate-900 hover:bg-slate-700 px-5 py-2 text-sm text-white uppercase rounded">Applicar</button>
+            <button className="bg-slate-900 hover:bg-slate-700 px-5 py-2 text-sm text-white uppercase rounded">Applicar</button> */}
             <div className="border-t mt-8">
               <div className="flex font-semibold justify-between py-6 text-sm uppercase">
                 <span>Costo Total</span>
-                <span>$600</span>
+                <span>${total}</span>
               </div>
               <LinkRouter to="/checkout" className="bg-orange-500 font-semibold hover:bg-orange-600 py-3 text-sm text-white uppercase w-full rounded flex justify-center items-center ">Proceder a la compra</LinkRouter>
             </div>
