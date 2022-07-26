@@ -4,6 +4,7 @@
   align-items: flex-start;
   width: 100%;
   background-color: #F6F7EB;
+  
 }
 
 @media(max-width: 600px){
@@ -116,6 +117,7 @@
   padding-bottom: 3rem;
   flex-grow: 1;
   width: 90%;
+ height: 100%;
 }
 
 /* From uiverse.io by @alexruix */
@@ -378,11 +380,11 @@
   width: 100%;
 }
 
-input[type="checkbox"]:checked+label {
+/* input[type="radio"]:checked+label {
   color: #FF8E72;
 }
 
-input[type="checkbox"]+label:before {
+input[type="radio"]+label:before {
   content: "";
   width: 22px;
   height: 22px;
@@ -395,12 +397,12 @@ input[type="checkbox"]+label:before {
   border-radius: 100%;
 }
 
-input[type="checkbox"]:checked+label:before {
+input[type="radio"]:checked+label:before {
   border-color: #FF8E72;
 
 }
 
-input[type="checkbox"]+label {
+input[type="radio"]+label {
   font-weight: bold;
   line-height: 3em;
   color: #393E41;
@@ -408,11 +410,11 @@ input[type="checkbox"]+label {
 
 
 
-input[type="checkbox"]:checked+label {
+input[type="radio"]:checked+label {
   color: #FF8E72;
 }
 
-input[type="checkbox"]:checked+label:after {
+input[type="radio"]:checked+label:after {
   content: "";
   width: 15px;
   height: 10px;
@@ -425,6 +427,6 @@ input[type="checkbox"]:checked+label:after {
   transform: rotate(-55deg);
 }
 
-input[type="checkbox"] {
+input[type="radio"] {
   display: none;
-}
+}  */

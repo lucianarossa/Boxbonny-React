@@ -1,6 +1,7 @@
 import React from "react";
 import { FaCreditCard } from 'react-icons/fa'
 import {Link as LinkRouter} from 'react-router-dom'
+import Paypal from "./Paypal";
 
 export default function Checkout() {
     return (
@@ -21,8 +22,8 @@ export default function Checkout() {
                     </LinkRouter>
                     </div>
                   
-                    <button className="	mt-8	text-base	font-medium	focus:ring-2 focus:ring-offset-2 focus:ring-blue-800	hover:bg-blue-900	leading-4	py-4	w-full	md:w-4/12	lg:w-full	text-white	bg-blue-800" >
-                        PAYPAL
+                    <button className="	mt-8	text-base	font-medium	focus:ring-2 focus:ring-offset-2 focus:ring-blue-800		leading-4	py-4	w-full	md:w-4/12	lg:w-full	text-white	" >
+                        <Paypal/>
                     </button>
                    
                 </div>
