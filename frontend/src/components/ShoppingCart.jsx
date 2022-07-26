@@ -6,29 +6,10 @@ import { useState } from 'react'
 
 export default function ShoppingCart() {
   const [reload, setReload] = useState(false)
-  const id= useParams()
+  const [render, setRender] = useState()
   const dispatch = useDispatch()
   const products = useSelector(store => store.shoppingReducer.productos)
   console.log(products)
-
-  async function unProducto(id){
-
-    dispatch(shoppingActions.getOneProduct(id))
-  }
-  unProducto(id)
-
-  const OneProducto = useSelector(store => store.shoppingReducer.uno)
-  console.log(OneProducto)
-  
-  
-  async function toModify(event) {
-    event.preventDefault()
-    const modifyCarrito = {
-      productId: event.target.id,
-      cantidad: event.target.value
-    }
-    dispatch(shoppingActions.modifyProduct(modifyCarrito))
-  }
 
   async function toDelete(event) {
     const idProducto = event.target.id
@@ -40,10 +21,25 @@ export default function ShoppingCart() {
   const productosSum= products.shopping
   console.log(productosSum)
 
+  let contador = 0
+  const cantidadPacks = productosSum.map(c=>contador=contador + c.cantidad)
+  console.log(contador)
+
   let total = 0
   productosSum?.forEach(prod => {
     total = total + prod.idPack?.Precio * prod?.cantidad
   })
+
+  async function toModify(event) {
+    event.preventDefault()
+    const modifyCarrito = {
+      productId: event.target.id,
+      cantidad: event.target.value
+    }
+    dispatch(shoppingActions.modifyProduct(modifyCarrito))
+    dispatch(shoppingActions.getUserProducts())
+    setReload(!reload)
+  }
 
   return (
 
@@ -82,7 +78,7 @@ export default function ShoppingCart() {
                 </div>
                 <span className="text-center w-1/5 font-semibold text-sm">${prod.idPack?.Precio}</span>
                 <div className="div3-details">
-                  <p onChange={toModify}>$ {prod.idPack?.Precio * prod.cantidad}</p>
+                  <p>${prod.idPack?.Precio * prod.cantidad}</p>
                 </div>
               </div>)}
 
@@ -96,7 +92,7 @@ export default function ShoppingCart() {
           <div id="summary" className="w-1/4 px-8 py-10">
             <h1 className="font-semibold text-2xl border-b pb-8">Resumen del pedido</h1>
             <div className="flex justify-between mt-10 mb-5">
-              <span className="font-semibold text-sm uppercase">Packs {productosSum?.length}</span>
+              <span className="font-semibold text-sm uppercase">Packs {contador}</span>
             </div>
             {/* <div>
               <label className="font-medium inline-block mb-3 text-sm uppercase">Envio</label>

@@ -22,13 +22,11 @@ export default function PackDetails() {
     }, [])
 
     const pack = useSelector(store => store.packsReducer.getOnePack)
-    const loginUser = useSelector(store => store.usuariosReducer.user)
 
     async function añadirProducto(event) {
         const idPack = event.target.id
         dispatch(shoppingActions.addProduct(idPack))
         dispatch(shoppingActions.getUserProducts())
-        dispatch(shoppingActions.getOneProduct(idPack))
         setReload(!reload)
     }
 

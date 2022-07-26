@@ -9,8 +9,9 @@ addProduct: (idPack)=>{
   const token = localStorage.getItem('token')
   return async(dispatch,getState)=>{
       const res = await axios.post(url+`api/shopping`,{idPack},{headers: {Authorization: "Bearer " + token}})
+      console.log(res)
       dispatch({type: 'message', payload:{view: true, message: res.data.message, success: res.data.success}})
-      return res.data.response.newCarrito
+      return res.data.response
   }
 },
 
