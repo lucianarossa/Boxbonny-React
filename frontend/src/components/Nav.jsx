@@ -42,6 +42,8 @@ export default function Nav() {
   let contador = 0
   productosSum?.map(c=>contador=contador + c.cantidad)
 
+
+
   return (
     <header className="sticky top-0  z-50  bg-[#F6F7EB]">
       <div className="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
@@ -77,9 +79,13 @@ export default function Nav() {
                     className="relative flex items-center justify-center"
                     to="/cart"
                   >
-                       <Badge color="error" badgeContent={contador}>
+                      {usuario?  <Badge color="error" badgeContent={contador}>
                        <ShoppingCartOutlinedIcon/>      
                        </Badge>
+                         :  
+                         <ShoppingCartOutlinedIcon/>  
+                         } 
+                      
               
 
                   </LinkRouter>
@@ -94,7 +100,7 @@ export default function Nav() {
                     {usuario ? <Box sx={{ display: 'flex', flexDirection: 'column', WebkitJustifyContent: 'center', color: '#FF8E72', alignItems: 'center', }} >
                       <IconButton onClick={handleOpenUserMenu} >
                       <Avatar alt="imagen del usuario" src={usuario?.imagen} sx={{ width: 30, height: 30 }} sm={{ width: 30, height: 30 }} />
-                      <p className="m-nombreAvatar pl-2">{usuario?.nombre}</p>
+                      <p className="m-nombreAvatar">{usuario?.nombre}</p>
                       </IconButton>
                     </Box>
                       :
