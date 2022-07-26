@@ -2,7 +2,7 @@ import './styles/App.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import { Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import packsActions from "./redux/actions/packsActions"
 import PacksPage from './pages/PacksPage';
@@ -19,14 +19,26 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 // import {BsFillArrowUpCircleFill} from 'react-icons/bs'
 import usuariosActions from './redux/actions/usuariosActions';
 import shoppingActions from './redux/actions/shoppingActions';
+import LoadingHome from './helpers/LoadingHome';
 
 function App() {
 
-  const dispatch = useDispatch()
+   const [loading, setLoading] = useState(false)
 
+   useEffect(() => {
+		setLoading(true);
+		setTimeout(() => {
+			setLoading(false);
+		}, 2000);
+	}, []);
+   
+
+  const dispatch = useDispatch()
+const [reload , setReload] = useState(false)
   useEffect(() => {
     dispatch(packsActions.getPacks())
     dispatch(shoppingActions.getUserProducts())
+    setReload(!reload)
     if(localStorage.getItem('token') !== null){
       const token = localStorage.getItem("token")
       dispatch(usuariosActions.verificarToken(token))
@@ -36,12 +48,16 @@ function App() {
   }, [])
 
   const user = useSelector(store => store.usuariosReducer.user) 
-  console.log("USER", user)
-
 
   return (
+    
     <div className="app ">
+      {loading ?
       
+      <LoadingHome/>
+      
+      :
+      <>
       <Nav />
       <Toaster 
       position="bottom-center"
@@ -69,12 +85,20 @@ function App() {
       </Routes>
       <Footer />
       <ScrollToTop
-        style={{ backgroundColor: "#ff8e72", zIndex:"10" }}
+        style={{ backgroundColor: "#ff8e72" }}
         smooth
         component={<ExpandLessIcon />}
       />
+      </>
+      }
+
+      
     </div>
+    
   );
-}
+    }
+    
+
+
 
 export default App;

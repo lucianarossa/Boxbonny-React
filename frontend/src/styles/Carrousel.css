@@ -147,7 +147,7 @@ input[type=radio] {
   background-position: center;
   width: 300%;
   height: 100%;
-  background-image: url("../assets/images/spa.png");
+  background-image: url("../assets/images/random.jpg");
   box-shadow: inset 0 0 0 1000px rgb(0 0 0 / 20%);
 }
 .slider--el.anim-6parts .part.left {
@@ -351,7 +351,7 @@ input[type=radio] {
   background-position: center;
   width: 200%;
   height: 200%;
-  background-image: url("../assets/images/random.jpg");
+  background-image: url("../assets/images/spa.png");
   box-shadow: inset 0 0 0 1000px rgb(0 0 0 / 20%);
 }
 .slider--el.anim-4parts .part.top {
@@ -564,3 +564,14 @@ input[type=radio] {
   transition: transform 0s 2.1s;
 }
 
+@media (max-width: 630px) {
+  .slider--el-heading {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .slider--control {
+    display: none;
+  }
+}
