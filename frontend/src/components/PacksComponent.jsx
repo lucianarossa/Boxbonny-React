@@ -24,19 +24,20 @@ const PacksComponent = () => {
     function selected(event){
         let checked = event.current?.checked
         if (checked){
-            checkboxselected.push(event.current?.value)
+            checkboxselected?.push(event.current?.value)
         }
         else{
-            checkboxselected = checkboxselected.filter(unchecked => unchecked != event.current?.value)
+            checkboxselected = checkboxselected?.filter(unchecked => unchecked === event.current?.value)
             console.log("else", checkboxselected);
-            // setReload(!reload)
+            
         }
         // setReload(!reload)
     }
-    useEffect(()=>{
-        setReload(!reload)
-    },[])
+    // useEffect(()=>{
+    //     setReload(!reload)
+    // },[])
 
+    console.log(checkboxselected)
     return (
         <div className="superContainer">
             <div className="container-izq">
@@ -80,7 +81,7 @@ const PacksComponent = () => {
                         </div>
                         ) 
                         :
-                    packs?.filter(Pack => Pack.Precio <= checkboxselected).map((pack, index) =>
+                    packs?.filter(Pack => Pack.Precio <= checkboxselected.map(c=>c)).map((pack, index) =>
                         <div className="card" key={index}>
                             <h2 className="text-title">{pack?.nombre}</h2>
                             <video className="card-img" autoPlay loop muted>

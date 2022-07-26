@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import { useState } from "react";
 import shoppingActions from "../redux/actions/shoppingActions";
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 
 export default function PackDetails() {
@@ -53,8 +54,8 @@ export default function PackDetails() {
                     <h1 className="hover:animate-pulse titulo-pdetails">{pack?.nombre}</h1>
                     <p className="hover:animate-pulse descripcion-pdetails">{pack?.descripcion}</p>
                     <p className="hover:animate-pulse descripcion-pdetails precio-pack">PRECIO DEL PACK: ${pack?.Precio}</p>
+                    <button id={pack._id} onClick={añadirProducto} className="card-button fontRaleway flex justify-center align-center content-center"><ShoppingCartOutlinedIcon/>Añadir Producto</button>
                     <p className="hover:animate-pulse descripcion-pdetails mensaje-pack">MOMENTOS UNICOS PARA DISFRUTAR</p>
-                    <button id={pack._id} onClick={añadirProducto} className="card-button fontRaleway flex justify-center align-center">Añadir Producto</button>
                     
 
                 </div>
