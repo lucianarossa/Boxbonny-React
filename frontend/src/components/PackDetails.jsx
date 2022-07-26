@@ -23,13 +23,12 @@ export default function PackDetails() {
 
     const pack = useSelector(store => store.packsReducer.getOnePack)
     const loginUser = useSelector(store => store.usuariosReducer.user)
-    console.log(loginUser)
-
 
     async function añadirProducto(event) {
         const idPack = event.target.id
         dispatch(shoppingActions.addProduct(idPack))
         dispatch(shoppingActions.getUserProducts())
+        dispatch(shoppingActions.getOneProduct(idPack))
         setReload(!reload)
     }
 
@@ -58,7 +57,7 @@ export default function PackDetails() {
                     <p className="hover:animate-pulse descripcion-pdetails precio-pack">PRECIO DEL PACK: ${pack?.Precio}</p>
                     <p className="hover:animate-pulse descripcion-pdetails mensaje-pack">MOMENTOS UNICOS PARA DISFRUTAR</p>
                     <button id={pack._id} onClick={añadirProducto} className="card-button fontRaleway flex justify-center align-center">Añadir Producto</button>
-                    <p></p>
+                    
 
                 </div>
                 <div className="filter-cards-container">

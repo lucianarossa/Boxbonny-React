@@ -23,11 +23,10 @@ import shoppingActions from './redux/actions/shoppingActions';
 function App() {
 
   const dispatch = useDispatch()
-const [reload , setReload] = useState(false)
+  
   useEffect(() => {
     dispatch(packsActions.getPacks())
     dispatch(shoppingActions.getUserProducts())
-    setReload(!reload)
     if(localStorage.getItem('token') !== null){
       const token = localStorage.getItem("token")
       dispatch(usuariosActions.verificarToken(token))
