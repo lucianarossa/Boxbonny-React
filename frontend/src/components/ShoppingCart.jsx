@@ -6,7 +6,6 @@ import { useState } from 'react'
 
 export default function ShoppingCart() {
   const [reload, setReload] = useState(false)
-  const [render, setRender] = useState()
   const dispatch = useDispatch()
   const products = useSelector(store => store.shoppingReducer.productos)
   console.log(products)
@@ -22,8 +21,7 @@ export default function ShoppingCart() {
   console.log(productosSum)
 
   let contador = 0
-  const cantidadPacks = productosSum.map(c=>contador=contador + c.cantidad)
-  console.log(contador)
+  productosSum.map(c=>contador=contador + c.cantidad)
 
   let total = 0
   productosSum?.forEach(prod => {
@@ -94,17 +92,7 @@ export default function ShoppingCart() {
             <div className="flex justify-between mt-10 mb-5">
               <span className="font-semibold text-sm uppercase">Packs {contador}</span>
             </div>
-            {/* <div>
-              <label className="font-medium inline-block mb-3 text-sm uppercase">Envio</label>
-              <select className="block p-2 text-gray-600 w-full text-sm">
-                <option>Envio Normal - $10.00</option>
-              </select>
-            </div> */}
-            {/* <div className="py-10">
-              <label className="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
-              <input type="text" id="promo" placeholder="Enter your code" className="p-2 text-sm w-full" />
-            </div>
-            <button className="bg-slate-900 hover:bg-slate-700 px-5 py-2 text-sm text-white uppercase rounded">Applicar</button> */}
+         
             <div className="border-t mt-8">
               <div className="flex font-semibold justify-between py-6 text-sm uppercase">
                 <span>Costo Total</span>
