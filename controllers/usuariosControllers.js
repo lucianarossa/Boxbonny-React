@@ -18,7 +18,7 @@ const usuariosControllers = {
                     res.json({
                         success: false,
                         from: from,
-                        message: `${email} ya ha sido registrado, por favor inicia sesión`,
+                        message: `${email} ya existe en nuestra base de datos, por favor inicia sesión 😉`,
                     });
                 } else { //sino significa que se registro por al menos 1 medio
                     const passwordhashed = bcryptjs.hashSync(contraseña, 10);
@@ -29,7 +29,7 @@ const usuariosControllers = {
                     res.json({
                         success: true,
                         from: from,
-                        message: `No te has registrado aún con esta cuenta, por favor registrate.`
+                        message: `No te registraste todavia con esta cuenta, por favor registrate 😃`
                     });
                 }
             } else { //si el usuario no existe
@@ -50,7 +50,7 @@ const usuariosControllers = {
                     res.json({
                         success: true,
                         from: from,
-                        message: `Ya te has logueado por ${from}, ahora puedes ingresar!`,
+                        message: `Ya te registraste por ${from}, ya podes ingresar 😁!`,
                     });
 
                 } else {
@@ -59,7 +59,7 @@ const usuariosControllers = {
                     res.json({
                         success: true,
                         from: from,
-                        message: `Verifica el email ${email} para finalizar el registro`,
+                        message: `Te enviamos un email a ${email} para que puedas finalizar el registro 📧`,
                     });
                 }
             }
@@ -81,7 +81,7 @@ const usuariosControllers = {
                 res.json({
                     success: false,
                     from: "no from",
-                    message: "El usuario no existe, por favor registrese"
+                    message: "El usuario no existe, por favor registrate 😁"
                 });
             } else if (usuarioExiste.verification) {
                 let passwordMatch = usuarioExiste.contraseña.filter((pass) => bcryptjs.compareSync(password, pass));
@@ -113,7 +113,7 @@ const usuariosControllers = {
                         res.json({
                             success: false,
                             from: from,
-                            message: `Verifica tu contraseña`,
+                            message: `Por favor verifica tu contraseña 🔑`,
                         });
                     }
                 } else {
@@ -138,13 +138,13 @@ const usuariosControllers = {
                             response: { token, usuarioData },
                             success: true,
                             from: from,
-                            message: "Bienvenido de vuelta " + usuarioData.nombre,
+                            message: "Hola " + usuarioData.nombre + " 🖐️",
                         });
                     } else {
                         res.json({
                             success: false,
                             from: from,
-                            message: "Aún no estás registrado con esta cuenta"
+                            message: "Todavia no estás registrado con esta cuenta, registrate 😁"
                         });
                     }
                 }
@@ -152,7 +152,7 @@ const usuariosControllers = {
                 res.json({
                     success: false,
                     from: from,
-                    message: `Debes validar tu cuenta`,
+                    message: `Todavia no validaste tu cuenta chequea tu casilla de correo 📧`,
                 });
             }
         } catch (error) {
@@ -160,7 +160,7 @@ const usuariosControllers = {
             res.json({
                 success: false,
                 from: from,
-                message: `Algo ha salido mal, por favor vuelve a intentarlo más tarde`
+                message: `Algo salio mal, por favor intentalo en unos minutos 😞`
             });
         }
     },
@@ -170,7 +170,7 @@ const usuariosControllers = {
         await usuario.save()
         res.json({
             success: true,
-            message: "Hasta pronto " + usuario.nombre
+            message: "Hasta pronto " + usuario.nombre + " 🖐️"
         })
     },
     verificarToken: (req, res) => {
@@ -187,12 +187,12 @@ const usuariosControllers = {
                         rol:   req.user.rol,
                         from: "token",			
                 },
-                message: "Hola! Bienvenido de vuelta " + req.user.nombre
+                message: "Hola " + req.user.nombre + " 🖐️"
             })
         } else {
             res.json({
                 success: false,
-                message: "Inicia sesión, por favor"
+                message: "Ingresa a tu cuenta 😁"
             });
         }
     },
@@ -207,7 +207,7 @@ const usuariosControllers = {
         else {
             res.json({
                 success: false,
-                message: "Este email no esta loguedo aún"
+                message: "Este email no fue verificado, chequea en tu casilla de correo 📧"
             });
         }
     },

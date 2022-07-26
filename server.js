@@ -30,5 +30,5 @@ app.get('/', (req, res) => {
     res.send('EL SERVIDOR ESTÁ FUNCIONANDO!')
 })
 app.listen(PORT, () => {
-    console.log('SERVIDOR LISTO EN PUERTO' + app.get('port'))
+    console.log('Server Ready in port ' + app.get('port'))
 });

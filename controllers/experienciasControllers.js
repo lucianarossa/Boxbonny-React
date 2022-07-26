@@ -39,11 +39,13 @@ const experienciasControllers = {
 	},
 
 	addExperiencia: async (req, res) => {
-		console.log(req.body);
+		// console.log(req.body);
         const { nombre, descripcion, incluye, direccion, ciudad, pack } = req.body
-		console.log("BUSCAR FILE",req.files);
-        const  {files}  = req
-		console.log("Files", files);
+		// console.log("BUSCAR FILE",req.files);
+        const  {imagen}  = req.files
+		const files = imagen
+		console.log("FILES",files);
+		// console.log("IMAGEN", imagen);
         let experiencia
         let error = null
         try {
@@ -51,15 +53,16 @@ const experienciasControllers = {
             if (experienciaExiste) {
                 res.json({
                     success: false,
-                    Message: "la experiencia que intentas agregar, ya ha sido cargada previamente"
+                    Message: "la experiencia que intentas agregar, ya ha sido cargada previamente 🤔"
                 })
             } else {
 				console.log("ACA LLEGO");
-                const filename = crypto.randomBytes(10).toString('hex') + "." + files.imagen.name.split(".")[files.imagen.name.split(".").length - 1]
+                const filename = crypto.randomBytes(10).toString('hex') + "." + files.name.split(".")[files.name.split(".").length - 1]
                 console.log("DIRNAME", __dirname);
 				const ruta = `${__dirname}/../client/build/media/${filename}`
 				console.log("RUTAAAAA",ruta);
-                files.imagen.mv(ruta, err => {
+                files.mv(ruta, err => {
+					console.log("ERROR", err);
                     if (err) {
                         console.log(err)
                     } else {
@@ -78,7 +81,7 @@ const experienciasControllers = {
                 nuevaExperiencia = await Pack.findOneAndUpdate({ _id: pack }, { $push: { experiencias: experiencia._id } }, { new: true })
                 res.json({
                     success: true,
-                    Message: "la experiencia se añadio exitosamente"
+                    Message: "Añadimos la experiencia correctamente! 😁"
                 })
             }
         } catch (err) {
