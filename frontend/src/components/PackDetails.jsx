@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import { useState } from "react";
 import shoppingActions from "../redux/actions/shoppingActions";
+import LoadingCards from "../helpers/LoadingCards";
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 
 export default function PackDetails() {
@@ -22,13 +24,11 @@ export default function PackDetails() {
     }, [])
 
     const pack = useSelector(store => store.packsReducer.getOnePack)
-    const loginUser = useSelector(store => store.usuariosReducer.user)
 
     async function añadirProducto(event) {
         const idPack = event.target.id
         dispatch(shoppingActions.addProduct(idPack))
         dispatch(shoppingActions.getUserProducts())
-        dispatch(shoppingActions.getOneProduct(idPack))
         setReload(!reload)
     }
 
@@ -46,17 +46,26 @@ export default function PackDetails() {
     }, [])
     let experiencias = pack.experiencias
 
+    const [loading, setLoading] = useState(false)
+    useEffect(() => {
+		setLoading(true);
+		setTimeout(() => {
+			setLoading(false);
+		}, 1500);
+	}, []);
+   
+
 
 
     return (
         <div className="E-container-gral bg-[#F6F7EB]">
             <div className="container-body-packs">
-                <div className="pack-titulo">
+                <div className="pack-titulo flex flex-col align-center items-center">
                     <h1 className="hover:animate-pulse titulo-pdetails">{pack?.nombre}</h1>
                     <p className="hover:animate-pulse descripcion-pdetails">{pack?.descripcion}</p>
                     <p className="hover:animate-pulse descripcion-pdetails precio-pack">PRECIO DEL PACK: ${pack?.Precio}</p>
+                    <button id={pack._id} onClick={añadirProducto} className="card-button fontRaleway w-6/12"><ShoppingCartOutlinedIcon className="mr-2"/>   Añadir Producto</button>
                     <p className="hover:animate-pulse descripcion-pdetails mensaje-pack">MOMENTOS UNICOS PARA DISFRUTAR</p>
-                    <button id={pack._id} onClick={añadirProducto} className="card-button fontRaleway flex justify-center align-center">Añadir Producto</button>
                     
 
                 </div>
@@ -78,6 +87,14 @@ export default function PackDetails() {
                         </form>
 
                     </div>
+
+                    {loading? 
+                     <div className="contenedor-experiencias">
+                        <LoadingCards />
+                    </div>
+                    
+                    : 
+
                     <div className="contenedor-experiencias">
                         {select === "" ?
                             experiencias &&
@@ -131,6 +148,11 @@ export default function PackDetails() {
                                     </div>)
                         }
                     </div>
+                    }
+
+
+                    
+
                 </div>
             </div>
             <button onClick={() => navigate(-1)} className="card-button l-card-buttonp fontRaleway">VOLVER A PACKS</button>

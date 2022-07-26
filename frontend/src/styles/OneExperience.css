@@ -125,7 +125,8 @@
 
 @media(max-width:800px) {
     .l-card-name {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
+        margin-top: 6rem;
     }
 }
 
@@ -213,7 +214,7 @@
         text-align: left;
         margin-top: 1rem;
         z-index: 2;
-        margin-left: 0cdrem;
+        margin-left: 0rem;
         color: #393E41;
         font-weight: lighter;
         font-size: .7rem;

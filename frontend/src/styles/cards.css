@@ -4,6 +4,7 @@
   align-items: flex-start;
   width: 100%;
   background-color: #F6F7EB;
+  
 }
 
 @media(max-width: 600px){
@@ -116,6 +117,7 @@
   padding-bottom: 3rem;
   flex-grow: 1;
   width: 90%;
+ height: 100%;
 }
 
 /* From uiverse.io by @alexruix */
@@ -206,11 +208,26 @@
   text-shadow: 0px 15px 20px grey;
 }
 
+@media(max-width:1024px){
+  .text-title {
+    font-size: 1.2rem;
+    margin-bottom: 0rem;
+  }
+}
+
 .text-body {
   letter-spacing: 1px;
   font-size: 0.8rem;
   font-weight: 100;
   margin-top: 1rem;
+}
+
+@media(max-width:1024px){
+  .text-body {
+    letter-spacing: 0px;
+    font-size: 0.6rem;
+    margin-top: .2rem;
+  }
 }
 
 /*Button*/
@@ -225,6 +242,14 @@
   transition: 0.4s ease;
   font-size: 13px;
   margin-top: 1.5rem;
+}
+
+@media(max-width:1024px){
+  .card-button {
+    padding: .5rem;
+    font-size: 10px;
+    margin-top: 1rem;
+  }
 }
 
 /*Image*/

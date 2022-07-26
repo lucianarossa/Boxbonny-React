@@ -3,6 +3,9 @@ import '../styles/cards.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link as LinkRouter } from 'react-router-dom'
 import packsActions from "../redux/actions/packsActions";
+import LoadingCards from '../helpers/LoadingCards'
+
+
 
 const PacksComponent = () => {
     const [inputValue, setInputValue] = useState(99999)
@@ -23,9 +26,15 @@ const PacksComponent = () => {
     //     dispatch(packsActions.getPacks(99999))
     //     // eslint-disable-next-line
     // },[])
-    
-    const packs = useSelector(store=> store.packsReducer.filterPacks)
 
+    const packs = useSelector(store => store.packsReducer.filterPacks)
+    const [loading, setLoading] = useState(false)
+    useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+    }, []);
     return (
         <div className="superContainer">
             <div className="container-izq">
@@ -44,7 +53,7 @@ const PacksComponent = () => {
                                         setInputValue(event.target.value)
                                     }
                                 }} />
-                                
+
 
                             <label className="label-checkbox" htmlFor="cinco">Hasta $5000</label>
                         </div>
@@ -65,31 +74,36 @@ const PacksComponent = () => {
                                         setInputValue(event.target.value)
                                     }
                                 }}
-                                 />
+                            />
                             <label className="label-checkbox" htmlFor="diez">Hasta $10000</label>
                         </div>
                         <div>
-                            <button onClick={clearfilter} style={{backgroundColor:"grey"}}> Limpiar filtro </button>
+                            <button onClick={clearfilter} style={{ backgroundColor: "grey" }}> Limpiar filtro </button>
                         </div>
                     </form>
                 </div>
             </div>
-            <div className="containerPacks">
-                {packs && packs?.map((pack, index) =>
-                    <div className="card" key={index}>
-                        <h2 className="text-title">{pack?.nombre}</h2>
-                        <video className="card-img" autoPlay loop muted>
-                            <source src={pack?.imagen} type='video/mp4' />
-                        </video>
-                        <div className="card-info font-bold fontRaleway">
-                            <p className="text-body">{pack?.descripcion}</p>
-                            <p className="text-body">PRECIO: ${pack?.Precio}</p>
-                            <LinkRouter to={`packdetails/${pack._id}`}><button className="card-button fontRaleway">VER PACK</button></LinkRouter>
+            {loading ?
+                <div className="containerPacks self-center ">
+                    <LoadingCards />
+                </div> :
+                <div className="containerPacks">
+                    {packs && packs?.map((pack, index) =>
+                        <div className="card" key={index}>
+                            <h2 className="text-title">{pack?.nombre}</h2>
+                            <video className="card-img" autoPlay loop muted>
+                                <source src={pack?.imagen} type='video/mp4' />
+                            </video>
+                            <div className="card-info font-bold fontRaleway">
+                                <p className="text-body">{pack?.descripcion}</p>
+                                <p className="text-body">PRECIO: ${pack?.Precio}</p>
+                                <LinkRouter to={`packdetails/${pack._id}`}><button className="card-button fontRaleway">VER PACK</button></LinkRouter>
+                            </div>
                         </div>
-                    </div>
-                )
-                }
-            </div>
+                    )
+                    }
+                </div>
+            }
         </div>
     );
 
