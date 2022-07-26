@@ -20,14 +20,11 @@ const PacksComponent = () => {
     const checkboxsiete = useRef()
     const checkboxcinco = useRef()
     console.log(packs)
+
     function selected(event){
-        // setReload(!reload)
         let checked = event.current?.checked
-        // console.log(event);
         if (checked){
-            // console.log(event);
             checkboxselected.push(event.current?.value)
-            // console.log("if" , checkboxselected);
         }
         else{
             checkboxselected = checkboxselected.filter(unchecked => unchecked != event.current?.value)
@@ -39,6 +36,7 @@ const PacksComponent = () => {
     useEffect(()=>{
         setReload(!reload)
     },[])
+
     return (
         <div className="superContainer">
             <div className="container-izq">
@@ -51,7 +49,7 @@ const PacksComponent = () => {
                     <h2 className="texto-filtro-precios">RANGO DE PRECIOS</h2>
                     <form className="filtro-precios">
                         <div className="box-checkbox">
-                            <input type="checkbox" className="inputPrecios" value="5000" id="cinco" onChange={event => setFiltroPrecio(event.target.value)} ref={checkboxcinco} onClick={selected(checkboxcinco)}/>
+                            <input type="checkbox" className="inputPrecios" value="5000" id="cinco" onChange={event =>{setFiltroPrecio(event.target.value)} } ref={checkboxcinco} onClick={selected(checkboxcinco)}/>
                             <label className="label-checkbox" htmlFor="cinco">Hasta $5000</label>
                         </div>
                         <div className="box-checkbox">

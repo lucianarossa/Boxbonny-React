@@ -163,6 +163,25 @@ max-width: 90% !important;
     padding: 2rem;
  }
 
+ @media(max-width: 560px){
+    .invitation{
+        font-size: .8rem;
+        padding-bottom: 2rem;
+        text-align: center;
+        padding: 1rem;
+     }
+     .l-card-button-comments{
+        padding: .5rem !important;
+        font-size: .8rem !important;
+     }
+ }
+
+ @media(max-width: 386px){
+    .invitation{
+        padding: 0rem;
+     }
+ }
+
  .l-card-button-comments{
     padding: 1rem;
     font-size: .9rem;

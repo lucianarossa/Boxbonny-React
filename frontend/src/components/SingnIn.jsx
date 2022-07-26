@@ -86,13 +86,11 @@ const SignIn = () => {
                         <h2 className="title">Ingresá</h2>
 
                         <div className="inputBox">
-                            <i className='bx bxs-user'></i>
-                            <input type="text" placeholder="Email" />
+                            <input  className= "inputlogin" type="text" placeholder="Email" />
                         </div>
 
                         <div className="inputBox">
-                            <i className='bx bxs-user'></i>
-                            <input type="password" placeholder="Contraseña" />
+                            <input className= "inputlogin" type="password" placeholder="Contraseña" />
                         </div>
 
                         <input type="submit" value="Inicia Sesión" className="btn" id="sign_btn" />

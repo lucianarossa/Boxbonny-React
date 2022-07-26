@@ -36,6 +36,7 @@ function App() {
   }, [])
 
   const user = useSelector(store => store.usuariosReducer.user) 
+  console.log("USER", user)
 
 
   return (
@@ -68,7 +69,7 @@ function App() {
       </Routes>
       <Footer />
       <ScrollToTop
-        style={{ backgroundColor: "#ff8e72" }}
+        style={{ backgroundColor: "#ff8e72", zIndex:"10" }}
         smooth
         component={<ExpandLessIcon />}
       />
