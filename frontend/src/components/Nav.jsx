@@ -78,9 +78,12 @@ export default function Nav() {
                     className="relative flex items-center justify-center"
                     to="/cart"
                   >
-                    <Badge color="error" badgeContent={contador}>
-                      <ShoppingCartOutlinedIcon />
-                    </Badge>
+                      {usuario?  <Badge color="error" badgeContent={contador}>
+                       <ShoppingCartOutlinedIcon/>      
+                       </Badge>
+                         :  
+                         <ShoppingCartOutlinedIcon/>  
+                         }
                   </LinkRouter>
                 </li>
               </ul>

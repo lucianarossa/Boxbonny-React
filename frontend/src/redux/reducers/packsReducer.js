@@ -21,7 +21,7 @@ const packsReducer = (state = initialState, action) => {
         case "FILTERPACKS":
                 let filter = state.filterPacks.filter(pack => pack.Precio < action.payload)   
                 // console.log("ACTION.PAYLOAD", action.payload);    
-                console.log("FILTER", filter) 
+                // console.log("FILTER", filter) 
             return{
                 ...state,
                 filterPacks: filter

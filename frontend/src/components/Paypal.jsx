@@ -14,13 +14,13 @@ function Paypal({precioTotal}) {
         axios.get(`https://api.bluelytics.com.ar/v2/latest`)
         .then((api)=> setDolar(api.data.oficial.value_sell))
     },[])
-    console.log("DOLAR", dolar);
+    // console.log("DOLAR", dolar);
 
     let precio = precioTotal
 
     let precioendolar = Math.ceil(precio / dolar)
     
-    console.log("precio en dolar", precioendolar);
+    // console.log("precio en dolar", precioendolar);
 
     const initialOptions = {
         "client-id": "AeJkCCC1SfRb72aMkBVnOtoLoovSO29ohdVw_MjbnVf0bYsVmFHHhy3AtBbrpFW-LDX2X7sgo4lJF0-h",
@@ -30,7 +30,7 @@ function Paypal({precioTotal}) {
 
     const createOrder = (data, actions) => {
         //Creo la orden de con los datos, esta puede ser general o con detalle de items
-        console.log(data)
+        // console.log(data)
         return actions.order.create({
             purchase_units: [{
                 reference_id: "BoxBonny",
