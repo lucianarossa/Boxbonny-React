@@ -19,18 +19,20 @@ const PacksComponent = () => {
     const checkboxdiez = useRef()
     const checkboxsiete = useRef()
     const checkboxcinco = useRef()
-    // console.log(packs)
+    console.log(packs)
 
     function selected(event){
         let checked = event.current?.checked
-        if (checked == true){
+        if (checked){
             checkboxselected.push(event.current?.value)
-            console.log(checked)
+
         }
         else{
-           console.log("HOLAAA") 
+            checkboxselected = checkboxselected.filter(unchecked => unchecked != event.current?.value)
+            console.log("else", checkboxselected);
+            // setReload(!reload)
         }
-        
+        // setReload(!reload)
     }
     useEffect(()=>{
         setReload(!reload)
@@ -64,7 +66,8 @@ const PacksComponent = () => {
             </div>
             <div className="containerPacks">
                 {packs &&
-                    packs?.map((pack, index) =>
+                    checkboxselected.length === 0 ?
+                    packs && packs?.map((pack, index) =>
                         <div className="card" key={index}>
                             <h2 className="text-title">{pack?.nombre}</h2>
                             <video className="card-img" autoPlay loop muted>
@@ -75,8 +78,24 @@ const PacksComponent = () => {
                                 <p className="text-body">PRECIO: ${pack?.Precio}</p>
                                 <LinkRouter to={`packdetails/${pack._id}`}><button className="card-button fontRaleway">VER PACK</button></LinkRouter>
                             </div>
-                        </div>   
-                )}
+                        </div>
+                        ) 
+                        :
+                    packs?.filter(Pack => Pack.Precio <= checkboxselected).map((pack, index) =>
+                        <div className="card" key={index}>
+                            <h2 className="text-title">{pack?.nombre}</h2>
+                            <video className="card-img" autoPlay loop muted>
+                                <source src={pack?.imagen} type='video/mp4' />
+                            </video>
+                            <div className="card-info font-bold fontRaleway">
+                                <p className="text-body">{pack?.descripcion}</p>
+                                <p className="text-body">PRECIO: ${pack?.Precio}</p>
+                                <LinkRouter to={`packdetails/${pack._id}`}>
+                                    <button className="card-button fontRaleway">VER PACK</button>
+                                </LinkRouter>
+                            </div>
+                        </div>)
+                }
             </div>
         </div>
     );
