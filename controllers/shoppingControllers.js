@@ -5,17 +5,36 @@ const shoppingControllers = {
 
     addProduct: async (req, res) => {
         console.log(req.body)
-        const {idPack} = req.body
+        const { idPack } = req.body
         const idUsuario = req.user._id
-        const cantidad = 1
+        let cantidad = 1
         try {
-            const newCarrito = await Shopping({ idPack, idUsuario, cantidad }).save()
-            res.json({
-                success: true,
-                response: { newCarrito },
-                message: "Producto añadido con éxito"
-            })
-            console.log(newCarrito)
+            let carritoExiste = await Shopping.findOne({ idPack, idUsuario })
+           
+            if (carritoExiste !== null) {
+                console.log("CONSOLAAAAAAAA",carritoExiste)
+
+                cantidad = carritoExiste.cantidad + 1
+                const shopping = await Shopping.findOneAndUpdate({ idPack, idUsuario }, {
+                    $set: {
+                        "cantidad": cantidad
+                    }
+                }, { new: true })
+                res.json({
+                    success: true,
+                    response: { shopping },
+                    message: "Tu compra ha sido actualizada"
+                })
+            }
+            else {
+                const shopping = await Shopping({ idPack, idUsuario, cantidad }).save()
+                res.json({
+                    success: true,
+                    response: { shopping },
+                    message: "Producto añadido con éxito"
+                })
+                console.log(shopping)
+            }
         }
         catch (error) {
             console.log(error)
@@ -32,9 +51,9 @@ const shoppingControllers = {
         const error = null;
         try {
             shopping = await Shopping.find({ idUsuario: idUsuario })
-                .populate("idUsuario", {nombre:1, apellido:1, email:1})
-                .populate("idPack",{nombre:1, Precio:1, imagen:1, descripcion:1, cantidad:1})
-                console.log(shopping)
+                .populate("idUsuario", { nombre: 1, apellido: 1, email: 1 })
+                .populate("idPack", { nombre: 1, Precio: 1, imagen: 1, descripcion: 1, cantidad: 1 })
+            console.log(shopping)
         } catch (err) {
             error = err
             console.log(error)
@@ -73,8 +92,7 @@ const shoppingControllers = {
         const idProduct = req.params.id
         console.log(idProduct)
         try {
-            const respuesta = await Shopping.findOneAndDelete({ _id:idProduct})
-            console.log("DELETEEEEEEEEEEE",respuesta)
+            const respuesta = await Shopping.findOneAndDelete({ _id: idProduct })
             res.json({
                 success: true,
                 message: "El producto ha sido eliminado"
@@ -89,22 +107,29 @@ const shoppingControllers = {
         }
     },
 
-    modifyProduct: async (req,res) => {
+    modifyProduct: async (req, res) => {
         //console.log('REQ BODY REQ BODY REQ BODY REQ BODY REQ BODY')
         //console.log(req.body)
-        const {productId,cantidad} = req.body
+        const { productId, cantidad } = req.body
         try {
             const modifyCarrito = await Shopping
-            .findOneAndUpdate({"_id": productId}, {$set:{
-                "cantidad": cantidad}}, {new: true})
-            res.json({success: true,
-                response: {modifyCarrito},
-                message: "Tu compra se ha modificado"})
+                .findOneAndUpdate({ "_id": productId }, {
+                    $set: {
+                        "cantidad": cantidad
+                    }
+                }, { new: true })
+            res.json({
+                success: true,
+                response: { modifyCarrito },
+                message: "Tu compra se ha modificado"
+            })
         }
         catch (error) {
             console.log(error)
-            res.json({ success: true,
-                message: "Perdón, no pudimos hacer la modificación" })
+            res.json({
+                success: true,
+                message: "Perdón, no pudimos hacer la modificación"
+            })
         }
     },
 
