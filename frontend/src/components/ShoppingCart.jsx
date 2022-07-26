@@ -45,10 +45,10 @@ export default function ShoppingCart() {
       <div className="container mx-auto mt-10">
         <div className="flex shadow-md my-10">
 
-          {products.shopping.length === 0 ? 
+          {products.shopping?.length === 0 ? 
           <div className="w-3/4  bg-white px-10 py-10 flex flex-col justify-center">
             <p className="text-2xl text-center font-semibold" >Tu carrito esta vacio </p>
-            <img className="h-[25rem] object-contain	" src="https://donweb.com/img/mis-compras/carro-vacio-canasta.png" alt="carrito-vacio"  />
+            <img className="h-[20rem] object-contain	" src="https://donweb.com/img/mis-compras/carro-vacio-canasta.png" alt="carrito-vacio"  />
           </div>
           : 
           <div className="w-3/4 bg-white px-10 py-10">
