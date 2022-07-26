@@ -31,6 +31,7 @@ const [reload , setReload] = useState(false)
       const token = localStorage.getItem("token")
       dispatch(usuariosActions.verificarToken(token))
     }
+    
     // eslint-disable-next-line
   }, [])
 

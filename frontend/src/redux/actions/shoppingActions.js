@@ -47,11 +47,17 @@ deleteProduct: (id) => {
             console.log(answer.data.response)
             return (answer.data.response)
         }
-    }
-
-
-
-
+    },
+    modifyProduct: (modifyCarrito) => {
+      console.log(modifyCarrito)
+      const token = localStorage.getItem('token')
+      return async (dispatch, getState) => {
+          const res = await axios.put(url+`api/shopping`,{...modifyCarrito},
+          {headers: {Authorization: "Bearer "+token}})
+      dispatch({type: 'message', payload: {view: true, message: res.data.message, success: res.data.success}})
+      return res.data.response
+      }
+  },
 }
 
 export default shoppingActions

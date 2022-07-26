@@ -1,21 +1,24 @@
 import { Link as LinkRouter } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 import shoppingActions from "../redux/actions/shoppingActions";
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 
 export default function ShoppingCart() {
   const [reload, setReload] = useState(false)
+  const [modify, setModify] = useState()
   const dispatch = useDispatch()
   const products = useSelector(store => store.shoppingReducer.productos)
+  console.log(products)
+  
+  
 
   async function toModify(event) {
     event.preventDefault()
-    const product = {
+    const modifyCarrito = {
         productId: event.target.id,
         cantidad: event.target.value
     }
-    dispatch(shoppingActions.modifyProduct(product)) 
-       setReload(!reload)
+    dispatch(shoppingActions.modifyProduct(modifyCarrito)) 
 }
 
   async function toDelete(event) {
@@ -24,6 +27,17 @@ export default function ShoppingCart() {
      dispatch(shoppingActions.getUserProducts())
     setReload(!reload)
   }
+
+  useEffect(()=>{
+    const productosSuma = products.shopping
+    let subtot = 0
+    productosSuma?.forEach(prod => {
+        subtot = subtot + prod.idPack?.Precio * prod?.cantidad
+    })
+    setModify(subtot)
+    setReload(!reload)
+  },[])
+ 
 
 
   return (
@@ -57,12 +71,12 @@ export default function ShoppingCart() {
                   <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
                   </svg>
                   <div className="div4-products">
-                    <input id={prod?._id} className="custom-input-products" type="number" onChange="" defaultValue={prod.cantidad} min="1" max="100"/>
+                    <input id={prod?._id} onChange={toModify} className="custom-input-products" type="number" defaultValue={prod.cantidad} min="1" max="100"/>
                   </div>
 
                 </div>
                 <span className="text-center w-1/5 font-semibold text-sm">${prod.idPack?.Precio}</span>
-                <span className="text-center w-1/5 font-semibold text-sm">$400.00</span>
+                <span  className="text-center w-1/5 font-semibold text-sm">${modify}</span>
               </div>)}
 
             <LinkRouter to="/packs" className="flex font-semibold hover:underline text-orange-600 text-sm mt-10">
