@@ -15,7 +15,8 @@ import Checkout from './components/Checkout';
 import PackDetails from './components/PackDetails';
 import { Toaster } from 'react-hot-toast';
 import ScrollToTop from "react-scroll-to-top";
-import {BsFillArrowUpCircleFill} from 'react-icons/bs'
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+// import {BsFillArrowUpCircleFill} from 'react-icons/bs'
 import usuariosActions from './redux/actions/usuariosActions';
 import shoppingActions from './redux/actions/shoppingActions';
 
@@ -70,7 +71,7 @@ const [reload , setReload] = useState(false)
       <ScrollToTop
         style={{ backgroundColor: "#ff8e72" }}
         smooth
-        component={<BsFillArrowUpCircleFill className='svg-scroll' fontSize="large" />}
+        component={<ExpandLessIcon />}
       />
     </div>
   );

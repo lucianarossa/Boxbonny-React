@@ -17,7 +17,7 @@ function ModifyComment({ comentario, reloadChanger, usuario }) {
 
 
     //EDITAR COMENTARIO
-
+  
     async function modifyComment(event) {
         event.preventDefault()
         const commentData = {
@@ -26,7 +26,7 @@ function ModifyComment({ comentario, reloadChanger, usuario }) {
         }
         const res = await dispatch(comentariosActions.UpdateComment(commentData))
         reloadChanger()
-     
+
 
         if (res.data.success) {
             toast(res.data.message)
@@ -41,7 +41,7 @@ function ModifyComment({ comentario, reloadChanger, usuario }) {
         event.preventDefault()
         const res = await dispatch(comentariosActions.DeleteComment(event.target.id))
         reloadChanger()
-        
+
 
         if (res.data.success) {
             toast(res.data.message)
@@ -59,7 +59,7 @@ function ModifyComment({ comentario, reloadChanger, usuario }) {
                         <Avatar alt="Remy Sharp" src={usuario?.imagen} />
                         <div className='l-nombreusuario'>{comentario.idUsuario?.nombre} {comentario.idUsuario?.apellido}</div>
                     </div>
-                    <Rating name="half-rating-read" defaultValue={comentario.raiting} precision={1} readOnly />
+                    <Rating name="half-rating-read" value={comentario.rating} precision={1} readOnly />
                 </div>
                 <Box
                     component="form"
@@ -70,7 +70,7 @@ function ModifyComment({ comentario, reloadChanger, usuario }) {
                     autoComplete="off"
                 >
                     <div>
-                    <div className="comment-box" onInput={(event) => setModify(event.currentTarget.textContent)} suppressContentEditableWarning={true} contentEditable>{comentario.comentario}</div>
+                        <div className="comment-box" onInput={(event) => setModify(event.currentTarget.textContent)} suppressContentEditableWarning={true} contentEditable>{comentario.comentario}</div>
                     </div>
                     <div className='l-buttons-cont'>
                         <button onClick={modifyComment} id={comentario._id} className="call-button comment-button">✏️</button>
