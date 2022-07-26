@@ -2,6 +2,7 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Packs from '../screens/Packs'
 import PackDetail from '../screens/PackDetail'
+import Comentarios from '../screens/Comentarios'
 import ExperienciaDetail from '../screens/ExperienciaDetail'
 
 
@@ -27,6 +28,10 @@ export default function StackPacks(){
 				<stack.Screen
 				name="detalle de la experiencia"
 				component={ExperienciaDetail}
+			/>
+				<stack.Screen
+				name="Comentarios"
+				component={Comentarios}
 			/>
 		</stack.Navigator>
 	)

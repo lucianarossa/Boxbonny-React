@@ -1,18 +1,25 @@
 import React, {useState, useEffect} from 'react'
-
-import { StyleSheet, Text, View, Dimensions, ImageBackground, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, ImageBackground, ScrollView, TouchableOpacity } from 'react-native';
 import {useSelector,useDispatch} from 'react-redux'
 import experienciasActions from '../redux/actions/experienciasActions'
+import StarRating from 'react-native-star-rating-widget';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ExperienciaDetail({route}) {
 	const dispatch = useDispatch()
+	const navigation = useNavigation()
+	const [rating, setRating] = useState(0);
 	const experiencia = useSelector(store => store.experienciasReducer.getOneExperiencia)
 
 	useEffect(()=>{
 		dispatch(experienciasActions.getOneExperiencia(route.params.experienciaId))
-		console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-		console.log(experiencia)
 	},[])
+
+	const arrayComentarios = experiencia.comentarios
+	let total = 0
+	arrayComentarios?.map(comentario => total += comentario.rating)
+	const promedio = Math.ceil(total/arrayComentarios?.length) 
+
 	return (
 
 		<ScrollView style={styles.container}>
@@ -28,11 +35,20 @@ export default function ExperienciaDetail({route}) {
 				<Text style={styles.title}>Ubicacion</Text>
 				<Text style={styles.content}>{experiencia.incluye}</Text>
 				<Text style={styles.title}>RESERVA ESTA EXPERIENCIA</Text>
-				<Text style={styles.content}>contacto@boxbonnt.com</Text>
+				<Text style={styles.content}>contacto@boxbonny.com</Text>
 			</View>
-		
-
-
+			{arrayComentarios?.length !== 0 ? <View style={styles.rating}>
+				<Text >VALORACION ENTRE {arrayComentarios?.length} OPINIONES!</Text>
+				<StarRating
+        rating={promedio}
+        onChange={setRating}
+      />
+			</View> :
+			<Text style={styles.rating}>NADIE VALORO ESTA EXPERIENCIA AUN!</Text>}
+			<TouchableOpacity onPress={() => navigation.navigate('Comentarios',{ comentarios: arrayComentarios})}>
+				<Text style={styles.button}>Comentarios ({arrayComentarios?.length})</Text>
+			</TouchableOpacity>
+			
 	</ScrollView>
 	)
 }
@@ -68,7 +84,17 @@ const styles = StyleSheet.create({
 			marginTop: 10,
 			paddingHorizontal: 30,
 		},
-		info:{
-			
+		rating:{
+			marginVertical: 20,
+			alignSelf: 'center',
+		},
+		button:{
+			backgroundColor: "#393e41",
+			color: "white",
+			alignSelf: "center",
+			padding: 10,
+			borderRadius: 10,
+			marginBottom: 100,	
+
 		}
 });
