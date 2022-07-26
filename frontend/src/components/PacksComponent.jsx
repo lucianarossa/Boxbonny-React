@@ -1,44 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import '../styles/cards.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link as LinkRouter } from 'react-router-dom'
-import { useState } from "react";
-import { useRef } from "react";
-import { useEffect } from "react";
-
-
+import packsActions from "../redux/actions/packsActions";
 
 const PacksComponent = () => {
-    var checkboxselected = []
-    const packs = useSelector(store => store.packsReducer.packs)
-    const [filtroPrecio, setFiltroPrecio] = useState()
-    const [reload, setReload] = useState(false)
-    // console.log(filtroPrecio)
+    const [inputValue, setInputValue] = useState(99999)
+    const dispatch = useDispatch()
 
-    // console.log(packs);
-    const checkboxdiez = useRef()
-    const checkboxsiete = useRef()
-    const checkboxcinco = useRef()
-    console.log(packs)
-    function selected(event){
-        // setReload(!reload)
-        let checked = event.current?.checked
-        // console.log(event);
-        if (checked){
-            // console.log(event);
-            checkboxselected.push(event.current?.value)
-            // console.log("if" , checkboxselected);
-        }
-        else{
-            checkboxselected = checkboxselected.filter(unchecked => unchecked != event.current?.value)
-            console.log("else", checkboxselected);
-            // setReload(!reload)
-        }
-        // setReload(!reload)
+    function clearfilter(event) {
+        event.preventDefault()
+        dispatch(packsActions.getPacks(99999))
     }
-    useEffect(()=>{
-        setReload(!reload)
-    },[])
+
+    useEffect(() => {
+        dispatch(packsActions.getPacks(inputValue))
+        // eslint-disable-next-line
+    }, [inputValue])
+
+    // dispatch(packsActions.getPacks(99999))
+    // useEffect(()=>{
+    //     dispatch(packsActions.getPacks(99999))
+    //     // eslint-disable-next-line
+    // },[])
+    
+    const packs = useSelector(store=> store.packsReducer.filterPacks)
+
     return (
         <div className="superContainer">
             <div className="container-izq">
@@ -51,51 +38,56 @@ const PacksComponent = () => {
                     <h2 className="texto-filtro-precios">RANGO DE PRECIOS</h2>
                     <form className="filtro-precios">
                         <div className="box-checkbox">
-                            <input type="checkbox" className="inputPrecios" value="5000" id="cinco" onChange={event => setFiltroPrecio(event.target.value)} ref={checkboxcinco} onClick={selected(checkboxcinco)}/>
+                            <input type="radio" className="inputPrecios" value="5000" id="cinco"
+                                onClick={(event) => {
+                                    if (event.target.checked === true) {
+                                        setInputValue(event.target.value)
+                                    }
+                                }} />
+                                
+
                             <label className="label-checkbox" htmlFor="cinco">Hasta $5000</label>
                         </div>
                         <div className="box-checkbox">
-                            <input type="checkbox" className="inputPrecios" value="7500" id="ocho" onChange={event => setFiltroPrecio(event.target.value)} ref={checkboxsiete} onClick={selected(checkboxsiete)}/>
+                            <input type="radio" className="inputPrecios" value="7500" id="ocho"
+                                onClick={(event) => {
+                                    if (event.target.checked === true) {
+                                        setInputValue(event.target.value)
+                                    }
+                                }} />
                             <label className="label-checkbox" htmlFor="ocho">Hasta $7500</label>
                         </div>
                         <div className="box-checkbox">
-                            <input type="checkbox" className="inputPrecios" value="9999" id="diez" onChange={event => setFiltroPrecio(event.target.value)} ref={checkboxdiez} onClick={selected(checkboxdiez)}/>
+                            <input type="radio" className="inputPrecios" value="9999" id="diez"
+                                // onClick={clearfilter}
+                                onClick={(event) => {
+                                    if (event.target.checked === true) {
+                                        setInputValue(event.target.value)
+                                    }
+                                }}
+                                 />
                             <label className="label-checkbox" htmlFor="diez">Hasta $10000</label>
+                        </div>
+                        <div>
+                            <button onClick={clearfilter} style={{backgroundColor:"grey"}}> Limpiar filtro </button>
                         </div>
                     </form>
                 </div>
             </div>
             <div className="containerPacks">
-                {packs &&
-                    checkboxselected.length === 0 ?
-                    packs && packs?.map((pack, index) =>
-                        <div className="card" key={index}>
-                            <h2 className="text-title">{pack?.nombre}</h2>
-                            <video className="card-img" autoPlay loop muted>
-                                <source src={pack?.imagen} type='video/mp4' />
-                            </video>
-                            <div className="card-info font-bold fontRaleway">
-                                <p className="text-body">{pack?.descripcion}</p>
-                                <p className="text-body">PRECIO: ${pack?.Precio}</p>
-                                <LinkRouter to={`packdetails/${pack._id}`}><button className="card-button fontRaleway">VER PACK</button></LinkRouter>
-                            </div>
+                {packs && packs?.map((pack, index) =>
+                    <div className="card" key={index}>
+                        <h2 className="text-title">{pack?.nombre}</h2>
+                        <video className="card-img" autoPlay loop muted>
+                            <source src={pack?.imagen} type='video/mp4' />
+                        </video>
+                        <div className="card-info font-bold fontRaleway">
+                            <p className="text-body">{pack?.descripcion}</p>
+                            <p className="text-body">PRECIO: ${pack?.Precio}</p>
+                            <LinkRouter to={`packdetails/${pack._id}`}><button className="card-button fontRaleway">VER PACK</button></LinkRouter>
                         </div>
-                        ) 
-                        :
-                    packs?.filter(Pack => Pack.Precio <= checkboxselected).map((pack, index) =>
-                        <div className="card" key={index}>
-                            <h2 className="text-title">{pack?.nombre}</h2>
-                            <video className="card-img" autoPlay loop muted>
-                                <source src={pack?.imagen} type='video/mp4' />
-                            </video>
-                            <div className="card-info font-bold fontRaleway">
-                                <p className="text-body">{pack?.descripcion}</p>
-                                <p className="text-body">PRECIO: ${pack?.Precio}</p>
-                                <LinkRouter to={`packdetails/${pack._id}`}>
-                                    <button className="card-button fontRaleway">VER PACK</button>
-                                </LinkRouter>
-                            </div>
-                        </div>)
+                    </div>
+                )
                 }
             </div>
         </div>

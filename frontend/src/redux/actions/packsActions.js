@@ -1,11 +1,12 @@
 import axios from "axios";
 
 const packsActions = {
-    getPacks: () => {
+    getPacks: (inputValue) => {
       return async (dispatch, getState) => {
          const res = await axios.get("https://boxbonny-back.herokuapp.com/api/packs");
          // console.log(res)
-         dispatch({ type: "GETPACKS", payload: res.data.response.packs });
+         dispatch({ type: "GETPACKS", payload: res.data.response.packs })
+         dispatch({ type: "FILTERPACKS", payload: inputValue})
       };
    },
 
@@ -22,6 +23,12 @@ const packsActions = {
          dispatch({ type: "FILTEREXPERIENCIAS", payload: input });
       };
    },
+   // filterPacks:(inputValue) => {
+   // // console.log("🚀 ~ file: packsActions.js ~ line 26 ~ inputValue", inputValue)
+   //    return (dispatch, getState) => {
+   //       dispatch({type: "FILTERPACKS", payload: inputValue})
+   //    }
+   // }
 };
 
 export default packsActions;

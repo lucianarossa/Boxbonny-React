@@ -2,7 +2,7 @@ import './styles/App.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import { Routes, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import packsActions from "./redux/actions/packsActions"
 import PacksPage from './pages/PacksPage';
@@ -25,7 +25,7 @@ function App() {
   const dispatch = useDispatch()
   
   useEffect(() => {
-    dispatch(packsActions.getPacks())
+    dispatch(packsActions.getPacks(99999))
     dispatch(shoppingActions.getUserProducts())
     if(localStorage.getItem('token') !== null){
       const token = localStorage.getItem("token")

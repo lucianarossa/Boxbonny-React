@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import toast from 'react-hot-toast';
+// import { useNavigate } from 'react-router-dom'
+// import { useSelector } from "react-redux"
+import axios from 'axios'
+
 
 function Paypal() {
+    // const precio = useSelector(store=> store.shoppingActions.getProduct)
+    const [dolar, setDolar] = useState([])
 
+    useEffect(()=>{
+        axios.get(`https://api.bluelytics.com.ar/v2/latest`)
+        .then((api)=> setDolar(api.data.oficial.value_sell))
+    },[])
+    console.log("DOLAR", dolar);
 
-    const initialOptions ={
+    let precio = 2400
+
+    let precioendolar = Math.ceil(precio / dolar)
+    
+    console.log("precio en dolar", precioendolar);
+
+    const initialOptions = {
         "client-id": "AeJkCCC1SfRb72aMkBVnOtoLoovSO29ohdVw_MjbnVf0bYsVmFHHhy3AtBbrpFW-LDX2X7sgo4lJF0-h",
         currency: "USD",
         intent: "capture"
@@ -12,107 +30,55 @@ function Paypal() {
 
     const createOrder = (data, actions) => {
         //Creo la orden de con los datos, esta puede ser general o con detalle de items
-       console.log(data)
-     return actions.order.create({
-  
-     purchase_units: [{
-                 reference_id: "PUHF",
-                 description: "Sporting Goods",
- 
-                 custom_id: "CUST-HighFashions",
-                 soft_descriptor: "HighFashions",
-                 amount: {
-                     currency_code: "USD",
-                     value: "230.00",
-                     breakdown: {
-                         item_total: {
-                             currency_code: "USD",
-                             value: "180.00"
-                         },
-                         shipping: {
-                             currency_code: "USD",
-                             value: "30.00"
-                         },
-                         handling: {
-                             currency_code: "USD",
-                             value: "10.00"
-                         },
-                         tax_total: {
-                             currency_code: "USD",
-                             value: "20.00"
-                         },
-                         shipping_discount: {
-                             currency_code: "USD",
-                             value: "10"
-                         }
-                     }
-                 },
-                 items: [{
-                     name: "T-Shirt",
-                     description: "Green XL",
-                     sku: "sku01",
-                     unit_amount: {
-                          currency_code: "USD",
-                          value: "90.00"
-                     },
-                     tax: {
-                         currency_code: "USD",
-                         value: "10.00"
-                     },
-                     quantity: "1",
-                     category: "PHYSICAL_GOODS"
-                 },
-                     {
-                     name: "Shoes",
-                     description: "Running, Size 10.5",
-                     sku: "sku02",
-                     unit_amount: {
-                          currency_code: "USD",
-                          value: "45.00"
-                     },
-                     tax: {
-                         currency_code: "USD",
-                         value: "5.00"
-                     },
-                     quantity: "2",
-                     category: "PHYSICAL_GOODS"
-                 }
-                 ],
-                 shipping: {
-                     method: "United States Postal Service",
-                     address: {
-                         name: {
-                             full_name: "John",
-                             surname: "Doe"
-                         },
-                         address_line_1: "123 Townsend St",
-                         address_line_2: "Floor 6",
-                         admin_area_2: "San Francisco",
-                         admin_area_1: "CA",
-                         postal_code: "94107",
-                         country_code: "US"
-                     }
-                 }
-             }]
-     });
-   };
+        console.log(data)
+        return actions.order.create({
+            purchase_units: [{
+                reference_id: "BoxBonny",
+                description: "BoxBonny",
 
-
-
-   const PayPalCheckOut = ()=>{
+                custom_id: "BoxBonny",
+                soft_descriptor: "BoxBonny",
+                amount: {
+                    currency_code: "USD",
+                    value: precioendolar,
+                    breakdown: {
+                        item_total: {
+                            currency_code: "USD",
+                            value: precioendolar
+                        },
+                    }
+                },
+            }]
+        });
+    };
+    const onCancel = () => {
+        toast.error('Has cancelado el pago!')
+    }
+    const onApprove = () => { //recibo el resultado de mi operacion
+        toast.success('Tu pago fue aprobado!')
+        toast.success('Gracias por su compra 😄')
+    };
+    const onError= () => {
+        toast.error('Ocurrio un error en el pago')
+    }
+const PayPalCheckOut = () => {
     return (
         <PayPalScriptProvider options={initialOptions}> {/*Inicializo el CDN*/}
-
-                {/*Inicializo los botones*/}
-                <PayPalButtons 
-                    createOrder={createOrder}
-                />
+            {/*Inicializo los botones*/}
+            <PayPalButtons
+                createOrder={createOrder}
+                onCancel={onCancel}
+                onApprove={onApprove}
+                onError={onError}
+            />
         </PayPalScriptProvider>
     )
 }
 return (
-    <PayPalCheckOut/> 
-      )
+    <>
+        <PayPalCheckOut  />
+    </>
+)
 }
 
 export default Paypal

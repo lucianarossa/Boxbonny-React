@@ -16,6 +16,7 @@ import Badge from '@mui/material/Badge';
 
 export default function Nav() {
 
+  console.log("%cWelcome to the Console Park 🦖",'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)');
 
   const [anchorElUser, setAnchorElUser] = useState(null);
   const usuario = useSelector(store => store.usuariosReducer.user);
@@ -84,10 +85,12 @@ export default function Nav() {
               {/* avatar usuario */}
               <Box sx={{ flexGrow: 0 }}>
                 <div>
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Box  sx={{ display:"flex", p: 0 }}>
                     {usuario ? <Box sx={{ display: 'flex', flexDirection: 'column', WebkitJustifyContent: 'center', color: '#FF8E72', alignItems: 'center', }} >
+                      <IconButton onClick={handleOpenUserMenu} >
                       <Avatar alt="imagen del usuario" src={usuario?.imagen} sx={{ width: 30, height: 30 }} sm={{ width: 30, height: 30 }} />
                       <p className="m-nombreAvatar">{usuario?.nombre}</p>
+                      </IconButton>
                     </Box>
                       :
                       <>
@@ -102,7 +105,7 @@ export default function Nav() {
                         <Box sx={{ display: 'flex', flexDirection: 'column', WebkitJustifyContent: 'center', alignItems: 'center', color: 'white', paddingLeft: "2rem" }} > <Avatar alt="avatar no logueado" src={"https://i.imgur.com/F6TK2Lu.png"} sx={{ width: 35, height: 35 }}/></Box>
                       </>
                     }
-                  </IconButton>
+                  </Box>
                 </div>
                 <Menu
                   sx={{ mt: '45px' }}
