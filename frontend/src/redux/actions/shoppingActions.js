@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const url = 'http://localhost:8000/'
-// const url=  'https://boxbonny-back.herokuapp.com/'
+// const url = 'http://localhost:8000/'
+const url=  'https://boxbonny-back.herokuapp.com/'
 
 const shoppingActions = {
 
