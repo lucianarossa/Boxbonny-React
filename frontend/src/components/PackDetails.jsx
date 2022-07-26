@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import { useState } from "react";
 import shoppingActions from "../redux/actions/shoppingActions";
+import LoadingCards from "../helpers/LoadingCards";
 
 
 export default function PackDetails() {
@@ -44,6 +45,15 @@ export default function PackDetails() {
     }, [])
     let experiencias = pack.experiencias
 
+    const [loading, setLoading] = useState(false)
+    useEffect(() => {
+		setLoading(true);
+		setTimeout(() => {
+			setLoading(false);
+		}, 2000);
+	}, []);
+   
+
 
 
     return (
@@ -76,6 +86,14 @@ export default function PackDetails() {
                         </form>
 
                     </div>
+
+                    {loading? 
+                     <div className="contenedor-experiencias">
+                        <LoadingCards />
+                    </div>
+                    
+                    : 
+
                     <div className="contenedor-experiencias">
                         {select === "" ?
                             experiencias &&
@@ -129,6 +147,11 @@ export default function PackDetails() {
                                     </div>)
                         }
                     </div>
+                    }
+
+
+                    
+
                 </div>
             </div>
             <button onClick={() => navigate(-1)} className="card-button l-card-buttonp fontRaleway">VOLVER A PACKS</button>

@@ -44,6 +44,13 @@ export default function ShoppingCart() {
     <div className="bg-gray-100">
       <div className="container mx-auto mt-10">
         <div className="flex shadow-md my-10">
+
+          {products.shopping.length === 0 ? 
+          <div className="w-3/4  bg-white px-10 py-10 flex flex-col justify-center">
+            <p className="text-2xl text-center font-semibold" >Tu carrito esta vacio </p>
+            <img className="h-[25rem] object-contain	" src="https://donweb.com/img/mis-compras/carro-vacio-canasta.png" alt="carrito-vacio"  />
+          </div>
+          : 
           <div className="w-3/4 bg-white px-10 py-10">
             <div className="flex justify-between border-b pb-8">
               <h1 className="font-semibold text-2xl">Carrito de compras</h1>
@@ -84,6 +91,10 @@ export default function ShoppingCart() {
               Continuar Comprando
             </LinkRouter>
           </div>
+          }
+
+
+          
 
           <div id="summary" className="w-1/4 px-8 py-10">
             <h1 className="font-semibold text-2xl border-b pb-8">Resumen del pedido</h1>

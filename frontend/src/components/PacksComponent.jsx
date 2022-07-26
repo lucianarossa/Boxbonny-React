@@ -5,6 +5,7 @@ import { Link as LinkRouter } from 'react-router-dom'
 import { useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
+import LoadingCards from '../helpers/LoadingCards'
 
 
 
@@ -27,7 +28,7 @@ const PacksComponent = () => {
             checkboxselected.push(event.current?.value)
         }
         else{
-            checkboxselected = checkboxselected.filter(unchecked => unchecked != event.current?.value)
+            checkboxselected = checkboxselected.filter(unchecked => unchecked !== event.current?.value)
             console.log("else", checkboxselected);
             // setReload(!reload)
         }
@@ -36,6 +37,18 @@ const PacksComponent = () => {
     useEffect(()=>{
         setReload(!reload)
     },[])
+
+
+
+    const [loading, setLoading] = useState(false)
+    useEffect(() => {
+		setLoading(true);
+		setTimeout(() => {
+			setLoading(false);
+		}, 2000);
+	}, []);
+   
+   
 
     return (
         <div className="superContainer">
@@ -63,7 +76,13 @@ const PacksComponent = () => {
                     </form>
                 </div>
             </div>
-            <div className="containerPacks">
+
+            {loading? 
+             <div className="containerPacks self-center ">
+                 <LoadingCards/>
+             </div>
+                :
+                <div className="containerPacks">
                 {packs &&
                     checkboxselected.length === 0 ?
                     packs && packs?.map((pack, index) =>
@@ -93,9 +112,14 @@ const PacksComponent = () => {
                                     <button className="card-button fontRaleway">VER PACK</button>
                                 </LinkRouter>
                             </div>
-                        </div>)
-                }
+                        </div>) }
+
             </div>
+
+                }
+           
+
+            
         </div>
     );
 
