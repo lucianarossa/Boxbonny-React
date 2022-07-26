@@ -19,7 +19,7 @@ function Upload() {
     // const packss = ['Adventure', 'Gourmet & Drinks', 'Spa & Relax', 'Friends & Play', 'Random']
 
     const packs = useSelector(store => store.packsReducer.packs)
-    console.log("packs",packs);
+    // console.log("packs",packs);
     const [files, setFiles] = useState()
 
     async function handleSubmit(event) {

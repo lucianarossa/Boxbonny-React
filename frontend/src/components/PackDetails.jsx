@@ -37,7 +37,7 @@ export default function PackDetails() {
 
 
     const [inputSearch, setInputSearch] = useState("")
-    console.log(inputSearch);
+    // console.log(inputSearch);
     useEffect(() => {
         // experienciasActions.filterExperiencia(select)
         packsActions.filterExperiencia(select)
@@ -99,7 +99,7 @@ export default function PackDetails() {
                         {select === "" ?
                             experiencias &&
                             experiencias.filter(city => city.nombre.toLowerCase().startsWith(inputSearch.toLowerCase())).map(xp =>
-                                <div className="e-card" key={xp._id}>
+                                <div className="e-card" key={xp.nombre}>
                                     <div className="e-card-container">
                                         <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
                                     </div>
@@ -132,7 +132,7 @@ export default function PackDetails() {
                                     </div>) :
                                 experiencias &&
                                 experiencias.filter(city => city.ciudad === select && city.nombre.toLowerCase().startsWith(inputSearch.toLowerCase())).map(xp =>
-                                    <div className="e-card" key={xp._id}>
+                                    <div className="e-card" key={xp.descripcion}>
                                         <div className="e-card-container">
                                             <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
                                         </div>

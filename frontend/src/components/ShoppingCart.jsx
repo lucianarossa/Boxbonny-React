@@ -8,7 +8,7 @@ export default function ShoppingCart() {
   const [reload, setReload] = useState(false)
   const dispatch = useDispatch()
   const products = useSelector(store => store.shoppingReducer.productos)
-  console.log(products)
+  // console.log(products)
 
   async function toDelete(event) {
     const idProducto = event.target.id
@@ -18,7 +18,7 @@ export default function ShoppingCart() {
   }
 
   const productosSum= products?.shopping
-  console.log(productosSum)
+  // console.log(productosSum)
 
   let contador = 0
   productosSum?.map(c=>contador=contador + c.cantidad)

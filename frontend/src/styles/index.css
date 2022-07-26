@@ -49,4 +49,15 @@ body {
   .logo {
     display: none;
   }
+} 
+
+@media(max-width:768px){
+  .como-funcionan{
+font-size: 2rem;
+  }
+
 }
+
+
+
+

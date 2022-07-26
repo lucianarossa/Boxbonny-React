@@ -17,7 +17,7 @@ export default function Steps() {
         </div>
       </div>
 
-      <h1 className="mt-8 text-center text-5xl text-[#FF8E72] font-bold">¿Como funcionan nuestros Packs?</h1>
+      <h1 className="mt-8 text-center text-5xl text-[#FF8E72] font-bold como-funcionan">¿Cómo funcionan nuestros Packs?</h1>
 
       {/* <!-- Box --> */}
       <div className="md:flex md:justify-center md:space-x-8 md:px-14">

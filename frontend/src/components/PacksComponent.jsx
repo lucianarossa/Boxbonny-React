@@ -78,7 +78,7 @@ const PacksComponent = () => {
                             <label className="label-checkbox" htmlFor="diez">Hasta $10000</label>
                         </div>
                         <div>
-                            <button onClick={clearfilter} style={{ backgroundColor: "grey" }}> Limpiar filtro </button>
+                            <button onClick={clearfilter} className="btn-clean">Limpiar Filtro</button>
                         </div>
                     </form>
                 </div>

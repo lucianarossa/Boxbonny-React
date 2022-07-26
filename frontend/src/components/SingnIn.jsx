@@ -35,9 +35,9 @@ const SignIn = () => {
             password: event.target[1].value,
             from: "formulario-inicio"
         }
-        console.log(logueado)
+        // console.log(logueado)
         let res = await dispatch(usuariosActions.inicioSesion(logueado))
-        console.log(res)
+        // console.log(res)
         if (res.data.success) {
             toast.success(res.data.message)
             navigate("/")
@@ -49,7 +49,7 @@ const SignIn = () => {
 
     const signUpSubmit = async (event) => {
         event.preventDefault()
-        console.log(event.target[4].value)
+        // console.log(event.target[4].value)
         const data = {
             nombre: event.target[0].value,
             apellido: event.target[1].value,

@@ -3,7 +3,7 @@ import axios from "axios";
 const comentariosActions = {
 
     AddComment: (comentario) => {
-        console.log("COMENTARIO", comentario)
+        // console.log("COMENTARIO", comentario)
         
         return async (dispatch, getState) => {
             try{
@@ -34,7 +34,7 @@ const comentariosActions = {
                         'Authorization': 'Bearer '+token
                     }
                 })
-                console.log("RESACTIONS",res)
+                // console.log("RESACTIONS",res)
 
                 dispatch({
                     type: 'message',
