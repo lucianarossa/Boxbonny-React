@@ -15,7 +15,7 @@ const comentariosControllers = require('../controllers/comentariosControllers');
 const { AddComment, UpdateComment, DeleteComment, CheckRating } = comentariosControllers
 
 const shoppingControllers = require('../controllers/shoppingControllers');
-const { addProduct, getUserProducts, getOneProduct, deleteProduct } = shoppingControllers
+const { addProduct, getUserProducts, getOneProduct, deleteProduct, modifyProduct } = shoppingControllers
 
 Router.route('/packs')
     .get(getPacks)
@@ -71,6 +71,8 @@ Router.route("/multiplesExperiencias")
 Router.route("/shopping")
 .post(passport.authenticate('jwt', {session: false}), addProduct)
 .get(passport.authenticate('jwt', {session: false}),getUserProducts)
+.put(passport.authenticate('jwt', {session: false}), modifyProduct)
+
 
 Router.route("/shopping/:id")
 .get(passport.authenticate('jwt', {session: false}), getOneProduct)

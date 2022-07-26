@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const shoppingSchema = new mongoose.Schema ({
     idPack: {type:mongoose.Types.ObjectId, ref:'packs'},
     idUsuario: {type:mongoose.Types.ObjectId, ref:'usuarios'},
+    cantidad: {type:Number},
     fecha: {
         reservado: {type:Date},
         vendido: {type:Date},
