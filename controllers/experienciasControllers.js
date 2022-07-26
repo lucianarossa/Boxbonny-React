@@ -53,7 +53,7 @@ const experienciasControllers = {
             if (experienciaExiste) {
                 res.json({
                     success: false,
-                    Message: "la experiencia que intentas agregar, ya ha sido cargada previamente"
+                    Message: "la experiencia que intentas agregar, ya ha sido cargada previamente 🤔"
                 })
             } else {
 				console.log("ACA LLEGO");
@@ -81,7 +81,7 @@ const experienciasControllers = {
                 nuevaExperiencia = await Pack.findOneAndUpdate({ _id: pack }, { $push: { experiencias: experiencia._id } }, { new: true })
                 res.json({
                     success: true,
-                    Message: "la experiencia se añadio exitosamente"
+                    Message: "Añadimos la experiencia correctamente! 😁"
                 })
             }
         } catch (err) {

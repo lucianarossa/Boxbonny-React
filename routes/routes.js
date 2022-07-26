@@ -37,11 +37,6 @@ Router.route('/experiencias/:id')
     .delete(removeExperiencia)
     .put(modifyExperiencia)
 
-    //ruta rating
-
-Router.route("/rating/:id")
-    .put(passport.authenticate("jwt", { session: false }), CheckRating)//primero pasa x passport, me devuelve el ID, y luego al controll RATING
-
 Router.route('/registrarse')
     .post(validator, registrarse)
 
