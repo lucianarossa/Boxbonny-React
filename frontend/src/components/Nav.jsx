@@ -158,19 +158,29 @@ export default function Nav() {
           <nav
             className="flex items-center justify-center p-4 overflow-x-auto text-sm font-medium gap-6"
           >
-            <LinkRouter
-              className="text-gray-500 transition hover:text-[#FF8E72]"
-              to="/"
-            >
-              Inicio
-            </LinkRouter>
-            <LinkRouter
-              className="text-gray-500 transition hover:text-[#FF8E72]"
-              to="/packs"
-            >
-              Packs
-            </LinkRouter>
-
+              <LinkRouter
+                    className="text-gray-500 transition hover:text-[#FF8E72]"
+                    to="/"
+                  >
+                    Inicio
+                  </LinkRouter>
+                  <LinkRouter
+                    className="text-gray-500 transition hover:text-[#FF8E72]"
+                    to="/packs"
+                  >
+                    Packs
+                  </LinkRouter>
+                  <LinkRouter
+                    className="relative flex items-center justify-center"
+                    to="/cart"
+                  >
+                      {usuario?  <Badge color="error" badgeContent={contador}>
+                       <ShoppingCartOutlinedIcon/>      
+                       </Badge>
+                         :  
+                         <ShoppingCartOutlinedIcon/>  
+                         } 
+                  </LinkRouter>
           </nav>
         </div>
       </div>

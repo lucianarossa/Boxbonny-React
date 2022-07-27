@@ -66,8 +66,10 @@ export default function PackDetails() {
                     <p className="hover:animate-pulse descripcion-pdetails precio-pack">PRECIO DEL PACK: ${pack?.Precio}</p>
                     <button id={pack._id} onClick={añadirProducto} className="card-button fontRaleway w-6/12"><ShoppingCartOutlinedIcon className="mr-2"/>   Añadir Producto</button>
                     <p className="hover:animate-pulse descripcion-pdetails mensaje-pack">MOMENTOS UNICOS PARA DISFRUTAR</p>
-                    
-
+                    <p className="hover:animate-pulse descripcion-pdetails">Te invitamos a ser parte de esta nueva forma de regalar porque las cosas lindas se pueden estropear, pero los momentos bien vividos no tienen fecha de caducidad</p>
+                    <p className="hover:animate-pulse descripcion-pdetails elegi-details">🎁 - TE GUSTO ESTE PACK?</p>
+                    <p className="hover:animate-pulse descripcion-pdetails elegi-details">😁 - DESCUBRI TODAS SUS OPCIONES PARA CANJEAR!</p>
+                    <p className="hover:animate-pulse descripcion-pdetails elegi-details">📧 - ENVIANOS UN MAIL PARA AGENDAR TU CANJE</p>
                 </div>
                 <div className="filter-cards-container">
                     <div className="filtro-provincias">
@@ -89,7 +91,7 @@ export default function PackDetails() {
                     </div>
 
                     {loading? 
-                     <div className="contenedor-experiencias">
+                     <div className="contenedor-experiencias self-center">
                         <LoadingCards />
                     </div>
                     
