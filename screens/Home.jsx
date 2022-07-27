@@ -80,39 +80,43 @@ export default function Home({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-		backgroundColor: '#ffedd5',
+		backgroundColor: '#F6F7EB',
   },
 	list: {
 		height: Dimensions.get('window').height/2.5,
 		width: '100%',
 	},
 	image:{
-		width: '35%',
+		width: '50%',
 		height: '30%'
 	},
 	description:{
-		flexDirection: "row",
+		flexDirection: "column",
 		height: Dimensions.get('window').height/2.5,
 		alignItems: 'center'
 	},
 	descriptionText:{
-		width: '60%',
+		width: '80%',
 		height:"100%",
-		marginTop:50
+		textAlign:"center",
+	
 	},
 	normal:{
 		marginBottom: 10,
-		fontFamily:"Poppins_500Medium"
+		fontFamily:"Poppins_500Medium",
+		textAlign:"center"
 	},
 	bold:{
 		fontWeight: 'bold',
-		fontFamily:"Poppins_500Medium"
+		fontFamily:"Poppins_500Medium",
+		textAlign:"center",
+		fontSize:18
 	},
 	title: {
 		alignSelf: 'center',
 		color: '#ff8e72',
 		fontWeight: 'bold',
-		fontSize: 25,
+		fontSize: 30,
 		marginBottom: 10,
 		fontFamily:"Poppins_500Medium"
 	},
