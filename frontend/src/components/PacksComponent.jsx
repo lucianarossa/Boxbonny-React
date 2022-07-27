@@ -21,13 +21,8 @@ const PacksComponent = () => {
         // eslint-disable-next-line
     }, [inputValue])
 
-    // dispatch(packsActions.getPacks(99999))
-    // useEffect(()=>{
-    //     dispatch(packsActions.getPacks(99999))
-    //     // eslint-disable-next-line
-    // },[])
-
     const packs = useSelector(store => store.packsReducer.filterPacks)
+    
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         setLoading(true);
