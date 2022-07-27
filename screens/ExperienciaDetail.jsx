@@ -45,7 +45,7 @@ export default function ExperienciaDetail({route}) {
       />
 			</View> :
 			<Text style={styles.rating}>NADIE VALORO ESTA EXPERIENCIA AUN!</Text>}
-			<TouchableOpacity onPress={() => navigation.navigate('Comentarios',{ comentarios: arrayComentarios})}>
+			<TouchableOpacity onPress={() => navigation.navigate('Comentarios')}>
 				<Text style={styles.button}>Comentarios ({arrayComentarios?.length})</Text>
 			</TouchableOpacity>
 			
