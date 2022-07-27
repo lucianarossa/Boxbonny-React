@@ -19,7 +19,7 @@ export default function LogOut() {
 	},[])
 	return (
 		<View style={styles.container}>
-		<Text>Cerrando sesión</Text>
+		<Text style={styles.cerrarText}>Cerrando sesión</Text>
 		<ActivityIndicator size="large" color="#FF8E72" />
 	</View>
 	)
@@ -30,4 +30,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
 		alignItems: 'center',
 		justifyContent: 'center',
-  },})
+  },
+  cerrarText:{
+	fontFamily: "Poppins_500Medium"
+  }
+})

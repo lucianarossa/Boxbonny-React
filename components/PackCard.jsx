@@ -85,13 +85,16 @@ const styles = StyleSheet.create({
 		color: "white",
 		textShadowColor: 'rgba(0, 0, 0, 0.75)',
 		textShadowOffset: {width: -1, height: 1},
-  	textShadowRadius: 10
+  	textShadowRadius: 10,
+	paddingTop:30,
 	},
 	description: {
 		color: "white",
 		fontSize: 18,
 		textAlign: "center",
 		marginBottom: 20,	
+		paddingTop:20,
+		paddingHorizontal:10
 	},
 	button:{
 		zIndex: 2,

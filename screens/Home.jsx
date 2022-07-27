@@ -1,10 +1,13 @@
 import React from 'react'
-import { StyleSheet, Text, View,ScrollView ,FlatList, Dimensions, Image} from 'react-native';
+import { StyleSheet, Text, View,ScrollView ,FlatList, Dimensions, Image, TouchableOpacity} from 'react-native';
 import {useSelector} from 'react-redux'
 import CarouselItem from '../components/CarouselItem';
+import { useScrollToTop } from '@react-navigation/native';
 
 
-export default function Home() {
+export default function Home({navigation}) {
+	const ref = React.useRef(null);
+    useScrollToTop(ref);
 	const packs = useSelector(store => store.packsReducer.packs)
 	
 	return (
@@ -22,9 +25,6 @@ export default function Home() {
 				<View style={styles.descriptionText}>
 					<Text style={styles.normal}>
 						Provee regalos originales a través de experiencias y momentos inolvidables. Todas nuestras cajas regalo están repletas de emoción y quien la recibe podrá elegir la experiencia que desee.
-					</Text>
-					<Text style={styles.normal}>
-						¿Y por qué experiencias?
 					</Text>
 					<Text style={styles.normal}>
 						Porque los momentos de felicidad son los que recordaremos por siempre.
@@ -67,9 +67,13 @@ export default function Home() {
 				Disfrutá la experiencia presentando la tarjeta física o código E-Pack.
 				</Text>
 			</View>
-
-			<Text style={styles.button}>ELEGÍ TU EXPERIENCIA</Text>
-			
+			<TouchableOpacity
+                        style={styles.button}
+                        onPress={() => navigation.navigate("Packs")}
+                        ref={ref}
+                    >
+                        <Text style={styles.buttonText}>CONOCE NUESTRAS OPCIONES</Text>
+                    </TouchableOpacity>		
     </ScrollView>
 	)
 }
@@ -79,7 +83,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#ffedd5',
   },
 	list: {
-		height: Dimensions.get('window').height/3.5,
+		height: Dimensions.get('window').height/2.5,
 		width: '100%',
 	},
 	image:{
@@ -88,24 +92,29 @@ const styles = StyleSheet.create({
 	},
 	description:{
 		flexDirection: "row",
-		height: Dimensions.get('window').height/3.5,
+		height: Dimensions.get('window').height/2.5,
 		alignItems: 'center'
 	},
 	descriptionText:{
-		width: '65%'
+		width: '60%',
+		height:"100%",
+		marginTop:50
 	},
 	normal:{
-		marginBottom: 10
+		marginBottom: 10,
+		fontFamily:"Poppins_500Medium"
 	},
 	bold:{
 		fontWeight: 'bold',
+		fontFamily:"Poppins_500Medium"
 	},
 	title: {
 		alignSelf: 'center',
 		color: '#ff8e72',
 		fontWeight: 'bold',
 		fontSize: 25,
-		marginBottom: 10
+		marginBottom: 10,
+		fontFamily:"Poppins_500Medium"
 	},
 	card:{
 		alignItems: 'center',
@@ -131,6 +140,7 @@ const styles = StyleSheet.create({
 		color: '#ff8e72',
 		fontWeight: 'bold',
 		fontSize: 25,
+		fontFamily:"Poppins_500Medium"
 	},
 	cardDescription:{
 		textAlign: 'center',
@@ -139,14 +149,21 @@ const styles = StyleSheet.create({
 		color: '#393e41',
 		fontSize: 15,
 		marginBottom: 10,
+		fontFamily:"Poppins_500Medium"
 	},
 	button:{
 		alignSelf: 'center',
-		backgroundColor: '#e9580c',
+		backgroundColor: '#FF8E72',
 		paddingVertical: 15,
 		paddingHorizontal: 35,
 		marginBottom: 80,
-		color: 'white',
 		borderRadius: 30,
+		marginTop:20
+		
+	},
+	buttonText:{
+		color: 'white',
+		fontWeight:"bold",
+		fontFamily:"Poppins_500Medium"
 	}
 });

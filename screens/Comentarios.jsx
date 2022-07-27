@@ -47,7 +47,7 @@ export default function Comentarios() {
 					value={comentario}
 				/>
 			<View style={styles.rating}>
-				<Text>Calificacion: </Text>
+				<Text style={styles.titleCalificacion}>Calificacion: </Text>
 				<StarRating
 					starSize={20}
 					rating={rating}
@@ -80,7 +80,8 @@ const styles = StyleSheet.create({
 	},
 	title:{
 		alignSelf: 'center',
-		marginVertical: 10,
+		marginVertical: 20,
+		fontFamily: "Poppins_500Medium"
 	},
 	rating:{
 		alignSelf: 'center',
@@ -90,10 +91,18 @@ const styles = StyleSheet.create({
 	},
 	button:{
 		alignSelf: 'center',
-		backgroundColor: '#111827',
+		backgroundColor: '#393E41',
 		color: 'white',
-		padding: 10,
+		padding: 15,
+		paddingHorizontal:30,
 		fontSize: 17,
-		borderRadius: 10,
+		borderRadius: 20,
+		marginTop:20,
+		marginBottom:20,
+		fontFamily: "Poppins_500Medium"
 	},
+	titleCalificacion:{
+		fontFamily: "Poppins_500Medium",
+		paddingRight:15
+	}
 })

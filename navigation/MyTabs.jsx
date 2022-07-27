@@ -29,7 +29,13 @@ export default function MyTabs() {
 				headerTintColor: '#393E41',
 				tabBarStyle: {
 					backgroundColor: '#F6F7EB',
+					fontFamily: "Poppins_500Medium",
+					height: 65,
 				},
+				tabBarLabelStyle: {
+					fontSize: 10,
+					fontFamily: "Poppins_500Medium"
+				  }
 
 			}}
 		>
@@ -65,8 +71,8 @@ export default function MyTabs() {
 			<Tab.Screen name="cuenta" component={Cuenta} options={{
 				tabBarIcon: ({ color, size }) =>
 				(<Image style={{
-					width: 30,
-					height: 30,
+					width: 35,
+					height: 35,
 					marginTop: 5,
 					marginBottom: 5,
 					borderRadius: 150 / 2,

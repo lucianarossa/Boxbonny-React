@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
 		paddingLeft: 10,
 		borderRadius: 30,
 		width: '80%',
+		fontFamily: "Poppins_500Medium"
 		
 	},
 	top:{
@@ -104,11 +105,12 @@ const styles = StyleSheet.create({
 	},
 	button:{
 		alignSelf: 'center',
-		backgroundColor: '#111827',
+		backgroundColor: '#393E41',
 		color: 'white',
-		padding: 10,
+		padding: 15,
 		fontSize: 17,
-		borderRadius: 10,
+		borderRadius: 20,
+		fontFamily: "Poppins_500Medium"
 	},
 	titleCircle:{
 		marginTop: 30,
@@ -116,20 +118,25 @@ const styles = StyleSheet.create({
 		color: 'white',
 		fontWeight: 'bold',
 		fontSize: 16,
+		fontFamily: "Poppins_500Medium"
 	},
 	subtitleCircle:{
 		marginTop: 5,
 		textAlign: 'center',
 		color: 'white',
 		fontSize: 14,
+		fontFamily: "Poppins_500Medium",
+		padding:10
 	},
 	buttonCircle:{
 		marginTop: 10,
 		alignSelf: 'center',
 		color: 'white',
-		padding: 7,
+		padding: 9,
+		paddingBottom:4,
 		borderColor: 'white',
 		borderWidth: 1,
-		borderRadius: 10,
+		borderRadius: 20,
+		fontFamily: "Poppins_500Medium"
 	}
 });
