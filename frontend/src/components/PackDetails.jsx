@@ -74,9 +74,7 @@ export default function PackDetails() {
                     <h1 className="hover:animate-pulse titulo-pdetails">{pack?.nombre}</h1>
                     <p className="hover:animate-pulse descripcion-pdetails">{pack?.descripcion}</p>
                     <p className="hover:animate-pulse descripcion-pdetails precio-pack">PRECIO DEL PACK: ${pack?.Precio}</p>
-                    <div className=" w-6/12 flex flex-col items-center justify-center" id="div-add" >
-                        <button id={pack._id} onClick={añadirProducto} className="card-button fontRaleway w-6/12"><ShoppingCartOutlinedIcon className="mr-2" />   Añadir Producto</button>
-                    </div>
+                    <button id={pack._id} onClick={añadirProducto} className="card-button fontRaleway w-4/12"><ShoppingCartOutlinedIcon className="mr-2" />   Añadir al Carrito</button>
                     <p className="hover:animate-pulse descripcion-pdetails mensaje-pack">MOMENTOS UNICOS PARA DISFRUTAR</p>
                     <p className="hover:animate-pulse descripcion-pdetails">Te invitamos a ser parte de esta nueva forma de regalar porque las cosas lindas se pueden estropear, pero los momentos bien vividos no tienen fecha de caducidad</p>
                     <p className="hover:animate-pulse descripcion-pdetails elegi-details">🎁 - TE GUSTO ESTE PACK?</p>
