@@ -14,7 +14,7 @@
 @media(max-width:920px) {
     .l-exp-container {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         padding-top: 2rem;
