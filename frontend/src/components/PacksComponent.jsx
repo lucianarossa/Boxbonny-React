@@ -39,7 +39,7 @@ const PacksComponent = () => {
                     <h2 className="hover:animate-pulse selecciona-experiencias">SELECCIONA Y DESCUBRI LAS EXPERIENCIAS</h2>
                 </div>
                 <div className="container-filtro-precios">
-                    <h2 className="texto-filtro-precios">RANGO DE PRECIOS</h2>
+                    <h2 className="texto-filtro-precios">PODES FILTRAR X PRECIO</h2>
                     <form className="filtro-precios">
                         <div className="box-checkbox">
                             <input type="radio" className="inputPrecios" value="5000" id="cinco"
