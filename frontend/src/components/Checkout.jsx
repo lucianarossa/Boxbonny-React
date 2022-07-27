@@ -2,8 +2,26 @@ import React from "react";
 import { FaCreditCard } from 'react-icons/fa'
 import {Link as LinkRouter} from 'react-router-dom'
 import Paypal from "./Paypal";
+import { useSelector } from "react-redux";
 
 export default function Checkout() {
+  const products = useSelector(store => store.shoppingReducer.productos)
+
+  const productosSum= products?.shopping
+  console.log(productosSum)
+
+  let contador = 0
+  productosSum?.map(c=>contador=contador + c.cantidad)
+
+  let total = 0
+  productosSum?.forEach(prod => {
+    total = total + prod.idPack?.Precio * prod?.cantidad
+  })
+
+  let recargo = 100
+  let precioTotal = total + recargo
+  
+
     return (
       <div className="bg-gray-100 mb-6">
          <div className="container mx-auto mt-10">
@@ -16,14 +34,13 @@ export default function Checkout() {
                     </div>
                     <div className="mt-2">
                     <LinkRouter to="/cart" className="flex font-semibold text-orange-600 hover:underline text-sm ">
-
                         <svg className="fill-current mr-2 text-orange-600 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" /></svg>
                         Volver al carrito
                     </LinkRouter>
                     </div>
                   
                     <button className="	mt-8	text-base	font-medium	focus:ring-2 focus:ring-offset-2 focus:ring-blue-800		leading-4	py-4	w-full	md:w-4/12	lg:w-full	text-white	" >
-                        <Paypal/>
+                        <Paypal precioTotal={precioTotal} />
                     </button>
                    
                 </div>
@@ -35,24 +52,20 @@ export default function Checkout() {
                     <div className="flex mt-7 pb-32 border-b flex-col items-end w-full space-y-6">
                         <div className="flex justify-between w-full items-center">
                             <p className="text-lg leading-4 text-gray-600">Cantidad de Packs</p>
-                            <p className="text-lg font-semibold leading-4 text-gray-600">20</p>
+                            <p className="text-lg font-semibold leading-4 text-gray-600">{contador}</p>
                         </div>
                         <div className="flex justify-between w-full items-center">
-                            <p className="text-lg leading-4 text-gray-600">Costo Total</p>
-                            <p className="text-lg font-semibold leading-4 text-gray-600">$2790</p>
-                        </div>
-                        <div className="flex justify-between w-full items-center">
-                            <p className="text-lg leading-4 text-gray-600">Costos de envio</p>
-                            <p className="text-lg font-semibold leading-4 text-gray-600">$90</p>
+                            <p className="text-lg leading-4 text-gray-600">Recargo por servicio</p>
+                            <p className="text-lg font-semibold leading-4 text-gray-600">${recargo}</p>
                         </div>
                         <div className="flex justify-between w-full items-center">
                             <p className="text-lg leading-4 text-gray-600">Subtotal</p>
-                            <p className="text-lg font-semibold leading-4 text-gray-600">$3520</p>
+                            <p className="text-lg font-semibold leading-4 text-gray-600">${total}</p>
                         </div>
                     </div>
                     <div className="flex justify-between w-full items-center py-6">
                         <p className="text-xl font-semibold leading-4 text-gray-800">Total</p>
-                        <p className="text-lg font-semibold leading-4 text-gray-800">$2900</p>
+                        <p className="text-lg font-semibold leading-4 text-gray-800">${precioTotal}</p>
                     </div>
                 </div>
             </div>

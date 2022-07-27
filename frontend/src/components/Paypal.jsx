@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import axios from 'axios'
 
 
-function Paypal() {
+function Paypal({precioTotal}) {
     // const precio = useSelector(store=> store.shoppingActions.getProduct)
     const [dolar, setDolar] = useState([])
 
@@ -16,7 +16,7 @@ function Paypal() {
     },[])
     // console.log("DOLAR", dolar);
 
-    let precio = 2400
+    let precio = precioTotal
 
     let precioendolar = Math.ceil(precio / dolar)
     
