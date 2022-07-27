@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import {Video} from 'expo-av'
 export default function PackCard ({pack})  {
 	const navigation = useNavigation()
-	const [change, setChange] = useState(false);
+	const [change, setChange] = useState(false)
 
 	return (
 		<View>
@@ -29,8 +29,6 @@ export default function PackCard ({pack})  {
 				
 			</Pressable>
 		</View>
-	
-		
 	)
 }
 const styles = StyleSheet.create({

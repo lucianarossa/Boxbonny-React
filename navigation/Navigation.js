@@ -3,11 +3,13 @@ import {NavigationContainer} from "@react-navigation/native";
 import {useDispatch} from 'react-redux'
 import packsActions from '../redux/actions/packsActions'
 import usuariosActions from '../redux/actions/usuariosActions'
-
+import shoppingActions from '../redux/actions/shoppingActions';
 import MyTabs from './MyTabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Navigation(){
+
+
 	const dispatch = useDispatch()
 	const getToken = async () => {
 		const token = await AsyncStorage.getItem('@token')
@@ -17,12 +19,13 @@ export default function Navigation(){
 	}
 	useEffect(() => {
 		dispatch(packsActions.getPacks())
+		dispatch(shoppingActions.getUserProducts())
 		getToken()
 	},[])
 
 	return(
 		<NavigationContainer>
-			<MyTabs />
+			<MyTabs  />
 		</NavigationContainer>
 	)
 }
