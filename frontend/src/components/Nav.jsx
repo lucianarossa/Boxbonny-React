@@ -50,7 +50,7 @@ export default function Nav() {
       <div className="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-1 md:flex md:items-center md:gap-12">
-            <img className="logo w-[12rem] h-[12rem]" src="https://i.imgur.com/Xi3X0wB.png" alt="logo" />
+            <img className="logo w-[auto] h-[2rem] " src="https://i.imgur.com/eRNMvAF.png" alt="logo" />
           </div>
           <div className=" md:flex md:items-center md:gap-12">
             <nav className="hidden md:block" aria-labelledby="header-navigation">
@@ -132,17 +132,17 @@ export default function Nav() {
                   {usuario ?
                     usuario?.rol === "admin" ?
                       <Box onClick={handleCloseUserMenu}>
-                        <MenuItem style={{ textAlign: "center", justifyContent: 'center' }}>
-                          <Typography sx={{ padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)' }} style={{ fontFamily: "Poppins" }} onClick={desloguearse}>Salir</Typography>
+                        <MenuItem style={{ textAlign: "center", justifyContent: 'center' }} onClick={desloguearse}>
+                          <Typography sx={{ padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)' }} style={{ fontFamily: "Poppins" }} >Salir</Typography>
                         </MenuItem>
-                        <MenuItem>
-                          <Typography sx={{ padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)' }} style={{ fontFamily: "Poppins" }} onClick={admin}>Cargar Experiencia</Typography>
+                        <MenuItem onClick={admin}>
+                          <Typography sx={{ padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)' }} style={{ fontFamily: "Poppins" }} >Cargar Experiencia</Typography>
                         </MenuItem>
                       </Box>
                       :
                       <Box onClick={handleCloseUserMenu}>
-                        <MenuItem style={{ textAlign: "center", justifyContent: 'center' }}>
-                          <Typography sx={{ padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)' }} style={{ fontFamily: "Poppins" }} onClick={desloguearse}>Salir</Typography>
+                        <MenuItem style={{ textAlign: "center", justifyContent: 'center' }} onClick={desloguearse}>
+                          <Typography sx={{ padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)' }} style={{ fontFamily: "Poppins" }} >Salir</Typography>
                         </MenuItem>
                       </Box>
                     :
