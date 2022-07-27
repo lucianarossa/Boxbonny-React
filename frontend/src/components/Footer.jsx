@@ -200,12 +200,12 @@ export default function Footer() {
             </div>
 
             <div className="text-center sm:text-left">
-              <p className="text-lg fontPoppins font-medium text-gray-900">Contactanos</p>
+              <p className="text-lg fontPoppins font-medium text-gray-900 flex flex-col ">Contactanos</p>
 
               <ul className="mt-8 space-y-4 text-sm">
                 <li>
                   <a
-                    className="flex items-center justify-center gap-1.5 sm:justify-start"
+                    className="flex  justify-center gap-1.5 sm:justify-start"
                     href="/"
                   >
                     <svg
@@ -228,7 +228,7 @@ export default function Footer() {
 
                 <li>
                   <a
-                    className="flex items-center justify-center gap-1.5 sm:justify-start"
+                    className="flex  justify-center gap-1.5 sm:justify-start"
                     href="/"
                   >
                     <svg
