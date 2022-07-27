@@ -1,15 +1,18 @@
 import React, {useState, useEffect} from 'react'
-import { StyleSheet, Text, View,ScrollView, ActivityIndicator, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View,ScrollView, ActivityIndicator, SafeAreaView, Button, TouchableOpacity } from 'react-native';
 import {useSelector,useDispatch} from 'react-redux'
 import ExperienciaCard from '../components/ExperienciaCard';
 import packsActions from '../redux/actions/packsActions'
 import DropDownPicker from 'react-native-dropdown-picker';
+import shoppingActions from '../redux/actions/shoppingActions';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 export default function PackDetail({route}) {
 	const dispatch = useDispatch()
 	const pack = useSelector(store => store.packsReducer.getOnePack)
 	const [packLoad, setPackLoad] = useState(false);
 	const [open, setOpen] = useState(false);
+	const [reload, setReload] = useState(false)
   const [value, setValue] = useState("Todas las provincias");
   const [items, setItems] = useState([
     {label: 'Todas las provincias', value: 'Todas las provincias'},
@@ -29,6 +32,12 @@ export default function PackDetail({route}) {
 		}
 	},[])
 
+	async function añadirProducto(event) {
+        const idPack = event.target.id
+        dispatch(shoppingActions.addProduct(idPack))
+        dispatch(shoppingActions.getUserProducts())
+        setReload(!reload)
+    }
 
 	return (
 		<View style={styles.container}>
@@ -36,6 +45,7 @@ export default function PackDetail({route}) {
 				<Text style={styles.title}> {pack.nombre} </Text>
 				<Text style={styles.description}> {pack.descripcion} </Text>
 				<Text style={styles.price}>PRECIO DEL PACK: ${pack.Precio} </Text>
+				<TouchableOpacity style={styles.button} id={pack._id} onPress={añadirProducto} ><Text><MaterialCommunityIcons name="shopping-outline" size={24} color="white" />Añadir Producto</Text></TouchableOpacity>
 				<Text style={styles.slogan}>MOMENTOS UNICOS PARA DISFRUTAR</Text>
 				<SafeAreaView  style={styles.select}>
 					<DropDownPicker
@@ -108,5 +118,15 @@ const styles = StyleSheet.create({
 	list:{
 		marginTop: 10,
 		marginBottom: 25,
+	},
+	button:{
+		alignSelf: 'center',
+		backgroundColor: '#e9580c',
+		paddingVertical: 15,
+		paddingHorizontal: 35,
+		marginBottom: 10,
+		marginTop:15,
+		color: 'white',
+		borderRadius: 30,
 	}
 });

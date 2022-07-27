@@ -32,7 +32,7 @@ export default function ExperienciaDetail({route}) {
 				<Text style={styles.content}>{experiencia.descripcion}</Text>
 				<Text style={styles.title}>¿QUE INCLUYE?</Text>
 				<Text style={styles.content}>{experiencia.incluye}</Text>
-				<Text style={styles.title}>Ubicacion</Text>
+				<Text style={styles.title}>	UBICACIÓN</Text>
 				<Text style={styles.content}>{experiencia.incluye}</Text>
 				<Text style={styles.title}>RESERVA ESTA EXPERIENCIA</Text>
 				<Text style={styles.content}>contacto@boxbonny.com</Text>
