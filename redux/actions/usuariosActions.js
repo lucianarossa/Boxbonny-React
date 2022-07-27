@@ -26,7 +26,7 @@ const usuariosActions = {
     inicioSesion: (logueado) => {
         return async (dispatch, getState) => {
             const res = await axios.post("https://boxbonny-back.herokuapp.com/api/inicioSesion", { logueado })
-            console.log(res)
+            // console.log(res)
             //primero verifico que el success sea true
             if (res.data.success) {
 								await AsyncStorage.setItem('@token', res.data.response.token)
@@ -56,7 +56,7 @@ const usuariosActions = {
     },
 
     verificarToken: (token) => {
-        console.log(token)
+        // console.log(token)
 
         return async (dispatch, getState) => {
 

@@ -1,4 +1,5 @@
 import axios from "axios";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const comentariosActions = {
 
@@ -6,7 +7,7 @@ const comentariosActions = {
         
         return async (dispatch, getState) => {
             try{
-            const token = localStorage.getItem("token")
+							const token = await AsyncStorage.getItem('@token')
             const res = await axios.post("https://boxbonny-back.herokuapp.com/api/experiencias/comment", {comentario}, {
                 headers: {
                     "Authorization": "Bearer " + token
@@ -25,8 +26,9 @@ const comentariosActions = {
 
     UpdateComment: (comentario) => {
         // console.log("COMENTARIO",comentario)
-        const token = localStorage.getItem('token')
+        
         return async (dispatch, getState) => {
+					const token = await AsyncStorage.getItem('@token')
             try{
                 const res = await axios.put("https://boxbonny-back.herokuapp.com/api/modifcomment", {...comentario }, {
                     headers: {
@@ -55,8 +57,9 @@ const comentariosActions = {
   
   
     DeleteComment: (id) => {
-        const token = localStorage.getItem("token")
+        
         return async (dispatch, getState) => {
+					const token = await AsyncStorage.getItem('@token')
             const res = await axios.post(`https://boxbonny-back.herokuapp.com/api/experiencias/comment/${id}`, {}, {
                 headers: {
                     "Authorization": "Bearer " + token
@@ -76,8 +79,8 @@ const comentariosActions = {
     },
 
     CheckRating: (id) => { //RECIBE EL ID DE LA EXP COMO PARAM
-        const token = localStorage.getItem("token") //LEVANTO EL TOKEN
         return async (dispatch) => {
+					const token = await AsyncStorage.getItem('@token')
             try {
                 let response = await axios.put(`https://boxbonny-back.herokuapp.com/api/rating/${id}`, {}, //ESPERA EL PUT DE AXIOS, PRIMER PARAMETRO OBJETO VACIO(PARA OCUPAR EL LUGAR DE BODY Y NO TOME EL HEADER COMO BODY) Y LUEGO EL HEADER
                 {headers: {
