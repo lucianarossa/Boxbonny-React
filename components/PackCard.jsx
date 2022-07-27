@@ -90,11 +90,12 @@ const styles = StyleSheet.create({
 	},
 	description: {
 		color: "white",
-		fontSize: 18,
+		fontSize: 15,
 		textAlign: "center",
 		marginBottom: 20,	
 		paddingTop:20,
-		paddingHorizontal:10
+		paddingHorizontal:10,
+		fontFamily: "Poppins_500Medium",
 	},
 	button:{
 		zIndex: 2,
@@ -103,6 +104,7 @@ const styles = StyleSheet.create({
 		alignSelf: "center",
 		padding: 10,
 		borderRadius: 10,
+		fontFamily: "Poppins_500Medium",
 	}
 });
 

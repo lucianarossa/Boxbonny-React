@@ -39,6 +39,7 @@ export default function StackPacks(){
 				<stack.Screen
 				name="Comentarios"
 				component={Comentarios}
+				options={{ headerShown: false, }}
 			/>
 		</stack.Navigator>
 	)

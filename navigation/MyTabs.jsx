@@ -49,7 +49,8 @@ export default function MyTabs() {
 				headerShown: false
 
 			}} />
-			<Tab.Screen name="Cart" component={Cart} options={{ 
+			<Tab.Screen name="Cart" component={Cart} options={{
+				headerShown: false, 
 				tabBarIcon: () =>
 					(<CartTabButton />),
 				tabBarLabel: ''
@@ -69,6 +70,7 @@ export default function MyTabs() {
 			}
 
 			<Tab.Screen name="cuenta" component={Cuenta} options={{
+				headerShown: false,
 				tabBarIcon: ({ color, size }) =>
 				(<Image style={{
 					width: 35,

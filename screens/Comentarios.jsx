@@ -9,7 +9,7 @@ import experienciasActions from '../redux/actions/experienciasActions'
 
 export default function Comentarios() {
 	const [comentario, setComentario] = useState("");
-	const [rating, setRating] = useState(5);
+	const [rating, setRating] = useState(0);
 	const dispatch = useDispatch()
 	const experiencia = useSelector(store => store.experienciasReducer.getOneExperiencia)
 	const user = useSelector(store => store.usuariosReducer.user)

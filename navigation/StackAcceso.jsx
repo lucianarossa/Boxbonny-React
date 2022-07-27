@@ -18,10 +18,12 @@ export default function StackAcceso(){
 			<stack.Screen
 				name="inicio de sesión"
 				component={Login}
+				options={{ headerShown: false,  }}
 			/>
 			<stack.Screen
 				name="registro"
 				component={SignUp}
+				options={{ headerShown: false,  }}
 			/>
 		</stack.Navigator>
 	)

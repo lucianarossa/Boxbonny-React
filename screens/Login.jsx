@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import { StyleSheet, Text,KeyboardAvoidingView, TextInput, TouchableOpacity} from 'react-native';
+import React, { useState } from 'react'
+import { StyleSheet, Text, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Toast from 'react-native-toast-message';
@@ -13,7 +13,7 @@ export default function Login() {
 	const navigation = useNavigation()
 	const dispatch = useDispatch()
 
-	const loginSubmit = async () =>{
+	const loginSubmit = async () => {
 		const logueado = {
 			email: email,
 			password: password,
@@ -26,7 +26,7 @@ export default function Login() {
 				text1: 'Bienvenido 👋',
 				text2: res.data.message
 			});
-		}else{
+		} else {
 			Toast.show({
 				type: 'error',
 				text1: 'no se pudo completar el inicio de sesion',
@@ -39,48 +39,48 @@ export default function Login() {
 
 	return (
 		<KeyboardAvoidingView
-		style={styles.container}
-		behavior={Platform.OS === "ios" ? "padding" : "height"}>
+			style={styles.container}
+			behavior={Platform.OS === "ios" ? "padding" : "height"}>
 
 			<LinearGradient
-			style={styles.top}
-        // Button Linear Gradient
-        colors={['#e7a696', '#e79985', '#ee947d']}
-				>
-					<Text style={styles.titleCircle}>No tenés cuenta todavía?</Text>
-					<Text style={styles.subtitleCircle}>Registrate para empezar a regalar emociones</Text>
-					<TouchableOpacity onPress={() => navigation.navigate('registro')}>
-						<Text style={styles.buttonCircle}>Registrate</Text>
-					</TouchableOpacity>
-				</LinearGradient>
-			
+				style={styles.top}
+				// Button Linear Gradient
+				colors={['#e7a696', '#e79985', '#ee947d']}
+			>
+				<Text style={styles.titleCircle}>No tenés cuenta todavía?</Text>
+				<Text style={styles.subtitleCircle}>Registrate para empezar a regalar emociones</Text>
+				<TouchableOpacity onPress={() => navigation.navigate('registro')}>
+					<Text style={styles.buttonCircle}>Registrate</Text>
+				</TouchableOpacity>
+			</LinearGradient>
+
 			<TextInput
-        style={styles.form}
-        onChangeText={setEmail}
-        value={email}
-        placeholder="Email address"
-      />
+				style={styles.form}
+				onChangeText={setEmail}
+				value={email}
+				placeholder="Email address"
+			/>
 			<TextInput
-        style={styles.form}
-        onChangeText={setPassword}
-        value={password}
-        placeholder="Password"
+				style={styles.form}
+				onChangeText={setPassword}
+				value={password}
+				placeholder="Password"
 				secureTextEntry={true}
-      />
+			/>
 			<TouchableOpacity onPress={loginSubmit}>
 				<Text style={styles.button}>Log In</Text>
 			</TouchableOpacity>
-			
+
 		</KeyboardAvoidingView>
 	)
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-	form:{
+	container: {
+		flex: 1,
+		backgroundColor: 'white',
+	},
+	form: {
 		alignSelf: 'center',
 		marginBottom: 20,
 		backgroundColor: '#f0f0f0',
@@ -89,10 +89,10 @@ const styles = StyleSheet.create({
 		borderRadius: 30,
 		width: '80%',
 		fontFamily: "Poppins_500Medium"
-		
+
 	},
-	top:{
-		alignItems: 'center',	
+	top: {
+		alignItems: 'center',
 		width: 300,
 		height: 300,
 		padding: 10,
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
 		borderTopRightRadius: 0,
 		marginBottom: 20,
 	},
-	button:{
+	button: {
 		alignSelf: 'center',
 		backgroundColor: '#393E41',
 		color: 'white',
@@ -112,28 +112,29 @@ const styles = StyleSheet.create({
 		borderRadius: 20,
 		fontFamily: "Poppins_500Medium"
 	},
-	titleCircle:{
+	titleCircle: {
 		marginTop: 30,
 		textAlign: 'center',
 		color: 'white',
 		fontWeight: 'bold',
 		fontSize: 16,
-		fontFamily: "Poppins_500Medium"
+		fontFamily: "Poppins_500Medium",
+		paddingTop:30
 	},
-	subtitleCircle:{
+	subtitleCircle: {
 		marginTop: 5,
 		textAlign: 'center',
 		color: 'white',
 		fontSize: 14,
 		fontFamily: "Poppins_500Medium",
-		padding:10
+		padding: 10
 	},
-	buttonCircle:{
+	buttonCircle: {
 		marginTop: 10,
 		alignSelf: 'center',
 		color: 'white',
 		padding: 9,
-		paddingBottom:4,
+		paddingBottom: 4,
 		borderColor: 'white',
 		borderWidth: 1,
 		borderRadius: 20,

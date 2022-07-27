@@ -3,6 +3,7 @@ import { StyleSheet, Text, View,ScrollView ,FlatList, Dimensions, Image, Touchab
 import {useSelector} from 'react-redux'
 import CarouselItem from '../components/CarouselItem';
 import { useScrollToTop } from '@react-navigation/native';
+const Logo = { uri: "https://i.imgur.com/YWqKWXv.png" }
 
 
 export default function Home({navigation}) {
@@ -21,7 +22,7 @@ export default function Home({navigation}) {
 					/>
 			</View>
 			<View style={styles.description}>
-				<Image source={require('../assets/boxlogo.png')} style={styles.image} />
+				<Image source={Logo} style={styles.image} />
 				<View style={styles.descriptionText}>
 					<Text style={styles.normal}>
 						Provee regalos originales a través de experiencias y momentos inolvidables. Todas nuestras cajas regalo están repletas de emoción y quien la recibe podrá elegir la experiencia que desee.
@@ -87,8 +88,8 @@ const styles = StyleSheet.create({
 		width: '100%',
 	},
 	image:{
-		width: '50%',
-		height: '30%'
+		height: 100,
+        width: 150,
 	},
 	description:{
 		flexDirection: "column",

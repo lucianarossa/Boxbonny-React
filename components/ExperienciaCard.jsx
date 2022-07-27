@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
 		color: "white",
 		fontSize: 18,
 		textAlign: "center",
+		fontFamily: "Poppins_500Medium",
 	},
 	button: {
 		backgroundColor: "#393e41",
@@ -68,5 +69,6 @@ const styles = StyleSheet.create({
 		alignSelf: "center",
 		padding: 10,
 		borderRadius: 10,
+		fontFamily: "Poppins_500Medium",
 	}
 });

@@ -41,8 +41,8 @@ export default function Cart() {
 
 	return (
 		<ScrollView>
-			<Text>Resumen de la compra</Text>
-			<Text>Cantidad de Packs: {products.shopping?.map(c => c.cantidad.length)} </Text>
+			<Text style={styles.text}>Resumen de la compra</Text>
+			<Text style={styles.textCompra}>Cantidad de Packs: {products.shopping?.map(c => c.cantidad.length)} </Text>
 			{products.shopping?.map((p, index) =>
 				<View key={index}>
 						<Video
@@ -106,6 +106,17 @@ const styles = StyleSheet.create({
 		shadowRadius: 2.22,
 		elevation: 3,
 	},
+	text:{
+		fontFamily: "Poppins_500Medium",
+		paddingTop:80,
+		fontSize:20,
+		textAlign:"center"
+	},
+	textCompra:{
+		fontFamily: "Poppins_500Medium",
+		paddingLeft:20,
+		paddingTop:10
+	},
 	textProducto:{
 		alignSelf: "center",
 		fontSize: 25,
@@ -113,14 +124,16 @@ const styles = StyleSheet.create({
 		color: "white",
 		textShadowColor: 'rgba(0, 0, 0, 0.75)',
 		textShadowOffset: {width: -1, height: 1},
-		textShadowRadius: 10
+		textShadowRadius: 10,
+		fontFamily: "Poppins_500Medium",
 	},
 	precio: {
 		alignSelf: 'center',
 		color: '#ff8e72',
 		fontWeight: 'bold',
 		fontSize: 20,
-		marginBottom: 10
+		marginBottom: 10,
+		fontFamily: "Poppins_500Medium",
 	},
 
 })
