@@ -10,6 +10,7 @@ import { useState } from "react";
 import shoppingActions from "../redux/actions/shoppingActions";
 import LoadingCards from "../helpers/LoadingCards";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import toast from 'react-hot-toast';
 
 
 export default function PackDetails() {
@@ -17,6 +18,7 @@ export default function PackDetails() {
     const { id } = useParams()
     const dispatch = useDispatch()
     const [reload, setReload] = useState(false)
+    const user = useSelector(store => store.usuariosReducer.user)
 
     useEffect(() => {
         dispatch(packsActions.getOnePack(id))
@@ -24,12 +26,20 @@ export default function PackDetails() {
     }, [])
 
     const pack = useSelector(store => store.packsReducer.getOnePack)
-
     async function añadirProducto(event) {
-        const idPack = event.target.id
-        dispatch(shoppingActions.addProduct(idPack))
-        dispatch(shoppingActions.getUserProducts())
-        setReload(!reload)
+        if (user) {
+            const idPack = event.target.id
+            dispatch(shoppingActions.addProduct(idPack))
+            dispatch(shoppingActions.getUserProducts())
+            setReload(!reload)
+        } else {
+            toast.error("Primero Inicie Sesion")
+            setLoading(true);
+                setTimeout(() => {
+                setLoading(false);
+                navigate("/signin")
+            }, 1500)
+        }
     }
 
     const provincias = ["Buenos Aires", "Córdoba", "Mendoza"]
@@ -48,12 +58,12 @@ export default function PackDetails() {
 
     const [loading, setLoading] = useState(false)
     useEffect(() => {
-		setLoading(true);
-		setTimeout(() => {
-			setLoading(false);
-		}, 1500);
-	}, []);
-   
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+        }, 1500);
+    }, []);
+
 
 
 
@@ -64,7 +74,9 @@ export default function PackDetails() {
                     <h1 className="hover:animate-pulse titulo-pdetails">{pack?.nombre}</h1>
                     <p className="hover:animate-pulse descripcion-pdetails">{pack?.descripcion}</p>
                     <p className="hover:animate-pulse descripcion-pdetails precio-pack">PRECIO DEL PACK: ${pack?.Precio}</p>
-                    <button id={pack._id} onClick={añadirProducto} className="card-button fontRaleway w-6/12"><ShoppingCartOutlinedIcon className="mr-2"/>   Añadir al Carrito</button>
+                    <div className=" w-6/12 flex flex-col items-center justify-center" id="div-add" >
+                        <button id={pack._id} onClick={añadirProducto} className="card-button fontRaleway w-6/12"><ShoppingCartOutlinedIcon className="mr-2" />   Añadir Producto</button>
+                    </div>
                     <p className="hover:animate-pulse descripcion-pdetails mensaje-pack">MOMENTOS UNICOS PARA DISFRUTAR</p>
                     <p className="hover:animate-pulse descripcion-pdetails">Te invitamos a ser parte de esta nueva forma de regalar porque las cosas lindas se pueden estropear, pero los momentos bien vividos no tienen fecha de caducidad</p>
                     <p className="hover:animate-pulse descripcion-pdetails elegi-details">🎁 - TE GUSTO ESTE PACK?</p>
@@ -90,35 +102,18 @@ export default function PackDetails() {
 
                     </div>
 
-                    {loading? 
-                     <div className="contenedor-experiencias self-center">
-                        <LoadingCards />
-                    </div>
-                    
-                    : 
+                    {loading ?
+                        <div className="contenedor-experiencias self-center">
+                            <LoadingCards />
+                        </div>
 
-                    <div className="contenedor-experiencias">
-                        {select === "" ?
-                            experiencias &&
-                            experiencias.filter(city => city.nombre.toLowerCase().startsWith(inputSearch.toLowerCase())).map(xp =>
-                                <div className="e-card" key={xp.nombre}>
-                                    <div className="e-card-container">
-                                        <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
-                                    </div>
-                                    <div className="e-card-info">
-                                        <div className="e-card-text">
-                                            <p className="e-text-title">{xp?.nombre}</p>
-                                            <p className="e-text-subtitle">{xp?.ciudad}</p>
-                                            <LinkRouter to={`/packs/oneexperience/${xp._id}`}>
-                                                <button className="card-button e-card-button fontRaleway">CONOCE MAS</button>
-                                            </LinkRouter>
-                                        </div>
-                                    </div>
-                                </div>) :
-                            experiencias &&
-                                select === "Todas las provincias" ?
+                        :
+
+                        <div className="contenedor-experiencias">
+                            {select === "" ?
+                                experiencias &&
                                 experiencias.filter(city => city.nombre.toLowerCase().startsWith(inputSearch.toLowerCase())).map(xp =>
-                                    <div className="e-card" key={xp._id}>
+                                    <div className="e-card" key={xp.nombre}>
                                         <div className="e-card-container">
                                             <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
                                         </div>
@@ -133,27 +128,44 @@ export default function PackDetails() {
                                         </div>
                                     </div>) :
                                 experiencias &&
-                                experiencias.filter(city => city.ciudad === select && city.nombre.toLowerCase().startsWith(inputSearch.toLowerCase())).map(xp =>
-                                    <div className="e-card" key={xp.descripcion}>
-                                        <div className="e-card-container">
-                                            <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
-                                        </div>
-                                        <div className="e-card-info">
-                                            <div className="e-card-text">
-                                                <p className="e-text-title">{xp?.nombre}</p>
-                                                <p className="e-text-subtitle">{xp?.ciudad}</p>
-                                                <LinkRouter to={`/packs/oneexperience/${xp._id}`}>
-                                                    <button className="card-button e-card-button fontRaleway">CONOCE MAS</button>
-                                                </LinkRouter>
+                                    select === "Todas las provincias" ?
+                                    experiencias.filter(city => city.nombre.toLowerCase().startsWith(inputSearch.toLowerCase())).map(xp =>
+                                        <div className="e-card" key={xp._id}>
+                                            <div className="e-card-container">
+                                                <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
                                             </div>
-                                        </div>
-                                    </div>)
-                        }
-                    </div>
+                                            <div className="e-card-info">
+                                                <div className="e-card-text">
+                                                    <p className="e-text-title">{xp?.nombre}</p>
+                                                    <p className="e-text-subtitle">{xp?.ciudad}</p>
+                                                    <LinkRouter to={`/packs/oneexperience/${xp._id}`}>
+                                                        <button className="card-button e-card-button fontRaleway">CONOCE MAS</button>
+                                                    </LinkRouter>
+                                                </div>
+                                            </div>
+                                        </div>) :
+                                    experiencias &&
+                                    experiencias.filter(city => city.ciudad === select && city.nombre.toLowerCase().startsWith(inputSearch.toLowerCase())).map(xp =>
+                                        <div className="e-card" key={xp.descripcion}>
+                                            <div className="e-card-container">
+                                                <img src={xp?.imagen} alt="imagen-xp" className="e-card-img" />
+                                            </div>
+                                            <div className="e-card-info">
+                                                <div className="e-card-text">
+                                                    <p className="e-text-title">{xp?.nombre}</p>
+                                                    <p className="e-text-subtitle">{xp?.ciudad}</p>
+                                                    <LinkRouter to={`/packs/oneexperience/${xp._id}`}>
+                                                        <button className="card-button e-card-button fontRaleway">CONOCE MAS</button>
+                                                    </LinkRouter>
+                                                </div>
+                                            </div>
+                                        </div>)
+                            }
+                        </div>
                     }
 
 
-                    
+
 
                 </div>
             </div>
