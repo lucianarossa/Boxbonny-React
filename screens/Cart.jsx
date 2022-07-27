@@ -53,9 +53,9 @@ export default function Cart() {
 					resizeMode="cover"
 				/>
 
-					<Text>{p.idPack?.nombre}</Text>
-					<Text>${p.idPack?.Precio}</Text>
-					
+					<Text style={styles.textProducto}>{p.idPack?.nombre}</Text>
+					<Text style={styles.precio}>{p.cantidad} x ${p.idPack?.Precio}</Text>
+					<Text>Total: ${total} </Text>
 
 
 					<View style={styles.fixToText}>
@@ -105,6 +105,22 @@ const styles = StyleSheet.create({
 		shadowOpacity: 0.22,
 		shadowRadius: 2.22,
 		elevation: 3,
+	},
+	textProducto:{
+		alignSelf: "center",
+		fontSize: 25,
+		fontWeight: "bold",
+		color: "white",
+		textShadowColor: 'rgba(0, 0, 0, 0.75)',
+		textShadowOffset: {width: -1, height: 1},
+		textShadowRadius: 10
+	},
+	precio: {
+		alignSelf: 'center',
+		color: '#ff8e72',
+		fontWeight: 'bold',
+		fontSize: 20,
+		marginBottom: 10
 	},
 
 })
