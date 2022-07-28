@@ -422,9 +422,8 @@
 .elegi-details {
     text-align: center;
     width: 100%;
-    color: #FF8E72;
-    text-shadow: 0px 15px 25px grey;
-    ;
+    color: black;
+    text-shadow: .5px 0 0 #FF8E72, -0.5px 0 0 #FF8E72, 0 .5px 0 #FF8E72, 0 -0.5px 0 #FF8E72, 0.5px 0.5px #FF8E72, -0.5px -0.5px 0 #FF8E72, 0.5px -0.5px 0 #FF8E72, -0.5px 0.5px 0 #FF8E72;
     font-size: 1.4rem;
     padding-top: 1rem;
     padding-right: 1rem;
