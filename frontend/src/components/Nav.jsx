@@ -142,7 +142,7 @@ export default function Nav() {
                     usuario?.rol === "admin" ?
                       <Box onClick={handleCloseUserMenu}>
                         <MenuItem style={{ textAlign: "center", justifyContent: 'center' }} onClick={desloguearse}>
-                          <Typography sx={{ padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)' }} style={{ fontFamily: "Poppins" }} >Salir</Typography>
+                          <Typography sx={{ padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)' }} style={{ fontFamily: "Poppins" }} title="desloguearse">Salir</Typography>
                         </MenuItem>
                         <MenuItem onClick={admin}>
                           <Typography sx={{ padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)' }} style={{ fontFamily: "Poppins" }} >Cargar Experiencia</Typography>
@@ -163,12 +163,12 @@ export default function Nav() {
             </div>
           </div>
         </div>
-        <div className="border-t border-gray-100 md:hidden lg:hidden">
+        <div className="border-t border-black-100 md:hidden lg:hidden">
           <nav
             className="flex items-center justify-center p-4 overflow-x-auto text-sm font-medium gap-6"
           >
             <LinkRouter
-              className="text-gray-500 transition hover:text-[#FF8E72]"
+              className="text-black-500 transition hover:text-[#FF8E72]"
               to="/"
               title="enlace a inicio"
               aria-labelledby='enlace'
@@ -176,7 +176,7 @@ export default function Nav() {
               Inicio
             </LinkRouter>
             <LinkRouter
-              className="text-gray-500 transition hover:text-[#FF8E72]"
+              className="text-black-500 transition hover:text-[#FF8E72]"
               to="/packs"
               aria-labelledby='enlace a packs'
               title="enlace a packs"
@@ -188,6 +188,7 @@ export default function Nav() {
               to="/cart"
               aria-labelledby='enlace a carrito'
               title="enlace a carrito"
+
             >
               {usuario ? <Badge color="error" badgeContent={contador}>
                 <ShoppingCartOutlinedIcon />
