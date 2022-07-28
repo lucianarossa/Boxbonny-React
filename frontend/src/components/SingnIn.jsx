@@ -127,7 +127,7 @@ const SignIn = () => {
 
                         <input type="submit" className="btn" value="Registro" title="boton envio de registro" />
                         <p className="social_text">O registrate con:</p>
-                        <div className="social_media">
+                        <div className="social_media" id="boton-signupgoogle">
                             <GoogleSignUp />
                         </div>
 
