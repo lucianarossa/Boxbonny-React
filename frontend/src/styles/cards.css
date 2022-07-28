@@ -64,12 +64,23 @@
   color: #FF8E72;
 }
 
+.subt-exp{
+  color: #393E41;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
 @media(max-width:770px){
   .selecciona-experiencias {
     width: 100%;
     margin-top: 4rem;
     font-size: 1rem;
     color: #FF8E72;
+  }
+  .subt-exp{
+    color: #393E41;
+    margin-top: 1rem;
+    font-size: 1rem;
   }
 }
 
@@ -79,6 +90,11 @@
     margin-top: 4rem;
     font-size: .7rem;
     color: #FF8E72;
+  }
+  .subt-exp{
+    color: #393E41;
+    margin-top: 1rem;
+    font-size: .7rem;
   }
 }
 
@@ -359,8 +375,9 @@
 .texto-filtro-precios {
   text-align: center;
   margin-top: 2rem;
+  margin-bottom: 1rem;
   font-size: 1rem;
-  font-family: "Raleway";
+  font-family: "Poppins";
   text-shadow: 0px 8px 45px grey;
 }
 

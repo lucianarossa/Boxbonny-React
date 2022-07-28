@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import '../styles/cards.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link as LinkRouter } from 'react-router-dom'
 import packsActions from "../redux/actions/packsActions";
 import LoadingCards from '../helpers/LoadingCards'
+
+import Packs from "./Packs";
 
 
 
@@ -21,13 +22,8 @@ const PacksComponent = () => {
         // eslint-disable-next-line
     }, [inputValue])
 
-    // dispatch(packsActions.getPacks(99999))
-    // useEffect(()=>{
-    //     dispatch(packsActions.getPacks(99999))
-    //     // eslint-disable-next-line
-    // },[])
-
     const packs = useSelector(store => store.packsReducer.filterPacks)
+    
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         setLoading(true);
@@ -42,9 +38,10 @@ const PacksComponent = () => {
                     <h2 className="hover:animate-pulse titleCards">PACKS</h2>
                     <h2 className="hover:animate-pulse subtitle-cards">"No se envuelven, envuelven en una nueva experiencia a quien los recibe. Se guardan en la memoria y se convierten en uno de esos recuerdos que, como un buen vino, mejoran con el tiempo"</h2>
                     <h2 className="hover:animate-pulse selecciona-experiencias">SELECCIONA Y DESCUBRI LAS EXPERIENCIAS</h2>
+                    <h2 className="hover:animate-pulse selecciona-experiencias subt-exp">TENEMOS OPCIONES ADAPTADAS Y ACCESIBLES PARA DISCAPACIDAD</h2>
                 </div>
                 <div className="container-filtro-precios">
-                    <h2 className="texto-filtro-precios">RANGO DE PRECIOS</h2>
+                    <h2 className="texto-filtro-precios">PODES FILTRAR X PRECIO</h2>
                     <form className="filtro-precios">
                         <div className="box-checkbox">
                             <input type="radio" className="inputPrecios" value="5000" id="cinco"
@@ -88,21 +85,12 @@ const PacksComponent = () => {
                     <LoadingCards />
                 </div> :
                 <div className="containerPacks">
-                    {packs && packs?.map((pack, index) =>
-                        <div className="card" key={index}>
-                            <h2 className="text-title">{pack?.nombre}</h2>
-                            <video className="card-img" autoPlay loop muted>
-                                <source src={pack?.imagen} type='video/mp4' />
-                            </video>
-                            <div className="card-info font-bold fontRaleway">
-                                <p className="text-body">{pack?.descripcion}</p>
-                                <p className="text-body">PRECIO: ${pack?.Precio}</p>
-                                <LinkRouter to={`packdetails/${pack._id}`}><button className="card-button fontRaleway">VER PACK</button></LinkRouter>
-                            </div>
-                        </div>
-                    )
-                    }
-                </div>
+                {packs && packs?.map((pack)=>(
+                    <Packs pack={pack} />
+                ))
+                }
+                </div> 
+
             }
         </div>
     );

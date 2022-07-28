@@ -14,42 +14,42 @@
     width: 100%;
 }
 
-@media(max-width: 880px){
+@media(max-width: 880px) {
     .container-body-packs {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 100%;
-    }  
+    }
 }
 
 .pack-titulo {
     width: 40%;
     margin-right: 2rem;
-    margin-top: 3rem; 
+    margin-top: 3rem;
 }
 
-@media(max-width: 1024px){
+@media(max-width: 1024px) {
     .pack-titulo {
         width: 50%;
         margin-right: 5rem;
-        margin-top: 3rem; 
-    } 
+        margin-top: 3rem;
+    }
 }
 
-@media(max-width: 880px){
+@media(max-width: 880px) {
     .pack-titulo {
         width: 90%;
         margin: 3rem !important;
-    } 
+    }
 }
 
-@media(max-width: 420px){
+@media(max-width: 420px) {
     .pack-titulo {
         width: 80%;
         margin: 1rem !important;
-    } 
+    }
 }
 
 .titulo-pdetails {
@@ -63,7 +63,7 @@
     letter-spacing: .5rem;
 }
 
-@media(max-width:980px){
+@media(max-width:980px) {
     .titulo-pdetails {
         margin-bottom: .5rem;
         font-family: 'Poppins';
@@ -72,7 +72,7 @@
     }
 }
 
-@media(max-width:880px){
+@media(max-width:880px) {
     .titulo-pdetails {
         margin-bottom: .5rem;
         font-family: 'Poppins';
@@ -81,7 +81,7 @@
     }
 }
 
-@media(max-width:420px){
+@media(max-width:420px) {
     .titulo-pdetails {
         margin-bottom: .5rem;
         font-family: 'Poppins';
@@ -99,7 +99,7 @@
     margin-top: 2rem;
 }
 
-@media(max-width:980px){
+@media(max-width:980px) {
     .descripcion-pdetails {
         font-family: 'Poppins';
         text-align: center;
@@ -117,7 +117,7 @@
     font-weight: BOLD;
 }
 
-@media(max-width:980px){
+@media(max-width:980px) {
     .precio-pack {
         margin-top: 3.5rem;
         font-size: 1.2rem;
@@ -135,10 +135,10 @@
     letter-spacing: .5rem;
     font-family: "Poppins";
     padding-bottom: 3rem;
-    border-bottom: 2px solid #393E41 ;
+    border-bottom: 2px solid #393E41;
 }
 
-@media(max-width:980px){
+@media(max-width:980px) {
     .mensaje-pack {
         font-size: 1.5rem;
         margin-top: 3rem;
@@ -148,11 +148,11 @@
         letter-spacing: .5rem;
         font-family: "Poppins";
         padding-bottom: 3rem;
-        border-bottom: 2px solid #393E41 ;
+        border-bottom: 2px solid #393E41;
     }
 }
 
-@media(max-width:880px){
+@media(max-width:880px) {
     .mensaje-pack {
         font-size: 1.2rem;
         margin-top: 3rem;
@@ -162,7 +162,7 @@
         letter-spacing: .5rem;
         font-family: "Poppins";
         padding-bottom: 3rem;
-        border-bottom: 2px solid #393E41 ;
+        border-bottom: 2px solid #393E41;
     }
 }
 
@@ -177,7 +177,7 @@
     height: 100%;
 }
 
-@media(max-width: 1024px){
+@media(max-width: 1024px) {
     .filter-cards-container {
         display: flex;
         flex-direction: column;
@@ -208,13 +208,13 @@
     height: 80%;
 }
 
-@media(max-width: 880px){
+@media(max-width: 880px) {
     .filter-cards-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: space-between;
-        margin: 0!important;
+        margin: 0 !important;
         width: 100%;
         height: 100%;
     }
@@ -231,7 +231,7 @@
     border-radius: 3vh;
 }
 
-@media(max-width: 880px){
+@media(max-width: 880px) {
     .e-card {
         width: 300px;
         height: 300px;
@@ -388,26 +388,50 @@
     width: 100%;
 }
 
-.formulario-filter{
+.formulario-filter {
     padding: 0;
     display: flex;
     width: 50%;
 }
 
-@media(max-width: 880px){
-    .formulario-filter{
+@media(max-width: 880px) {
+    .formulario-filter {
         padding: 0;
         display: flex;
         width: 40%;
     }
 }
 
-@media(max-width:560px){
-    .formulario-filter{
+@media(max-width:560px) {
+    .formulario-filter {
         padding: 0;
         display: flex;
         width: 60%;
     }
 }
 
+.elegi-details {
+    text-align: center;
+    width: 100%;
+    color: #FF8E72;
+    text-shadow: 0px 15px 25px grey;;
+    font-size: 1.4rem;
+    padding-top: 1rem;
+    padding-right: 1rem;
+}
 
+@media(max-width:769px) {
+    .elegi-details {
+        font-size: 1.2rem;
+        padding-left: 1rem;
+        text-align: center;
+    }
+}
+
+@media(max-width:426px) {
+    .elegi-details {
+        font-size: .9rem;
+        padding-left: 1rem;
+        text-align: center;
+    }
+}
