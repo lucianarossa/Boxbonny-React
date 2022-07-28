@@ -202,7 +202,7 @@ const usuariosControllers = {
         if (usuario) {
             usuario.verification = true
             await usuario.save()
-            res.redirect("https://localhost:3000")
+            res.redirect("https://boxbonny.herokuapp.com")
         }
         else {
             res.json({
