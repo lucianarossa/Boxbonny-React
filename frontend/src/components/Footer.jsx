@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="footerContainer">
             <div className="flex justify-center mb-3 text-teal-600 sm:justify-start">
-              <img className="logofooter" src="https://i.imgur.com/P7DVc52.png" alt="logo" />
+              <img className="logofooter" src="https://i.imgur.com/eRNMvAF.png" alt="logo" />
             </div>
 
             <p

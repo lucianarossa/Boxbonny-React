@@ -16,9 +16,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useEffect } from 'react';
-
-
-
+import { Comment } from './Comment';
 
 function Comments({ reloadChanger }) {
 
@@ -51,7 +49,7 @@ function Comments({ reloadChanger }) {
     const usuario = useSelector(store => store.usuariosReducer.user)
     // console.log("USUARIO", usuario)
 
-    
+
     let comentariosArray = experiencia.comentarios
     // console.log("COMENTARIOS", comentariosArray)
     const RatingsSuma = comentariosArray?.map(item => item.rating).reduce((prev, curr) => prev + curr, 0);
@@ -128,16 +126,7 @@ function Comments({ reloadChanger }) {
 
                                 {comentario?.idUsuario._id !== usuario?.id ?
 
-                                    <>
-                                        <div className='l-usuario-container'>
-                                            <div className='l-avatar'>
-                                                <Avatar alt="Remy Sharp" src={comentario.idUsuario?.imagen} />
-                                                <div className='l-nombreusuario'>{comentario.idUsuario?.nombre} {comentario.idUsuario?.apellido}</div>
-                                            </div>
-                                            <Rating name="half-rating-read" value={comentario.rating} precision={1} readOnly />
-                                        </div>
-                                        <div className="comment-box-commented">{comentario.comentario}</div>
-                                    </>
+                                   <Comment comentario={comentario} />
                                     :
                                     <ModifyComment comentario={comentario} usuario={usuario} reloadChanger={reloadChanger} />
                                 }
