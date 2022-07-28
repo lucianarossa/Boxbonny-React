@@ -1,11 +1,12 @@
-<h1 align="center">BOX-BONNY</h1>
+
+<img heigth="100" width="350" src="https://i.imgur.com/eRNMvAF.png"  align="center" />
 <h3 align="center">
     The idea: to create a website that offers gift services  for friends and family.
 </h3>
 <br>
 <br>
 <hr>
-<p align="center">Some of the technologies used:
+<p align="center">Some of the technologies used:<br>
 <img align="center" height="60" src=https://www.sbr-technologies.com/wp-content/uploads/2021/06/mern.png />
  </p>
 <hr>
