@@ -35,7 +35,7 @@ export default function PackDetails() {
         } else {
             toast.error("Primero Inicie Sesion")
             setLoading(true);
-                setTimeout(() => {
+            setTimeout(() => {
                 setLoading(false);
                 navigate("/signin")
             }, 1500)
@@ -161,13 +161,10 @@ export default function PackDetails() {
                             }
                         </div>
                     }
-<<<<<<< HEAD
-=======
 
 
 
 
->>>>>>> 85a9c3de7e54072a18880307b6b50331186e2e1b
                 </div>
             </div>
             <button onClick={() => navigate(-1)} className="card-button l-card-buttonp fontRaleway">VOLVER A PACKS</button>
