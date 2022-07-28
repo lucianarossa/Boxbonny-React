@@ -23,7 +23,7 @@ const PacksComponent = () => {
     }, [inputValue])
 
     const packs = useSelector(store => store.packsReducer.filterPacks)
-    
+
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         setLoading(true);
@@ -85,11 +85,11 @@ const PacksComponent = () => {
                     <LoadingCards />
                 </div> :
                 <div className="containerPacks">
-                {packs && packs?.map((pack)=>(
-                    <Packs pack={pack} />
-                ))
-                }
-                </div> 
+                    {packs && packs?.map((pack) => (
+                        <Packs pack={pack} />
+                    ))
+                    }
+                </div>
 
             }
         </div>

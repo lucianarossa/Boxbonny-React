@@ -16,8 +16,6 @@ import Badge from '@mui/material/Badge';
 
 export default function Nav() {
 
-  // console.log("%cWelcome to the Console Park 🦖",'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)');
-
   const [anchorElUser, setAnchorElUser] = useState(null);
   const usuario = useSelector(store => store.usuariosReducer.user);
   // console.log("usuario", usuario);
@@ -59,16 +57,21 @@ export default function Nav() {
               <ul className="flex items-center gap-6 text-md fontPoppins ">
                 <li>
                   <LinkRouter
-                    className="text-gray-500 transition hover:text-[#FF8E72]"
+                    className="text-black-500 transition hover:text-[#FF8E72]"
                     to="/"
+                    aria-label="enlace a inicio"
+                    title="link a inicio"
+
                   >
                     Inicio
                   </LinkRouter>
                 </li>
                 <li>
                   <LinkRouter
-                    className="text-gray-500 transition hover:text-[#FF8E72]"
+                    className="text-black-500 transition hover:text-[#FF8E72]"
                     to="/packs"
+                    aria-label="enlace a packs"
+                    title="link a packs"
                   >
                     Packs
                   </LinkRouter>
@@ -77,13 +80,16 @@ export default function Nav() {
                   <LinkRouter
                     className="relative flex items-center justify-center"
                     to="/cart"
+                    aria-label="enlace a carrito"
+                    title="carrito de compras"
+                    id="Link a carro de compras"
                   >
-                      {usuario?  <Badge color="error" badgeContent={contador}>
-                       <ShoppingCartOutlinedIcon/>      
-                       </Badge>
-                         :  
-                         <ShoppingCartOutlinedIcon/>  
-                         }
+                    {usuario ? <Badge color="error" badgeContent={contador}>
+                      <ShoppingCartOutlinedIcon />
+                    </Badge>
+                      :
+                      <ShoppingCartOutlinedIcon />
+                    }
                   </LinkRouter>
                 </li>
               </ul>
@@ -96,7 +102,7 @@ export default function Nav() {
                     {usuario ? <Box sx={{ display: 'flex', flexDirection: 'column', WebkitJustifyContent: 'center', color: '#FF8E72', alignItems: 'center', }} >
                       <IconButton onClick={handleOpenUserMenu} >
                         <Avatar alt="imagen del usuario" src={usuario?.imagen} sx={{ width: 30, height: 30 }} sm={{ width: 30, height: 30 }} />
-                        <p className="m-nombreAvatar pl-2">{usuario?.nombre}</p>
+                        <p className="m-nombreAvatar pl-2" aria-label="nombre del usuario">{usuario?.nombre}</p>
                       </IconButton>
                     </Box>
                       :
@@ -104,7 +110,10 @@ export default function Nav() {
                         <div className="sm:gap-4 sm:flex">
                           <LinkRouter
                             className="px-5 py-2.5 text-sm font-medium text-white bg-[#FF8E72] rounded-md hover:text-[#393E41] shadow"
+                            style={{ color: 'black' }}
                             to="signin"
+                            aria-label="enlace a formulario de inicio"
+                            title="Ingreso a formulario de inicio"
                           >
                             Ingresá
                           </LinkRouter>
@@ -158,32 +167,38 @@ export default function Nav() {
           <nav
             className="flex items-center justify-center p-4 overflow-x-auto text-sm font-medium gap-6"
           >
-              <LinkRouter
-                    className="text-gray-500 transition hover:text-[#FF8E72]"
-                    to="/"
-                  >
-                    Inicio
-                  </LinkRouter>
-                  <LinkRouter
-                    className="text-gray-500 transition hover:text-[#FF8E72]"
-                    to="/packs"
-                  >
-                    Packs
-                  </LinkRouter>
-                  <LinkRouter
-                    className="relative flex items-center justify-center"
-                    to="/cart"
-                  >
-                      {usuario?  <Badge color="error" badgeContent={contador}>
-                       <ShoppingCartOutlinedIcon/>      
-                       </Badge>
-                         :  
-                         <ShoppingCartOutlinedIcon/>  
-                         } 
-                  </LinkRouter>
+            <LinkRouter
+              className="text-gray-500 transition hover:text-[#FF8E72]"
+              to="/"
+              title="enlace a inicio"
+              aria-labelledby='enlace'
+            >
+              Inicio
+            </LinkRouter>
+            <LinkRouter
+              className="text-gray-500 transition hover:text-[#FF8E72]"
+              to="/packs"
+              aria-labelledby='enlace a packs'
+              title="enlace a packs"
+            >
+              Packs
+            </LinkRouter>
+            <LinkRouter
+              className="relative flex items-center justify-center"
+              to="/cart"
+              aria-labelledby='enlace a carrito'
+              title="enlace a carrito"
+            >
+              {usuario ? <Badge color="error" badgeContent={contador}>
+                <ShoppingCartOutlinedIcon />
+              </Badge>
+                :
+                <ShoppingCartOutlinedIcon />
+              }
+            </LinkRouter>
           </nav>
         </div>
-      </div>
-    </header>
+      </div >
+    </header >
   )
 }

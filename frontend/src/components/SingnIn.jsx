@@ -15,7 +15,7 @@ const SignIn = () => {
     const dispatch = useDispatch()
     // const container = document.querySelector(".containerRegistro");
 
-       useEffect(() => {
+    useEffect(() => {
         const sign_in_btn = document.querySelector("#sign_in_btn")
         const sign_up_btn = document.querySelector("#sign_up_btn")
         sign_up_btn.addEventListener("click", () => {
@@ -27,7 +27,7 @@ const SignIn = () => {
         const container = document.querySelector(".containerRegistro");
         //eslint-disable-next-line
     }, [])
-    
+
     const loginSubmit = async (event) => {
         event.preventDefault()
         const logueado = {
@@ -44,7 +44,7 @@ const SignIn = () => {
         } else {
             toast.error(res.data.message)
         }
-        
+
     }
 
     const signUpSubmit = async (event) => {
@@ -66,15 +66,15 @@ const SignIn = () => {
             errorSignUp.forEach(e => {
                 toast.error(e.message)
             })
-        }  
+        }
         if (res?.data.success) {
             const container1 = document.querySelector(".containerRegistro");
-            container1.classList.remove("sign_up_mode") 
-        toast.success(res.data.message)
+            container1.classList.remove("sign_up_mode")
+            toast.success(res.data.message)
         } else {
             toast.error(res.data.message)
         }
-    
+
     }
 
 
@@ -86,11 +86,11 @@ const SignIn = () => {
                         <h2 className="title">Ingresá</h2>
 
                         <div className="inputBox">
-                            <input autoComplete="new-password"  className= "inputlogin" type="text" placeholder="Email" />
+                            <input autoComplete="new-password" className="inputlogin" type="text" placeholder="Email" />
                         </div>
 
                         <div className="inputBox">
-                            <input autoComplete="new-password" className= "inputlogin" type="password" placeholder="Contraseña" />
+                            <input autoComplete="new-password" className="inputlogin" type="password" placeholder="Contraseña" />
                         </div>
 
                         <input type="submit" value="Inicia Sesión" className="btn" id="sign_btn" />
@@ -102,36 +102,36 @@ const SignIn = () => {
 
                     </form>
                     <form onSubmit={signUpSubmit} action="#" className="sign_up_form">
-                            <h2 className="title"> Registrate </h2>
-                            <div className="inputBox">
-                                <input  autoComplete="new-password" type="text" placeholder="Nombre" />
-                            </div>
-                            <div className="inputBox">
-                                <input  autoComplete="new-password" type="text" placeholder="Apellido" />
-                            </div>
-                            <div className="inputBox">
-                                <input  autoComplete="new-password" type="text" placeholder="Imagen" />
-                            </div>
+                        <h2 className="title"> Registrate </h2>
+                        <div className="inputBox">
+                            <input autoComplete="new-password" type="text" placeholder="Nombre" />
+                        </div>
+                        <div className="inputBox">
+                            <input autoComplete="new-password" type="text" placeholder="Apellido" />
+                        </div>
+                        <div className="inputBox">
+                            <input autoComplete="new-password" type="text" placeholder="Imagen" />
+                        </div>
 
-                            <div className="inputBox">
-                                <input  autoComplete="new-password" type="email" placeholder="Email" />
-                            </div>
-                            <div className="inputBox">
-                                {/* <input type="password" placeholder="Contraseña" /> */}
-                                <input autoComplete="new-password" 
-                                    type="password"
-                                    className="inputForm w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
-                                    placeholder="Enter password"
-                                />
-                            </div>
-                           
-                            <input type="submit" className="btn" value="Registro"/>
-                            <p className="social_text">O registrate con:</p>
-                            <div className="social_media">
-                                <GoogleSignUp />
-                            </div>
+                        <div className="inputBox">
+                            <input autoComplete="new-password" type="email" placeholder="Email" />
+                        </div>
+                        <div className="inputBox">
+                            {/* <input type="password" placeholder="Contraseña" /> */}
+                            <input autoComplete="new-password"
+                                type="password"
+                                className="inputForm w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
+                                placeholder="Enter password"
+                            />
+                        </div>
 
-                        </form>
+                        <input type="submit" className="btn" value="Registro" title="boton envio de registro" />
+                        <p className="social_text">O registrate con:</p>
+                        <div className="social_media">
+                            <GoogleSignUp />
+                        </div>
+
+                    </form>
                 </div>
             </div>
             <div className="panel_container">
@@ -151,7 +151,7 @@ const SignIn = () => {
                     <div className="content">
                         <h3>Querés iniciar sesión?</h3>
                         <p>
-                         Iniciá sesión para seguir regalando momentos inolvidables
+                            Iniciá sesión para seguir regalando momentos inolvidables
                         </p>
                         <button className="btn transparent" id="sign_in_btn">
                             Iniciar Sesión

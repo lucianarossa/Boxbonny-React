@@ -12,7 +12,6 @@ import LoadingCards from "../helpers/LoadingCards";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import toast from 'react-hot-toast';
 
-
 export default function PackDetails() {
     const navigate = useNavigate()
     const { id } = useParams()
@@ -77,8 +76,8 @@ export default function PackDetails() {
                     <button id={pack._id} onClick={añadirProducto} className="card-button fontRaleway w-4/12"><ShoppingCartOutlinedIcon className="mr-2" />   Añadir al Carrito</button>
                     <p className="hover:animate-pulse descripcion-pdetails mensaje-pack">MOMENTOS UNICOS PARA DISFRUTAR</p>
                     <p className="hover:animate-pulse descripcion-pdetails">Te invitamos a ser parte de esta nueva forma de regalar porque las cosas lindas se pueden estropear, pero los momentos bien vividos no tienen fecha de caducidad</p>
-                    <p className="hover:animate-pulse descripcion-pdetails elegi-details">🎁 - TE GUSTO ESTE PACK?</p>
-                    <p className="hover:animate-pulse descripcion-pdetails elegi-details">😁 - DESCUBRI TODAS SUS OPCIONES PARA CANJEAR!</p>
+                    <p className="hover:animate-pulse descripcion-pdetails elegi-details">🎁 - ¿TE GUSTO ESTE PACK?</p>
+                    <p className="hover:animate-pulse descripcion-pdetails elegi-details">😁 - ¡DESCUBRI TODAS SUS OPCIONES PARA CANJEAR!</p>
                     <p className="hover:animate-pulse descripcion-pdetails elegi-details">📧 - ENVIANOS UN MAIL PARA AGENDAR TU CANJE</p>
                 </div>
                 <div className="filter-cards-container">

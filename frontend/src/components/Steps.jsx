@@ -1,5 +1,5 @@
 
-import {Link as LinkRouter} from 'react-router-dom'
+import { Link as LinkRouter } from 'react-router-dom'
 
 
 export default function Steps() {
@@ -9,7 +9,7 @@ export default function Steps() {
     <div className="bg-[#F6F7EB] py-14">
       <div className="flex m-5 mb-12 justify-center " >
         <div className="max-w-70% fontRaleway text-base" >
-        <p className="m-3" >En un mundo en el que todos corremos detrás del tiempo, vivir experiencias en lugar de obsequiar bienes materiales parece más que nunca la mejor elección.</p>
+          <p className="m-3" >En un mundo en el que todos corremos detrás del tiempo, vivir experiencias en lugar de obsequiar bienes materiales parece más que nunca la mejor elección.</p>
           <p className="m-3" >Todos nuestros packs están repletos de emoción y quien los disfrute podrá elegir la experiencia que desee.</p>
           <p className="ml-3" ><strong>¿Y por qué experiencias? <br /></strong></p>
           <p className="m-3" > Porque los momentos de felicidad son los que recordaremos por siempre.</p>
@@ -29,7 +29,7 @@ export default function Steps() {
             <div className="mt-4 text-[#FF8E72] text-center">
               <h1 className="text-xl font-bold">Paso 1</h1>
               <p className="mt-4 text-[#393E41]">Seleccioná el pack que quieras y su presentación con packaging físico o digital.</p>
-              
+
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@ export default function Steps() {
             <div className="mt-4 text-[#FF8E72] text-center">
               <h1 className="text-xl font-bold">Paso 2</h1>
               <p className="mt-4 text-[#393E41]">Elegí una experiencia dentro de una amplia variedad de opciones.</p>
-             
+
             </div>
           </div>
         </div>
@@ -54,13 +54,15 @@ export default function Steps() {
             <div className="mt-4 text-[#FF8E72] text-center">
               <h1 className="text-xl font-bold">Paso 3</h1>
               <p className="mt-4 text-[#393E41]">Disfrutá la experiencia presentando la tarjeta física o código E-Pack.</p>
-              
+
             </div>
           </div>
         </div>
       </div>
       <div className="flex justify-center" >
-        <LinkRouter to="/packs" className="mt-10 mb-4 py-2 px-14 rounded-[15px] bg-[#FF8E72] text-white tracking-widest hover:bg-[#393E41] transition duration-200	l-card-button-comments">CONOCE NUESTRAS OPCIONES</LinkRouter>
+        <LinkRouter to="/packs" title="link a packs" className="mt-10 mb-4 py-2 px-14 rounded-[15px] bg-[#FF8E72] text-white tracking-widest hover:bg-[#393E41] transition duration-200	l-card-button-comments"
+          style={{ color: 'black' }}
+        >CONOCE NUESTRAS OPCIONES</LinkRouter>
       </div>
     </div>
 
