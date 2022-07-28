@@ -8,7 +8,7 @@ export default function ShoppingCart() {
   const [reload, setReload] = useState(false)
   const dispatch = useDispatch()
   const products = useSelector(store => store.shoppingReducer.productos)
-  console.log(products)
+  // console.log(products)
 
   async function toDelete(event) {
     const idProducto = event.target.id
@@ -18,7 +18,7 @@ export default function ShoppingCart() {
   }
 
   const productosSum= products?.shopping
-  console.log(productosSum)
+  
 
   let contador = 0
   productosSum?.map(c=>contador=contador + c.cantidad)
@@ -39,34 +39,36 @@ export default function ShoppingCart() {
     setReload(!reload)
   }
 
+  const usuario = useSelector(store => store.usuariosReducer.user)
+
   return (
 
-    <div className="bg-gray-100">
-      <div className="container mx-auto mt-10">
-        <div className="flex shadow-md my-10">
+    <div className="bg-gray-100 h-full">
+      <div className="container mx-auto mt-10 ">
+        <div className="flex flex-col justify-center items-center md:flex-row shadow-md my-10">
 
-          {products.shopping?.length === 0 ? 
+          {!usuario || products.shopping?.length === 0 ? 
           <div className="w-3/4  h-[30rem]  bg-white px-10 py-10 flex flex-col justify-center">
             <p className="text-2xl text-center font-semibold" >Tu carrito esta vacio </p>
             <img className="h-[15rem] object-contain	" src="https://donweb.com/img/mis-compras/carro-vacio-canasta.png" alt="carrito-vacio"  />
           </div>
           : 
-          <div className="w-3/4 bg-white px-10 py-10">
+          <div className="w-full  sm:w-3/4 bg-white px-10 py-10">
             <div className="flex justify-between border-b pb-8">
               <h1 className="font-semibold text-2xl">Carrito de compras</h1>
-              <h2 className="font-semibold text-2xl">{products.shopping?.map(c => c.cantidad.length)} Packs</h2>
+              <h2 className=" hidden sm:inline font-semibold text-2xl">{products.shopping?.map(c => c.cantidad.length)} Packs</h2>
             </div>
-            <div className="flex mt-10 mb-5">
+            <div className="flex flex-col sm:flex-row mt-10 mb-5">
               <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">Detalles de Producto</h3>
-              <h3 className="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Cantidad</h3>
-              <h3 className="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Precio</h3>
-              <h3 className="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
+              <h3 className="hidden sm:inline  font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Cantidad</h3>
+              <h3 className="hidden sm:inline font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Precio</h3>
+              <h3 className="hidden sm:inline font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
             </div>
             {products.shopping?.map((prod, index) =>
-              <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5" key={index}>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 hover:bg-gray-100 -mx-8 px-6 py-5" key={index}>
                 <div className="flex w-2/5">
-                  <div className="w-20">
-                    <video className="h-24" src={prod.idPack?.imagen} alt="" />
+                  <div className="hidden sm:inline  w-full sm:w-20">
+                    <video className="hidden sm:inline h-24" src={prod.idPack?.imagen} alt="imagen-del-producto" />
                   </div>
                   <div className="flex flex-col justify-between ml-4 flex-grow">
                     <span className="font-bold text-sm">{prod.idPack?.nombre}</span>
@@ -95,14 +97,15 @@ export default function ShoppingCart() {
 
 
           
-
-          <div id="summary" className="w-1/4 px-8 py-10">
+        {usuario?  
+        
+        <div id="summary" className=" w-full sm:w-1/4 px-8 py-10">
             <h1 className="font-semibold text-2xl border-b pb-8">Resumen del pedido</h1>
             <div className="flex justify-between mt-10 mb-5">
               <span className="font-semibold text-sm uppercase">Packs {contador}</span>
             </div>
          
-            <div className="border-t mt-8">
+            <div className="border-t mt-8 flex flex-col  ">
               <div className="flex font-semibold justify-between py-6 text-sm uppercase">
                 <span>Costo Total</span>
                 <span>${total}</span>
@@ -111,6 +114,15 @@ export default function ShoppingCart() {
             </div>
           </div>
 
+        :  
+        <div  className="w-3/4 sm:w-2/4 lg:w-1/4 px-8 py-10 flex items-center justify-center">
+           
+           <LinkRouter to="/packs" className="bg-orange-500 font-semibold hover:bg-orange-600 py-3 text-sm text-white uppercase w-full rounded flex justify-center items-center ">Ver Packs</LinkRouter>
+        </div>
+
+        
+        }
+          
         </div>
       </div>
     </div>

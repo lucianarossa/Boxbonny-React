@@ -224,6 +224,10 @@ max-width: 90% !important;
     }
  }
 
+ .MuiRating-readyOnly{
+    margin-top: 1rem;
+ }
+
 
  
 

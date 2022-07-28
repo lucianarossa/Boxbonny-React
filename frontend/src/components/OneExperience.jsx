@@ -6,6 +6,7 @@ import experienciasActions from "../redux/actions/experienciasActions"
 import { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom"
 import Comments from "../components/Comments"
+import LoadingCards from '../helpers/LoadingCards'
 
 
 
@@ -26,12 +27,23 @@ const OneExperience = () => {
       }
 
     const exp = useSelector(store => store.experienciasReducer.getOneExperiencia)
+    const [loading, setLoading] = useState(false)
+    useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+    }, []);
    
 
     return (
         <>
         <div className="general-container">
             <div className="l-exp-container">
+            {loading ?
+                <div className="l-card-container self-center">
+                    <LoadingCards/>
+                </div> :
                 <div className="l-card-container">
                     <div className="l-exp-card">
                         <div className="overlay"></div>
@@ -41,7 +53,7 @@ const OneExperience = () => {
                         </div>
                     </div>
                  <Comments reloadChanger={reloadChanger}/>
-                </div>
+                </div>}
                 <div className="experienceBody">
                     <h2 className="titleExp">DESCRIPCION</h2>
                     <p className="subtitleExp">{exp?.descripcion}</p>

@@ -74,7 +74,7 @@ function App() {
             <Route path="/" element={<Index />} />
             <Route path="*" element={<Index />} />
             <Route path="/packs" element={<PacksPage />} />
-            <Route path="/administrador" element={<Upload />} />
+            {user?.rol === "admin" && <Route path="/administrador" element={<Upload />}/>}
             <Route path="/packs/packdetails/:id" element={<PackDetails />} />
             <Route path="/packs/oneexperience/:id" element={<OneExperiencePage />} />
             {!user && <Route path="/signin" element={<SignIn />} />}

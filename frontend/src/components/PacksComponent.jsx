@@ -21,13 +21,8 @@ const PacksComponent = () => {
         // eslint-disable-next-line
     }, [inputValue])
 
-    // dispatch(packsActions.getPacks(99999))
-    // useEffect(()=>{
-    //     dispatch(packsActions.getPacks(99999))
-    //     // eslint-disable-next-line
-    // },[])
-
     const packs = useSelector(store => store.packsReducer.filterPacks)
+    
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         setLoading(true);
@@ -44,7 +39,7 @@ const PacksComponent = () => {
                     <h2 className="hover:animate-pulse selecciona-experiencias">SELECCIONA Y DESCUBRI LAS EXPERIENCIAS</h2>
                 </div>
                 <div className="container-filtro-precios">
-                    <h2 className="texto-filtro-precios">RANGO DE PRECIOS</h2>
+                    <h2 className="texto-filtro-precios">PODES FILTRAR X PRECIO</h2>
                     <form className="filtro-precios">
                         <div className="box-checkbox">
                             <input type="radio" className="inputPrecios" value="5000" id="cinco"
@@ -78,7 +73,7 @@ const PacksComponent = () => {
                             <label className="label-checkbox" htmlFor="diez">Hasta $10000</label>
                         </div>
                         <div>
-                            <button onClick={clearfilter} style={{ backgroundColor: "grey" }}> Limpiar filtro </button>
+                            <button onClick={clearfilter} className="btn-clean">Limpiar Filtro</button>
                         </div>
                     </form>
                 </div>

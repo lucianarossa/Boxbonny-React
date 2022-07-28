@@ -35,9 +35,9 @@ const SignIn = () => {
             password: event.target[1].value,
             from: "formulario-inicio"
         }
-        console.log(logueado)
+        // console.log(logueado)
         let res = await dispatch(usuariosActions.inicioSesion(logueado))
-        console.log(res)
+        // console.log(res)
         if (res.data.success) {
             toast.success(res.data.message)
             navigate("/")
@@ -49,7 +49,7 @@ const SignIn = () => {
 
     const signUpSubmit = async (event) => {
         event.preventDefault()
-        console.log(event.target[4].value)
+        // console.log(event.target[4].value)
         const data = {
             nombre: event.target[0].value,
             apellido: event.target[1].value,
@@ -86,11 +86,11 @@ const SignIn = () => {
                         <h2 className="title">Ingresá</h2>
 
                         <div className="inputBox">
-                            <input  className= "inputlogin" type="text" placeholder="Email" />
+                            <input autoComplete="new-password"  className= "inputlogin" type="text" placeholder="Email" />
                         </div>
 
                         <div className="inputBox">
-                            <input className= "inputlogin" type="password" placeholder="Contraseña" />
+                            <input autoComplete="new-password" className= "inputlogin" type="password" placeholder="Contraseña" />
                         </div>
 
                         <input type="submit" value="Inicia Sesión" className="btn" id="sign_btn" />
@@ -103,28 +103,22 @@ const SignIn = () => {
                     </form>
                     <form onSubmit={signUpSubmit} action="#" className="sign_up_form">
                             <h2 className="title"> Registrate </h2>
-
                             <div className="inputBox">
-                                <i className='bx bxs-user'></i>
-                                <input type="text" placeholder="Nombre" />
+                                <input  autoComplete="new-password" type="text" placeholder="Nombre" />
                             </div>
                             <div className="inputBox">
-                                <i className='bx bxs-user'></i>
-                                <input type="text" placeholder="Apellido" />
+                                <input  autoComplete="new-password" type="text" placeholder="Apellido" />
                             </div>
                             <div className="inputBox">
-                                <i className='bx bxs-user'></i>
-                                <input type="text" placeholder="Imagen" />
+                                <input  autoComplete="new-password" type="text" placeholder="Imagen" />
                             </div>
 
                             <div className="inputBox">
-                                <i className='bx bxs-user'></i>
-                                <input type="email" placeholder="Email" />
+                                <input  autoComplete="new-password" type="email" placeholder="Email" />
                             </div>
                             <div className="inputBox">
-                                <i className='bx bxs-user'></i>
                                 {/* <input type="password" placeholder="Contraseña" /> */}
-                                <input
+                                <input autoComplete="new-password" 
                                     type="password"
                                     className="inputForm w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                                     placeholder="Enter password"

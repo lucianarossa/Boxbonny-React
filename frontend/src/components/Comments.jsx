@@ -100,8 +100,8 @@ function Comments({ reloadChanger }) {
         <div className='l-dropdown'>
             {// eslint-disable-next-line
             comentariosArray?.length !== 0 ?
-                <Button onClick={handleClickOpen('paper')} className="rating-text">VALORACION ENTRE {comentariosArray?.length} OPINIONES!
-                    <Rating name="half-rating-read" value={RatingPromedio} precision={1} readOnly />
+                <Button onClick={handleClickOpen('paper')} className="rating-text">VALORACION DE ESTA EXPERIENCIA ENTRE {comentariosArray?.length} OPINIONES!
+                    <Rating name="half-rating-read rating-opiniones" value={RatingPromedio} precision={1} readOnly />
                 </Button> :
                 <Button onClick={handleClickOpen('paper')} className="rating-text">NADIE VALORO ESTA EXPERIENCIA AUN!
                     <Rating name="half-rating-read" value={RatingPromedio} precision={1} readOnly />
@@ -132,7 +132,7 @@ function Comments({ reloadChanger }) {
                                         <div className='l-usuario-container'>
                                             <div className='l-avatar'>
                                                 <Avatar alt="Remy Sharp" src={comentario.idUsuario?.imagen} />
-                                                <p className='l-nombreusuario'>{comentario.idUsuario?.nombre} {comentario.idUsuario?.apellido}</p>
+                                                <div className='l-nombreusuario'>{comentario.idUsuario?.nombre} {comentario.idUsuario?.apellido}</div>
                                             </div>
                                             <Rating name="half-rating-read" value={comentario.rating} precision={1} readOnly />
                                         </div>
