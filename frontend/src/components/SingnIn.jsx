@@ -145,7 +145,7 @@ const SignIn = () => {
                             Registrate
                         </button>
                     </div>
-                    <img src="img/login.svg" className="image" alt="imagen login" />
+                    <div className="image"></div>
                 </div>
                 <div className="panel right_panel">
                     <div className="content">
@@ -157,7 +157,7 @@ const SignIn = () => {
                             Iniciar Sesión
                         </button>
                     </div>
-                    <img src="img/register.svg" className="image" alt="" />
+                    <div className="image"></div>
                 </div>
             </div>
         </div>

@@ -65,9 +65,7 @@
   width: 100%;
   margin-top: 4rem;
   font-size: 1.5rem;
-
   color: black;
-  text-shadow: 0.2px 0 0 #FF8E72;
 }
 
 .subt-exp {
@@ -308,8 +306,16 @@
 
 /* Filtro de precios */
 .inputPrecios {
-  z-index: 50000;
-  margin-right: 2rem;
+  z-index: 50000 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 10rem;
+  height: 3rem;
+  position: absolute;
+  top: 0 !important;
+  left: 0 !important;
+  opacity: 0;
+
 }
 
 .container-izq {
@@ -401,7 +407,7 @@
 
 .box-checkbox {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   margin: 1rem;
   font-size: 1rem;
@@ -424,7 +430,13 @@
 
 .label-checkbox {
   font-family: "Poppins";
-  width: 100%;
+  width: 7rem;
+  height: 2.5rem;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-clean {
