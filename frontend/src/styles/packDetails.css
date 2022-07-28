@@ -14,6 +14,11 @@
     width: 100%;
 }
 
+.packsCarrito {
+    font-weight: bold;
+    color: black;
+}
+
 @media(max-width: 880px) {
     .container-body-packs {
         display: flex;
@@ -57,10 +62,14 @@
     font-family: 'Poppins';
     font-weight: bolder;
     font-size: 4.5rem;
-    text-shadow: 0px 8px 45px grey;
-    color: #F6F7EB;
+    text-shadow: 0px 8px 45px gray;
+    color: black;
     text-align: center;
     letter-spacing: .5rem;
+}
+
+.titleCards {
+    color: black;
 }
 
 @media(max-width:980px) {
@@ -95,7 +104,7 @@
     text-align: center;
     margin-bottom: 1rem;
     font-size: 1.2rem;
-    color: #393E41;
+    color: #34373a;
     margin-top: 2rem;
 }
 
@@ -414,7 +423,8 @@
     text-align: center;
     width: 100%;
     color: #FF8E72;
-    text-shadow: 0px 15px 25px grey;;
+    text-shadow: 0px 15px 25px grey;
+    ;
     font-size: 1.4rem;
     padding-top: 1rem;
     padding-right: 1rem;

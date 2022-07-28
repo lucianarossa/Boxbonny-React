@@ -55,15 +55,15 @@ function Upload() {
                         <div className="text-center">
                             <h2 className="text-4xl font-bold text-center text-gray-700fontPoppins">Box Bonny</h2>
 
-                            <p className="mt-3 text-gray-500  font-bold fontRalewayItalic">Carga tu experiencia</p>
+                            <p className="mt-3 text-black-500  font-bold fontRalewayItalic">Carga tu experiencia</p>
                         </div>
 
                         <div className="mt-8">
                             <form onSubmit={handleSubmit} className="fontRaleway px-0" >
                                 <div>
                                     <label className="block mb-2 text-sm">Seleccionar Pack</label>
-                                    <select className="block w-[15rem] px-5 py-2 mt-2 fontRaleway text-gray-700 placeholder-gray-400  rounded-md ">
-                                        <option className='fontRaleway text-gray-700'>Pack</option>
+                                    <select className="block w-[15rem] px-5 py-2 mt-2 fontRaleway text-gray-700 placeholder-gray-400  rounded-md" >
+                                        <option className='fontRaleway text-black-700'>Pack</option>
                                         {packs.map((pack, index) => (
                                             <option
                                                 className='fontRaleway'
@@ -79,15 +79,15 @@ function Upload() {
                                 </div>
                                 <div className="mt-6">
                                     <label className="block mb-2 text-sm">Descripcion</label>
-                                    <input type="text" name="Description" id="Description" placeholder="Este pack ofrece..." className="block w-[15rem] fontRaleway px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 " />
+                                    <input type="text" name="Description" id="Description" placeholder="Este pack ofrece..." className="block w-[15rem] fontRaleway px-4 py-2 mt-2 text-black-700 placeholder-gray-400 " />
                                 </div>
                                 <div className="mt-6">
-                                    <label className="block mb-2 text-sm text-gray-600">Incluye</label>
+                                    <label className="block mb-2 text-sm text-black-600">Incluye</label>
                                     <input type="text" name="Description" id="Description" placeholder="Sesión de 2 horas de..." className="block w-[15rem] fontRaleway px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 " />
                                 </div>
                                 <div className="mt-6">
-                                    <label className="block mb-2 text-sm text-gray-600">Provincia</label>
-                                    <select required className="block w-[15rem] px-4 py-2 mt-2 fontRaleway text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md ">
+                                    <label className="block mb-2 text-sm text-black-600">Provincia</label>
+                                    <select required className="block w-[15rem] px-4 py-2 mt-2 fontRaleway text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md " title="selector de proviincia">
                                         <option> Provincia </option>
                                         {sortedStates.map((state, index) => (
                                             <option key={index}
@@ -109,6 +109,7 @@ function Upload() {
                                     <button
                                         style={{ backgroundColor: '#ff8e72' }}
                                         type="Submit"
+                                        title="boton subiir experiencia"
                                         className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md ">
                                         Subir Experiencia
                                     </button>

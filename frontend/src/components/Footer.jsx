@@ -12,7 +12,8 @@ export default function Footer() {
             </div>
 
             <p
-              className="max-w-md mx-auto leading-relaxed text-center text-gray-500 sm:max-w-xs sm:mx-0 sm:text-left"
+              className="max-w-md mx-auto leading-relaxed text-center text-black-500 sm:max-w-xs sm:mx-0 sm:text-left"
+              style={{ color: 'black' }}
             >
               Seguinos en nuestras Redes Sociales!
             </p>
@@ -91,13 +92,13 @@ export default function Footer() {
             className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 md:grid-cols-4"
           >
             <div className="text-center sm:text-left ">
-              <p className="text-lg fontPoppins font-medium text-gray-900">Nosotros</p>
+              <p className="text-lg fontPoppins font-medium text-black-900">Nosotros</p>
 
               <nav className="mt-8">
                 <ul className="space-y-4 text-sm">
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-black-700 transition hover:text-gray-700/75"
                       href="/"
                     >
                       Nuestra Cultura
@@ -106,7 +107,7 @@ export default function Footer() {
 
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-black-700 transition hover:text-gray-700/75"
                       href="/"
                     >
                       Sustentabilidad
@@ -115,7 +116,7 @@ export default function Footer() {
 
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-black-700 transition hover:text-gray-700/75"
                       href="/"
                     >
                       Trabajá con nosotros
@@ -124,7 +125,7 @@ export default function Footer() {
 
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-black-700 transition hover:text-gray-700/75"
                       href="/"
                     >
                       Inversores
@@ -135,13 +136,13 @@ export default function Footer() {
             </div>
 
             <div className="text-center sm:text-left">
-              <p className="text-lg fontPoppins font-medium text-gray-900">Nuestros Productos</p>
+              <p className="text-lg fontPoppins font-medium text-black-900">Nuestros Productos</p>
 
               <nav className="mt-8">
                 <ul className="space-y-4 text-sm">
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-black-700 transition hover:text-gray-700/75"
                       href="/"
                     >
                       Nuestros packs
@@ -150,7 +151,7 @@ export default function Footer() {
 
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-black-700 transition hover:text-gray-700/75"
                       href="/"
                     >
                       Experiencias
@@ -159,7 +160,7 @@ export default function Footer() {
 
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-black-700 transition hover:text-gray-700/75"
                       href="/"
                     >
                       Suma tu emprendimiento
@@ -170,13 +171,13 @@ export default function Footer() {
             </div>
 
             <div className="text-center sm:text-left">
-              <p className="text-lg fontPoppins font-medium text-gray-900">Enlaces Utiles</p>
+              <p className="text-lg fontPoppins font-medium text-black-900">Enlaces Utiles</p>
 
               <nav className="mt-8">
                 <ul className="space-y-4 text-sm">
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-black-700 transition hover:text-gray-700/75"
                       href="/"
                     >
                       Soporte
@@ -189,7 +190,7 @@ export default function Footer() {
                       href="/"
                     >
                       <span
-                        className="text-gray-700 transition group-hover:text-gray-700/75"
+                        className="text-black-700 transition group-hover:text-gray-700/75"
                       >
                         Chatea con nosotros
                       </span>
@@ -200,7 +201,7 @@ export default function Footer() {
             </div>
 
             <div className="text-center sm:text-left">
-              <p className="text-lg fontPoppins font-medium text-gray-900 flex flex-col ">Contactanos</p>
+              <p className="text-lg fontPoppins font-medium text-black-900 flex flex-col ">Contactanos</p>
 
               <ul className="mt-8 space-y-4 text-sm">
                 <li>
@@ -210,7 +211,7 @@ export default function Footer() {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="w-5 h-5 text-gray-900 shrink-0"
+                      className="w-5 h-5 text-black-900 shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -222,7 +223,7 @@ export default function Footer() {
                         d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                       />
                     </svg>
-                    <span className="text-gray-700" style={{overflowWrap:"break-word"}}>contacto @boxbonny.com</span>
+                    <span className="text-black-700" style={{ overflowWrap: "break-word" }}>contacto @boxbonny.com</span>
                   </a>
                 </li>
 
@@ -230,6 +231,7 @@ export default function Footer() {
                   <a
                     className="flex  justify-center gap-1.5 sm:justify-start"
                     href="/"
+                    title="enlace a inicio"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -246,7 +248,7 @@ export default function Footer() {
                       />
                     </svg>
 
-                    <span className="text-gray-700">+54114324875</span>
+                    <span className="text-black-700">+54114324875</span>
                   </a>
                 </li>
 
@@ -282,9 +284,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-6 mt-12 border-t border-gray-100">
+        <div className="pt-6 mt-12 border-t border-black-100">
           <div className="text-center sm:flex sm:justify-between sm:text-left">
-            <p className="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">
+            <p className="mt-4 text-sm text-black-500 sm:order-first sm:mt-0">
               &copy; 2022 Box Bonny - Todos los derechos reservados
             </p>
           </div>

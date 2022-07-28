@@ -57,16 +57,21 @@ export default function Nav() {
               <ul className="flex items-center gap-6 text-md fontPoppins ">
                 <li>
                   <LinkRouter
-                    className="text-gray-500 transition hover:text-[#FF8E72]"
+                    className="text-black-500 transition hover:text-[#FF8E72]"
                     to="/"
+                    aria-label="enlace a inicio"
+                    title="link a inicio"
+
                   >
                     Inicio
                   </LinkRouter>
                 </li>
                 <li>
                   <LinkRouter
-                    className="text-gray-500 transition hover:text-[#FF8E72]"
+                    className="text-black-500 transition hover:text-[#FF8E72]"
                     to="/packs"
+                    aria-label="enlace a packs"
+                    title="link a packs"
                   >
                     Packs
                   </LinkRouter>
@@ -75,6 +80,9 @@ export default function Nav() {
                   <LinkRouter
                     className="relative flex items-center justify-center"
                     to="/cart"
+                    aria-label="enlace a carrito"
+                    title="carrito de compras"
+                    id="Link a carro de compras"
                   >
                     {usuario ? <Badge color="error" badgeContent={contador}>
                       <ShoppingCartOutlinedIcon />
@@ -94,7 +102,7 @@ export default function Nav() {
                     {usuario ? <Box sx={{ display: 'flex', flexDirection: 'column', WebkitJustifyContent: 'center', color: '#FF8E72', alignItems: 'center', }} >
                       <IconButton onClick={handleOpenUserMenu} >
                         <Avatar alt="imagen del usuario" src={usuario?.imagen} sx={{ width: 30, height: 30 }} sm={{ width: 30, height: 30 }} />
-                        <p className="m-nombreAvatar pl-2">{usuario?.nombre}</p>
+                        <p className="m-nombreAvatar pl-2" aria-label="nombre del usuario">{usuario?.nombre}</p>
                       </IconButton>
                     </Box>
                       :
@@ -102,7 +110,10 @@ export default function Nav() {
                         <div className="sm:gap-4 sm:flex">
                           <LinkRouter
                             className="px-5 py-2.5 text-sm font-medium text-white bg-[#FF8E72] rounded-md hover:text-[#393E41] shadow"
+                            style={{ color: 'black' }}
                             to="signin"
+                            aria-label="enlace a formulario de inicio"
+                            title="Ingreso a formulario de inicio"
                           >
                             Ingresá
                           </LinkRouter>
@@ -131,7 +142,7 @@ export default function Nav() {
                     usuario?.rol === "admin" ?
                       <Box onClick={handleCloseUserMenu}>
                         <MenuItem style={{ textAlign: "center", justifyContent: 'center' }} onClick={desloguearse}>
-                          <Typography sx={{ padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)' }} style={{ fontFamily: "Poppins" }} >Salir</Typography>
+                          <Typography sx={{ padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)' }} style={{ fontFamily: "Poppins" }} title="desloguearse">Salir</Typography>
                         </MenuItem>
                         <MenuItem onClick={admin}>
                           <Typography sx={{ padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)' }} style={{ fontFamily: "Poppins" }} >Cargar Experiencia</Typography>
@@ -152,25 +163,32 @@ export default function Nav() {
             </div>
           </div>
         </div>
-        <div className="border-t border-gray-100 md:hidden lg:hidden">
+        <div className="border-t border-black-100 md:hidden lg:hidden">
           <nav
             className="flex items-center justify-center p-4 overflow-x-auto text-sm font-medium gap-6"
           >
             <LinkRouter
-              className="text-gray-500 transition hover:text-[#FF8E72]"
+              className="text-black-500 transition hover:text-[#FF8E72]"
               to="/"
+              title="enlace a inicio"
+              aria-labelledby='enlace'
             >
               Inicio
             </LinkRouter>
             <LinkRouter
-              className="text-gray-500 transition hover:text-[#FF8E72]"
+              className="text-black-500 transition hover:text-[#FF8E72]"
               to="/packs"
+              aria-labelledby='enlace a packs'
+              title="enlace a packs"
             >
               Packs
             </LinkRouter>
             <LinkRouter
               className="relative flex items-center justify-center"
               to="/cart"
+              aria-labelledby='enlace a carrito'
+              title="enlace a carrito"
+
             >
               {usuario ? <Badge color="error" badgeContent={contador}>
                 <ShoppingCartOutlinedIcon />
@@ -181,7 +199,7 @@ export default function Nav() {
             </LinkRouter>
           </nav>
         </div>
-      </div>
-    </header>
+      </div >
+    </header >
   )
 }

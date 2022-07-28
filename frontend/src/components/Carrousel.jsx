@@ -1,16 +1,15 @@
 import "../styles/Carrousel.css"
 
-
 export default function Carrousel() {
 
   return (
 
     <div className="slider">
-      <input name="control" id="page1" type="radio" defaultChecked />
-      <input name="control" id="page2" type="radio" defaultChecked />
-      <input name="control" id="page3" type="radio" defaultChecked />
-      <input name="control" id="page4" type="radio" defaultChecked />
-      <input name="control" id="page5" type="radio" defaultChecked />
+      <input name="control" id="page1" type="radio" defaultChecked aria-label="carrousel" />
+      <input name="control" id="page2" type="radio" defaultChecked aria-label="imagen del carrousel" />
+      <input name="control" id="page3" type="radio" defaultChecked aria-label="carrousel" />
+      <input name="control" id="page4" type="radio" defaultChecked aria-label="carrousel" />
+      <input name="control" id="page5" type="radio" defaultChecked aria-label="carrousel" />
       <div className="slider--el slider--el-1 anim-4parts">
         <div className="slider--el-bg">
           <div className="part top left"></div>
@@ -71,21 +70,21 @@ export default function Carrousel() {
         </div>
       </div>
 
-      <div className="slider--control left">
+      <div className="slider--control left" title="Hacia la izquierda en carrousel">
         <label className="page1-left" htmlFor="page1"></label>
         <label className="page2-left" htmlFor="page2"></label>
         <label className="page3-left" htmlFor="page3"></label>
         <label className="page4-left" htmlFor="page4"></label>
         <label className="page5-left" htmlFor="page5"></label>
       </div>
-      <div className="slider--control right">
+      <div className="slider--control right" title="Hacia la derecha en carrousel">
         <label className="page1-right" htmlFor="page1"> </label>
         <label className="page2-right" htmlFor="page2"> </label>
         <label className="page3-right" htmlFor="page3"> </label>
         <label className="page4-right" htmlFor="page4"> </label>
         <label className="page5-right" htmlFor="page5"> </label>
       </div>
-    </div> 
+    </div>
 
 
 
