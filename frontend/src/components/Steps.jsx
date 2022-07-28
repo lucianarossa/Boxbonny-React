@@ -1,6 +1,6 @@
 
 import { Link as LinkRouter } from 'react-router-dom'
-
+import "../styles/cards.css";
 
 export default function Steps() {
   return (
@@ -25,7 +25,7 @@ export default function Steps() {
         {/* <!-- box-1 --> */}
         <div className="mt-16 py-4 px-4 bg-whit w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transform transition duration-500 mx-auto md:mx-0">
           <div className="w-sm">
-            <img className="w-64" src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/8cc47b39e719570b996d9879/dsds.jpg" alt="" />
+            <img className="w-64" aria-hidden="true" src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/8cc47b39e719570b996d9879/dsds.jpg" alt="" />
             <div className="mt-4 text-[#FF8E72] text-center">
               <h1 className="text-xl font-bold">Paso 1</h1>
               <p className="mt-4 text-[#393E41]">Seleccioná el pack que quieras y su presentación con packaging físico o digital.</p>
@@ -37,7 +37,7 @@ export default function Steps() {
         {/* <!-- box-2 --> */}
         <div className="mt-16 py-4 px-4 bg-whit w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transform  transition duration-500 mx-auto md:mx-0">
           <div className="w-sm">
-            <img className="w-64" src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/3b242447f922540fbe750cab/fdf.jpg" alt="" />
+            <img className="w-64" aria-hidden="true" src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/3b242447f922540fbe750cab/fdf.jpg" alt="" />
             <div className="mt-4 text-[#FF8E72] text-center">
               <h1 className="text-xl font-bold">Paso 2</h1>
               <p className="mt-4 text-[#393E41]">Elegí una experiencia dentro de una amplia variedad de opciones.</p>
@@ -49,7 +49,7 @@ export default function Steps() {
         {/* <!-- box-3 --> */}
         <div className="mt-16 py-4 px-4 bg-whit w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transform  transition duration-500 mx-auto md:mx-0">
           <div className="w-sm">
-            <img className="w-64" src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/a17abde8d83650a582a28432/users-with-speech-bubbles-vector_53876-82250.jpg" alt="" />
+            <img className="w-64" aria-hidden="true" src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/a17abde8d83650a582a28432/users-with-speech-bubbles-vector_53876-82250.jpg" alt="" />
 
             <div className="mt-4 text-[#FF8E72] text-center">
               <h1 className="text-xl font-bold">Paso 3</h1>
