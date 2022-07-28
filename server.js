@@ -26,9 +26,9 @@ if(process.env.NODE_ENV === 'production'){
     })
 }
 
-app.get('/', (req, res) => {
-    res.send('EL SERVIDOR ESTÁ FUNCIONANDO!')
-})
+// app.get('/', (req, res) => {
+//     res.send('EL SERVIDOR ESTÁ FUNCIONANDO!')
+// })
 app.listen(PORT, () => {
     console.log('Server Ready in port ' + app.get('port'))
 });

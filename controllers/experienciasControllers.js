@@ -59,7 +59,7 @@ const experienciasControllers = {
 				console.log("ACA LLEGO");
                 const filename = crypto.randomBytes(10).toString('hex') + "." + files.name.split(".")[files.name.split(".").length - 1]
                 console.log("DIRNAME", __dirname);
-				const ruta = `${__dirname}/../client/build/media/${filename}`
+				const ruta = `${__dirname}/../client/build/${filename}`
 				console.log("RUTAAAAA",ruta);
                 files.mv(ruta, err => {
 					console.log("ERROR", err);
@@ -75,7 +75,7 @@ const experienciasControllers = {
                     incluye: incluye,
                     direccion: direccion,
                     ciudad: ciudad,
-                    imagen: "https://boxbonny-back.herokuapp.com/client/build/media/" + filename,
+                    imagen: "https://boxbonny-back.herokuapp.com/client/build/" + filename,
                     pack: pack
                 }).save()
                 nuevaExperiencia = await Pack.findOneAndUpdate({ _id: pack }, { $push: { experiencias: experiencia._id } }, { new: true })
