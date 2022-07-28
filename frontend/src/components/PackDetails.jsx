@@ -149,10 +149,6 @@ export default function PackDetails() {
                         }
                     </div>
                     }
-
-
-                    
-
                 </div>
             </div>
             <button onClick={() => navigate(-1)} className="card-button l-card-buttonp fontRaleway">VOLVER A PACKS</button>
