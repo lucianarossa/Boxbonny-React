@@ -65,7 +65,9 @@
   width: 100%;
   margin-top: 4rem;
   font-size: 1.5rem;
-  color: #FF8E72;
+
+  color: black;
+  text-shadow: 0.2px 0 0 #FF8E72;
 }
 
 .subt-exp {

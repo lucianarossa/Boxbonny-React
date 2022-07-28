@@ -68,6 +68,10 @@
     letter-spacing: .5rem;
 }
 
+.titleCards {
+    color: black;
+}
+
 @media(max-width:980px) {
     .titulo-pdetails {
         margin-bottom: .5rem;
