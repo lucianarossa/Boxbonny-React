@@ -1,6 +1,7 @@
 const Pack = require('../models/pack')
 const Experiencia = require('../models/experiencia')
 const crypto = require('crypto');
+const path = require('path')
 
 const experienciasControllers = {
 	getExperiencias: async (req, res) => {
@@ -39,13 +40,9 @@ const experienciasControllers = {
 	},
 
 	addExperiencia: async (req, res) => {
-		// console.log(req.body);
         const { nombre, descripcion, incluye, direccion, ciudad, pack } = req.body
-		// console.log("BUSCAR FILE",req.files);
         const  {imagen}  = req.files
 		const files = imagen
-		console.log("FILES",files);
-		// console.log("IMAGEN", imagen);
         let experiencia
         let error = null
         try {
@@ -56,11 +53,9 @@ const experienciasControllers = {
                     Message: "la experiencia que intentas agregar, ya ha sido cargada previamente 🤔"
                 })
             } else {
-				console.log("ACA LLEGO");
                 const filename = crypto.randomBytes(10).toString('hex') + "." + files.name.split(".")[files.name.split(".").length - 1]
-                console.log("DIRNAME", __dirname);
-				const ruta = `${__dirname}/../client/build/${filename}`
-				console.log("RUTAAAAA",ruta);
+				// const ruta = `${__dirname}/../client/build/${filename}`
+				const ruta = path.resolve('client/build/media', filename)
                 files.mv(ruta, err => {
 					console.log("ERROR", err);
                     if (err) {
@@ -75,7 +70,7 @@ const experienciasControllers = {
                     incluye: incluye,
                     direccion: direccion,
                     ciudad: ciudad,
-                    imagen: "https://boxbonny-back.herokuapp.com/client/build/" + filename,
+                    imagen: "https://boxbonny-back.herokuapp.com/media/" + filename,
                     pack: pack
                 }).save()
                 nuevaExperiencia = await Pack.findOneAndUpdate({ _id: pack }, { $push: { experiencias: experiencia._id } }, { new: true })
